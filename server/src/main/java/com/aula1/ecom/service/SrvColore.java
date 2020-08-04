@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface SrvColore {
     
-    public List<ColoreDto> tuttiColori();
+    public List<ColoreDto> coloreTipo();
     public void aggiungi(Long id);
     public void modifica(Long id);
     public void rimuovi(Long id);

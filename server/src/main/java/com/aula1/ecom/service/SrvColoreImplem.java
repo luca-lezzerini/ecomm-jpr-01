@@ -16,7 +16,7 @@ public class SrvColoreImpl implements SrvColore{
    RepColore repColore;
    
    @Override
-    public List<ColoreDto> tuttiColori() {
+    public List<ColoreDto> coloreTipo() {
         return repColore.findAll();
     
 }
