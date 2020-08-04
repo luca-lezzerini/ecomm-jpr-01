@@ -1,18 +1,24 @@
-<div id="taglie">
+<div id="hormenu">
   <!--qui il menu-->
-  </div>
+</div>
 
-  <div id="taglie"><!-- div che contiene il menu -->
-    <ul> <!-- lista principale: definisce il menu nella sua interezza -->
+<div id="hormenu">
+  <!-- div che contiene il menu -->
+  <ul>
+    <!-- lista principale: definisce il menu nella sua interezza -->
     <li>
-    <a href="#">Tutte le taglie</a> <!-- primo list-item, prima voce del menu -->
-    <ul> <!-- Lista annidata: voci del sotto-menu -->
-    <li><a href="#">XS</a></li>
-    <li><a href="#">S</a></li>
-    <li><a href="#">M</a></li>
-    <li><a href="#">L</a></li>
-    <li><a href="#">XL</a></li>
-    </ul> <!-- Fine del sotto-menu -->
+      Tutte le taglie
+      <!-- primo list-item, prima voce del menu -->
+      <ul>
+        <!-- Lista annidata: voci del sotto-menu -->
+        <br>
+        <button (click)="tagliaXS()">XS</button>
+        <button (click)="tagliaS()">S</button>
+        <button (click)="tagliaM()">M</button>
+        <button (click)="tagliaL()">L</button>
+        <button (click)="tagliaXL()">XL</button>
+        <br>
+      </ul> <!-- Fine del sotto-menu -->
     </li> <!-- Chiudo il list-item -->
     <!--qui altri list-item -->
-    </div>
+</div>
