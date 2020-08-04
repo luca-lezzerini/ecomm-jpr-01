@@ -5,7 +5,7 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.model.Taglia;
+import com.aula1.ecom.model.taglia;
 import com.aula1.ecom.repository.RepTaglia;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
@@ -20,7 +20,7 @@ public class SrvTagliaImpl implements SrvTaglia{
    
 
     @Override
-    public List<Taglia> listaTaglie(Long id) {
+    public List<taglia> listaTaglie(Long id) {
         return repTaglia.findAll(id);
                
     }
