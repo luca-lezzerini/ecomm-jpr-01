@@ -6,6 +6,7 @@
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.dto.TagliaDto;
+import com.aula1.ecom.model.Taglia;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -13,5 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SrvTaglia {
     
-public List<TagliaDto> listaTaglie(String sigla);  
+
+public List<TagliaDto> tutteLeTaglie();
 }

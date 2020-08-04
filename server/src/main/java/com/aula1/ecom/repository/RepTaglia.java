@@ -6,11 +6,12 @@
 package com.aula1.ecom.repository;
 
 import com.aula1.ecom.dto.TagliaDto;
+import com.aula1.ecom.model.Taglia;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepTaglia extends JpaRepository <TagliaDto, Long> {
-public List<TagliaDto> findByTaglia(String sigla);    
+  
 }
