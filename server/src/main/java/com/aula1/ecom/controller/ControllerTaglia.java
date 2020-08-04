@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Niccolò Micozzi
+ * @author Skrunex
  */
 @CrossOrigin("*")
 @RestController

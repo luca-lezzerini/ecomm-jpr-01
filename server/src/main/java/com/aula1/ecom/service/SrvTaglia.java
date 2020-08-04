@@ -11,6 +11,10 @@ import com.aula1.ecom.model.Taglia;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author skunex
+ */
 public interface SrvTaglia {
     
 
