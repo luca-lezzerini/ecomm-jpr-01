@@ -21,8 +21,8 @@ public class SrvTagliaImpl implements SrvTaglia{
    
 
     @Override
-    public List<Taglia> listaTaglie(Long id) {
-        return repTaglia.findAll(id);
+    public List<Taglia> listaTaglie(String sigla) {
+        return repTaglia.findByTaglia(sigla);
                
     }
     

@@ -5,10 +5,58 @@
  */
 package com.aula1.ecom.dto;
 
-/**
- *
- * @author Niccolò Micozzi
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class TagliaDto {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String descrizione;
+    @Column
+    private String sigla;
+
+    public TagliaDto() {
+    }
+
+    public TagliaDto(Long id, String descrizione, String sigla) {
+        this.id = id;
+        this.descrizione = descrizione;
+        this.sigla = sigla;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+    
+    
+
     
 }

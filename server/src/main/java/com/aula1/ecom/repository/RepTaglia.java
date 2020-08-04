@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepTaglia extends JpaRepository <Taglia, Long> {
-public List<Taglia> findAll(Long id);    
+public List<Taglia> findByTaglia(String sigla);    
 }
