@@ -1,4 +1,4 @@
-import { TagliaDto } from './taglia-dto';
+import { tagliaDto } from './crudtaglia/taglia-dto';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -51,7 +51,7 @@ export class AppComponent {
    
    tutteLeTaglie() {
     this.taglia = "";
-      this.http.post<TagliaDto[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
+      this.http.post<tagliaDto[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
         console.log( result );
     });;
    }
