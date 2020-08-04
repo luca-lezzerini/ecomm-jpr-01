@@ -1,6 +1,6 @@
 export class Colore{
 
 id:number;
-descrizione:string;
+colore:string;
 
 } 

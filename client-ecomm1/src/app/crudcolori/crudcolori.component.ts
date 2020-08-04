@@ -12,6 +12,7 @@ export class CRUDColoriComponent implements OnInit {
   constructor(private http: HttpClientModule) { }
   searchCriteria: string;
   descrizioneColore: string;
+  listaColore: Colore [];
 
 
 
@@ -55,4 +56,5 @@ export class CRUDColoriComponent implements OnInit {
   rimuovi() {
 
 
-  }*/}
+  }*/
+}
