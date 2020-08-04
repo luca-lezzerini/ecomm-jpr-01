@@ -50,7 +50,7 @@ export class AppComponent {
    
    tutteLeTaglie() {
     this.taglia = "";
-      this.http.post<TagliaDto>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
+      this.http.post<TagliaDto[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
         console.log( result );
     });;
    }
