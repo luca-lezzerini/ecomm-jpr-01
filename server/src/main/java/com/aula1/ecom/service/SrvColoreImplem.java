@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  *
  * @author aless
  */
-public class SrvColoreImpl {
     @Service
 public class SrvColoreImpl implements SrvColore{
     
@@ -17,7 +16,7 @@ public class SrvColoreImpl implements SrvColore{
    RepColore repColore;
    
    @Override
-    public List<ColoreDto> tuttiColori() {
+    public List<ColoreDto> coloreTipo() {
         return repColore.findAll();
     
 }
