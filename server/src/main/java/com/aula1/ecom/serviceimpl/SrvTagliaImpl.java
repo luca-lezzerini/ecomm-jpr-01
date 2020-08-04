@@ -17,8 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class SrvTagliaImpl implements SrvTaglia{
     
-    @Autowired
-    RepTaglia repTaglia;
+   @Autowired
+   RepTaglia repTaglia;
+   
 
     @Override
     public List<Taglia> listaTaglie(Long id) {

@@ -14,7 +14,5 @@ import java.util.List;
  */
 public interface SrvTaglia {
     
-    
-    
-   public List<Taglia> listaTaglie(Long id);  
+public List<Taglia> listaTaglie(Long id);  
 }
