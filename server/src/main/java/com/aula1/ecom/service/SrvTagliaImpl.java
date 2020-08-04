@@ -32,5 +32,11 @@ public class SrvTagliaImpl implements SrvTaglia{
         return repTaglia.findAll();
     }
 
+    @Override
+    public String tagliaSelezionata(String sigla) {
+      return "";  
+    }
+    
+
 
 }
