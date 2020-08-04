@@ -15,14 +15,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Taglia")
-public class taglia implements Serializable{
+public class Taglia implements Serializable{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column(name="marca")
-    private String marca;
-
+    @Column(name="descrizione")
+    private String descrizione;
+    @Column(name="sigla")
+    private String sigla;
 
     public Long getId() {
         return id;
@@ -32,13 +33,29 @@ public class taglia implements Serializable{
         this.id = id;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
-    
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public Taglia(Long id, String descrizione, String sigla) {
+        this.id = id;
+        this.descrizione = descrizione;
+        this.sigla = sigla;
+    }
+
+    public Taglia() {
+    }
     
 }
