@@ -8,11 +8,9 @@ package com.aula1.ecom.repository;
 import com.aula1.ecom.model.Taglia;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Kevin
- */
+@Repository
 public interface RepTaglia extends JpaRepository <Taglia, Long> {
 public List<Taglia> findAll(Long id);    
 }
