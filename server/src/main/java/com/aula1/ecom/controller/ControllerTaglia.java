@@ -29,7 +29,7 @@ public class ControllerTaglia {
     @RequestMapping("/tutteLeTaglie")
     @ResponseBody
     public List<TagliaDto> tutteLeTaglie(@RequestBody TagliaDto dto) {
-
+        dto = srvTaglia.tutteLeTaglie();
         System.out.println("provaprova");
         return srvTaglia.tutteLeTaglie();
     }

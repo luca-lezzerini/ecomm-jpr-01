@@ -18,6 +18,6 @@ import org.springframework.stereotype.Service;
 public interface SrvTaglia {
     
 
-public List<TagliaDto> tutteLeTaglie();
+public List<Taglia> tutteLeTaglie();
 
 }

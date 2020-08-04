@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author skunex
  */
 @Repository
-public interface RepTaglia extends JpaRepository <TagliaDto, Long> {
+public interface RepTaglia extends JpaRepository <Taglia, Long> {
   
 }
