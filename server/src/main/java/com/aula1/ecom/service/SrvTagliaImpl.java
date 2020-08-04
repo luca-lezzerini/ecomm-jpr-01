@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aula1.ecom.serviceimpl;
+package com.aula1.ecom.service;
 
 import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.repository.RepTaglia;
