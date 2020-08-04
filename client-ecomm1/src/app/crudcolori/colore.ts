@@ -1,6 +1,4 @@
-export class Colore{
-
-id:number;
-colore:string;
-
+export class Colore {
+    id: number;
+    colore: string;
 } 
