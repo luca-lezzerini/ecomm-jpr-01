@@ -12,14 +12,12 @@ import javax.persistence.Table;
  *
  * @author Prisacar
  * 
- * La classe è commentata a causa del fatto che il programma non compilava
- * e non sono riuscito a testare il codice
  */
-/*@Entity
-@Table(name = "colore")*/
+@Entity
+@Table(name = "colore")
 public class Colore {
 
-   /* @Id
+    @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -76,5 +74,5 @@ public class Colore {
     public void setColore(String colore) {
         this.colore = colore;
     }
-*/
+
 }
