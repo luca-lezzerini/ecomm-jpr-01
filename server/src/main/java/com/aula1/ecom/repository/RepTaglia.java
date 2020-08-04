@@ -5,10 +5,13 @@
  */
 package com.aula1.ecom.repository;
 
+import com.aula1.ecom.model.Taglia;
+import java.util.List;
+
 /**
  *
  * @author Kevin
  */
 public interface RepTaglia {
-    
+public List<Taglia> findByTaglia(Long id);    
 }
