@@ -27,6 +27,7 @@ public class ControllerTaglia {
         @RequestMapping("/tagliaProva")
     @ResponseBody
     public String tagliaProva(@RequestBody TagliaDto dto) {
+        srvTaglia.listaTaglie(Long.MIN_VALUE);
             System.out.println("provaprova");
         return "";
     }
