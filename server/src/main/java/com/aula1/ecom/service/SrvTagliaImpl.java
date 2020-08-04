@@ -10,11 +10,9 @@ import com.aula1.ecom.repository.RepTaglia;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Kevin
- */
+@Service
 public class SrvTagliaImpl implements SrvTaglia{
     
    @Autowired

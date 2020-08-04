@@ -11,12 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Taglia implements Serializable {
-
-    @Id
+        @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +22,15 @@ public class Taglia implements Serializable {
     private String descrizione;
     @Column
     private String sigla;
+
+    public Taglia() {
+    }
+
+    public Taglia(Long id, String descrizione, String sigla) {
+        this.id = id;
+        this.descrizione = descrizione;
+        this.sigla = sigla;
+    }
 
     public Long getId() {
         return id;
@@ -49,19 +56,6 @@ public class Taglia implements Serializable {
         this.sigla = sigla;
     }
 
-    public Taglia(Long id, String descrizione, String sigla) {
-        this.id = id;
-        this.descrizione = descrizione;
-        this.sigla = sigla;
-    }
-
-    public Taglia() {
-    }
-
-    @Override
-    public String toString() {
-        return "Taglia{" + "id=" + id + ", descrizione=" + descrizione + ", sigla=" + sigla + '}';
-    }
-
+    
+    
 }
-//Scemo chi legge
