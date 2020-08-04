@@ -14,16 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Taglia")
 public class Taglia implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "descrizione")
+    @Column
     private String descrizione;
-    @Column(name = "sigla")
+    @Column
     private String sigla;
 
     public Long getId() {
