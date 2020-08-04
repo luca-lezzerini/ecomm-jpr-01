@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aula1.ecom.model;
+package com.aula1.ecom.dto;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-public class Taglia implements Serializable {
+public class TagliaDto {
 
     @Id
     @Column
@@ -24,6 +22,15 @@ public class Taglia implements Serializable {
     private String descrizione;
     @Column
     private String sigla;
+
+    public TagliaDto() {
+    }
+
+    public TagliaDto(Long id, String descrizione, String sigla) {
+        this.id = id;
+        this.descrizione = descrizione;
+        this.sigla = sigla;
+    }
 
     public Long getId() {
         return id;
@@ -48,19 +55,8 @@ public class Taglia implements Serializable {
     public void setSigla(String sigla) {
         this.sigla = sigla;
     }
+    
+    
 
-    public Taglia(Long id, String descrizione, String sigla) {
-        this.id = id;
-        this.descrizione = descrizione;
-        this.sigla = sigla;
-    }
-
-    public Taglia() {
-    }
-
-    @Override
-    public String toString() {
-        return "Taglia{" + "id=" + id + ", descrizione=" + descrizione + ", sigla=" + sigla + '}';
-    }
-
+    
 }
