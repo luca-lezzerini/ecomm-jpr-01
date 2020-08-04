@@ -11,10 +11,9 @@ import com.aula1.ecom.model.Taglia;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface SrvTaglia {
     
 
 public List<TagliaDto> tutteLeTaglie();
-public String tagliaSelezionata(String sigla);
+
 }
