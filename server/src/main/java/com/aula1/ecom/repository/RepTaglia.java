@@ -7,11 +7,12 @@ package com.aula1.ecom.repository;
 
 import com.aula1.ecom.model.Taglia;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Kevin
  */
-public interface RepTaglia {
-public List<Taglia> findByTaglia(Long id);    
+public interface RepTaglia extends JpaRepository <Taglia, Long> {
+public List<Taglia> findAll(Long id);    
 }

@@ -5,10 +5,16 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.model.Taglia;
+import java.util.List;
+
 /**
  *
  * @author Kevin
  */
 public interface SrvTaglia {
     
+    
+    
+   public List<Taglia> listaTaglie(Long id);  
 }
