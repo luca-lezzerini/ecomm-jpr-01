@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   readonly urlHost = "http://localhost:8080";
   taglia = "";
+  
   constructor(private http: HttpClient) { }
   title = 'client-ecomm1';
   
