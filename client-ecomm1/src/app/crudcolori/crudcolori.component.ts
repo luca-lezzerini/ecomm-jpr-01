@@ -20,7 +20,7 @@ export class CRUDColoriComponent implements OnInit {
   }
 
 
-  cerca() {
+ /* cerca() {
     
      let a = new this.cerca();
     let b: Observable<Colore> =
@@ -55,8 +55,4 @@ export class CRUDColoriComponent implements OnInit {
   rimuovi() {
 
 
-  }
-
-
-
-}
+  }*/}

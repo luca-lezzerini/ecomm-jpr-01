@@ -16,4 +16,5 @@ public interface SrvTaglia {
     
 
 public List<TagliaDto> tutteLeTaglie();
+public String tagliaSelezionata(String sigla);
 }
