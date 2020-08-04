@@ -21,14 +21,14 @@
     <tr>
 
         <td>id</td>
-        <td>descrizione</td>
+        <td>colore</td>
 
     </tr>
 
-    <tr *ngFor="let a of colore; index as i">
+    <tr *ngFor="let a of listaColore; index as i">
 
         <td>{{a.id}}</td>
-        <td>{{a.descrizione}}</td>
+        <td>{{a.colore}}</td>
 
         <td><button (click)="modifica()">Modifica</button> </td>
 
