@@ -5,12 +5,12 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.model.taglia;
+import com.aula1.ecom.model.Taglia;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface SrvTaglia {
     
-public List<taglia> listaTaglie(Long id);  
+public List<Taglia> listaTaglie(Long id);  
 }
