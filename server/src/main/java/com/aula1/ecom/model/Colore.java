@@ -1,5 +1,6 @@
 package com.aula1.ecom.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "colore")
-public class Colore {
+public class Colore implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -27,6 +28,9 @@ public class Colore {
 
     public Colore(Long id) {
         this.id = id;
+    }
+
+    public Colore() {
     }
 
     public Colore(Long id, String colore) {
