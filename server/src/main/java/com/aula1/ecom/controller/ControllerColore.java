@@ -1,5 +1,4 @@
 package com.aula1.ecom.controller;
-import com.aula1.ecom.dto.ColoreDto;
 import com.aula1.ecom.service.SrvColore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
