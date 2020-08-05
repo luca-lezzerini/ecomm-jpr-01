@@ -12,10 +12,10 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class CRUDColoreComponent implements OnInit {
 
-  searchCriteria: CercaDto;
+  searchCriteria: string;
   colore: Colore;
   listaColore: Colore[];
-  url = "http://localhost:8080/";
+  readonly urlHost = "http://localhost:8080";
 
 
   constructor(private http: HttpClient) { }
@@ -25,16 +25,17 @@ export class CRUDColoreComponent implements OnInit {
 
 
   cerca() {
-    console.log("\n\n\n\nsono nel cerca" + this.searchCriteria.cerca);
+    let criterioCerca = new CercaDto(this.searchCriteria);
+    console.log("\n\n\n\nsono nel cerca" + criterioCerca);
     let b: Observable<Colore[]> =
       this.http.
-        post<Colore[]>(this.url + "cercaColore", JSON.stringify(this.searchCriteria));
+        post<Colore[]>(this.urlHost + "/cercaColore", criterioCerca);
     console.log("\n\n\n\nsono nel cerca \n\n\n\n");
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
     console.log("\n\n\n\nsono nel cerca \n\n\n\n");
-    this.searchCriteria.cerca = "";
+    this.searchCriteria = "";
     console.log("\n\n\n\nsono nel cerca \n\n\n\n");
   }
 
@@ -43,7 +44,7 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   conferma() {
-    this.http.post(this.url + "aggiungiColore", this.colore);
+    this.http.post(this.urlHost + "/aggiungiColore", this.colore);
   }
 
   annulla() {
@@ -54,7 +55,7 @@ export class CRUDColoreComponent implements OnInit {
   modifica() {
     let b: Observable<Colore> =
       this.http.
-        post<Colore>(this.url + "modificaColore", this.searchCriteria);
+        post<Colore>(this.urlHost + "/modificaColore", this.searchCriteria);
     let ss: Subscription = b.subscribe(
       coloreModificato => this.listaColore.forEach(elementoDaModificare => {
         if (elementoDaModificare.id == coloreModificato.id) {
@@ -67,7 +68,7 @@ export class CRUDColoreComponent implements OnInit {
 
   rimuovi() {
     let esito: boolean;
-    this.http.post(this.url + "rimuoviColore", this.colore);
+    this.http.post(this.urlHost + "/rimuoviColore", this.colore);
     for (let i = 0; i < this.listaColore.length; i++) {
       if (true) { }
     }

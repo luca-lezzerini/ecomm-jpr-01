@@ -32,7 +32,7 @@ public class ControllerColore {
     @ResponseBody
     public List<Colore> cerca(@RequestBody CercaDto dto) {
         System.out.println("\n\n\nSto cercando " + "%" + dto.getCerca() + "%" + "\n\n\n");      //a scopo di debugging \n serve per andare a capo e rendere più facilmente localizzabile il log
-        List<Colore> listaColori = srvColore.cerca( dto.getCerca() ); //le percentuali sono le wildcards di mysql (il prof ha consigliato di usarle nella issue #33)
+        List<Colore> listaColori = srvColore.cerca("%" + dto.getCerca() + "%"); //le percentuali sono le wildcards di mysql (il prof ha consigliato di usarle nella issue #33)
         System.out.println("\n\n\nHo finito di cercare " + "%" + dto.getCerca() + "%" + "\n\n\n");
         return listaColori;
     }
