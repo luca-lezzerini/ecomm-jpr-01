@@ -8,6 +8,7 @@ package com.aula1.ecom.controller;
 
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.service.SrvCat;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class ControllerCategorie {
     SrvCat srvCat;
 //elimina
 //modifica
-
+/*
     @RequestMapping("/aggiungiCategoria")
     @ResponseBody
 
@@ -47,10 +48,10 @@ public class ControllerCategorie {
     public Categoria modifica(@RequestBody Categoria categoria) {
         return srvCat.modifica(categoria);
     }
-    
+    */
      @RequestMapping("/lista")
     @ResponseBody
-    public Categoria lista() {
+    public List lista() {
         return srvCat.lista();
 }
     @RequestMapping("/cercaCategoria")

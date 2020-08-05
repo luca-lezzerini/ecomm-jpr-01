@@ -8,6 +8,7 @@ package com.aula1.ecom.service;
 
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.repository.RepCat;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class SrvCatImpl implements SrvCat {
 
     @Autowired
     RepCat repCat;
-
+/*
     @Override
     public Categoria creaCategoria(Categoria dto) {
         Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
@@ -44,10 +45,10 @@ public class SrvCatImpl implements SrvCat {
         repCat.save(categoria);
         return lista();
     }
-
+*/
     @Override
-    public Categoria lista() {
-        return (Categoria) repCat.findAll();
+    public List<Categoria> lista() {
+        return repCat.findAll();
     }
 
     @Override

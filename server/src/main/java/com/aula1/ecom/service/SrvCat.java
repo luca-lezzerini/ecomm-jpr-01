@@ -6,6 +6,7 @@
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.model.Categoria;
+import java.util.List;
 
 
 /**
@@ -13,7 +14,7 @@ import com.aula1.ecom.model.Categoria;
  * @author gianmarco
  */
 public interface SrvCat {
-
+/*
     public Categoria creaCategoria(Categoria dto);
 
     public Categoria aggiungiCategoria(Categoria categoria);
@@ -21,8 +22,8 @@ public interface SrvCat {
     public Categoria cancella(Long id);
 
     public Categoria modifica(Categoria categoria);
-    
-    public Categoria lista();
+    */
+    public List<Categoria> lista();
     
     public Categoria cercaCategoria(String descrizione);
 }
