@@ -6,13 +6,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CRUDColoriComponent } from './crudcolori/crudcolori.component';
-import { CrudtagliaComponent } from './crudtaglia/crudtaglia.component';
+import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CRUDColoriComponent,
-    CrudtagliaComponent
+    CRUDTagliaComponent
   ],
   imports: [
     BrowserModule,
