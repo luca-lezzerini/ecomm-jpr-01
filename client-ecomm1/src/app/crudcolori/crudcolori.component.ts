@@ -1,3 +1,4 @@
+
 import { CercaDto } from './cerca-dto';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -13,8 +14,8 @@ export class CRUDColoriComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   searchCriteria: CercaDto;
-  colore: string;
-  listaColore: Colore [];
+  colore: Colore;
+  listaColore: Colore[];
   url = "https://localhost:8080/";
 
 
@@ -25,26 +26,21 @@ export class CRUDColoriComponent implements OnInit {
 
 
   cerca() {
-    let colori: Colore[] = [];
-    let b: Observable<any> =
-    this.http.
-    post<Colore []>(this.url + "cerca", this.searchCriteria);
+    let b: Observable<Colore[]> =
+      this.http.
+        post<Colore[]>(this.url + "cerca", this.searchCriteria);
     let ss: Subscription = b.subscribe(
-    c=> colori = c
+      c => this.listaColore = c
     );
     this.searchCriteria.cerca = "";
   }
 
   aggiungi() {
-    this.http.post<any>("https://localhost:8080", this.searchCriteria);
-    
-
 
   }
 
   conferma() {
-
-
+    this.http.post(this.url + "aggiungi", this.colore);
   }
 
   annulla() {
@@ -53,12 +49,24 @@ export class CRUDColoriComponent implements OnInit {
   }
 
   modifica() {
-
-
+    let b: Observable<Colore> =
+      this.http.
+        post<Colore>(this.url + "cerca", this.searchCriteria);
+    let ss: Subscription = b.subscribe(
+      coloreModificato => this.listaColore.forEach(elementoDaModificare => {
+        if (elementoDaModificare.id == coloreModificato.id) {
+          elementoDaModificare.colore = coloreModificato.colore;
+        }
+      }
+      )
+    );
   }
 
   rimuovi() {
-
-
+    let esito: boolean;
+    this.http.post(this.url + "rimuovi", this.colore);
+    for (let i = 0; i < this.listaColore.length; i++){
+      if (true){}
+    }
   }
 }
