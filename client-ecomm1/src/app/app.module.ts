@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CRUDColoriComponent } from './crudcolori/crudcolori.component';
 import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
+import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CRUDColoriComponent,
-    CRUDTagliaComponent
+    CRUDTagliaComponent,
+    CrudcategoriaComponent
   ],
   imports: [
     BrowserModule,
