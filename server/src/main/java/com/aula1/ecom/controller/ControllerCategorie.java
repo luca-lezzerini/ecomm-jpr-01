@@ -55,7 +55,7 @@ public class ControllerCategorie {
 }
     @RequestMapping("/cercaCategoria")
     @ResponseBody
-    public Categoria cercaCategoria(@RequestBody Categoria categoria) {
-        return srvCat.modifica(categoria);
+    public Categoria cercaCategoria(@RequestBody String descrizione) {
+        return srvCat.cercaCategoria(descrizione);
 }
 }
