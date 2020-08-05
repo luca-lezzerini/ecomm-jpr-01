@@ -1,9 +1,7 @@
 
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.dto.ColoreDto;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 /**

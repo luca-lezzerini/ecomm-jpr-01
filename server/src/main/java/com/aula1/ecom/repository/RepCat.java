@@ -5,8 +5,8 @@
  */
 package com.aula1.ecom.repository;
 
+
 import com.aula1.ecom.model.Categoria;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -14,6 +14,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author gianmarco
  */
-public interface RepCat extends JpaRepository  {
-   public List<Categoria> findAll();
+public interface RepCat extends JpaRepository<Categoria ,Long>  {
+
 }
+
+
