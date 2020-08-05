@@ -12,6 +12,9 @@ export class AppComponent {
   
   constructor(private http: HttpClient) { }
   title = 'client-ecomm1';
-  
+  Home(){}
+  Anagrafiche(){}
+  Carrello(){}
+
   
 }
