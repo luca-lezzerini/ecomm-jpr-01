@@ -6,7 +6,7 @@
 package com.aula1.ecom.service;
 
 
-import com.aula1.ecom.dto.TagliaDto;
+
 import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.repository.RepTaglia;
 import java.util.List;

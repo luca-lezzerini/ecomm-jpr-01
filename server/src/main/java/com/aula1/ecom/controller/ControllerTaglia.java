@@ -5,7 +5,8 @@
  */
 package com.aula1.ecom.controller;
 
-import com.aula1.ecom.dto.TagliaDto;
+
+import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ControllerTaglia {
 
     @RequestMapping("/tutteLeTaglie")
     @ResponseBody
-    public List<TagliaDto> tutteLeTaglie(@RequestBody TagliaDto dto) {
+    public List<Taglia> tutteLeTaglie() {
         
         System.out.println("provaprova");
         return srvTaglia.tutteLeTaglie();
