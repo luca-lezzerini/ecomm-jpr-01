@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "client-ecomm1"
+    }
+  },
+  "defaultProject": "client-ecomm1",
+  "cli": {
+    "analytics": false
+  }
 }
