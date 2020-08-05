@@ -1,4 +1,4 @@
 
 export class CercaDto {
-    cerca: string;
+    cerca = "";
 }
