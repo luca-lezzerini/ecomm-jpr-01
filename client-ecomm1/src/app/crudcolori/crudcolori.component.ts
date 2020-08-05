@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
-import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-crudcolori',
