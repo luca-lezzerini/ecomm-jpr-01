@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CRUDColoriComponent } from './crudcolori.component';
+import { CRUDColoreComponent } from './crudcolore.component';
 
-describe('CRUDColoriComponent', () => {
-  let component: CRUDColoriComponent;
-  let fixture: ComponentFixture<CRUDColoriComponent>;
+describe('CRUDColoreComponent', () => {
+  let component: CRUDColoreComponent;
+  let fixture: ComponentFixture<CRUDColoreComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CRUDColoriComponent ]
+      declarations: [ CRUDColoreComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CRUDColoriComponent);
+    fixture = TestBed.createComponent(CRUDColoreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

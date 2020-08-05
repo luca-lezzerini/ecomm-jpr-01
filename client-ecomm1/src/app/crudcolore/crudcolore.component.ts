@@ -6,11 +6,11 @@ import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-crudcolori',
-  templateUrl: './crudcolori.component.html',
-  styleUrls: ['./crudcolori.component.css']
+  selector: 'app-crudcolore',
+  templateUrl: './crudcolore.component.html',
+  styleUrls: ['./crudcolore.component.css']
 })
-export class CRUDColoriComponent implements OnInit {
+export class CRUDColoreComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   searchCriteria: CercaDto;
