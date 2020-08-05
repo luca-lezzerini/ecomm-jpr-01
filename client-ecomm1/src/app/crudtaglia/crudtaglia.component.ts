@@ -9,7 +9,7 @@ import { tagliaDto } from './taglia-dto';
   styleUrls: ['./crudtaglia.component.css']
 })
 export class CRUDTagliaComponent implements OnInit {
- 
+
 
   constructor(private http: HttpClientModule) { }
   searchCriteria: string;
@@ -24,8 +24,8 @@ export class CRUDTagliaComponent implements OnInit {
   }
 
 
- /* cerca() {
-    
+ /** cerca() {
+
      let a = new this.cerca();
     let b: Observable<Taglia> =
     this.http.post<Taglia>();
@@ -59,7 +59,7 @@ export class CRUDTagliaComponent implements OnInit {
   rimuovi() {
 
 
-  }*/
+  }
   tagliaXS() {
     this.taglia = "XS";
       this.http.post(this.urlHost + "/tagliaXS", this.taglia).subscribe(result => {
@@ -94,11 +94,11 @@ export class CRUDTagliaComponent implements OnInit {
         console.log( result );
     });;
    }
-   
+
    tutteLeTaglie() {
     this.taglia = "";
       this.http.post<tagliaDto[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
         console.log( result );
     });;
-   }
+   }*/
 }

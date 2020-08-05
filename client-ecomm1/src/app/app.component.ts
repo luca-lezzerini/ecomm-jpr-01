@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   readonly urlHost = "http://localhost:8080";
-  
+
   constructor(private http: HttpClient, private router: Router) { }
   title = 'client-ecomm1';
   Home(){}
@@ -22,6 +22,8 @@ export class AppComponent {
   crudTaglia(){
     this.router.navigateByUrl("/CRUDTaglia");
   }
+  crudCategoria(){
+    this.router.navigateByUrl("/CRUDCategoria");
+  }
 
-  
 }
