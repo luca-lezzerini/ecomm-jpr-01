@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class CRUDColoriComponent implements OnInit {
 
-  constructor(private http: HttpClientModule) { }
+  constructor(private http: HttpClient) { }
   searchCriteria: string;
   descrizioneColore: string;
   listaColore: Colore [];
@@ -33,7 +33,10 @@ export class CRUDColoriComponent implements OnInit {
   }
 
   aggiungi() {
-
+  /*  let colori: Colore[] = [];
+    this.http.post<colori>("https://localhost:8080");
+    
+*/
 
   }
 
