@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-crudcolori',
@@ -21,16 +22,14 @@ export class CRUDColoriComponent implements OnInit {
   }
 
 
- /* cerca() {
-    
-     let a = new this.cerca();
-    let b: Observable<Colore> =
-    this.http.post<Colore>();
+  cerca() {
+    let colori: Colore[];
+    let b: Observable<Colore[]> =
+    this.http.
+    get<Colore[]>("https://localhost:8080");
     let ss: Subscription = b.subscribe(
-    c=> this.descrizioneColore = a.colore
+    c=> colori = c
     );
-    }
-
   }
 
   aggiungi() {
@@ -56,5 +55,5 @@ export class CRUDColoriComponent implements OnInit {
   rimuovi() {
 
 
-  }*/
+  }
 }
