@@ -53,4 +53,9 @@ public class ControllerCategorie {
     public Categoria lista() {
         return srvCat.lista();
 }
+    @RequestMapping("/cercaCategoria")
+    @ResponseBody
+    public Categoria cercaCategoria(@RequestBody String descrizione) {
+        return srvCat.cercaCategoria(descrizione);
+}
 }
