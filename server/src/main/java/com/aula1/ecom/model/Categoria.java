@@ -1,6 +1,6 @@
 package com.aula1.ecom.model;
 
-import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Categoria {
     private Long id;
     @Column(name = "descrizione")
     private String descrizione;
-    private List<Categoria> categoria;
+  
 
     public Categoria(Long id, String descrizione) {
         this.id = id;
@@ -44,7 +44,5 @@ public class Categoria {
         this.descrizione = descrizione;
     }
 
-    public List<Categoria> getCategoria() {
-        return categoria;
-    }
+  
 }
