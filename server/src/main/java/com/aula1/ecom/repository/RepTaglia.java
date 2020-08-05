@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.aula1.ecom.repository;
+
 import com.aula1.ecom.model.Taglia;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
