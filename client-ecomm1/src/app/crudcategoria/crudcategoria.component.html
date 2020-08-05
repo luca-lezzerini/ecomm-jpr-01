@@ -1,0 +1,37 @@
+<h1>CATEGORIE</h1>
+<br>
+<input type="text" placeholder = "Inizia ricerca" [(ngModel)]="criterioRicerca">
+<button (click)="cerca()">CERCA</button>
+<button id = "aggiungi" (click)="aggiungi()">AGGIUNGI</button>
+<br>
+<br>
+<br>
+
+<form id=categoria>
+<fieldset>
+<legend>Categorie</legend>
+<input type=text placeholder =" Inserire Categoria" [(ngModel)]="descrizioneCategoria" required>
+<br>
+<br>
+<button (click)="conferma()">CONFERMA</button>
+<button (click)="annulla()">ANNULLA</button>
+</fieldset>
+</form>
+<br>
+<br>
+<br>
+
+<table border="2" class="w3-table-all w3-large">
+  <tr>
+    <td>ID</td>
+    <td>DESCRIZIONE</td>
+  </tr>
+  <tr *ngFor="let l of listaCategoria;index as i">
+    <td> {{l.id}}</td>
+    <td>{{l.descrizione}}</td>
+    <td><button (click)="modifica(i)">MODIFICA</button></td>
+    <td><button (click)="rimuovi(i)">RIMUOVI</button></td>
+  </tr>
+
+</table>
+

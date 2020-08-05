@@ -1,24 +1,20 @@
 package com.aula1.ecom.model;
 
-
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "Categoria")
-public class Categoria {
+public class Categoria implements Serializable{
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "descrizione")
+    @Column
     private String descrizione;
-  
 
     public Categoria(Long id, String descrizione) {
         this.id = id;
@@ -40,9 +36,7 @@ public class Categoria {
         return descrizione;
     }
 
-    public void setDescrizione(String marca) {
+    public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
-
-  
 }
