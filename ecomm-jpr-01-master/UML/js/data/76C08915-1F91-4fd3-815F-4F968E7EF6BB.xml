@@ -1,5 +1,0 @@
-tocTab[tocTab.length] = new Array("0.1", "1", "Processi", "EARoot/EA1/EA1.htm", "31.png", "", "", "{EEAA6E52-8F84-4546-8AFC-8CA98E55E971}", "Package");
-tocTab[tocTab.length] = new Array("0.2", "", "Casi d&#39;Uso", "EARoot/EA2/EA61.htm", "31.png", "", "", "{1D31A3FA-6C7C-48f9-8B64-2899EA2AC740}", "Package");
-tocTab[tocTab.length] = new Array("0.3", "", "Concetti", "EARoot/EA3/EA62.htm", "31.png", "", "", "{F457691E-9792-4049-8DC3-302665B6C302}", "Package");
-tocTab[tocTab.length] = new Array("0.4", "", "Interfacce Utente", "EARoot/EA4/EA63.htm", "31.png", "", "", "{4A548F56-4DF5-45e3-A4AA-87C9BCCC85FF}", "Package");
-tocTab[tocTab.length] = new Array("0.5", "", "Stati", "EARoot/EA5/EA64.htm", "31.png", "", "", "{E43CC254-D0E6-455d-9324-84B34F0FECFA}", "Package");

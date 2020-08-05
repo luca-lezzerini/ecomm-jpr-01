@@ -1,6 +1,0 @@
-tocTab[tocTab.length] = new Array("0.1.1:1", "", "Analisi Contesto Esterno", "EARoot/EA1/EA1/EA5.htm", "175.png", "20", "0", "", "Logical diagram0","{F577A6DE-AE79-425a-84D4-7782A10D42E2}");
-tocTab[tocTab.length] = new Array("0.1.1:2", "", "Banca", "EARoot/EA1/EA1/EA8.htm", "5.png", "E111", "0", "", "Class0","{26359DC7-3D28-4faf-BF02-8AEDF3D093A8}");
-tocTab[tocTab.length] = new Array("0.1.1:3", "", "Cliente", "EARoot/EA1/EA1/EA9.htm", "5.png", "E108", "0", "", "Class0","{CE2B9DF9-00F7-4c3f-B403-9EF6A5A0289A}");
-tocTab[tocTab.length] = new Array("0.1.1:4", "", "Corriere", "EARoot/EA1/EA1/EA10.htm", "5.png", "E110", "0", "", "Class0","{4CD8369B-1F9F-4011-9AB3-96BBBAF253B9}");
-tocTab[tocTab.length] = new Array("0.1.1:5", "", "Fornitore", "EARoot/EA1/EA1/EA11.htm", "5.png", "E109", "0", "", "Class0","{E5E0B57B-A2B2-45dd-AB44-7CF0E21069F9}");
-tocTab[tocTab.length] = new Array("0.1.1:6", "", "Portale", "EARoot/EA1/EA1/EA12.htm", "5.png", "E107", "0", "", "Class0","{CB3F40E6-6DAC-487e-91CF-A8FB12B36D7A}");
