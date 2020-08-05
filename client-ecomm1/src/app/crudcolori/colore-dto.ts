@@ -1,4 +1,4 @@
-import { Colore } from './colore';
-export class coloreDto {
-    colore: Colore;
+export class ColoreDto{
+    id: number;
+    colore: string;
 }

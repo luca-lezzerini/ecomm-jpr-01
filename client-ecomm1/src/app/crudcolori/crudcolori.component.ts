@@ -1,7 +1,9 @@
+import { CercaDto } from './cerca-dto';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
+import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-crudcolori',
@@ -11,9 +13,10 @@ import { Observable, Subscription } from 'rxjs';
 export class CRUDColoriComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  searchCriteria: string;
-  descrizioneColore: string;
+  searchCriteria: CercaDto;
+  colore: string;
   listaColore: Colore [];
+  url = "https://localhost:8080/";
 
 
 
@@ -23,20 +26,20 @@ export class CRUDColoriComponent implements OnInit {
 
 
   cerca() {
-    let colori: Colore[];
-    let b: Observable<Colore[]> =
+    let colori: Colore[] = [];
+    let b: Observable<any> =
     this.http.
-    get<Colore[]>("https://localhost:8080");
+    post<Colore []>(this.url + "cerca", this.searchCriteria);
     let ss: Subscription = b.subscribe(
     c=> colori = c
     );
+    this.searchCriteria.cerca = "";
   }
 
   aggiungi() {
-  /*  let colori: Colore[] = [];
-    this.http.post<colori>("https://localhost:8080");
+    this.http.post<any>("https://localhost:8080", this.searchCriteria);
     
-*/
+
 
   }
 
