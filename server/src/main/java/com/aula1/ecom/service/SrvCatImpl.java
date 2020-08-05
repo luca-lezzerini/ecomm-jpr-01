@@ -50,6 +50,8 @@ public class SrvCatImpl implements SrvCat {
         return (Categoria) repCat.findAll();
     }
 
-    
-
+    @Override
+    public Categoria cercaCategoria(String descrizione) {
+        return (Categoria) repCat.findByDescrizione(descrizione);
+    }
 }

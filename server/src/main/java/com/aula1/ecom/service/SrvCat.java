@@ -23,4 +23,6 @@ public interface SrvCat {
     public Categoria modifica(Categoria categoria);
     
     public Categoria lista();
+    
+    public Categoria cercaCategoria(String descrizione);
 }
