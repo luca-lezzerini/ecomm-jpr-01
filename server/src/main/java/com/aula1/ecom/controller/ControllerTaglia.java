@@ -5,7 +5,6 @@
  */
 package com.aula1.ecom.controller;
 
-
 import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
@@ -29,7 +28,7 @@ public class ControllerTaglia {
     @RequestMapping("/tutteLeTaglie")
     @ResponseBody
     public List<Taglia> tutteLeTaglie() {
-        
+
         System.out.println("provaprova");
         return srvTaglia.tutteLeTaglie();
     }
