@@ -31,7 +31,7 @@ public class ControllerCategorie {
     @RequestMapping("/aggiungiCategoria")
     @ResponseBody
 
-    public List aggiungiCategoria(@RequestBody Categoria dto) {
+    public List aggiungiCategoria(@RequestBody String dto) {
 
         return srvCat.aggiungiCategoria(dto);
     }

@@ -24,7 +24,7 @@ public class SrvCatImpl implements SrvCat {
     RepCat repCat;
 
     @Override
-    public Categoria creaCategoria(Categoria dto) {
+    public Categoria creaCategoria(String dto) {
         Long max = 0L;
         List<Categoria> arr = repCat.findAll();
         arr.get(1).getId();
@@ -33,12 +33,12 @@ public class SrvCatImpl implements SrvCat {
                 max = arr.get(i).getId();           //
             }                                       //
         }
-        Categoria categoria = new Categoria(max + 1, dto.getDescrizione());
+        Categoria categoria = new Categoria(max + 1, dto);
         return categoria;
     }
 
     @Override
-    public List<Categoria> aggiungiCategoria(Categoria dto) {
+    public List<Categoria> aggiungiCategoria(String dto) {
         repCat.save(creaCategoria(dto));
         return lista();
     }
