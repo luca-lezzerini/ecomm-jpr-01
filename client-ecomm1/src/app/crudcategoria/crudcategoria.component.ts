@@ -17,6 +17,7 @@ export class CrudcategoriaComponent implements OnInit {
   descrizioneCategoria: string;
 
   listaCategoria: Categoria [];
+  listaCategoria1: Categoria [];
 
   constructor(private http: HttpClient) { }
 
