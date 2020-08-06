@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
+
 
   ngOnInit(): void {
   }
+  crudCategoria(){
+    this.router.navigateByUrl("/CRUDCategoria");
 
+}
 }
