@@ -13,25 +13,24 @@
 <br>
 
 <form id=categoria>
-<fieldset>
-<legend>Categorie</legend>
-<input type=text placeholder =" Inserire Categoria" [(ngModel)]="descrizioneCategoria" required>
-<br>
-<table border="1" class="w3-table-all w3-large">
-  <tr>
-    <td>ID</td>
-    <td>DESCRIZIONE</td>
-  </tr>
-  <tr *ngFor="let l1 of listaCategoria1;index as i">
-    <td> {{l1.id}}</td>
-    <td>{{l1.descrizione}}</td>
-  </tr>
-</table>
-<br>
-<br>
-<button (click)="conferma()">CONFERMA</button>
-<button (click)="annulla()">ANNULLA</button>
-</fieldset>
+  <fieldset>
+    <legend>Categorie</legend>
+      <br>
+        <table border="1" class="w3-table-all w3-large">
+          <tr>
+            <td>ID</td>
+            <td>DESCRIZIONE</td>
+          </tr>
+           <tr *ngFor="let l1 of listaCategoria1;index as i">
+            <td> {{l1.id}}</td>
+            <td>{{l1.descrizione}}</td>
+          </tr>
+        </table>
+      <br>
+      <br>
+        <button (click)="conferma()">CONFERMA</button>
+        <button (click)="annulla()">ANNULLA</button>
+    </fieldset>
 </form>
 <br>
 <br>
@@ -50,6 +49,5 @@
     <td><button (click)="modifica(i)">MODIFICA</button></td>
     <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
   </tr>
-
 </table>
 
