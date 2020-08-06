@@ -58,7 +58,7 @@ public class SrvCatImpl implements SrvCat {
      */
     @Override
     public List<Categoria> lista() {
-        return repCat.findAll();
+        return repCat.findByOrderByIdAsc();
     }
 
     @Override
