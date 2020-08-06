@@ -27,15 +27,15 @@ public class ControllerCategorie {
     SrvCat srvCat;
 //elimina
 //modifica
-/*
+
     @RequestMapping("/aggiungiCategoria")
     @ResponseBody
 
-    public Categoria aggiungiCategoria(@RequestBody Categoria categoria) {
+    public List aggiungiCategoria(@RequestBody Categoria categoria) {
 
         return srvCat.aggiungiCategoria(categoria);
     }
-
+/*
     @RequestMapping("/cancella")
     @ResponseBody
     public Categoria cancella(@RequestBody Long id) {

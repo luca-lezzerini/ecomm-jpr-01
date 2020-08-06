@@ -21,19 +21,19 @@ public class SrvCatImpl implements SrvCat {
 
     @Autowired
     RepCat repCat;
-/*
-    @Override
-    public Categoria creaCategoria(Categoria dto) {
-        Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
-        return categoria;
-    }
+   // @Override
+  //  public Categoria creaCategoria(Categoria dto) {
+      //  Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
+  //      return "";
+  //  }
 
     @Override
-    public Categoria aggiungiCategoria(Categoria categoria) {
+    public List<Categoria> aggiungiCategoria(Categoria dto) {
+        Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
         repCat.save(categoria);
         return lista();
     }
-
+/*
     @Override
     public Categoria cancella(Long id) {
         repCat.deleteById(id);

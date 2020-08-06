@@ -14,11 +14,11 @@ import java.util.List;
  * @author gianmarco
  */
 public interface SrvCat {
+
+  //  public Categoria creaCategoria(Categoria dto);
+
+    public List<Categoria> aggiungiCategoria(Categoria categoria);
 /*
-    public Categoria creaCategoria(Categoria dto);
-
-    public Categoria aggiungiCategoria(Categoria categoria);
-
     public Categoria cancella(Long id);
 
     public Categoria modifica(Categoria categoria);
