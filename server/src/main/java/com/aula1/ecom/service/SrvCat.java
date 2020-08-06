@@ -25,5 +25,5 @@ public interface SrvCat {
     */
     public List<Categoria> lista();
     
-    public Categoria cercaCategoria(String descrizione);
+    public List<Categoria> cercaCategoria(String descrizione);
 }
