@@ -58,7 +58,7 @@ export class CrudcategoriaComponent implements OnInit {
     r => this.listaCategoria = r);
   }
   rimuovi(id:number){
-    let p = this.id;
+    let p = 1;
     let ox: Observable<Categoria[]> =
     this.http.post<Categoria[]>(this.urlHost + "/cancella", p);
     let ss: Subscription = ox.subscribe(
