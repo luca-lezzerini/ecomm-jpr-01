@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface SrvCat {
 
-  //  public Categoria creaCategoria(Categoria dto);
+    public Categoria creaCategoria(Categoria dto);
 
     public List<Categoria> aggiungiCategoria(Categoria categoria);
 /*

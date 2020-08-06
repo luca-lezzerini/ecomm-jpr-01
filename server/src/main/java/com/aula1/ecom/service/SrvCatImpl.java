@@ -5,10 +5,11 @@
  */
 package com.aula1.ecom.service;
 
-
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.repository.RepCat;
+import static java.lang.Long.max;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,19 +22,28 @@ public class SrvCatImpl implements SrvCat {
 
     @Autowired
     RepCat repCat;
-   // @Override
-  //  public Categoria creaCategoria(Categoria dto) {
-      //  Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
-  //      return "";
-  //  }
+
+    @Override
+    public Categoria creaCategoria(Categoria dto) {
+        Long max = 0L;
+        List<Categoria> arr = repCat.findAll();
+        arr.get(1).getId();
+        for (int i = 0; i < arr.size(); i++) {      //
+            if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incremntarlo di uno
+                max = arr.get(i).getId();           //
+            }                                       //
+        }
+        Categoria categoria = new Categoria(max + 1, dto.getDescrizione());
+        return categoria;
+    }
 
     @Override
     public List<Categoria> aggiungiCategoria(Categoria dto) {
-        Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
-        repCat.save(categoria);
+        repCat.save(creaCategoria(dto));
         return lista();
     }
-/*
+
+    /*
     @Override
     public Categoria cancella(Long id) {
         repCat.deleteById(id);
@@ -45,7 +55,7 @@ public class SrvCatImpl implements SrvCat {
         repCat.save(categoria);
         return lista();
     }
-*/
+     */
     @Override
     public List<Categoria> lista() {
         return repCat.findAll();
