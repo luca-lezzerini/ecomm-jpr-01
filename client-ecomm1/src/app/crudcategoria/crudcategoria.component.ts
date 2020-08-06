@@ -15,7 +15,7 @@ export class CrudcategoriaComponent implements OnInit {
 
   criterioRicerca: string ="";
   descrizioneCategoria: string;
-
+  id:number;
   listaCategoria: Categoria [];
 
   constructor(private http: HttpClient) { }
@@ -57,10 +57,10 @@ export class CrudcategoriaComponent implements OnInit {
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
   }
-  rimuovi(){
-    let p = this.criterioRicerca;
+  rimuovi(id:number){
+    let p = this.id;
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/rimuovi", p);
+    this.http.post<Categoria[]>(this.urlHost + "/cancella", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
   }
