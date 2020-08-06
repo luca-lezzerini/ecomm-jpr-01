@@ -40,7 +40,7 @@ export class CrudcategoriaComponent implements OnInit {
   aggiungi() {
     let p = this.criterioRicerca;
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/aggiungi", p);
+    this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
   }
