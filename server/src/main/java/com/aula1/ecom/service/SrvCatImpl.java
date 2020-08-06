@@ -25,9 +25,9 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public Categoria creaCategoria(String dto) {
-        Long max = 0L;
+        Long max = 1L;
         List<Categoria> arr = repCat.findAll();
-        arr.get(1).getId();
+        
         for (int i = 0; i < arr.size(); i++) {      //
             if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incremntarlo di uno
                 max = arr.get(i).getId();           //
@@ -63,6 +63,6 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> cercaCategoria(String descrizione) {
-        return repCat.findByDescrizione(descrizione);
+        return repCat.findByDescrizioneOrderByIdAsc(descrizione);
     }
 }
