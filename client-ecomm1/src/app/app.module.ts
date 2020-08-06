@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CRUDColoreComponent } from './crudcolore/crudcolore.component';
 import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
 import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CRUDColoreComponent,
     CRUDTagliaComponent,
-    CrudcategoriaComponent
+    CrudcategoriaComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

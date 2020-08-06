@@ -12,7 +12,9 @@ export class AppComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
   title = 'client-ecomm1';
-  Home(){}
+  HomePage(){
+    this.router.navigateByUrl("/HomePage")
+  }
   Anagrafiche(){}
   Carrello(){}
 
