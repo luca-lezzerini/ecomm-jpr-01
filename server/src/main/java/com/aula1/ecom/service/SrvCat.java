@@ -18,9 +18,9 @@ public interface SrvCat {
     public Categoria creaCategoria(String dto);
 
     public List<Categoria> aggiungiCategoria(String dto);
-/*
-    public Categoria cancella(Long id);
 
+    public List<Categoria> cancella(Long id);
+/*
     public Categoria modifica(Categoria categoria);
     */
     public List<Categoria> lista();

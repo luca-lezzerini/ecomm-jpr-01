@@ -43,13 +43,13 @@ public class SrvCatImpl implements SrvCat {
         return lista();
     }
 
-    /*
+    
     @Override
-    public Categoria cancella(Long id) {
+    public List<Categoria> cancella(Long id) {
         repCat.deleteById(id);
         return lista();
     }
-
+/*
     @Override
     public Categoria modifica(Categoria categoria) {
         repCat.save(categoria);
