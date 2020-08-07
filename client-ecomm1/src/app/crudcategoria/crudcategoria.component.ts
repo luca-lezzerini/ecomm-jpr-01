@@ -14,10 +14,14 @@ export class CrudcategoriaComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   criterioRicerca: string ="";
+  aggiungiCategoria: string = "";
   descrizioneCategoria: string;
 
   listaCategoria: Categoria [];
-  listaCategoria1: Categoria [];
+  listaCategoria1: Categoria ;
+  rigaSelezionata: Categoria;
+  rigaSelezionata1: Categoria;
+
 
   constructor(private http: HttpClient) { }
 
@@ -39,27 +43,35 @@ export class CrudcategoriaComponent implements OnInit {
     }
     this.criterioRicerca = "";
   }
+
   aggiungi() {
-    let p = this.criterioRicerca;
+    let p = this.aggiungiCategoria;
     let ox: Observable<Categoria[]> =
     this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
-    this.criterioRicerca = "";
+    this.aggiungiCategoria = "";
   }
-  conferma(){
 
+  conferma(){
+    let p = this.rigaSelezionata1;
+    let ox: Observable<Categoria> =
+    this.http.post<Categoria>(this.urlHost + "/modifica", p);
+    let ss: Subscription = ox.subscribe(
+    r => this.listaCategoria1 = r);
   }
   annulla(){
 
   }
-  modifica(id:number){
-    let p = id;
-    let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/preparaModifica", p);
+
+  selezionaModifica(rigaSelezionata:Categoria){
+    let p = rigaSelezionata
+    let ox: Observable<Categoria> =
+    this.http.post<Categoria>(this.urlHost + "/modifica", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria1 = r);
   }
+
   rimuovi(id:number){
     let p = id;
     let ox: Observable<Categoria[]> =

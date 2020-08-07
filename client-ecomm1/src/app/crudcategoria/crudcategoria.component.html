@@ -7,6 +7,8 @@
 <br>
 <input type="text" placeholder = "Inizia ricerca" [(ngModel)]="criterioRicerca">
 <button (click)="cerca()">CERCA</button>
+<br>
+<input type="text" placeholder = "Aggiungi Categoria" [(ngModel)]="aggiungiCategoria">
 <button id = "aggiungi" (click)="aggiungi()">AGGIUNGI</button>
 <br>
 <br>
@@ -20,10 +22,13 @@
           <tr>
             <td>ID</td>
             <td>DESCRIZIONE</td>
+            <td>NUOVA DESCRIZIONE</td>
           </tr>
-           <tr *ngFor="let l1 of listaCategoria1;index as i">
-            <td> {{l1.id}}</td>
-            <td>{{l1.descrizione}}</td>
+          <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
+           <tr  *ngFor="let l1 of listaCategoria1">
+            <td>{{listaCategoria1.id}}</td>
+            <td>{{listaCategoria1.descrizione}}</td>
+            <td><input type="text" placeholder = {{listaCategoria1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>
           </tr>
         </table>
       <br>
@@ -46,7 +51,7 @@
   <tr *ngFor="let l of listaCategoria;index as i">
     <td>{{l.id}}</td>
     <td>{{l.descrizione}}</td>
-    <td><button (click)="modifica(listaCategoria[i].id)">MODIFICA</button></td>
+    <td><button (click)="selezionaModifica(listaCategoria[i])">MODIFICA</button></td>
     <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
   </tr>
 </table>
