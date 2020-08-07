@@ -37,6 +37,7 @@ export class CrudcategoriaComponent implements OnInit {
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
     }
+    this.criterioRicerca = "";
   }
   aggiungi() {
     let p = this.criterioRicerca;
@@ -44,6 +45,7 @@ export class CrudcategoriaComponent implements OnInit {
     this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
+    this.criterioRicerca = "";
   }
   conferma(){
 
@@ -51,12 +53,12 @@ export class CrudcategoriaComponent implements OnInit {
   annulla(){
 
   }
-  modifica(){
-    let p = this.criterioRicerca;
+  modifica(id:number){
+    let p = id;
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/modifica", p);
+    this.http.post<Categoria[]>(this.urlHost + "/preparaModifica", p);
     let ss: Subscription = ox.subscribe(
-    r => this.listaCategoria = r);
+    r => this.listaCategoria1 = r);
   }
   rimuovi(id:number){
     let p = id;
