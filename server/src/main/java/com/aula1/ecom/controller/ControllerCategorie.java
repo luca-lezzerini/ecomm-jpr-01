@@ -44,7 +44,7 @@ public class ControllerCategorie {
     @RequestMapping("/preparaModifica")
     @ResponseBody
     public Categoria preparaModifica(@RequestBody Categoria categoria) {
-        return srvCat.preparaModifica(categoria);
+        return categoria;
     }
     @RequestMapping("/modifica")
     @ResponseBody

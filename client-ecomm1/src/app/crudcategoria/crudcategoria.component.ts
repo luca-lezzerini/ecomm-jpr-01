@@ -18,8 +18,8 @@ export class CrudcategoriaComponent implements OnInit {
   descrizioneCategoria: string;
 
   listaCategoria: Categoria [];
-  listaCategoria1: Categoria ;
-  rigaSelezionata: Categoria;
+  listaCategoria1: Categoria []= this.listaCategoria;
+
   rigaSelezionata1: Categoria;
 
 
@@ -65,11 +65,13 @@ export class CrudcategoriaComponent implements OnInit {
   }
 
   selezionaModifica(rigaSelezionata:Categoria){
+    let l : Categoria
     let p = rigaSelezionata
     let ox: Observable<Categoria> =
-    this.http.post<Categoria>(this.urlHost + "/modifica", p);
+    this.http.post<Categoria>(this.urlHost + "/preparaModifica", p);
     let ss: Subscription = ox.subscribe(
-    r => this.listaCategoria1 = r);
+    r => this.listaCategoria1.push(r));
+
   }
 
   rimuovi(id:number){

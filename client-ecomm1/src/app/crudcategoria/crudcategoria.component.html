@@ -22,12 +22,12 @@
             <td>DESCRIZIONE</td>
             <td>NUOVA DESCRIZIONE</td>
           </tr>
-          <tr>
+
           <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
-           <!--<tr  *ngFor="let l1 of listaCategoria1">-->
-            <td>{{listaCategoria1.id}}</td>
-            <td>{{listaCategoria1.descrizione}}</td>
-            <td><input type="text" placeholder = {{listaCategoria1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>
+           <tr  *ngFor="let l1 of listaCategoria1">
+            <td>{{l1.id}}</td>
+            <td>{{l1.descrizione}}</td>
+            <td><input type="text" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>
           </tr>
         </table>
       <br>
