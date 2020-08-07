@@ -1,4 +1,3 @@
-import { tagliaDto } from './crudtaglia/taglia-dto';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 

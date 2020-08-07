@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Taglia } from './taglia';
 import { tagliaDto } from './taglia-dto';
@@ -9,9 +9,9 @@ import { tagliaDto } from './taglia-dto';
   styleUrls: ['./crudtaglia.component.css']
 })
 export class CRUDTagliaComponent implements OnInit {
- 
+  readonly urlHost = "http://localhost:8080";
 
-  constructor(private http: HttpClientModule) { }
+  constructor(private http: HttpClient) { }
   searchCriteria: string;
   descrizioneTaglia: string;
   listaTaglia: Taglia [];
