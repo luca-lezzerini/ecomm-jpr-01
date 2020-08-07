@@ -7,8 +7,6 @@
 <br>
 <input type="text" placeholder = "Inizia ricerca" [(ngModel)]="criterioRicerca">
 <button (click)="cerca()">CERCA</button>
-<br>
-<input type="text" placeholder = "Aggiungi Categoria" [(ngModel)]="aggiungiCategoria">
 <button id = "aggiungi" (click)="aggiungi()">AGGIUNGI</button>
 <br>
 <br>
@@ -24,8 +22,9 @@
             <td>DESCRIZIONE</td>
             <td>NUOVA DESCRIZIONE</td>
           </tr>
+          <tr>
           <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
-           <tr  *ngFor="let l1 of listaCategoria1">
+           <!--<tr  *ngFor="let l1 of listaCategoria1">-->
             <td>{{listaCategoria1.id}}</td>
             <td>{{listaCategoria1.descrizione}}</td>
             <td><input type="text" placeholder = {{listaCategoria1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>
