@@ -7,7 +7,6 @@ package com.aula1.ecom.service;
 
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.repository.RepCat;
-import static java.lang.Long.max;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public Categoria creaCategoria(String dto) {
-        Long max = 1L;
+        Long max = 0L;
         List<Categoria> arr = repCat.findAll();
         
         for (int i = 0; i < arr.size(); i++) {      //
@@ -49,13 +48,13 @@ public class SrvCatImpl implements SrvCat {
         repCat.deleteById(id);
         return lista();
     }
-/*
+
     @Override
-    public Categoria modifica(Categoria categoria) {
+    public List<Categoria> modifica(Categoria categoria) {
         repCat.save(categoria);
         return lista();
     }
-     */
+     
     @Override
     public List<Categoria> lista() {
         return repCat.findByOrderByIdAsc();
@@ -65,4 +64,11 @@ public class SrvCatImpl implements SrvCat {
     public List<Categoria> cercaCategoria(String descrizione) {
         return repCat.findByDescrizioneOrderByIdAsc(descrizione);
     }
+
+    @Override
+    public Categoria preparaModifica(Categoria categoria) {
+        return categoria;
+    }
+
+    
 }
