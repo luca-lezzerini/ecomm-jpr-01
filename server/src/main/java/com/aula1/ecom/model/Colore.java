@@ -1,5 +1,6 @@
 package com.aula1.ecom.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,14 +13,12 @@ import javax.persistence.Table;
  *
  * @author Prisacar
  * 
- * La classe è commentata a causa del fatto che il programma non compilava
- * e non sono riuscito a testare il codice
  */
-/*@Entity
-@Table(name = "colore")*/
-public class Colore {
+@Entity
+@Table(name = "colore")
+public class Colore implements Serializable {
 
-   /* @Id
+    @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +28,9 @@ public class Colore {
 
     public Colore(Long id) {
         this.id = id;
+    }
+
+    public Colore() {
     }
 
     public Colore(Long id, String colore) {
@@ -76,5 +78,5 @@ public class Colore {
     public void setColore(String colore) {
         this.colore = colore;
     }
-*/
+
 }

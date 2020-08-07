@@ -1,8 +1,18 @@
+import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
+import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
+import { CRUDColoreComponent } from './crudcolore/crudcolore.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'CRUDColore', component: CRUDColoreComponent },
+  { path: 'CRUDTaglia', component: CRUDTagliaComponent },
+  { path: 'CRUDCategoria', component: CrudcategoriaComponent },
+  { path: 'HomePage', component: HomePageComponent },
+  { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

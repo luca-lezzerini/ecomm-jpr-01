@@ -1,57 +1,34 @@
-import { TagliaDto } from './taglia-dto';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   readonly urlHost = "http://localhost:8080";
-  taglia = "";
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private router: Router) { }
   title = 'client-ecomm1';
-  
-  tagliaXS() {
-    this.taglia = "XS";
-      this.http.post(this.urlHost + "/tagliaXS", this.taglia).subscribe(result => {
-        console.log( result );
-    });
+
+  ngOnInit(): void {
+  }
+  HomePage(){
+    this.router.navigateByUrl("/HomePage")
+  }
+  Anagrafiche(){}
+  Carrello(){}
+
+  crudColore(){
+    this.router.navigateByUrl("/CRUDColore");
+  }
+  crudTaglia(){
+    this.router.navigateByUrl("/CRUDTaglia");
+  }
+  crudCategoria(){
+    this.router.navigateByUrl("/CRUDCategoria");
   }
 
-  tagliaS() {
-    this.taglia = "S";
-      this.http.post(this.urlHost + "/tagliaS", this.taglia).subscribe(result => {
-        console.log( result );
-    });;
-  }
-
-  tagliaM() {
-    this.taglia = "M";
-      this.http.post(this.urlHost + "/tagliaM", this.taglia).subscribe(result => {
-        console.log( result );
-    });;
-   }
-
-  tagliaL() {
-    this.taglia = "L";
-      this.http.post(this.urlHost + "/tagliaL", this.taglia).subscribe(result => {
-        console.log( result );
-    });;
-   }
-
-   tagliaXL() {
-    this.taglia = "XL";
-      this.http.post(this.urlHost + "/tagliaXL", this.taglia).subscribe(result => {
-        console.log( result );
-    });;
-   }
-   
-   tutteLeTaglie() {
-    this.taglia = "";
-      this.http.post<TagliaDto>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
-        console.log( result );
-    });;
-   }
 }

@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<h1>CATEGORIE</h1>
+<br>
+<input type="text" placeholder = "Inizia ricerca" [(ngModel)]="criterioRicerca">
+<button (click)="cerca()">CERCA</button>
+<button id = "aggiungi" (click)="aggiungi()">AGGIUNGI</button>
+<br>
+<br>
+<br>
+
+<form id=categoria>
+  <fieldset>
+    <legend>Categorie</legend>
+      <br>
+        <table border="1" class="w3-table-all w3-large">
+          <tr>
+            <td>ID</td>
+            <td>DESCRIZIONE</td>
+          </tr>
+           <tr *ngFor="let l1 of listaCategoria1;index as i">
+            <td> {{l1.id}}</td>
+            <td>{{l1.descrizione}}</td>
+          </tr>
+        </table>
+      <br>
+      <br>
+        <button (click)="conferma()">CONFERMA</button>
+        <button (click)="annulla()">ANNULLA</button>
+    </fieldset>
+</form>
+<br>
+<br>
+<br>
+
+<table border="2" class="w3-table-all w3-large">
+  <tr>
+    <td>ID</td>
+    <td>DESCRIZIONE</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let l of listaCategoria;index as i">
+    <td>{{l.id}}</td>
+    <td>{{l.descrizione}}</td>
+    <td><button (click)="modifica(listaCategoria[i].id)">MODIFICA</button></td>
+    <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
+  </tr>
+</table>
+

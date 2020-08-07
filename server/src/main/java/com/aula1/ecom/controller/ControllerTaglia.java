@@ -5,19 +5,18 @@
  */
 package com.aula1.ecom.controller;
 
-import com.aula1.ecom.dto.TagliaDto;
+import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Niccolò Micozzi
+ * @author Skrunex
  */
 @CrossOrigin("*")
 @RestController
@@ -28,7 +27,7 @@ public class ControllerTaglia {
 
     @RequestMapping("/tutteLeTaglie")
     @ResponseBody
-    public List<TagliaDto> tutteLeTaglie(@RequestBody TagliaDto dto) {
+    public List<Taglia> tutteLeTaglie() {
 
         System.out.println("provaprova");
         return srvTaglia.tutteLeTaglie();

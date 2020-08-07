@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package com.aula1.ecom.service;
-
-import com.aula1.ecom.dto.TagliaDto;
 import com.aula1.ecom.model.Taglia;
-
 import java.util.List;
-import org.springframework.stereotype.Service;
 
-@Service
+
+/**
+ *
+ * @author skunex
+ */
 public interface SrvTaglia {
     
 
-public List<TagliaDto> tutteLeTaglie();
-public String tagliaSelezionata(String sigla);
+public List<Taglia> tutteLeTaglie();
+
 }
