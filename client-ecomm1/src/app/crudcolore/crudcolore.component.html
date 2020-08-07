@@ -1,17 +1,16 @@
-<p>crudcolori works!</p>
-<h1>CRUD COLORI</h1>
+
+<h1>CRUD COLORE</h1>
 <input type="text" [(ngModel)]="searchCriteria">
 <button (click)="cerca()">Cerca</button>
-<br>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
 
 
 <h2>form dati</h2>
-<input type="text" [(ngModel)]="descrizioneColore">
+<input type="text" [(ngModel)]="colore">
 <button (click)="conferma()">Conferma</button>
-<br>
 <button (click)="annulla()">Annulla</button>
+<h1>{{searchCriteria}}</h1>
 
 
 
@@ -25,7 +24,7 @@
 
     </tr>
 
-    <tr *ngFor="let a of listaColore; index as i">
+    <tr *ngFor="let a of listaColore">
 
         <td>{{a.id}}</td>
         <td>{{a.colore}}</td>

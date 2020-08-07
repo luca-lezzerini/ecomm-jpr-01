@@ -5,9 +5,9 @@
  */
 package com.aula1.ecom.controller;
 
-
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.service.SrvCat;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,31 +31,36 @@ public class ControllerCategorie {
     @RequestMapping("/aggiungiCategoria")
     @ResponseBody
 
-    public Categoria aggiungiCategoria(@RequestBody Categoria categoria) {
+    public List aggiungiCategoria(@RequestBody String dto) {
 
-        return srvCat.aggiungiCategoria(categoria);
+        return srvCat.aggiungiCategoria(dto);
     }
 
     @RequestMapping("/cancella")
     @ResponseBody
-    public Categoria cancella(@RequestBody Long id) {
+    public List<Categoria> cancella(@RequestBody Long id) {
         return srvCat.cancella(id);
     }
-
+    @RequestMapping("/preparaModifica")
+    @ResponseBody
+    public Categoria preparaModifica(@RequestBody Categoria categoria) {
+        return srvCat.preparaModifica(categoria);
+    }
     @RequestMapping("/modifica")
     @ResponseBody
-    public Categoria modifica(@RequestBody Categoria categoria) {
+    public List<Categoria> modifica(@RequestBody Categoria categoria) {
         return srvCat.modifica(categoria);
     }
-    
-     @RequestMapping("/lista")
+     
+    @RequestMapping("/lista")
     @ResponseBody
-    public Categoria lista() {
+    public List lista() {
         return srvCat.lista();
-}
+    }
+
     @RequestMapping("/cercaCategoria")
     @ResponseBody
-    public Categoria cercaCategoria(@RequestBody String descrizione) {
+    public List cercaCategoria(@RequestBody String descrizione) {
         return srvCat.cercaCategoria(descrizione);
-}
+    }
 }

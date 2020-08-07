@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 package com.aula1.ecom.service;
-
-
 import com.aula1.ecom.model.Taglia;
-
 import java.util.List;
-import org.springframework.stereotype.Service;
+
 
 /**
  *

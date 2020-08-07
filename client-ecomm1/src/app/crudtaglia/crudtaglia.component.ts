@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Taglia } from './taglia';
 import { tagliaDto } from './taglia-dto';
@@ -9,23 +9,23 @@ import { tagliaDto } from './taglia-dto';
   styleUrls: ['./crudtaglia.component.css']
 })
 export class CRUDTagliaComponent implements OnInit {
-  readonly urlHost = "http://localhost:8080";
 
-  constructor(private http: HttpClient) { }
+
+  
   searchCriteria: string;
   descrizioneTaglia: string;
   listaTaglia: Taglia [];
   taglia = "";
-
-
-
+  readonly urlHost = "http://localhost:8080";
+  constructor(private http: HttpClient) { }
+  
 
   ngOnInit(): void {
   }
 
 
- /* cerca() {
-    
+ /** cerca() {
+
      let a = new this.cerca();
     let b: Observable<Taglia> =
     this.http.post<Taglia>();
@@ -59,7 +59,7 @@ export class CRUDTagliaComponent implements OnInit {
   rimuovi() {
 
 
-  }*/
+  }
   tagliaXS() {
     this.taglia = "XS";
       this.http.post(this.urlHost + "/tagliaXS", this.taglia).subscribe(result => {
@@ -94,11 +94,11 @@ export class CRUDTagliaComponent implements OnInit {
         console.log( result );
     });;
    }
-   
+*/
    tutteLeTaglie() {
     this.taglia = "";
-      this.http.post<tagliaDto[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
+      this.http.post<Taglia[]>(this.urlHost + "/tutteLeTaglie", this.taglia).subscribe(result => {
         console.log( result );
     });;
    }
-}
+  }

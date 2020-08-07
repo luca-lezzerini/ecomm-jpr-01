@@ -5,9 +5,10 @@
  */
 package com.aula1.ecom.service;
 
-
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.repository.RepCat;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,36 +23,52 @@ public class SrvCatImpl implements SrvCat {
     RepCat repCat;
 
     @Override
-    public Categoria creaCategoria(Categoria dto) {
-        Categoria categoria = new Categoria(dto.getId(), dto.getDescrizione());
+    public Categoria creaCategoria(String dto) {
+        Long max = 0L;
+        List<Categoria> arr = repCat.findAll();
+        
+        for (int i = 0; i < arr.size(); i++) {      //
+            if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incremntarlo di uno
+                max = arr.get(i).getId();           //
+            }                                       //
+        }
+        Categoria categoria = new Categoria(max + 1, dto);
         return categoria;
     }
 
     @Override
-    public Categoria aggiungiCategoria(Categoria categoria) {
-        repCat.save(categoria);
+    public List<Categoria> aggiungiCategoria(String dto) {
+        repCat.save(creaCategoria(dto));
         return lista();
     }
 
+    
     @Override
-    public Categoria cancella(Long id) {
+    public List<Categoria> cancella(Long id) {
         repCat.deleteById(id);
         return lista();
     }
 
     @Override
-    public Categoria modifica(Categoria categoria) {
+    public List<Categoria> modifica(Categoria categoria) {
         repCat.save(categoria);
         return lista();
     }
-
+     
     @Override
-    public Categoria lista() {
-        return (Categoria) repCat.findAll();
+    public List<Categoria> lista() {
+        return repCat.findByOrderByIdAsc();
     }
 
     @Override
-    public Categoria cercaCategoria(String descrizione) {
-        return (Categoria) repCat.findByDescrizione(descrizione);
+    public List<Categoria> cercaCategoria(String descrizione) {
+        return repCat.findByDescrizioneOrderByIdAsc(descrizione);
     }
+
+    @Override
+    public Categoria preparaModifica(Categoria categoria) {
+        return categoria;
+    }
+
+    
 }
