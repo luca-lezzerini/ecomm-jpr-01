@@ -17,7 +17,33 @@ public class SrvColoreImpl implements SrvColore {
     RepColore repColore;
 
     //Prisacar
+    @Override
     public List<Colore> cerca(String cerca) {
         return repColore.findByColoreLike(cerca);                               //Comando suggerito da Lezerini sempre nella issue #33
     }
+
+    @Override
+    public List<Colore> aggiungiColore(String dto) {
+        repColore.save(dto);
+        return null;
+        
+    }
+
+    @Override
+    public List<Colore> cancella(Long id) {
+        repColore.deleteById(id);
+     return null;   
+    }
+        
+
+    @Override
+    public List<Colore> modifica(Colore colore) {
+        repColore.save(colore);
+       return null;
+    }
+    
 }
+    
+        
+        
+    

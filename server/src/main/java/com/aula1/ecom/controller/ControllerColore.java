@@ -37,8 +37,24 @@ public class ControllerColore {
         return listaColori;
     }
     
-    /*
-    Da implementare aggiungi --  rimuovi -- modifica
-     */
+    
+@RequestMapping("/aggiungiColore")
+    @ResponseBody
 
+    public List aggiungiColore(@RequestBody String dto) {
+
+        return srvColore.aggiungiColore(dto);
+    }
+    
+    @RequestMapping("/cancella")
+    @ResponseBody
+    public List<Colore> cancella(@RequestBody Long id) {
+        return srvColore.cancella(id);
+    }
+    
+    @RequestMapping("/modifica")
+    @ResponseBody
+    public List<Colore> modifica(@RequestBody Colore colore) {
+        return srvColore.modifica(colore);
+    }
 }

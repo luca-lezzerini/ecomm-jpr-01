@@ -13,4 +13,9 @@ public interface SrvColore {
 //    public void aggiungi(Long id);
 //    public void modifica(Long id);
 //    public void rimuovi(Long id);
+    public List<Colore> aggiungiColore(String dto);
+
+    public List<Colore> cancella(Long id);
+
+    public List<Colore> modifica(Colore colore);
 }
