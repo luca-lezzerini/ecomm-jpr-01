@@ -1,3 +1,5 @@
+import { CarelloComponent } from './carello/carello.component';
+import { AnagraficheComponent } from './anagrafiche/anagrafiche.component';
 import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
 import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
 import { CRUDColoreComponent } from './crudcolore/crudcolore.component';
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'CRUDTaglia', component: CRUDTagliaComponent },
   { path: 'CRUDCategoria', component: CrudcategoriaComponent },
   { path: 'HomePage', component: HomePageComponent },
+  { path: 'Anagrafiche', component: AnagraficheComponent },
+  { path: 'Carello', component: CarelloComponent },
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
 
