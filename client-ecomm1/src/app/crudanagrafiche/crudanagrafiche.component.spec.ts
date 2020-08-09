@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnagraficheComponent } from './anagrafiche.component';
+import { CrudanagraficheComponent } from './crudanagrafiche.component';
 
-describe('AnagraficheComponent', () => {
-  let component: AnagraficheComponent;
-  let fixture: ComponentFixture<AnagraficheComponent>;
+describe('CrudanagraficheComponent', () => {
+  let component: CrudanagraficheComponent;
+  let fixture: ComponentFixture<CrudanagraficheComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnagraficheComponent ]
+      declarations: [ CrudanagraficheComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnagraficheComponent);
+    fixture = TestBed.createComponent(CrudanagraficheComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

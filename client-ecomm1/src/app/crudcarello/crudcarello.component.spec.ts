@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarelloComponent } from './carello.component';
+import { CrudcarelloComponent } from './crudcarello.component';
 
-describe('CarelloComponent', () => {
-  let component: CarelloComponent;
-  let fixture: ComponentFixture<CarelloComponent>;
+describe('CrudcarelloComponent', () => {
+  let component: CrudcarelloComponent;
+  let fixture: ComponentFixture<CrudcarelloComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarelloComponent ]
+      declarations: [ CrudcarelloComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarelloComponent);
+    fixture = TestBed.createComponent(CrudcarelloComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

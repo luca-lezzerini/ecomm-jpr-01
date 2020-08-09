@@ -1,11 +1,13 @@
-import { CarelloComponent } from './carello/carello.component';
-import { AnagraficheComponent } from './anagrafiche/anagrafiche.component';
+
+
 import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
 import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
 import { CRUDColoreComponent } from './crudcolore/crudcolore.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
+import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.component';
 
 
 const routes: Routes = [
@@ -13,8 +15,9 @@ const routes: Routes = [
   { path: 'CRUDTaglia', component: CRUDTagliaComponent },
   { path: 'CRUDCategoria', component: CrudcategoriaComponent },
   { path: 'HomePage', component: HomePageComponent },
-  { path: 'Anagrafiche', component: AnagraficheComponent },
-  { path: 'Carello', component: CarelloComponent },
+  { path: 'CRUDCarello', component: CrudcarelloComponent },
+  { path: 'CRUDAnagrafiche', component: CrudanagraficheComponent},
+
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
 

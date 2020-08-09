@@ -18,11 +18,11 @@ export class AppComponent implements OnInit{
   HomePage(){
     this.router.navigateByUrl("/HomePage")
   }
-  Anagrafiche(){
-    this.router.navigateByUrl("/Anagrafiche");
+  crudAnagrafiche(){
+    this.router.navigateByUrl("/CRUDAnagrafiche");
   }
-  carello(){
-    this.router.navigateByUrl("/Carello");
+  crudCarello(){
+    this.router.navigateByUrl("/CRUDCarello");
   }
 
   crudColore(){
