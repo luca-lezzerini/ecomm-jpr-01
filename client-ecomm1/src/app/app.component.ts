@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   Anagrafiche(){
     this.router.navigateByUrl("/Anagrafiche");
   }
-  Carrello(){
+  carello(){
     this.router.navigateByUrl("/Carello");
   }
 
