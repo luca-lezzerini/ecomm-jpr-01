@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.aula1.ecom.service;
+import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.model.Taglia;
 import java.util.List;
 
@@ -16,5 +17,6 @@ public interface SrvTaglia {
     
 
 public List<Taglia> tutteLeTaglie();
+ public void cancella(Long id);
 
 }

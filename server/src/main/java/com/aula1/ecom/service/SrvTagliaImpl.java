@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.repository.RepTaglia;
 import java.util.List;
@@ -33,4 +34,10 @@ public class SrvTagliaImpl implements SrvTaglia {
         return repTaglia.findAll();
     }
 
+    @Override
+    public void cancella(Long id) {
+       repTaglia.deleteById(id);
+    }
+
+    
 }
