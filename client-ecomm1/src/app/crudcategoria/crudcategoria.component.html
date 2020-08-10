@@ -12,7 +12,7 @@
 <br>
 <br>
 
-<form id=categoria>
+<form>
   <fieldset>
     <legend>Categorie</legend>
       <br>
@@ -24,7 +24,7 @@
           </tr>
 
           <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
-           <tr  *ngFor="let l1 of listaCategoria1">
+           <tr  *ngFor="let l1 of listaCategoriaMod">
             <td>{{l1.id}}</td>
             <td>{{l1.descrizione}}</td>
             <td><input type="text" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>

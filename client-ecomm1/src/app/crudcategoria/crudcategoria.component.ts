@@ -18,7 +18,7 @@ export class CrudcategoriaComponent implements OnInit {
   descrizioneCategoria: string;
 
   listaCategoria: Categoria [];
-  listaCategoria1: Categoria []= this.listaCategoria;
+  listaCategoriaMod: Categoria []=[];
 
   rigaSelezionata1: Categoria;
 
@@ -37,7 +37,7 @@ export class CrudcategoriaComponent implements OnInit {
     r => this.listaCategoria = r);
     }else{
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/lista", p);
+    this.http.post<Categoria[]>(this.urlHost + "/listaCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
     }
@@ -56,7 +56,7 @@ export class CrudcategoriaComponent implements OnInit {
   conferma(){
     let p = this.rigaSelezionata1;
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/modifica", p);
+    this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
   }
@@ -68,16 +68,16 @@ export class CrudcategoriaComponent implements OnInit {
     let l : Categoria
     let p = rigaSelezionata
     let ox: Observable<Categoria> =
-    this.http.post<Categoria>(this.urlHost + "/preparaModifica", p);
+    this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
-    r => this.listaCategoria1.push(r));
+    r => this.listaCategoriaMod.push(p));
 
   }
 
   rimuovi(id:number){
     let p = id;
     let ox: Observable<Categoria[]> =
-    this.http.post<Categoria[]>(this.urlHost + "/cancella", p);
+    this.http.post<Categoria[]>(this.urlHost + "/cancellaCategoria", p);
     let ss: Subscription = ox.subscribe(
     r => this.listaCategoria = r);
   }
