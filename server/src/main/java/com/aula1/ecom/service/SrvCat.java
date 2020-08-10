@@ -20,7 +20,7 @@ public interface SrvCat {
 
     public List<Categoria> cancellaCategoria(Long id);
 
-    public List<Categoria> modificaCategoria(Categoria categoria);
+    public List<Categoria> modificaCategoria(Categoria[] categoria);
 
     public Categoria preparaModificaCategoria(Categoria categoria);
 
