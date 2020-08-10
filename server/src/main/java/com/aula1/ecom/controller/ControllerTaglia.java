@@ -34,10 +34,10 @@ public class ControllerTaglia {
         return srvTaglia.tutteLeTaglie();
     }
 
-    @RequestMapping("/cancella")
+    @RequestMapping("/cancellaTaglie")
     @ResponseBody
-    public void cancellataglie(@RequestBody Long id) {
-        srvTaglia.cancella(id);
+    public void cancellaTaglie(@RequestBody Long id) {
+        srvTaglia.cancellaTaglie(id);
         System.out.println("provaCancella");
 
     }

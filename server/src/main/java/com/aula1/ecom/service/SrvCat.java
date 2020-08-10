@@ -18,13 +18,13 @@ public interface SrvCat {
 
     public List<Categoria> aggiungiCategoria(String dto);
 
-    public List<Categoria> cancella(Long id);
+    public List<Categoria> cancellaCategoria(Long id);
 
-    public List<Categoria> modifica(Categoria categoria);
+    public List<Categoria> modificaCategoria(Categoria categoria);
 
-    public Categoria preparaModifica(Categoria categoria);
+    public Categoria preparaModificaCategoria(Categoria categoria);
 
-    public List<Categoria> lista();
+    public List<Categoria> listaCategoria();
 
     public List<Categoria> cercaCategoria(String descrizione);
 }

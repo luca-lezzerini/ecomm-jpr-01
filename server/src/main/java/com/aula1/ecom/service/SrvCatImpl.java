@@ -28,7 +28,7 @@ public class SrvCatImpl implements SrvCat {
         List<Categoria> arr = repCat.findAll();
         
         for (int i = 0; i < arr.size(); i++) {      //
-            if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incremntarlo di uno
+            if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incrementarlo di uno
                 max = arr.get(i).getId();           //
             }                                       //
         }
@@ -39,24 +39,24 @@ public class SrvCatImpl implements SrvCat {
     @Override
     public List<Categoria> aggiungiCategoria(String dto) {
         repCat.save(creaCategoria(dto));
-        return lista();
+        return listaCategoria();
     }
 
     
     @Override
-    public List<Categoria> cancella(Long id) {
+    public List<Categoria> cancellaCategoria(Long id) {
         repCat.deleteById(id);
-        return lista();
+        return listaCategoria();
     }
 
     @Override
-    public List<Categoria> modifica(Categoria categoria) {
+    public List<Categoria> modificaCategoria(Categoria categoria) {
         repCat.save(categoria);
-        return lista();
+        return listaCategoria();
     }
      
     @Override
-    public List<Categoria> lista() {
+    public List<Categoria> listaCategoria() {
         return repCat.findByOrderByIdAsc();
     }
 
@@ -66,7 +66,7 @@ public class SrvCatImpl implements SrvCat {
     }
 
     @Override
-    public Categoria preparaModifica(Categoria categoria) {
+    public Categoria preparaModificaCategoria(Categoria categoria) {
         return categoria;
     }
 

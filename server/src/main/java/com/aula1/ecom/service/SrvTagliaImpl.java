@@ -35,7 +35,7 @@ public class SrvTagliaImpl implements SrvTaglia {
     }
 
     @Override
-    public void cancella(Long id) {
+    public void cancellaTaglie(Long id) {
        repTaglia.deleteById(id);
     }
 

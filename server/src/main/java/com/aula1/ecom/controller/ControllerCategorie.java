@@ -36,26 +36,26 @@ public class ControllerCategorie {
         return srvCat.aggiungiCategoria(dto);
     }
 
-    @RequestMapping("/cancella")
+    @RequestMapping("/cancellaModifica")
     @ResponseBody
     public List<Categoria> cancella(@RequestBody Long id) {
-        return srvCat.cancella(id);
+        return srvCat.cancellaCategoria(id);
     }
     @RequestMapping("/preparaModifica")
     @ResponseBody
     public Categoria preparaModifica(@RequestBody Categoria categoria) {
         return categoria;
     }
-    @RequestMapping("/modifica")
+    @RequestMapping("/modificaCategoria")
     @ResponseBody
     public List<Categoria> modifica(@RequestBody Categoria categoria) {
-        return srvCat.modifica(categoria);
+        return srvCat.modificaCategoria(categoria);
     }
      
-    @RequestMapping("/lista")
+    @RequestMapping("/listaCategoria")
     @ResponseBody
     public List lista() {
-        return srvCat.lista();
+        return srvCat.listaCategoria();
     }
 
     @RequestMapping("/cercaCategoria")
