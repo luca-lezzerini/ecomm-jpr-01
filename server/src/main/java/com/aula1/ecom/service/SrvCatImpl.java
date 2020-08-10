@@ -38,8 +38,18 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> aggiungiCategoria(String dto) {
-        repCat.save(creaCategoria(dto));
-        return listaCategoria();
+        List<Categoria> arr = repCat.findByOrderByIdAsc();  //
+        boolean control=false;                              //
+        for (int i = 0; arr.size() > i; i++) {              //
+            if (dto.equals(arr.get(i).getDescrizione())) {  //
+                control = true;                             //
+                break;                                      //
+            }                                              //
+        }                                                   //
+        if(control!=true){                                  //
+        repCat.save(creaCategoria(dto));                    //
+        }                                                   //
+          return listaCategoria();                          //
     }
 
     @Override

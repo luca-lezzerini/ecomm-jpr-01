@@ -23,6 +23,8 @@ export class CrudcategoriaComponent implements OnInit {
   listaCategoriaFin: Categoria[] = [];
 
   rigaSelezionata1: string[]=[];
+  risultatoAgg:string="";
+  listaVecchia:Categoria[]=[];
 
 
   constructor(private http: HttpClient) { }
@@ -47,11 +49,16 @@ export class CrudcategoriaComponent implements OnInit {
   }
 
   aggiungi() {
+    let listaVecchia:Categoria[]=this.listaCategoria
     let p = this.criterioRicerca;
     let ox: Observable<Categoria[]> =
       this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
+     if(this.listaVecchia.length==this.listaCategoria.length){
+      this.risultatoAgg="Campo esistente";
+     }
+     this.risultatoAgg="";
     this.criterioRicerca = "";
   }
 
