@@ -50,10 +50,9 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> modificaCategoria(Categoria[] categoria) {
-        List<Categoria> arr = repCat.findByOrderByIdAsc();
+
         for (int i = 0; i < categoria.length; i++) {
             repCat.save(categoria[i]);
-            System.out.println("ciao");
         }
         return listaCategoria();
     }

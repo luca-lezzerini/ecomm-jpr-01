@@ -30,15 +30,15 @@
           </tr>
 
           <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
-           <tr  *ngFor="let l1 of listaCategoriaMod">
+           <tr  *ngFor="let l1 of listaCategoriaMod;index as i">
             <td>{{l1.id}}</td>
             <td>{{l1.descrizione}}</td>
-            <td><input type="text" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1"></td>
+            <td><input type="text" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1[i]" [ngModelOptions]="{standalone: true}"></td>
           </tr>
         </table>
       <br>
       <br>
-        <button (click)="conferma(listaCategoriaMod)">CONFERMA</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button (click)="conferma(listaCategoriaMod,rigaSelezionata1)">CONFERMA</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button (click)="annulla()">ANNULLA</button>
     </fieldset>

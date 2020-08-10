@@ -22,7 +22,7 @@ export class CrudcategoriaComponent implements OnInit {
   listaCategoriaMod: Categoria[] = [];
   listaCategoriaFin: Categoria[] = [];
 
-  rigaSelezionata1: string;
+  rigaSelezionata1: string[]=[];
 
 
   constructor(private http: HttpClient) { }
@@ -55,20 +55,23 @@ export class CrudcategoriaComponent implements OnInit {
     this.criterioRicerca = "";
   }
 
-  conferma() {
+  conferma(listaCategoriaMod,rigaSelezionata1) {
     for (let i = 0; i < this.listaCategoriaMod.length; i++) {
 
      let cat:Categoria=new Categoria
      cat.id=this.listaCategoriaMod[i].id
-     cat.descrizione=this.rigaSelezionata1
-
+     cat.descrizione=this.rigaSelezionata1[i]
+      this.listaCategoriaFin.push(cat)
+     // console.log(this.rigaSelezionata1[i])
     }
     let p = this.listaCategoriaFin;
     let ox: Observable<Categoria[]> =
       this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-    this.listaCategoria = [];
+    this.listaCategoriaMod = [];
+    this.listaCategoriaFin = [];
+
   }
   annulla() {
     this.listaCategoriaMod = [];
