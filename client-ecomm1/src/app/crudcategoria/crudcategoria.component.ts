@@ -68,7 +68,7 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-    this.listaCategoriaMod = [];
+    this.listaCategoria = [];
   }
   annulla() {
     this.listaCategoriaMod = [];
