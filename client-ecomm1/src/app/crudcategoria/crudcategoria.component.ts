@@ -26,11 +26,13 @@ export class CrudcategoriaComponent implements OnInit {
   risultatoAgg:string="";
   listaVecchia:Categoria[]=[];
 
+  click: boolean = false;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
+
 
   cerca() {
     let p = this.criterioRicerca;
@@ -78,20 +80,23 @@ export class CrudcategoriaComponent implements OnInit {
       r => this.listaCategoria = r);
     this.listaCategoriaMod = [];
     this.listaCategoriaFin = [];
+    this.click = false;
 
   }
   annulla() {
     this.listaCategoriaMod = [];
+    this.click = false;
   }
 
   selezionaModifica(rigaSelezionata: Categoria) {
+
     let l: Categoria
     let p = rigaSelezionata
     let ox: Observable<Categoria> =
       this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoriaMod.push(p));
-
+      this.click = ! this.click;
   }
 
   rimuovi(id: number) {

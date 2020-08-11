@@ -29,9 +29,7 @@
             <td>DESCRIZIONE</td>
             <td>NUOVA DESCRIZIONE</td>
           </tr>
-
-          <!--<tr *ngif (rigaSelezionata = "listaCategoria1")>-->
-           <tr  *ngFor="let l1 of listaCategoriaMod;index as i">
+          <tr  *ngFor="let l1 of listaCategoriaMod;index as i">
             <td>{{l1.id}}</td>
             <td>{{l1.descrizione}}</td>
             <td><input type="text" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1[i]" [ngModelOptions]="{standalone: true}"></td>
@@ -58,7 +56,7 @@
   <tr *ngFor="let l of listaCategoria;index as i">
     <td>{{l.id}}</td>
     <td>{{l.descrizione}}</td>
-    <td><button (click)="selezionaModifica(listaCategoria[i])">MODIFICA</button></td>
+    <td><button class="btn btn-primary" (click)="selezionaModifica(listaCategoria[i])" [disabled]= "click">MODIFICA</button></td>
     <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
   </tr>
 </table>
