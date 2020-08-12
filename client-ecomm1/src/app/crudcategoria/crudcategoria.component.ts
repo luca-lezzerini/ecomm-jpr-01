@@ -19,7 +19,7 @@ export class CrudcategoriaComponent implements OnInit {
   aggiungiCategoria: string = "";
   descrizioneCategoria: string;
   descrizioneCategoriaMod: string;
- idMod:number=null
+  idMod:number=null
   listaCategoria: Categoria[];
   listaCategoriaMod:Categoria=new Categoria(0,"")
 
@@ -66,6 +66,10 @@ export class CrudcategoriaComponent implements OnInit {
       r => this.listaCategoria = r);
     this.risultatoAgg="";
     this.criterioRicerca = "";
+    document.getElementById("tabella").style.display="block";
+    document.getElementById("ricerca").style.display="block";
+    document.getElementById("pulsanti").style.display="none";
+    document.getElementById("inputdati").style.display="none";
   }
 
   conferma(riga:string) {
@@ -76,14 +80,18 @@ export class CrudcategoriaComponent implements OnInit {
       let ss: Subscription = ox.subscribe(
         r => this.listaCategoria =r);
         this.rigaSelezionata=null
-    document.getElementById("tabella").style.display="block";
-    document.getElementById("ricerca").style.display="block";
+        document.getElementById("tabella").style.display="block";
+        document.getElementById("ricerca").style.display="block";
+        document.getElementById("pulsanti").style.display="none";
+        document.getElementById("inputdati").style.display="none";
 
   }
 
   annulla() {
     document.getElementById("tabella").style.display="block";
     document.getElementById("ricerca").style.display="block";
+    document.getElementById("pulsanti").style.display="none";
+    document.getElementById("inputdati").style.display="none";
     this.criterioRicerca = ""
   }
 
@@ -95,9 +103,10 @@ export class CrudcategoriaComponent implements OnInit {
       r => p=r);
       this.listaCategoriaMod=p
       console.log( this.listaCategoriaMod)
-    document.getElementById("tabella").style.display="none";
-    document.getElementById("ricerca").style.display="none";
-    document.getElementById("inputdati").style.display="block";
+      document.getElementById("inputdati").style.display="block";
+      document.getElementById("pulsanti").style.display="block";
+      document.getElementById("tabella").style.display="none";
+      document.getElementById("ricerca").style.display="none";
   }
 
   rimuovi(id: number) {
