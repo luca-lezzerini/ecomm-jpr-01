@@ -62,7 +62,7 @@ public class SrvCatImpl implements SrvCat {
     public List<Categoria> modificaCategoria(Categoria categoria) {
         List<Categoria> arr = repCat.findByOrderByIdAsc();
         boolean control = false;
-        if(!categoria.getDescrizione().equals("")){
+        if(!"".equals(categoria.getDescrizione())){
         for (int i = 0; arr.size() > i; i++) {
             if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
                 control = true;

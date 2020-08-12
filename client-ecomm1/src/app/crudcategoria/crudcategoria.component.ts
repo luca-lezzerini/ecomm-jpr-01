@@ -19,12 +19,13 @@ export class CrudcategoriaComponent implements OnInit {
   aggiungiCategoria: string = "";
   descrizioneCategoria: string;
   descrizioneCategoriaMod: string;
-
+ idMod:number=null
   listaCategoria: Categoria[];
-  listaCategoriaMod: Categoria[] = [];
-  listaCategoriaFin: Categoria[] = [];
+  listaCategoriaMod:Categoria=new Categoria(0,"")
 
-  rigaSelezionata1: string[]=[];
+  listaCategoriaFin: string
+
+  rigaSelezionata: string
   risultatoAgg:string="";
   listaVecchia:Categoria[]=[];
 
@@ -33,6 +34,7 @@ export class CrudcategoriaComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+
   }
 
 
@@ -62,47 +64,37 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-    if(this.listaVecchia.length==this.listaCategoria.length){
-      this.risultatoAgg="Campo esistente";
-    }
     this.risultatoAgg="";
     this.criterioRicerca = "";
   }
 
-  conferma() {
-    for (let i = 0; i < this.listaCategoriaMod.length; i++) {
-      let cat:Categoria=new Categoria
-      cat.id=this.listaCategoriaMod[i].id
-      cat.descrizione=this.rigaSelezionata1[i]
-      this.listaCategoriaFin.push(cat)
-    }
-    let p = this.listaCategoriaFin;
-    let ox: Observable<Categoria[]> =
-      this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
-    let ss: Subscription = ox.subscribe(
-      r => this.listaCategoria = r);
-    this.listaCategoriaMod = [];
-    this.listaCategoriaFin = [];
+  conferma(riga:string) {
+      let p:Categoria =new Categoria(this.listaCategoriaMod.id,riga)
+      console.log(p)
+      let ox: Observable<Categoria[]> =
+        this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
+      let ss: Subscription = ox.subscribe(
+        r => this.listaCategoria =r);
+        this.rigaSelezionata=null
     document.getElementById("tabella").style.display="block";
     document.getElementById("ricerca").style.display="block";
 
   }
 
   annulla() {
-    this.listaCategoriaMod = [];
     document.getElementById("tabella").style.display="block";
     document.getElementById("ricerca").style.display="block";
     this.criterioRicerca = ""
   }
 
   selezionaModifica(rigaSelezionata: Categoria) {
-
-    let l: Categoria
-    let p = rigaSelezionata
+    let p:Categoria = rigaSelezionata
     let ox: Observable<Categoria> =
       this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaCategoriaMod.push(p));
+      r => p=r);
+      this.listaCategoriaMod=p
+      console.log( this.listaCategoriaMod)
     document.getElementById("tabella").style.display="none";
     document.getElementById("ricerca").style.display="none";
     document.getElementById("inputdati").style.display="block";

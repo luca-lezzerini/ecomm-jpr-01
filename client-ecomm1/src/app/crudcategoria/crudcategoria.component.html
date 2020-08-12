@@ -34,16 +34,16 @@
               <td>DESCRIZIONE</td>
               <td>NUOVA DESCRIZIONE</td>
             </tr>
-            <tr  *ngFor="let l1 of listaCategoriaMod; index as i">
-              <td>{{l1.id}}</td>
-              <td>{{l1.descrizione}}</td>
+            <tr>
+              <td>{{listaCategoriaMod.id}}</td>
+              <td>{{listaCategoriaMod.descrizione}}</td>
               <td><input type="text" name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                  [(ngModel)]="rigaSelezionata1[i]" [ngModelOptions]="{standalone: true}"></td>
+                  [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}"></td>
             </tr>
           </table>
         <br>
         <br>
-          <button (click)="conferma()">CONFERMA</button>
+          <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
