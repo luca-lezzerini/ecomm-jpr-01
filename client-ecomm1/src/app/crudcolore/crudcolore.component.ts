@@ -12,7 +12,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class CRUDColoreComponent implements OnInit {
 
-  searchCriteria: string;
+  searchCriteria = "";
   colore: Colore;
   listaColore: Colore[];
   readonly urlHost = "http://localhost:8080";
@@ -33,6 +33,7 @@ export class CRUDColoreComponent implements OnInit {
       c => this.listaColore = c
     );
     this.searchCriteria = "";
+    this.mostraForm = false;
   }
 
   cercaTutto() {
@@ -42,6 +43,7 @@ export class CRUDColoreComponent implements OnInit {
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
+    this.mostraForm = false;
   }
 
   aggiungi() {
