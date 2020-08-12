@@ -2,11 +2,12 @@
 <h1>CRUD COLORE</h1>
 <input type="text" [(ngModel)]="searchCriteria">
 <button (click)="cerca()">Cerca</button>
+<button (click)="cercaTutto()">Mostra Tutti i Colori</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
 <form *ngIf="mostraForm">
     <h2>form dati</h2>
-    <input type="text" [(ngModel)]="colore">
+    <input type="text" [(ngModel)]="colore.colore">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </form>

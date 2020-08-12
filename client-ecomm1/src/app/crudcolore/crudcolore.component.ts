@@ -26,17 +26,22 @@ export class CRUDColoreComponent implements OnInit {
 
   cerca() {
     let criterioCerca = new CercaDto(this.searchCriteria);
-    console.log("\n\n\n\nsono nel cerca" + criterioCerca);
     let b: Observable<Colore[]> =
       this.http.
         post<Colore[]>(this.urlHost + "/cercaColore", criterioCerca);
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
     this.searchCriteria = "";
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
+  }
+
+  cercaTutto() {
+    let b: Observable<Colore[]> =
+      this.http.
+        get<Colore[]>(this.urlHost + "/cercaTuttiColori");
+    let ss: Subscription = b.subscribe(
+      c => this.listaColore = c
+    );
   }
 
   aggiungi() {

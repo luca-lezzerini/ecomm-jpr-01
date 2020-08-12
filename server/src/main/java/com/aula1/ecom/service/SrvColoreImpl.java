@@ -19,7 +19,16 @@ public class SrvColoreImpl implements SrvColore {
     //Prisacar
     @Override
     public List<Colore> cerca(String cerca) {
-        return repColore.findByColoreLike(cerca);                               //Comando suggerito da Lezerini sempre nella issue #33
+        if (cerca.equals("")){
+            return repColore.findByColore(cerca);
+        }else{
+            return repColore.findByColoreLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
+        }
+    }
+    
+    @Override
+    public List<Colore> cercaTutto() {
+        return repColore.findAll();
     }
 
     @Override
