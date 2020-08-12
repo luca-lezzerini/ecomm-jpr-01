@@ -37,7 +37,7 @@ public class ControllerColore {
         return listaColori;
     }
     
-    @RequestMapping(value = "/mostraTutto")
+    @RequestMapping(value = "/mostraTuttiColori")
     @ResponseBody
     public List<Colore> mostraTutto() {
         List<Colore> listaColori = srvColore.mostraTutto(); 

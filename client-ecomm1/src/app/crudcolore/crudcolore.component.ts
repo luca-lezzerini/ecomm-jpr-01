@@ -16,7 +16,7 @@ export class CRUDColoreComponent implements OnInit {
   colore: Colore;
   listaColore: Colore[];
   readonly urlHost = "http://localhost:8080";
-
+  mostraForm = false;
 
   constructor(private http: HttpClient) { }
 
@@ -26,32 +26,36 @@ export class CRUDColoreComponent implements OnInit {
 
   cerca() {
     let criterioCerca = new CercaDto(this.searchCriteria);
-    console.log("\n\n\n\nsono nel cerca" + criterioCerca);
     let b: Observable<Colore[]> =
       this.http.
         post<Colore[]>(this.urlHost + "/cercaColore", criterioCerca);
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
     this.searchCriteria = "";
-    console.log("\n\n\n\nsono nel cerca \n\n\n\n");
+  }
+
+  cercaTutto() {
+    let b: Observable<Colore[]> =
+      this.http.
+        get<Colore[]>(this.urlHost + "/mostraTuttiColori");
+    let ss: Subscription = b.subscribe(
+      c => this.listaColore = c
+    );
   }
 
   aggiungi() {
-
+    this.mostraForm = true;
   }
-
   conferma() {
     this.http.post(this.urlHost + "/aggiungiColore", this.colore);
+    this.mostraForm = false;
+    this.colore.colore = "";
   }
-
   annulla() {
-
-
+    this.mostraForm = false;
+    this.colore.colore = "";
   }
-
   modifica() {
     let b: Observable<Colore> =
       this.http.
@@ -65,7 +69,6 @@ export class CRUDColoreComponent implements OnInit {
       )
     );
   }
-
   rimuovi() {
     let esito: boolean;
     this.http.post(this.urlHost + "/rimuoviColore", this.colore);
