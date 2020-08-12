@@ -16,7 +16,7 @@ export class CRUDColoreComponent implements OnInit {
   colore: Colore;
   listaColore: Colore[];
   readonly urlHost = "http://localhost:8080";
-
+  mostraForm = false;
 
   constructor(private http: HttpClient) { }
 
@@ -40,16 +40,18 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   aggiungi() {
-
+    this.mostraForm = true;
   }
 
   conferma() {
     this.http.post(this.urlHost + "/aggiungiColore", this.colore);
+    this.mostraForm = false;
+    this.colore.colore = "";
   }
 
   annulla() {
-
-
+    this.mostraForm = false;
+    this.colore.colore = "";
   }
 
   modifica() {
