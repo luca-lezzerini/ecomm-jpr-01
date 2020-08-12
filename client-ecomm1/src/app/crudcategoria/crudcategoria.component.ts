@@ -50,9 +50,10 @@ export class CrudcategoriaComponent implements OnInit {
         r => this.listaCategoria = r);
     }
     this.criterioRicerca = "";
-    this.click = false;
+    document.getElementById("inputdati").style.display="none";
 
-    }
+
+  }
 
   aggiungi() {
     let listaVecchia:Categoria[]=this.listaCategoria
@@ -61,21 +62,19 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-     if(this.listaVecchia.length==this.listaCategoria.length){
+    if(this.listaVecchia.length==this.listaCategoria.length){
       this.risultatoAgg="Campo esistente";
-     }
-     this.risultatoAgg="";
+    }
+    this.risultatoAgg="";
     this.criterioRicerca = "";
   }
 
   conferma() {
     for (let i = 0; i < this.listaCategoriaMod.length; i++) {
-
-     let cat:Categoria=new Categoria
-     cat.id=this.listaCategoriaMod[i].id
-     cat.descrizione=this.rigaSelezionata1[i]
+      let cat:Categoria=new Categoria
+      cat.id=this.listaCategoriaMod[i].id
+      cat.descrizione=this.rigaSelezionata1[i]
       this.listaCategoriaFin.push(cat)
-     // console.log(this.rigaSelezionata1[i])
     }
     let p = this.listaCategoriaFin;
     let ox: Observable<Categoria[]> =
@@ -84,13 +83,16 @@ export class CrudcategoriaComponent implements OnInit {
       r => this.listaCategoria = r);
     this.listaCategoriaMod = [];
     this.listaCategoriaFin = [];
-    this.click = false;
+    document.getElementById("tabella").style.display="block";
+    document.getElementById("ricerca").style.display="block";
 
   }
 
   annulla() {
     this.listaCategoriaMod = [];
-    this.click = false;
+    document.getElementById("tabella").style.display="block";
+    document.getElementById("ricerca").style.display="block";
+    this.criterioRicerca = ""
   }
 
   selezionaModifica(rigaSelezionata: Categoria) {
@@ -101,7 +103,9 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoriaMod.push(p));
-    this.click = ! this.click;
+    document.getElementById("tabella").style.display="none";
+    document.getElementById("ricerca").style.display="none";
+    document.getElementById("inputdati").style.display="block";
   }
 
   rimuovi(id: number) {
@@ -112,5 +116,3 @@ export class CrudcategoriaComponent implements OnInit {
       r => this.listaCategoria = r);
   }
 }
-
-

@@ -5,61 +5,71 @@
 
 <h1>CATEGORIE</h1>
 <br>
-<input type="text" placeholder = "Inizia ricerca" [(ngModel)]="criterioRicerca">
-<button (click)="cerca()">CERCA</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button (click)="aggiungi()">AGGIUNGI</button>
+<div id="ricerca">
+    <input type="text" placeholder = "Inizia ricerca Categoria" [(ngModel)]="criterioRicerca">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="cerca()">CERCA</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="aggiungi()">AGGIUNGI</button>
+</div>
 <br>
 {{this.risultatoAgg}}
 <br>
 <br>
-
-<form>
-  <fieldset>
-    <legend>Categorie</legend>
-      <br>
-        <table border="1" class="w3-table-all w3-large">
-          <tr>
-            <td>ID</td>
-            <td>DESCRIZIONE</td>
-            <td>NUOVA DESCRIZIONE</td>
-          </tr>
-          <tr  *ngFor="let l1 of listaCategoriaMod; index as i">
-            <td>{{l1.id}}</td>
-            <td>{{l1.descrizione}}</td>
-            <td><input type="text" name = "nuovadescr" placeholder = {{l1.descrizione}} [(ngModel)]="rigaSelezionata1[i]" [ngModelOptions]="{standalone: true}"></td>
-          </tr>
-        </table>
-      <br>
-      <br>
-        <button (click)="conferma()" ngclick = "(nuovadescr).empty">CONFERMA</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button (click)="annulla()">ANNULLA</button>
-    </fieldset>
-</form>
+<div id="inputdati">
+  <form name = "inputdati" id = "inputdati">
+    <fieldset>
+      <legend>Categorie</legend>
+        <br>
+          <table border="1" class="w3-table-all w3-large">
+            <tr>
+              <td>ID</td>
+              <td>DESCRIZIONE</td>
+              <td>NUOVA DESCRIZIONE</td>
+            </tr>
+            <tr  *ngFor="let l1 of listaCategoriaMod; index as i">
+              <td>{{l1.id}}</td>
+              <td>{{l1.descrizione}}</td>
+              <td><input type="text" name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
+                  [(ngModel)]="rigaSelezionata1[i]" [ngModelOptions]="{standalone: true}"></td>
+            </tr>
+          </table>
+        <br>
+        <br>
+          <button (click)="conferma()">CONFERMA</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="annulla()">ANNULLA</button>
+      </fieldset>
+  </form>
+</div>
 <br>
 <br>
 <br>
-
-<table border="2" class="w3-table-all w3-large">
-  <tr>
-    <td>ID</td>
-    <td>DESCRIZIONE</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr *ngFor="let l of listaCategoria; index as i">
-    <td>{{l.id}}</td>
-    <td>{{l.descrizione}}</td>
-    <td><button (click)="selezionaModifica(listaCategoria[i])" [disabled]= "click" >MODIFICA</button></td>
-    <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
-  </tr>
-</table>
+<div id ="tabella">
+  <form name = "tabella" id = "tabella">
+    <table border="2" class="w3-table-all w3-large">
+      <tr>
+        <td>ID</td>
+        <td>DESCRIZIONE</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let l of listaCategoria; index as i">
+        <td>{{l.id}}</td>
+        <td>{{l.descrizione}}</td>
+        <td><button (click)="selezionaModifica(listaCategoria[i])">MODIFICA</button></td>
+        <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
 
