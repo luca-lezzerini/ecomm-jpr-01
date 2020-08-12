@@ -2,25 +2,38 @@
 <h1>CRUD COLORE</h1>
 <input type="text" [(ngModel)]="searchCriteria">
 <button (click)="cerca()">Cerca</button>
-<button (click)="cercaTutto()">Mostra Tutti i Colori</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
-<form *ngIf="mostraForm">
-    <h2>form dati</h2>
-    <input type="text" [(ngModel)]="colore.colore">
-    <button (click)="conferma()">Conferma</button>
-    <button (click)="annulla()">Annulla</button>
-</form>
-<br>
+
+
+<h2>form dati</h2>
+<input type="text" [(ngModel)]="colore">
+<button (click)="conferma()">Conferma</button>
+<button (click)="annulla()">Annulla</button>
+<h1>{{searchCriteria}}</h1>
+
+
+
+
+
 <table>
     <tr>
+
         <td>id</td>
         <td>colore</td>
+
     </tr>
+
     <tr *ngFor="let a of listaColore">
+
         <td>{{a.id}}</td>
         <td>{{a.colore}}</td>
+
         <td><button (click)="modifica()">Modifica</button> </td>
+
         <td><button (click)="rimuovi()">Rimuovi</button></td>
+
+
     </tr>
+
 </table>

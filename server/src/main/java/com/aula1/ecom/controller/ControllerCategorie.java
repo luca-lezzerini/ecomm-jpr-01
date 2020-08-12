@@ -48,7 +48,7 @@ public class ControllerCategorie {
     }
     @RequestMapping("/modificaCategoria")
     @ResponseBody
-    public List<Categoria> modifica(@RequestBody Categoria[] categoria) {
+    public List<Categoria> modificaCategoria(@RequestBody Categoria categoria) {
         return srvCat.modificaCategoria(categoria);
     }
      
