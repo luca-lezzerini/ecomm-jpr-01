@@ -27,7 +27,7 @@ public class SrvColoreImpl implements SrvColore {
     }
     
     @Override
-    public List<Colore> cercaTutto() {
+    public List<Colore> mostraTutto() {
         return repColore.findAll();
     }
 

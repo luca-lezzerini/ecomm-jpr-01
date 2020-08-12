@@ -10,7 +10,7 @@ import java.util.List;
 public interface SrvColore {
     
     public List<Colore> cerca(String cerca);
-    public List<Colore> cercaTutto();
+    public List<Colore> mostraTutto();
 //    public void aggiungi(Long id);
 //    public void modifica(Long id);
 //    public void rimuovi(Long id);

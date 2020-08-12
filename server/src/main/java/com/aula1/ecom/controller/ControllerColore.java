@@ -37,10 +37,10 @@ public class ControllerColore {
         return listaColori;
     }
     
-    @RequestMapping(value = "/cercaTuttiColori")
+    @RequestMapping(value = "/mostraTutto")
     @ResponseBody
-    public List<Colore> cercaTutto() {
-        List<Colore> listaColori = srvColore.cercaTutto(); 
+    public List<Colore> mostraTutto() {
+        List<Colore> listaColori = srvColore.mostraTutto(); 
         return listaColori;
     }
     
