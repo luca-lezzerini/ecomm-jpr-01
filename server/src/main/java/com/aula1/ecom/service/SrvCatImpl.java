@@ -39,17 +39,17 @@ public class SrvCatImpl implements SrvCat {
     @Override
     public List<Categoria> aggiungiCategoria(String dto) {
         List<Categoria> arr = repCat.findByOrderByIdAsc();  //
-        boolean control=false;                              //
+        boolean control = false;                              //
         for (int i = 0; arr.size() > i; i++) {              //
             if (dto.equals(arr.get(i).getDescrizione())) {  //
                 control = true;                             //
                 break;                                      //
             }                                              //
         }                                                   //
-        if(control!=true){                                  //
-        repCat.save(creaCategoria(dto));                    //
+        if (control != true) {                                  //
+            repCat.save(creaCategoria(dto));                    //
         }                                                   //
-          return listaCategoria();                          //
+        return listaCategoria();                          //
     }
 
     @Override
@@ -59,10 +59,19 @@ public class SrvCatImpl implements SrvCat {
     }
 
     @Override
-    public List<Categoria> modificaCategoria(Categoria[] categoria) {
-
-        for (int i = 0; i < categoria.length; i++) {
-            repCat.save(categoria[i]);
+    public List<Categoria> modificaCategoria(Categoria categoria) {
+        List<Categoria> arr = repCat.findByOrderByIdAsc();
+        boolean control = false;
+        if(!categoria.getDescrizione().equals("")){
+        for (int i = 0; arr.size() > i; i++) {
+            if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
+                control = true;
+                break;
+            }
+        }
+        if ( control == false ) {
+            repCat.save(categoria);
+        }
         }
         return listaCategoria();
     }
@@ -79,6 +88,8 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public Categoria preparaModificaCategoria(Categoria categoria) {
+        System.out.print(categoria.getId() + " ");
+        System.out.println(categoria.getDescrizione());
         return categoria;
     }
 
