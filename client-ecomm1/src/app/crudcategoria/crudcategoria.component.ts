@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Categoria } from './categoria';
 import { Component, OnInit } from '@angular/core';
 import { NgForOf } from '@angular/common';
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-crudcategoria',
@@ -17,6 +18,7 @@ export class CrudcategoriaComponent implements OnInit {
   criterioRicerca: string = "";
   aggiungiCategoria: string = "";
   descrizioneCategoria: string;
+  descrizioneCategoriaMod: string;
 
   listaCategoria: Categoria[];
   listaCategoriaMod: Categoria[] = [];
@@ -48,7 +50,9 @@ export class CrudcategoriaComponent implements OnInit {
         r => this.listaCategoria = r);
     }
     this.criterioRicerca = "";
-  }
+    this.click = false;
+
+    }
 
   aggiungi() {
     let listaVecchia:Categoria[]=this.listaCategoria
@@ -64,7 +68,7 @@ export class CrudcategoriaComponent implements OnInit {
     this.criterioRicerca = "";
   }
 
-  conferma(listaCategoriaMod,rigaSelezionata1) {
+  conferma() {
     for (let i = 0; i < this.listaCategoriaMod.length; i++) {
 
      let cat:Categoria=new Categoria
@@ -83,6 +87,7 @@ export class CrudcategoriaComponent implements OnInit {
     this.click = false;
 
   }
+
   annulla() {
     this.listaCategoriaMod = [];
     this.click = false;
@@ -96,7 +101,7 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoriaMod.push(p));
-      this.click = ! this.click;
+    this.click = ! this.click;
   }
 
   rimuovi(id: number) {
