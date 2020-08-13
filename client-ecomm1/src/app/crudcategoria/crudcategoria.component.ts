@@ -29,7 +29,9 @@ export class CrudcategoriaComponent implements OnInit {
   risultatoAgg:string="";
   listaVecchia:Categoria[]=[];
 
-  isShow: boolean = true;
+  isShow1: boolean = true;
+  isShow: boolean = false;
+  isShow2: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -52,8 +54,7 @@ export class CrudcategoriaComponent implements OnInit {
         r => this.listaCategoria = r);
     }
     this.criterioRicerca = "";
-    document.getElementById("inputdati").style.display="none";
-    document.getElementById("pulsanti").style.display="none";
+    this.isShow2 = false;
 
 
   }
@@ -67,10 +68,6 @@ export class CrudcategoriaComponent implements OnInit {
       r => this.listaCategoria = r);
     this.risultatoAgg="";
     this.criterioRicerca = "";
-    document.getElementById("tabella").style.display="block";
-    document.getElementById("ricerca").style.display="block";
-    document.getElementById("pulsanti").style.display="none";
-    document.getElementById("inputdati").style.display="none";
   }
 
   conferma(riga:string) {
@@ -81,19 +78,16 @@ export class CrudcategoriaComponent implements OnInit {
       let ss: Subscription = ox.subscribe(
         r => this.listaCategoria =r);
         this.rigaSelezionata=null
-        document.getElementById("tabella").style.display="block";
-        document.getElementById("ricerca").style.display="block";
-        document.getElementById("pulsanti").style.display="none";
-        document.getElementById("inputdati").style.display="none";
-
+        this.isShow1 = true;
+        this.isShow = false;
+        this.isShow2 = false;
   }
 
   annulla() {
-    document.getElementById("tabella").style.display="block";
-    document.getElementById("ricerca").style.display="block";
-    document.getElementById("pulsanti").style.display="none";
-    document.getElementById("inputdati").style.display="none";
-    this.criterioRicerca = ""
+    this.isShow1 = true;
+    this.isShow = false;
+    this.isShow2 = false;
+    this.criterioRicerca = "";
   }
 
   selezionaModifica(rigaSelezionata: Categoria) {
@@ -104,11 +98,9 @@ export class CrudcategoriaComponent implements OnInit {
       r => p=r);
       this.listaCategoriaMod=p
       console.log( this.listaCategoriaMod);
-      this.isShow =false;
-      document.getElementById("inputdati").style.display="block";
-      document.getElementById("pulsanti").style.display="block";
-      document.getElementById("tabella").style.display="none";
-      document.getElementById("ricerca").style.display="none";
+      this.isShow1 = false;
+      this.isShow = true;
+      this.isShow2 = true;
   }
 
   rimuovi(id: number) {
@@ -117,5 +109,6 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria[]>(this.urlHost + "/cancellaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
+    this.isShow2 = true;
   }
 }
