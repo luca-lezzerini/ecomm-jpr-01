@@ -33,6 +33,7 @@ export class AppComponent implements OnInit{
   }
   crudCategoria(){
     this.router.navigateByUrl("/CRUDCategoria");
+
   }
 
 }

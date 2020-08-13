@@ -3,11 +3,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<<br><br><br>
+<br><br><br>
 <h1>CATEGORIE</h1>
 <br>
 <div id="ricerca">
-    <input type="text" placeholder = "Inizia ricerca Categoria" [(ngModel)]="criterioRicerca">
+    <input type="text" placeholder = "Ricerca Categoria" [(ngModel)]="criterioRicerca">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="cerca()">CERCA</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,10 +24,10 @@
 {{this.risultatoAgg}}
 <br>
 <br>
-<div id="inputdati">
-  <form name = "inputdati" id = "inputdati">
-    <fieldset>
-      <legend>Categorie</legend>
+<fieldset>
+  <legend>Categorie</legend>
+    <div id="inputdati" *ngIf="!isShow">
+      <form name = "inputdati" id = "inputdati">
         <br>
           <table border="1" class="w3-table-all w3-large">
             <tr>
@@ -42,18 +42,18 @@
                   [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}"></td>
             </tr>
           </table>
-        <br>
-        <br>
-        <div id = "pulsanti">
-          <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button (click)="annulla()">ANNULLA</button>
-        </div>
-    </fieldset>
-  </form>
-</div>
+      </form>
+    </div>
+    <br>
+    <br>
+    <div id = "pulsanti" *ngIf="!isShow">
+      <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button (click)="annulla()">ANNULLA</button>
+    </div>
+</fieldset>
 <br>
 <br>
 <br>

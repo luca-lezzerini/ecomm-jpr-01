@@ -29,7 +29,7 @@ export class CrudcategoriaComponent implements OnInit {
   risultatoAgg:string="";
   listaVecchia:Categoria[]=[];
 
-  click: boolean = false;
+  isShow: boolean = true;
 
   constructor(private http: HttpClient) { }
 
@@ -53,6 +53,7 @@ export class CrudcategoriaComponent implements OnInit {
     }
     this.criterioRicerca = "";
     document.getElementById("inputdati").style.display="none";
+    document.getElementById("pulsanti").style.display="none";
 
 
   }
@@ -102,7 +103,8 @@ export class CrudcategoriaComponent implements OnInit {
     let ss: Subscription = ox.subscribe(
       r => p=r);
       this.listaCategoriaMod=p
-      console.log( this.listaCategoriaMod)
+      console.log( this.listaCategoriaMod);
+      this.isShow =false;
       document.getElementById("inputdati").style.display="block";
       document.getElementById("pulsanti").style.display="block";
       document.getElementById("tabella").style.display="none";
