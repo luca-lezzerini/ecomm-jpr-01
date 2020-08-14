@@ -12,6 +12,7 @@ import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.comp
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
     CrudcategoriaComponent,
     HomePageComponent,
     CrudanagraficheComponent,
-    CrudcarelloComponent
+    CrudcarelloComponent,
+
   ],
   imports: [
     BrowserModule,

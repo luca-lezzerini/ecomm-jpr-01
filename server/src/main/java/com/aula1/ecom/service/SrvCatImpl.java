@@ -64,9 +64,9 @@ public class SrvCatImpl implements SrvCat {
         boolean control = false;
         if(!"".equals(categoria.getDescrizione())){
         for (int i = 0; arr.size() > i; i++) {
-            if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
-                control = true;
-                break;
+//            if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
+//                control = true;
+//                break;
             }
         }
         if ( control == false ) {
