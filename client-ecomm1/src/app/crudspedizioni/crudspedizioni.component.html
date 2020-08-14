@@ -6,7 +6,7 @@
 <br><br><br>
 <h1>SPEDIZIONI</h1>
 <br>
-<div id="ricerca" *ngIf="!isShow">
+<div id="ricerca" *ngIf="!isShowRicerca">
     <input type="text" placeholder = "Ricerca Spedizione" [(ngModel)]="criterioRicerca">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="cerca()">CERCA</button>
@@ -20,13 +20,32 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="aggiungi()">AGGIUNGI</button>
 </div>
+<br><br>
+<div id = "aggiungi" *ngIf="!isShowAggiungi">
+  <table border="1" class="w3-table-all w3-large">
+    <tr>
+      <td>CODICE</td>
+      <td>NOME</td>
+      <td>PREZZO AL KG</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><input type="text"  [(ngModel)]="criterioRicerca"></td>
+      <td><input type="text"  [(ngModel)]="criterioRicerca"></td>
+      <td><input type="text"  [(ngModel)]="criterioRicerca"></td>
+      <td><button (click)="conferma(rigaSelezionata1)">CONFERMA</button></td>
+      <td><button (click)="annulla()">ANNULLA</button></td>
+    </tr>
+  </table>
+</div>
 <br>
 {{this.risultatoAgg}}
 <br>
 <br>
 <fieldset>
   <legend>Spedizioni</legend>
-    <div id="inputdati" *ngIf="!isShow1">
+    <div id="inputdati" *ngIf="!isShowModifica">
       <form name = "inputdati" id = "inputdati">
         <br>
           <table border="1" class="w3-table-all w3-large">
@@ -49,7 +68,7 @@
     </div>
     <br>
     <br>
-    <div id = "pulsanti" *ngIf="!isShow1">
+    <div id = "pulsanti" *ngIf="!isShowModifica">
       <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,12 +79,11 @@
 <br>
 <br>
 <br>
-<div id ="tabella" *ngIf="!isShow2">
+<div id ="tabella" *ngIf="!isShowTabella">
   <form name = "tabella" id = "tabella">
     <table border="2" class="w3-table-all w3-large">
       <tr>
         <td>ID</td>
-        <td>DESCRIZIONE</td>
         <td>CODICE</td>
         <td>NOME</td>
         <td>PREZZO AL KG</td>

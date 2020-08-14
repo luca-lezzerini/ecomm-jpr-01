@@ -22,13 +22,15 @@ export class CrudspedizioniComponent implements OnInit {
 
   listaSpedizioniFin: string
 
-  rigaSelezionata: string
+  rigaSelezionata: string;
+  rigaSelezionata1: string;
   risultatoAgg:string="";
   listaVecchia:Spedizioni[]=[];
 
-  isShow1: boolean = true;
-  isShow: boolean = false;
-  isShow2: boolean = false;
+  isShowModifica: boolean = true;
+  isShowRicerca: boolean = false;
+  isShowTabella: boolean = false;
+  isShowAggiungi: boolean = true;
 
   constructor(private http: HttpClient) { }
 
@@ -51,20 +53,25 @@ export class CrudspedizioniComponent implements OnInit {
         r => this.listaSpedizioni = r);
     }
     this.criterioRicerca = "";
-    this.isShow2 = false;
+    this.isShowTabella = false;
+
 
 
   }
 
   aggiungi() {
-    let listaVecchia:Spedizioni[]=this.listaSpedizioni
+    /*let listaVecchia:Spedizioni[]=this.listaSpedizioni
     let p = this.criterioRicerca;
     let ox: Observable<Spedizioni[]> =
       this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizioni", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
     this.risultatoAgg="";
-    this.criterioRicerca = "";
+    this.criterioRicerca = "";*/
+    this.isShowAggiungi = false;
+    this.isShowRicerca =true;
+    this.isShowTabella =true;
+
   }
 
   conferma(riga:string) {
@@ -75,15 +82,15 @@ export class CrudspedizioniComponent implements OnInit {
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni =r);
         this.rigaSelezionata=null
-        this.isShow1 = true;
-        this.isShow = false;
-        this.isShow2 = false;
+        this.isShowModifica = true;
+        this.isShowRicerca = false;
+        this.isShowTabella = false;
   }
 
   annulla() {
-    this.isShow1 = true;
-    this.isShow = false;
-    this.isShow2 = false;
+    this.isShowModifica = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
     this.criterioRicerca = "";
   }
 
@@ -95,9 +102,9 @@ export class CrudspedizioniComponent implements OnInit {
       r => p=r);
       this.listaSpedizioniMod=p
       console.log( this.listaSpedizioniMod);
-      this.isShow1 = false;
-      this.isShow = true;
-      this.isShow2 = true;
+      this.isShowModifica = false;
+      this.isShowRicerca = true;
+      this.isShowTabella = true;
   }
 
   rimuovi(id: number) {
@@ -106,7 +113,7 @@ export class CrudspedizioniComponent implements OnInit {
       this.http.post<Spedizioni[]>(this.urlHost + "/cancellaSpedizioni", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
-    this.isShow2 = true;
+    this.isShowTabella = true;
   }
 }
 
