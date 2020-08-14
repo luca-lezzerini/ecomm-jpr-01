@@ -6,7 +6,9 @@
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.model.Spedizione;
+import com.aula1.ecom.repository.RepSped;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,41 +16,83 @@ import org.springframework.stereotype.Service;
  * @author gianmarco
  */
 @Service
-public class SrvSpedImpl implements SrvSped{
+public class SrvSpedImpl implements SrvSped {
+
+    @Autowired
+    RepSped repSped;
 
     @Override
     public Spedizione creaSpedizione(String codice, String nome, double prezzo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Long max = 0L;
+        List<Spedizione> arr = repSped.findAll();
+
+        for (int i = 0; i < arr.size(); i++) {      //
+            if (max <= arr.get(i).getId()) {        // serve a trovare l'id maggiore e incrementarlo di uno
+                max = arr.get(i).getId();           //
+            }                                       //
+        }
+        Spedizione spedizione = new Spedizione(max + 1, codice, nome, prezzo);
+        return spedizione;
     }
 
     @Override
     public List<Spedizione> aggiungiSpedizione(String codice, String nome, double prezzo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Spedizione> arr = repSped.findByOrderByIdAsc();  //
+        boolean control = false;                              //
+        for (int i = 0; arr.size() > i; i++) {              //
+            if (codice.equals(arr.get(i).getCodice()) || nome.equals(arr.get(i).getNome()) || prezzo == arr.get(i).getPrezzoKg()) {  //
+                control = true;                             //
+                break;                                      //
+            }                                              //
+        }                                                   //
+        if (control != true) {                                  //
+            repSped.save(creaSpedizione(codice, nome, prezzo));                    //
+        }                                                   //
+        return listaSpedizione();
     }
 
     @Override
     public List<Spedizione> cancellaSpedizione(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repSped.deleteById(id);
+        return listaSpedizione();
     }
 
     @Override
     public List<Spedizione> modificaSpedizione(Spedizione spedizione) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Spedizione> arr = repSped.findByOrderByIdAsc();
+        boolean control = false;
+        if (spedizione.getCodice() != null && !spedizione.getCodice().isEmpty()
+                && spedizione.getNome() != null && !spedizione.getNome().isEmpty()) {
+            for (int i = 0; arr.size() > i; i++) {
+                if (spedizione.getCodice().equals(arr.get(i).getCodice()) || spedizione.getNome().equals(arr.get(i).getNome())) {
+                    control = true;
+                    break;
+                }
+            }
+            if (control == false) {
+                repSped.save(spedizione);
+            }
+        }
+        return listaSpedizione();
     }
 
     @Override
     public Spedizione preparaModificaSpedizione(Spedizione spedizione) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.print(spedizione.getId() + " ");
+        System.out.print(spedizione.getCodice() + " ");
+        System.out.print(spedizione.getNome() + " ");
+        System.out.println(spedizione.getPrezzoKg());
+        return spedizione;
     }
 
     @Override
     public List<Spedizione> listaSpedizione() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return repSped.findByOrderByIdAsc();
     }
 
     @Override
     public List<Spedizione> cercaSpedizione(String codice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return repSped.findByCodiceOrderByIdAsc(codice);
     }
-    
+
 }
