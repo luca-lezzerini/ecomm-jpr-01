@@ -10,6 +10,7 @@ import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component'
 import { HomePageComponent } from './home-page/home-page.component';
 import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.component';
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
+import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
 
 
 
@@ -22,6 +23,7 @@ import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
     HomePageComponent,
     CrudanagraficheComponent,
     CrudcarelloComponent,
+    CrudspedizioniComponent,
 
   ],
   imports: [

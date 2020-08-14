@@ -2,8 +2,7 @@ import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Categoria } from './categoria';
 import { Component, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
+
 
 @Component({
   selector: 'app-crudcategoria',

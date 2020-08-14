@@ -18,5 +18,7 @@ export class HomePageComponent implements OnInit {
   crudCategoria(){
     this.router.navigateByUrl("/CRUDCategoria");
   }
-
+  crudSpedizioni(){
+    this.router.navigateByUrl("/CRUDSpedizioni");
+  }
 }

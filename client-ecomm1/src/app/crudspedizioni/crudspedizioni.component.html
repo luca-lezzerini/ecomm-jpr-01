@@ -4,10 +4,10 @@
 
 
 <br><br><br>
-<h1>CATEGORIE</h1>
+<h1>SPEDIZIONI</h1>
 <br>
 <div id="ricerca" *ngIf="!isShow">
-    <input type="text" placeholder = "Ricerca Categoria" [(ngModel)]="criterioRicerca">
+    <input type="text" placeholder = "Ricerca Spedizione" [(ngModel)]="criterioRicerca">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="cerca()">CERCA</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -25,19 +25,22 @@
 <br>
 <br>
 <fieldset>
-  <legend>Categorie</legend>
+  <legend>Spedizioni</legend>
     <div id="inputdati" *ngIf="!isShow1">
       <form name = "inputdati" id = "inputdati">
         <br>
           <table border="1" class="w3-table-all w3-large">
             <tr>
               <td>ID</td>
-              <td>DESCRIZIONE</td>
-              <td>NUOVA DESCRIZIONE</td>
+              <td>CODICE</td>
+              <td>NOME</td>
+              <td>PREZZO AL KG</td>
             </tr>
             <tr>
-              <td>{{listaCategoriaMod.id}}</td>
-              <td>{{listaCategoriaMod.descrizione}}</td>
+              <td>{{listaSpedizioniMod.id}}</td>
+              <td>{{listaSpedizioniMod.codice}}</td>
+              <td>{{listaSpedizioniMod.nome}}</td>
+              <td>{{listaSpedizioniMod.prezzoKg}}</td>
               <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
                 [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
             </tr>
@@ -63,16 +66,22 @@
       <tr>
         <td>ID</td>
         <td>DESCRIZIONE</td>
+        <td>CODICE</td>
+        <td>NOME</td>
+        <td>PREZZO AL KG</td>
         <td></td>
         <td></td>
       </tr>
-      <tr *ngFor="let l of listaCategoria; index as i">
+      <tr *ngFor="let l of listaSpedizioni; index as i">
         <td>{{l.id}}</td>
-        <td>{{l.descrizione}}</td>
-        <td><button (click)="selezionaModifica(listaCategoria[i])">MODIFICA</button></td>
-        <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
+        <td>{{l.codice}}</td>
+        <td>{{l.nome}}</td>
+        <td>{{l.prezzoKg}}</td>
+        <td><button (click)="selezionaModifica(listaSpedizioni[i])">MODIFICA</button></td>
+        <td><button (click)="rimuovi(listaSpedizioni[i].id)">RIMUOVI</button></td>
       </tr>
     </table>
   </form>
 </div>
+
 
