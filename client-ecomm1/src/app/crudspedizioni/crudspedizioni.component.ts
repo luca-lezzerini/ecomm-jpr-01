@@ -13,6 +13,8 @@ export class CrudspedizioniComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   criterioRicerca: string = "";
+  criterioRicerca1: string = "";
+  criterioRicerca2: string = "";
   aggiungiSpedizioni: string = "";
   descrizioneSpedizioni: string;
   descrizioneSpedizioniMod: string;
@@ -43,27 +45,26 @@ export class CrudspedizioniComponent implements OnInit {
     let p = this.criterioRicerca;
     if (p = this.criterioRicerca) {
       let ox: Observable<Spedizioni[]> =
-        this.http.post<Spedizioni[]>(this.urlHost + "/cercaSpedizioni", p);
+        this.http.post<Spedizioni[]>(this.urlHost + "/cercaSpedizione", p);
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni = r);
     } else {
       let ox: Observable<Spedizioni[]> =
-        this.http.post<Spedizioni[]>(this.urlHost + "/listaSpedizioni", p);
+        this.http.post<Spedizioni[]>(this.urlHost + "/listaSpedizione", p);
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni = r);
     }
     this.criterioRicerca = "";
     this.isShowTabella = false;
-
-
-
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
   }
 
   aggiungi() {
     /*let listaVecchia:Spedizioni[]=this.listaSpedizioni
     let p = this.criterioRicerca;
     let ox: Observable<Spedizioni[]> =
-      this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizioni", p);
+      this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
     this.risultatoAgg="";
@@ -74,11 +75,22 @@ export class CrudspedizioniComponent implements OnInit {
 
   }
 
+  confermaAggiungi() {
+
+  }
+
+  annullaAggiungi() {
+    this.isShowModifica = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = true;
+    this.isShowAggiungi = true;
+  }
+
   conferma(riga:string) {
       let p:Spedizioni =new Spedizioni()
       console.log(p)
       let ox: Observable<Spedizioni[]> =
-        this.http.post<Spedizioni[]>(this.urlHost + "/modificaSpedizioni", p);
+        this.http.post<Spedizioni[]>(this.urlHost + "/modificaSpedizione", p);
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni =r);
         this.rigaSelezionata=null
@@ -97,7 +109,7 @@ export class CrudspedizioniComponent implements OnInit {
   selezionaModifica(rigaSelezionata: Spedizioni) {
     let p:Spedizioni = rigaSelezionata
     let ox: Observable<Spedizioni> =
-      this.http.post<Spedizioni>(this.urlHost + "/preparaModificaSpedizioni", p);
+      this.http.post<Spedizioni>(this.urlHost + "/preparaModificaSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => p=r);
       this.listaSpedizioniMod=p
@@ -110,7 +122,7 @@ export class CrudspedizioniComponent implements OnInit {
   rimuovi(id: number) {
     let p = id;
     let ox: Observable<Spedizioni[]> =
-      this.http.post<Spedizioni[]>(this.urlHost + "/cancellaSpedizioni", p);
+      this.http.post<Spedizioni[]>(this.urlHost + "/cancellaSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
     this.isShowTabella = true;
