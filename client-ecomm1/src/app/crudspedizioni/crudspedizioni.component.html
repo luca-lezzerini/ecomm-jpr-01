@@ -31,10 +31,13 @@
       <td></td>
     </tr>
     <tr>
-      <td><input type="text"  [(ngModel)]="criterioRicerca"></td>
-      <td><input type="text1"  [(ngModel)]="criterioRicerca1"></td>
-      <td><input type="text2"  [(ngModel)]="criterioRicerca2"></td>
-      <td><button (click)="confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2)">CONFERMA</button></td>
+      <td><input type="text" name = "cod" id = "cod" onclick="aggiungi.cod.value='';"
+            [(ngModel)]="rigaSelezionata" ></td>
+      <td><input type="text1"  name = "nome" id = "nome" onclick="aggiungi.nome.value='';"
+            [(ngModel)]="rigaSelezionata1"></td>
+      <td><input type="text2"  name = "prez" id = "prez" onclick="aggiungi.prez.value='';"
+            [(ngModel)]="rigaSelezionata2"></td>
+      <td><button (click)="confermaAggiungi(rigaSelezionata1)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
@@ -63,12 +66,12 @@
               <td>{{listaSpedizioniMod.codice}}</td>
               <td>{{listaSpedizioniMod.nome}}</td>
               <td>{{listaSpedizioniMod.prezzoKg}}</td>
-              <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                [(ngModel)]="rigaSelezionata1" [ngModelOptions]="{standalone: true}" required></td>
-                <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                  [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{standalone: true}" required></td>
-                  <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                    [(ngModel)]="rigaSelezionata3" [ngModelOptions]="{standalone: true}" required></td>
+              <td><input type="text" name = "nuovocod" id = "nuovocod" onclick="inputdati.nuovocod.value='';"
+                        [(ngModel)]="rigaSelezionata" ></td>
+              <td><input type="text1"  name = "nuovonome" id = "nuovonome" onclick="inputdati.nuovonome.value='';"
+                        [(ngModel)]="rigaSelezionata1"></td>
+              <td><input type="text2"  name = "nuovoprez" id = "nuovoprez" onclick="inputdati.nuovoprez.value='';"
+                        [(ngModel)]="rigaSelezionata2"></td>
             </tr>
           </table>
       </form>
@@ -76,7 +79,7 @@
     <br>
     <br>
     <div id = "pulsanti" *ngIf="!isShowModifica">
-      <button (click)="conferma(listaSpedizioniMod.id,rigaSelezionata1,rigaSelezionata2,rigaSelezionata3)">CONFERMA</button>
+      <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -108,5 +111,3 @@
     </table>
   </form>
 </div>
-
-
