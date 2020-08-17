@@ -77,9 +77,9 @@ export class CrudspedizioniComponent implements OnInit {
 
   }
 
-  confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2) {
+  confermaAggiungi( codice: string, nome: string, prezzo: number) {
 
-    let p:Spedizioni=new Spedizioni(0,criterioRicerca,criterioRicerca1,criterioRicerca2)
+    let p: Spedizioni = new Spedizioni(0, codice, nome, prezzo)
     console.log(p)
       let ox: Observable<Spedizioni[]> =
         this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
