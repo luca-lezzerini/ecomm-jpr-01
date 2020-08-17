@@ -13,9 +13,9 @@ import com.aula1.ecom.model.Spedizione;
  * @author gianmarco
  */
 public interface SrvSped {
-   public Spedizione creaSpedizione(String codice,String nome,double prezzo);
+   public Spedizione creaSpedizione(Spedizione spedizione);
 
-    public List<Spedizione> aggiungiSpedizione(String codice,String nome,double prezzo);
+    public List<Spedizione> aggiungiSpedizione(Spedizione spedizione);
 
     public List<Spedizione> cancellaSpedizione(Long id);
 

@@ -32,9 +32,9 @@ public class ControllerSpedizione {
     @RequestMapping("/aggiungiSpedizione")
     @ResponseBody
 
-    public List aggiungiSpedizione(@RequestBody String codice, String nome, double prezzo) {
+    public List aggiungiSpedizione(@RequestBody Spedizione spedizione) {
 
-        return srvSped.aggiungiSpedizione(codice,nome,prezzo);
+        return srvSped.aggiungiSpedizione(spedizione);
     }
 
     @RequestMapping("/cancellaSpedizione")

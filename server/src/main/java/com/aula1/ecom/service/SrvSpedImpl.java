@@ -22,7 +22,7 @@ public class SrvSpedImpl implements SrvSped {
     RepSped repSped;
 
     @Override
-    public Spedizione creaSpedizione(String codice, String nome, double prezzo) {
+    public Spedizione creaSpedizione(Spedizione spedizione) {
         Long max = 0L;
         List<Spedizione> arr = repSped.findAll();
 
@@ -31,22 +31,22 @@ public class SrvSpedImpl implements SrvSped {
                 max = arr.get(i).getId();           //
             }                                       //
         }
-        Spedizione spedizione = new Spedizione(max + 1, codice, nome, prezzo);
-        return spedizione;
+        Spedizione spedizioneFinal = new Spedizione(max + 1, spedizione.getCodice(), spedizione.getNome(), spedizione.getPrezzoKg());
+        return spedizioneFinal;
     }
 
     @Override
-    public List<Spedizione> aggiungiSpedizione(String codice, String nome, double prezzo) {
+    public List<Spedizione> aggiungiSpedizione(Spedizione spedizione) {
         List<Spedizione> arr = repSped.findByOrderByIdAsc();  //
         boolean control = false;                              //
         for (int i = 0; arr.size() > i; i++) {              //
-            if (codice.equals(arr.get(i).getCodice()) || nome.equals(arr.get(i).getNome()) || prezzo == arr.get(i).getPrezzoKg()) {  //
+            if (spedizione.getCodice().equals(arr.get(i).getCodice()) || spedizione.getNome().equals(arr.get(i).getNome()) || spedizione.getPrezzoKg() == arr.get(i).getPrezzoKg()) {  //
                 control = true;                             //
                 break;                                      //
             }                                              //
         }                                                   //
         if (control != true) {                                  //
-            repSped.save(creaSpedizione(codice, nome, prezzo));                    //
+            repSped.save(creaSpedizione(spedizione));                    //
         }                                                   //
         return listaSpedizione();
     }
