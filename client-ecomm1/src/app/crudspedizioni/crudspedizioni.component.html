@@ -34,7 +34,7 @@
       <td><input type="text"  [(ngModel)]="criterioRicerca"></td>
       <td><input type="text1"  [(ngModel)]="criterioRicerca1"></td>
       <td><input type="text2"  [(ngModel)]="criterioRicerca2"></td>
-      <td><button (click)="confermaAggiungi(rigaSelezionata1)">CONFERMA</button></td>
+      <td><button (click)="confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
@@ -64,11 +64,11 @@
               <td>{{listaSpedizioniMod.nome}}</td>
               <td>{{listaSpedizioniMod.prezzoKg}}</td>
               <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
+                [(ngModel)]="rigaSelezionata1" [ngModelOptions]="{standalone: true}" required></td>
                 <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                  [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
+                  [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{standalone: true}" required></td>
                   <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                    [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
+                    [(ngModel)]="rigaSelezionata3" [ngModelOptions]="{standalone: true}" required></td>
             </tr>
           </table>
       </form>
@@ -76,7 +76,7 @@
     <br>
     <br>
     <div id = "pulsanti" *ngIf="!isShowModifica">
-      <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
+      <button (click)="conferma(listaSpedizioniMod.id,rigaSelezionata1,rigaSelezionata2,rigaSelezionata3)">CONFERMA</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

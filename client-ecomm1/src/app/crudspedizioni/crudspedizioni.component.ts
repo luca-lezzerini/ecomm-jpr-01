@@ -20,12 +20,14 @@ export class CrudspedizioniComponent implements OnInit {
   descrizioneSpedizioniMod: string;
   idMod:number=null
   listaSpedizioni: Spedizioni[];
-  listaSpedizioniMod:Spedizioni=new Spedizioni()
+  listaSpedizioniMod:Spedizioni=new Spedizioni(0,"0","0",0)
 
   listaSpedizioniFin: string
 
   rigaSelezionata: string;
   rigaSelezionata1: string;
+  rigaSelezionata2: string;
+  rigaSelezionata3: number;
   risultatoAgg:string="";
   listaVecchia:Spedizioni[]=[];
 
@@ -75,7 +77,14 @@ export class CrudspedizioniComponent implements OnInit {
 
   }
 
-  confermaAggiungi() {
+  confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2) {
+
+    let p:Spedizioni=new Spedizioni(0,criterioRicerca,criterioRicerca1,criterioRicerca2)
+    console.log(p)
+      let ox: Observable<Spedizioni[]> =
+        this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
+      let ss: Subscription = ox.subscribe(
+        r => this.listaSpedizioni =r);
 
   }
 
@@ -86,8 +95,8 @@ export class CrudspedizioniComponent implements OnInit {
     this.isShowAggiungi = true;
   }
 
-  conferma(riga:string) {
-      let p:Spedizioni =new Spedizioni()
+  conferma(id:number,codice:string,nome:string,prezzo:number) {
+      let p:Spedizioni=new Spedizioni(id,codice,nome,prezzo)
       console.log(p)
       let ox: Observable<Spedizioni[]> =
         this.http.post<Spedizioni[]>(this.urlHost + "/modificaSpedizione", p);
