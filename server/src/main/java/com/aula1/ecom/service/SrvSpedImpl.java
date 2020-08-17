@@ -64,7 +64,7 @@ public class SrvSpedImpl implements SrvSped {
         if (spedizione.getCodice() != null && !spedizione.getCodice().isEmpty()
                 && spedizione.getNome() != null && !spedizione.getNome().isEmpty()) {
             for (int i = 0; arr.size() > i; i++) {
-                if (spedizione.getCodice().equals(arr.get(i).getCodice()) || spedizione.getNome().equals(arr.get(i).getNome())) {
+                if (spedizione.getCodice().equals(arr.get(i).getCodice())&& spedizione.getId()!=arr.get(i).getId()) {
                     control = true;
                     break;
                 }
