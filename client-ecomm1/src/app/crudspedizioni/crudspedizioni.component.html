@@ -32,12 +32,12 @@
     </tr>
     <tr>
       <td><input type="text" name = "cod" id = "cod" onclick="aggiungi.cod.value='';"
-            [(ngModel)]="rigaSelezionata" ></td>
+            [(ngModel)]="criterioRicerca" [ngModelOptions]="{standalone: true}"></td>
       <td><input type="text1"  name = "nome" id = "nome" onclick="aggiungi.nome.value='';"
-            [(ngModel)]="rigaSelezionata1"></td>
+            [(ngModel)]="criterioRicerca1" [ngModelOptions]="{standalone: true}"></td>
       <td><input type="text2"  name = "prez" id = "prez" onclick="aggiungi.prez.value='';"
-            [(ngModel)]="rigaSelezionata2"></td>
-      <td><button (click)="confermaAggiungi(rigaSelezionata1)">CONFERMA</button></td>
+            [(ngModel)]="criterioRicerca2" [ngModelOptions]="{standalone: true}"></td>
+      <td><button (click)="confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
@@ -67,11 +67,11 @@
               <td>{{listaSpedizioniMod.nome}}</td>
               <td>{{listaSpedizioniMod.prezzoKg}}</td>
               <td><input type="text" name = "nuovocod" id = "nuovocod" onclick="inputdati.nuovocod.value='';"
-                        [(ngModel)]="rigaSelezionata" ></td>
+                        [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}"></td>
               <td><input type="text1"  name = "nuovonome" id = "nuovonome" onclick="inputdati.nuovonome.value='';"
-                        [(ngModel)]="rigaSelezionata1"></td>
+                        [(ngModel)]="rigaSelezionata1" [ngModelOptions]="{standalone: true}"></td>
               <td><input type="text2"  name = "nuovoprez" id = "nuovoprez" onclick="inputdati.nuovoprez.value='';"
-                        [(ngModel)]="rigaSelezionata2"></td>
+                        [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{standalone: true}"></td>
             </tr>
           </table>
       </form>
