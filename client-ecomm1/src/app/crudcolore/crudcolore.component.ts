@@ -21,6 +21,7 @@ export class CRUDColoreComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.colore.colore = "aaaaa";
   }
 
 
@@ -49,15 +50,22 @@ export class CRUDColoreComponent implements OnInit {
   aggiungi() {
     this.mostraForm = true;
   }
+
   conferma() {
-    this.http.post(this.urlHost + "/aggiungiColore", this.colore);
+    let b: Observable<Colore> =
+    this.http.post<Colore>(this.urlHost + "/aggiungiColore", this.colore.colore);
+    let ss: Subscription = b.subscribe(
+      c => this.listaColore.push(c)
+    );
     this.mostraForm = false;
     this.colore.colore = "";
   }
+
   annulla() {
     this.mostraForm = false;
     this.colore.colore = "";
   }
+
   modifica() {
     let b: Observable<Colore> =
       this.http.
@@ -71,11 +79,12 @@ export class CRUDColoreComponent implements OnInit {
       )
     );
   }
+/*
   rimuovi() {
     let esito: boolean;
     this.http.post(this.urlHost + "/rimuoviColore", this.colore);
     for (let i = 0; i < this.listaColore.length; i++) {
       if (true) { }
     }
-  }
+  }*/
 }

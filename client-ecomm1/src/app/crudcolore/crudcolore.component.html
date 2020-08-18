@@ -4,12 +4,13 @@
 <button (click)="cercaTutto()">Mostra Tutti i Colori</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
-<form *ngIf="mostraForm">
+<div class = "popupForm" *ngIf="mostraForm">
     <h3>Aggiungi colore</h3>
     <input type="text" [(ngModel)]="colore.colore">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
-</form>
+</div>
+{{colore.colore}}
 <br>
 <table>
     <tr>
@@ -18,7 +19,7 @@
     </tr>
     <tr *ngFor="let a of listaColore">
         <td>{{a.id}}</td>
-        <td>{{a.colore}}</td>
+        <td>{{aDaAggiungere}}</td>
         <td><button (click)="modifica()">Modifica</button> </td>
         <td><button (click)="rimuovi()">Rimuovi</button></td>
     </tr>

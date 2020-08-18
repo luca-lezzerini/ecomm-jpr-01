@@ -27,7 +27,7 @@ public class ControllerColore {
 
     //Prisacar
     //Si fa una ricerca in base ad una stringa e si aspetta come output tutti i colori 
-    //che contengono 
+    //che contengono tale stringa
     @RequestMapping(value = "/cercaColore")
     @ResponseBody
     public List<Colore> cerca(@RequestBody CercaDto dto) {
@@ -48,9 +48,13 @@ public class ControllerColore {
 @RequestMapping("/aggiungiColore")
     @ResponseBody
 
-    public List aggiungiColore(@RequestBody String dto) {
-
-        return srvColore.aggiungiColore(dto);
+    public Colore aggiungiColore(@RequestBody String dto) {
+        System.out.println("\n\nSono arrivato in aggiungi");
+        Colore colore = srvColore.creaColore(0L, dto);
+        srvColore.aggiungiColore(colore);
+        List<Colore> listaColori = srvColore.cerca(dto);
+        return listaColori.get(listaColori.size() -1);
+        
     }
     
     @RequestMapping("/cancella")

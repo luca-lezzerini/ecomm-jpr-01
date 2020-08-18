@@ -32,9 +32,8 @@ public class SrvColoreImpl implements SrvColore {
     }
 
     @Override
-    public List<Colore> aggiungiColore(String dto) {
-        repColore.save(dto);
-        return null;
+    public void aggiungiColore(Colore colore) {
+        repColore.save(colore);
         
     }
 
@@ -49,6 +48,11 @@ public class SrvColoreImpl implements SrvColore {
     public List<Colore> modifica(Colore colore) {
         repColore.save(colore);
        return null;
+    }
+
+    @Override
+    public Colore creaColore(long id, String descrizione) {
+        return new Colore(id, descrizione);
     }
     
 }

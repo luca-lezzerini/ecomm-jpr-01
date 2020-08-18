@@ -26,9 +26,6 @@ public class Colore implements Serializable {
     @Column(name = "colore")
     private String colore;
 
-    public Colore(Long id) {
-        this.id = id;
-    }
 
     public Colore() {
     }
@@ -37,31 +34,6 @@ public class Colore implements Serializable {
         this.id = id;
         this.colore = colore;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Colore other = (Colore) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-
     
     public Long getId() {
         return id;
