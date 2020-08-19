@@ -68,19 +68,8 @@ export class CRUDColoreComponent implements OnInit {
   modifica(colore: Colore) {
     console.log("\n\n" + colore.colore);
     this.http.post(this.urlHost + "/modificaColore", colore).subscribe({ error: e => console.error(e) });
-    /* @Deprecato
-    let b: Observable<Colore> 
-      this.http.
-        post<Colore>(this.urlHost + "/modificaColore", this.searchCriteria);
-    let ss: Subscription = b.subscribe(
-      coloreModificato => this.listaColore.forEach(elementoDaModificare => {
-        if (elementoDaModificare.id == coloreModificato.id) {
-          elementoDaModificare.colore = coloreModificato.colore;
-        }
-      }
-      )
-    );*/
   }
+  
   rimuovi(colore: Colore) {
     console.log("\n\n" + colore.colore);
     this.http.post(this.urlHost + "/rimuoviColore", colore).subscribe({ error: e => console.error(e) });
