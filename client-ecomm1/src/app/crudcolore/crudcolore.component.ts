@@ -13,7 +13,7 @@ import { Observable, Subscription } from 'rxjs';
 export class CRUDColoreComponent implements OnInit {
 
   searchCriteria = "";
-  colore: Colore;
+  colore: Colore = new Colore;
   listaColore: Colore[];
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
@@ -21,7 +21,6 @@ export class CRUDColoreComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.colore.colore = "aaaaa";
   }
 
 
@@ -79,12 +78,14 @@ export class CRUDColoreComponent implements OnInit {
       )
     );
   }
-/*
-  rimuovi() {
-    let esito: boolean;
-    this.http.post(this.urlHost + "/rimuoviColore", this.colore);
+  rimuovi(colore: Colore) {
+    console.log("\n\n" + colore.colore);
+    let colorino: Colore = colore;
+    this.http.post(this.urlHost + "/rimuoviColore", colorino).subscribe({ error: e => console.error(e) });
     for (let i = 0; i < this.listaColore.length; i++) {
-      if (true) { }
+      if (this.listaColore[i].id == colore.id) {
+        this.listaColore.splice(i,1);
+      }
     }
-  }*/
+  }
 }

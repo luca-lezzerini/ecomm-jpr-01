@@ -36,12 +36,6 @@ public class SrvColoreImpl implements SrvColore {
         repColore.save(colore);
         
     }
-
-    @Override
-    public List<Colore> cancella(Long id) {
-        repColore.deleteById(id);
-     return null;   
-    }
         
 
     @Override
@@ -53,6 +47,11 @@ public class SrvColoreImpl implements SrvColore {
     @Override
     public Colore creaColore(long id, String descrizione) {
         return new Colore(id, descrizione);
+    }
+
+    @Override
+    public void rimuoviColore(Long id) {
+        repColore.deleteById(id);
     }
     
 }

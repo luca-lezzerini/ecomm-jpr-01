@@ -5,12 +5,9 @@ import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.service.SrvColore;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,36 +30,34 @@ public class ControllerColore {
     public List<Colore> cerca(@RequestBody CercaDto dto) {
         System.out.println("\n\n\nSto cercando " + dto.getCerca() + "\n\n\n");      //a scopo di debugging
         List<Colore> listaColori = srvColore.cerca(dto.getCerca());
-        System.out.println("\n\n\nHo finito di cercare " + dto.getCerca() + "\n\n\n");
         return listaColori;
     }
-    
+
     @RequestMapping(value = "/mostraTuttiColori")
     @ResponseBody
     public List<Colore> mostraTutto() {
-        List<Colore> listaColori = srvColore.mostraTutto(); 
+        List<Colore> listaColori = srvColore.mostraTutto();
         return listaColori;
     }
-    
-    
-@RequestMapping("/aggiungiColore")
-    @ResponseBody
 
+    @RequestMapping("/aggiungiColore")
+    @ResponseBody
     public Colore aggiungiColore(@RequestBody String dto) {
         System.out.println("\n\nSono arrivato in aggiungi");
-        Colore colore = srvColore.creaColore(0L, dto);
-        srvColore.aggiungiColore(colore);
-        List<Colore> listaColori = srvColore.cerca(dto);
-        return listaColori.get(listaColori.size() -1);
-        
+        Colore colore = srvColore.creaColore(0L, dto);                          //Creo il colore che aggiungerò al database
+        srvColore.aggiungiColore(colore);                                       //aggiungo colore al database
+        List<Colore> listaColori = srvColore.cerca(dto);                        //prendo tutti i colori
+        return listaColori.get(listaColori.size() - 1);                         //e spedisco indietro l'ultimo elemento che ho appena aggiunto
+
     }
-    
-    @RequestMapping("/cancella")
+
+    @RequestMapping("/rimuoviColore")
     @ResponseBody
-    public List<Colore> cancella(@RequestBody Long id) {
-        return srvColore.cancella(id);
+    public void rimuoviColore(@RequestBody Colore colore) {
+        System.out.println("\n\nSono arrivato in rimuovi");
+        srvColore.rimuoviColore(colore.getId());
     }
-    
+
     @RequestMapping("/modifica")
     @ResponseBody
     public List<Colore> modifica(@RequestBody Colore colore) {

@@ -10,7 +10,6 @@
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
-{{colore.colore}}
 <br>
 <table>
     <tr>
@@ -19,8 +18,8 @@
     </tr>
     <tr *ngFor="let a of listaColore">
         <td>{{a.id}}</td>
-        <td>{{aDaAggiungere}}</td>
+        <td>{{a.colore}}</td>
         <td><button (click)="modifica()">Modifica</button> </td>
-        <td><button (click)="rimuovi()">Rimuovi</button></td>
+        <td><button (click)="rimuovi(a)">Rimuovi</button></td>
     </tr>
 </table>
