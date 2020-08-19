@@ -18,8 +18,8 @@
     </tr>
     <tr *ngFor="let a of listaColore">
         <td>{{a.id}}</td>
-        <td>{{a.colore}}</td>
-        <td><button (click)="modifica()">Modifica</button> </td>
+        <td><input type = "text" [(ngModel)]="a.colore"></td>
+        <td><button (click)="modifica(a)">Modifica</button> </td>
         <td><button (click)="rimuovi(a)">Rimuovi</button></td>
     </tr>
 </table>

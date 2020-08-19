@@ -65,8 +65,11 @@ export class CRUDColoreComponent implements OnInit {
     this.colore.colore = "";
   }
 
-  modifica() {
-    let b: Observable<Colore> =
+  modifica(colore: Colore) {
+    console.log("\n\n" + colore.colore);
+    this.http.post(this.urlHost + "/modificaColore", colore).subscribe({ error: e => console.error(e) });
+    /* @Deprecato
+    let b: Observable<Colore> 
       this.http.
         post<Colore>(this.urlHost + "/modificaColore", this.searchCriteria);
     let ss: Subscription = b.subscribe(
@@ -76,12 +79,11 @@ export class CRUDColoreComponent implements OnInit {
         }
       }
       )
-    );
+    );*/
   }
   rimuovi(colore: Colore) {
     console.log("\n\n" + colore.colore);
-    let colorino: Colore = colore;
-    this.http.post(this.urlHost + "/rimuoviColore", colorino).subscribe({ error: e => console.error(e) });
+    this.http.post(this.urlHost + "/rimuoviColore", colore).subscribe({ error: e => console.error(e) });
     for (let i = 0; i < this.listaColore.length; i++) {
       if (this.listaColore[i].id == colore.id) {
         this.listaColore.splice(i,1);

@@ -11,7 +11,7 @@ public interface SrvColore {
 
     public void aggiungiColore(Colore colore);
 
-    public List<Colore> modifica(Colore colore);
+    public void modificaColore(Colore colore);
 
     public Colore creaColore(long id, String descrizione);
 

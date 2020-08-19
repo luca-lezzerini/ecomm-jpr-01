@@ -11,15 +11,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepColore extends JpaRepository <Colore, Long> {
+public interface RepColore extends JpaRepository<Colore, Long> {
+
     //Prisacar
     public List<Colore> findByColoreLike(String cerca);                         //Faccio una ricerca che mi dia tutti i colori che contengono le lettere contenute nella stringa
-    public List<Colore> findByColore(String cercaNullo);
-    
-    public void save(String dto);
 
-    
-    
+    public List<Colore> findByColore(String cercaNullo);
 
 }
-

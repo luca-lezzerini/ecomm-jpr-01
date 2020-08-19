@@ -58,9 +58,10 @@ public class ControllerColore {
         srvColore.rimuoviColore(colore.getId());
     }
 
-    @RequestMapping("/modifica")
+    @RequestMapping("/modificaColore")
     @ResponseBody
-    public List<Colore> modifica(@RequestBody Colore colore) {
-        return srvColore.modifica(colore);
+    public void modificaColore(@RequestBody Colore colore) {
+        System.out.println("\n\nSono arrivato in modifica");
+        srvColore.modificaColore(colore);
     }
 }
