@@ -85,6 +85,9 @@ export class CrudspedizioniComponent implements OnInit {
       this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
+      this.isShowAggiungi = true;
+      this.isShowRicerca =false;
+      this.isShowTabella =false;
 
   }
 

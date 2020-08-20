@@ -5,15 +5,11 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
-<br /><br /><br />
+<br><br><br>
 <h1>SPEDIZIONI</h1>
-<br />
+<br>
 <div id="ricerca" *ngIf="!isShowRicerca">
-  <input
-    type="text"
-    placeholder="Ricerca Spedizione"
-    [(ngModel)]="criterioRicerca"
-  />
+  <input type="text" placeholder="Ricerca Spedizione" [(ngModel)]="criterioRicerca">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="cerca()">CERCA</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,7 +22,8 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="aggiungi()">AGGIUNGI</button>
 </div>
-<br /><br />
+<br>
+<br>
 <div id="aggiungi" *ngIf="!isShowAggiungi">
   <table border="1" class="w3-table-all w3-large">
     <tr>
@@ -37,30 +34,21 @@
       <td></td>
     </tr>
     <tr>
-      <td><input type="text" [(ngModel)]="criterioRicerca" /></td>
-      <td><input type="text1" [(ngModel)]="criterioRicerca1" /></td>
-      <td><input type="text2" [(ngModel)]="criterioRicerca2" /></td>
-      <td>
-        <button
-          (click)="
-            confermaAggiungi(
-              criterioRicerca,
-              criterioRicerca1,
-              criterioRicerca2
-            )
-          "
-        >
-          CONFERMA
-        </button>
-      </td>
+      <td><input type="text" placeholder="Codice" name="cod" id="cod" onclick="aggiungi.cod.value='';"
+            [(ngModel)]="criterioRicerca" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text1" placeholder="Nome" name="nome" id="nome" onclick="aggiungi.nome.value='';"
+            [(ngModel)]="criterioRicerca1" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text2" placeholder="Prezzo al kg"name="prez" id="prez" onclick="aggiungi.prez.value='';"
+            [(ngModel)]="criterioRicerca2" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><button (click)="confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
 </div>
-<br />
+<br>
 {{ this.risultatoAgg }}
-<br />
-<br />
+<br>
+<br>
 <fieldset>
   <legend>Spedizioni</legend>
   <div id="inputdati" *ngIf="!isShowModifica">
@@ -82,68 +70,29 @@
           <td>{{ listaSpedizioniMod.nome }}</td>
           <td>{{ listaSpedizioniMod.prezzoKg }}</td>
           <td>
-            <input
-              type="text"
-              name="nuovadescr"
-              id="nuovadescr"
-              onclick="inputdati.nuovadescr.value='';"
-              [(ngModel)]="rigaSelezionata1"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-          </td>
-
-          <td>
-            <input
-              type="text"
-              name="nuovadescr"
-              id="nuovadescr"
-              onclick="inputdati.nuovadescr.value='';"
-              [(ngModel)]="rigaSelezionata2"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-          </td>
-
-          <td>
-            <input
-              type="text"
-              name="nuovadescr"
-              id="nuovadescr"
-              onclick="inputdati.nuovadescr.value='';"
-              [(ngModel)]="rigaSelezionata3"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-          </td>
+            <input type="text" placeholder="{{listaSpedizioniMod.codice }}" name="nuovocod" id="nuovocod" onclick="inputdati.nuovocod.value='';"
+                [(ngModel)]="rigaSelezionata1"[ngModelOptions]="{ standalone: true }"required></td>
+          <td><input type="text1" placeholder="{{listaSpedizioniMod.nome }}" name="nuovonome" id="nuovonome" onclick="inputdati.nuovonome.value='';"
+                [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{ standalone: true }" required></td>
+          <td><input type="text2" placeholder="{{listaSpedizioniMod.prezzoKg }}" name="nuovoprez" id="nuovoprez" onclick="inputdati.nuovoprez.value='';"
+                [(ngModel)]="rigaSelezionata3" [ngModelOptions]="{ standalone: true }" required></td>
         </tr>
       </table>
     </form>
   </div>
-  <br />
-  <br />
+  <br>
+  <br>
   <div id="pulsanti" *ngIf="!isShowModifica">
-    <button
-      (click)="
-        conferma(
-          listaSpedizioniMod.id,
-          rigaSelezionata1,
-          rigaSelezionata2,
-          rigaSelezionata3
-        )
-      "
-    >
-      CONFERMA
-    </button>
+    <button (click)="conferma(listaSpedizioniMod.id,rigaSelezionata1,rigaSelezionata2,rigaSelezionata3)">CONFERMA</button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="annulla()">ANNULLA</button>
   </div>
 </fieldset>
-<br />
-<br />
-<br />
+<br>
+<br>
+<br>
 <div id="tabella" *ngIf="!isShowTabella">
   <form name="tabella" id="tabella">
     <table border="2" class="w3-table-all w3-large">
@@ -160,14 +109,8 @@
         <td>{{ l.codice }}</td>
         <td>{{ l.nome }}</td>
         <td>{{ l.prezzoKg }}</td>
-        <td>
-          <button (click)="selezionaModifica(listaSpedizioni[i])">
-            MODIFICA
-          </button>
-        </td>
-        <td>
-          <button (click)="rimuovi(listaSpedizioni[i].id)">RIMUOVI</button>
-        </td>
+        <td><button (click)="selezionaModifica(listaSpedizioni[i])">MODIFICA</button></td>
+        <td><button (click)="rimuovi(listaSpedizioni[i].id)">RIMUOVI</button></td>
       </tr>
     </table>
   </form>

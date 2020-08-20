@@ -38,7 +38,7 @@
             <tr>
               <td>{{listaCategoriaMod.id}}</td>
               <td>{{listaCategoriaMod.descrizione}}</td>
-              <td><input type="text"  name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
+              <td><input type="text"  placeholder = "{{listaCategoriaMod.descrizione}}" name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
                 [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
             </tr>
           </table>
