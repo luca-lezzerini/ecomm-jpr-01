@@ -29,7 +29,7 @@ public class ControllerImballo {
   @RequestMapping("/cercaImballo")
   @ResponseBody
    public List cercaImballo(@RequestBody Long id){
-       return srvImballo.cercaImballo(id);
+       return (List) srvImballo.cercaImballo(id);
    }
    
   @RequestMapping("/ricercaPerPrezzo")

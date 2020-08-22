@@ -29,8 +29,10 @@ public class SrvImballoImpl  implements SrvImballo {
     }
 
     @Override
-    public List<Imballo> cercaImballo(Long id) {
-        return repImballaggio.FindByOrderByIdAsc(id);
+    public Imballo cercaImballo(Long id) {
+        return repImballaggio.findById(id).get();
     }
+
+  
     
 }
