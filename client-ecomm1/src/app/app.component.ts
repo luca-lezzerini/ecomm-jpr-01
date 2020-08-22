@@ -35,5 +35,12 @@ export class AppComponent implements OnInit{
     this.router.navigateByUrl("/CRUDCategoria");
 
   }
+  crudSpedizioni(){
+    this.router.navigateByUrl("/CRUDSpedizioni");
+  }
+  crudImballo(){
+    this.router.navigateByUrl("/CRUDImballo");
+  }
+
 
 }

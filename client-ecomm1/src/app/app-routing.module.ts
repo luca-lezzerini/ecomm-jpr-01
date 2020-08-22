@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.component';
+import { CrudimballoComponent } from './crudimballo/crudimballo.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'CRUDCarello', component: CrudcarelloComponent },
   { path: 'CRUDAnagrafiche', component: CrudanagraficheComponent},
   { path: 'CRUDSpedizioni', component: CrudspedizioniComponent},
+  { path: 'CRUDImballo', component: CrudimballoComponent},
 
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];

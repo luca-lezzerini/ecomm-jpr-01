@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepSped extends JpaRepository<Spedizione ,Long> {
 
-    List<Spedizione> findByCodiceOrderByIdAsc(String descrizione);
+    List<Spedizione> findByCodiceOrderByIdAsc(String codice);
 
     List<Spedizione> findByOrderByIdAsc();
 }
