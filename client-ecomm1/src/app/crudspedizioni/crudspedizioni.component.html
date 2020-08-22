@@ -9,7 +9,7 @@
 <h1>SPEDIZIONI</h1>
 <br>
 <div id="ricerca" *ngIf="!isShowRicerca">
-  <input type="text" placeholder="Ricerca Spedizione" [(ngModel)]="criterioRicerca">
+  <input type="text" placeholder="Ricerca Spedizione x Codice" [(ngModel)]="criterioRicerca">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="cerca()">CERCA</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,13 +34,10 @@
       <td></td>
     </tr>
     <tr>
-      <td><input type="text" placeholder="Codice" name="cod" id="cod" onclick="aggiungi.cod.value='';"
-            [(ngModel)]="criterioRicerca" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><input type="text1" placeholder="Nome" name="nome" id="nome" onclick="aggiungi.nome.value='';"
-            [(ngModel)]="criterioRicerca1" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><input type="text2" placeholder="Prezzo al kg"name="prez" id="prez" onclick="aggiungi.prez.value='';"
-            [(ngModel)]="criterioRicerca2" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><button (click)="confermaAggiungi(criterioRicerca,criterioRicerca1,criterioRicerca2)">CONFERMA</button></td>
+      <td><input type="text" [(ngModel)]="criterioRicerca1" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text1" [(ngModel)]="criterioRicerca2" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text2" [(ngModel)]="criterioRicerca3" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><button (click)="confermaAggiungi(criterioRicerca1,criterioRicerca2,criterioRicerca3)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
@@ -69,12 +66,11 @@
           <td>{{ listaSpedizioniMod.codice }}</td>
           <td>{{ listaSpedizioniMod.nome }}</td>
           <td>{{ listaSpedizioniMod.prezzoKg }}</td>
-          <td>
-            <input type="text" placeholder="{{listaSpedizioniMod.codice }}" name="nuovocod" id="nuovocod" onclick="inputdati.nuovocod.value='';"
+          <td><input type="text" placeholder="{{listaSpedizioniMod.codice }}"
                 [(ngModel)]="rigaSelezionata1"[ngModelOptions]="{ standalone: true }"required></td>
-          <td><input type="text1" placeholder="{{listaSpedizioniMod.nome }}" name="nuovonome" id="nuovonome" onclick="inputdati.nuovonome.value='';"
+          <td><input type="text1" placeholder="{{listaSpedizioniMod.nome }}"
                 [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{ standalone: true }" required></td>
-          <td><input type="text2" placeholder="{{listaSpedizioniMod.prezzoKg }}" name="nuovoprez" id="nuovoprez" onclick="inputdati.nuovoprez.value='';"
+          <td><input type="text2" placeholder="{{listaSpedizioniMod.prezzoKg }}"
                 [(ngModel)]="rigaSelezionata3" [ngModelOptions]="{ standalone: true }" required></td>
         </tr>
       </table>

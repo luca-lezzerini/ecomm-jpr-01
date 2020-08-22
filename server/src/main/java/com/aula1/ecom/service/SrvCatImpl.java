@@ -83,7 +83,7 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> cercaCategoria(String descrizione) {
-        return repCat.findByDescrizioneOrderByIdAsc(descrizione);
+        return repCat.findByDescrizioneLike("%" +descrizione+ "%");
     }
 
     @Override

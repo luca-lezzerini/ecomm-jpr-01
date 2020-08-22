@@ -15,18 +15,10 @@ export class CrudcategoriaComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   criterioRicerca: string = "";
-  aggiungiCategoria: string = "";
-  descrizioneCategoria: string;
-  descrizioneCategoriaMod: string;
-  idMod:number=null
   listaCategoria: Categoria[];
   listaCategoriaMod:Categoria=new Categoria(0,"")
-
-  listaCategoriaFin: string
-
   rigaSelezionata: string
   risultatoAgg:string="";
-  listaVecchia:Categoria[]=[];
 
   isShowModifica: boolean = true;
   isShowRicerca: boolean = false;

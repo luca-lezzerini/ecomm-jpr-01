@@ -31,7 +31,8 @@ public class SrvSpedImpl implements SrvSped {
                 max = arr.get(i).getId();           //
             }                                       //
         }
-        Spedizione spedizioneFinal = new Spedizione(max + 1, spedizione.getCodice(), spedizione.getNome(), spedizione.getPrezzoKg());
+        Spedizione spedizioneFinal = new Spedizione(max + 1, spedizione.getCodice(), 
+                spedizione.getNome(), spedizione.getPrezzoKg());
         return spedizioneFinal;
     }
 
@@ -40,7 +41,9 @@ public class SrvSpedImpl implements SrvSped {
         List<Spedizione> arr = repSped.findByOrderByIdAsc();  //
         boolean control = false;                              //
         for (int i = 0; arr.size() > i; i++) {              //
-            if (spedizione.getCodice().equals(arr.get(i).getCodice()) || spedizione.getNome().equals(arr.get(i).getNome()) || spedizione.getPrezzoKg() == arr.get(i).getPrezzoKg()) {  //
+            if (spedizione.getCodice().equals(arr.get(i).getCodice()) || 
+                    spedizione.getNome().equals(arr.get(i).getNome()) || 
+                    spedizione.getPrezzoKg() == arr.get(i).getPrezzoKg()) {  //
                 control = true;                             //
                 break;                                      //
             }                                              //
