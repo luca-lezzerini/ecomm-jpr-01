@@ -12,6 +12,7 @@ import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.comp
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
 import { CrudimballoComponent } from './crudimballo/crudimballo.component';
+import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
 
 
 
@@ -26,6 +27,7 @@ import { CrudimballoComponent } from './crudimballo/crudimballo.component';
     CrudcarelloComponent,
     CrudspedizioniComponent,
     CrudimballoComponent,
+    CrudoffertaComponent,
 
   ],
   imports: [
