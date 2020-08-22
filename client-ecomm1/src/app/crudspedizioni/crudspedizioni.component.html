@@ -34,10 +34,10 @@
       <td></td>
     </tr>
     <tr>
-      <td><input type="text" [(ngModel)]="criterioRicerca1" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><input type="text1" [(ngModel)]="criterioRicerca2" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><input type="text2" [(ngModel)]="criterioRicerca3" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><button (click)="confermaAggiungi(criterioRicerca1,criterioRicerca2,criterioRicerca3)">CONFERMA</button></td>
+      <td><input type="text" [(ngModel)]="aggiungiCodice" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text1" [(ngModel)]="aggiungiNome" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text2" [(ngModel)]="aggiungiPrezzo" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><button (click)="confermaAggiungi(aggiungiCodice, aggiungiNome, aggiungiPrezzo)">CONFERMA</button></td>
       <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
@@ -67,11 +67,11 @@
           <td>{{ listaSpedizioniMod.nome }}</td>
           <td>{{ listaSpedizioniMod.prezzoKg }}</td>
           <td><input type="text" placeholder="{{listaSpedizioniMod.codice }}"
-                [(ngModel)]="rigaSelezionata1"[ngModelOptions]="{ standalone: true }"required></td>
+                [(ngModel)]="nuovoCodice"[ngModelOptions]="{ standalone: true }"required></td>
           <td><input type="text1" placeholder="{{listaSpedizioniMod.nome }}"
-                [(ngModel)]="rigaSelezionata2" [ngModelOptions]="{ standalone: true }" required></td>
+                [(ngModel)]="nuovoNome" [ngModelOptions]="{ standalone: true }" required></td>
           <td><input type="text2" placeholder="{{listaSpedizioniMod.prezzoKg }}"
-                [(ngModel)]="rigaSelezionata3" [ngModelOptions]="{ standalone: true }" required></td>
+                [(ngModel)]="nuovoPrezzo" [ngModelOptions]="{ standalone: true }" required></td>
         </tr>
       </table>
     </form>
@@ -79,7 +79,7 @@
   <br>
   <br>
   <div id="pulsanti" *ngIf="!isShowModifica">
-    <button (click)="conferma(listaSpedizioniMod.id,rigaSelezionata1,rigaSelezionata2,rigaSelezionata3)">CONFERMA</button>
+    <button (click)="conferma(listaSpedizioniMod.id, nuovoCodice, nuovoNome, nuovoPrezzo)">CONFERMA</button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
