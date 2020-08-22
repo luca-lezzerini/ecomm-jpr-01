@@ -41,6 +41,8 @@ export class AppComponent implements OnInit{
   crudImballo(){
     this.router.navigateByUrl("/CRUDImballo");
   }
-
+  crudOfferta(){
+    this.router.navigateByUrl("/CRUDOfferta");
+  }
 
 }
