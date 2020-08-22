@@ -15,21 +15,17 @@ export class CrudspedizioniComponent implements OnInit {
   criterioRicerca: string = "";
   criterioRicerca1: string = "";
   criterioRicerca2: string = "";
-  aggiungiSpedizioni: string = "";
-  descrizioneSpedizioni: string;
-  descrizioneSpedizioniMod: string;
-  idMod: number = null
+  criterioRicerca3: string = "";
+
   listaSpedizioni: Spedizioni[];
   listaSpedizioniMod: Spedizioni = new Spedizioni(0, "0", "0", 0)
-
-  listaSpedizioniFin: string
 
   rigaSelezionata: string;
   rigaSelezionata1: string;
   rigaSelezionata2: string;
   rigaSelezionata3: number;
   risultatoAgg: string = "";
-  listaVecchia: Spedizioni[] = [];
+
 
   isShowModifica: boolean = true;
   isShowRicerca: boolean = false;
@@ -63,21 +59,13 @@ export class CrudspedizioniComponent implements OnInit {
   }
 
   aggiungi() {
-    /*let listaVecchia:Spedizioni[]=this.listaSpedizioni
-    let p = this.criterioRicerca;
-    let ox: Observable<Spedizioni[]> =
-      this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
-    let ss: Subscription = ox.subscribe(
-      r => this.listaSpedizioni = r);
-    this.risultatoAgg="";
-    this.criterioRicerca = "";*/
     this.isShowAggiungi = false;
     this.isShowRicerca = true;
     this.isShowTabella = true;
 
   }
 
-  confermaAggiungi(codice, nome, prezzo) {
+  confermaAggiungi(codice:string, nome:string, prezzo:number) {
 
     let p: Spedizioni = new Spedizioni(0, codice, nome, prezzo);
     console.log(p)
@@ -88,6 +76,9 @@ export class CrudspedizioniComponent implements OnInit {
       this.isShowAggiungi = true;
       this.isShowRicerca =false;
       this.isShowTabella =false;
+      this.criterioRicerca1 = "";
+      this.criterioRicerca2 = "";
+      this.criterioRicerca3 = "";
 
   }
 
@@ -109,6 +100,9 @@ export class CrudspedizioniComponent implements OnInit {
     this.isShowModifica = true;
     this.isShowRicerca = false;
     this.isShowTabella = false;
+    this.rigaSelezionata1 = "";
+    this.rigaSelezionata2 = "";
+    this.rigaSelezionata3 = null;
   }
 
   annulla() {

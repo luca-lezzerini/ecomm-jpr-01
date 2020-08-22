@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 public interface RepCat extends JpaRepository<Categoria ,Long>  {
 List<Categoria> findByDescrizioneOrderByIdAsc(String descrizione);
 List<Categoria> findByOrderByIdAsc();
+List<Categoria> findByDescrizioneLike(String descrizione);        
 }
 
 
