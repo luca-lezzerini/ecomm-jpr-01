@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudimballiComponent } from './crudimballi.component';
+import { CrudimballoComponent } from './crudimballo.component';
 
-describe('CrudimballiComponent', () => {
-  let component: CrudimballiComponent;
-  let fixture: ComponentFixture<CrudimballiComponent>;
+describe('CrudimballoComponent', () => {
+  let component: CrudimballoComponent;
+  let fixture: ComponentFixture<CrudimballoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrudimballiComponent ]
+      declarations: [ CrudimballoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrudimballiComponent);
+    fixture = TestBed.createComponent(CrudimballoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

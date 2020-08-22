@@ -38,8 +38,8 @@ export class AppComponent implements OnInit{
   crudSpedizioni(){
     this.router.navigateByUrl("/CRUDSpedizioni");
   }
-  crudImballi(){
-    this.router.navigateByUrl("/CRUDImballi");
+  crudImballo(){
+    this.router.navigateByUrl("/CRUDImballo");
   }
 
 

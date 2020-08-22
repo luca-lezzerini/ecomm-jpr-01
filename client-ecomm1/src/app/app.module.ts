@@ -11,7 +11,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.component';
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
-import { CrudimballiComponent } from './crudimballi/crudimballi.component';
+import { CrudimballoComponent } from './crudimballo/crudimballo.component';
 
 
 
@@ -25,7 +25,7 @@ import { CrudimballiComponent } from './crudimballi/crudimballi.component';
     CrudanagraficheComponent,
     CrudcarelloComponent,
     CrudspedizioniComponent,
-    CrudimballiComponent,
+    CrudimballoComponent,
 
   ],
   imports: [
