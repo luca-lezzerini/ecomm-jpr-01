@@ -13,17 +13,20 @@ export class CrudspedizioniComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   criterioRicerca: string = "";
-  criterioRicerca1: string = "";
-  criterioRicerca2: string = "";
-  criterioRicerca3: string = "";
+
+  aggiungiCodice: string = "";
+  aggiungiNome: string = "";
+  aggiungiPrezzo: string = "";
 
   listaSpedizioni: Spedizioni[];
   listaSpedizioniMod: Spedizioni = new Spedizioni(0, "0", "0", 0)
 
   rigaSelezionata: string;
-  rigaSelezionata1: string;
-  rigaSelezionata2: string;
-  rigaSelezionata3: number;
+
+  nuovoCodice: string;
+  nuovoNome: string;
+  nuovoPrezzo: number;
+
   risultatoAgg: string = "";
 
 
@@ -76,9 +79,9 @@ export class CrudspedizioniComponent implements OnInit {
       this.isShowAggiungi = true;
       this.isShowRicerca =false;
       this.isShowTabella =false;
-      this.criterioRicerca1 = "";
-      this.criterioRicerca2 = "";
-      this.criterioRicerca3 = "";
+      this.aggiungiCodice = "";
+      this.aggiungiNome = "";
+      this.aggiungiPrezzo = null;
 
   }
 
@@ -100,9 +103,9 @@ export class CrudspedizioniComponent implements OnInit {
     this.isShowModifica = true;
     this.isShowRicerca = false;
     this.isShowTabella = false;
-    this.rigaSelezionata1 = "";
-    this.rigaSelezionata2 = "";
-    this.rigaSelezionata3 = null;
+    this.nuovoCodice = "";
+    this.nuovoNome = "";
+    this.nuovoPrezzo = null;
   }
 
   annulla() {
