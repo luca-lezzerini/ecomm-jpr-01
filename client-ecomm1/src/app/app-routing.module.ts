@@ -1,3 +1,4 @@
+import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
 import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
 import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
 import { CRUDTagliaComponent } from './crudtaglia/crudtaglia.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'CRUDAnagrafiche', component: CrudanagraficheComponent},
   { path: 'CRUDSpedizioni', component: CrudspedizioniComponent},
   { path: 'CRUDImballo', component: CrudimballoComponent},
+  { path: 'CRUDOfferta', component: CrudoffertaComponent},
 
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
