@@ -5,7 +5,7 @@
  */
 package com.aula1.ecom.controller;
 
-import com.aula1.ecom.model.Categoria;
+
 import com.aula1.ecom.model.Spedizione;
 import com.aula1.ecom.service.SrvSped;
 import java.util.List;
