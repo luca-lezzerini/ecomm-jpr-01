@@ -24,7 +24,7 @@ public class SrvImballoImpl  implements SrvImballo {
    
 
     @Override
-    public List<Imballo> RicercaPerPrezzo(Long id, Double prezzo) {
+    public List<Imballo> ricercaPerPrezzo(Long id, Double prezzo) {
        return repImballaggio.FindByIdAndPrezzo(id, prezzo);
     }
 
