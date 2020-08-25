@@ -14,5 +14,6 @@ import java.util.List;
  */
 public interface SrvImballo {
     public Imballo cercaImballo(Long id);
+    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione ,Double costo);
     public List<Imballo> ricercaPerCosto(Double costo);
 }

@@ -26,18 +26,18 @@ public class ControllerTaglia {
     @Autowired
     SrvTaglia srvTaglia;
 
-    @RequestMapping("/tutteLeTaglie")
+    @RequestMapping("/listaTaglia")
     @ResponseBody
-    public List<Taglia> tutteLeTaglie() {
+    public List<Taglia> listaTaglia() {
 
         System.out.println("provaprova");
-        return srvTaglia.tutteLeTaglie();
+        return srvTaglia.listaTaglia();
     }
 
-    @RequestMapping("/cancellaTaglie")
+    @RequestMapping("/cancellaTaglia")
     @ResponseBody
-    public void cancellaTaglie(@RequestBody Long id) {
-        srvTaglia.cancellaTaglie(id);
+    public void cancellaTaglia(@RequestBody Long id) {
+        srvTaglia.cancellaTaglia(id);
         System.out.println("provaCancella");
 
     }

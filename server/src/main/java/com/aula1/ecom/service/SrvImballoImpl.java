@@ -29,8 +29,13 @@ public class SrvImballoImpl  implements SrvImballo {
     }
 
     @Override
+    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione ,Double costo) {
+        return repImballaggio.findByDescrizioneAndCosto(descrizione , costo);
+    }
+
+    @Override
     public List<Imballo> ricercaPerCosto(Double costo) {
-        return repImballaggio.FindByCosto(costo);
+        return repImballaggio.findByCostoLessThan(costo);
     }
 
   

@@ -19,7 +19,7 @@ export class CrudimballoComponent implements OnInit {
   //aggiungiPrezzo: string = "";
 
   listaImballo: Imballo[];
-  listaImballoMod: Imballo = new Imballo(0, "0", 0)
+  listaImballoMod: Imballo = new Imballo(0, "", 0)
 
   rigaSelezionata: string;
 

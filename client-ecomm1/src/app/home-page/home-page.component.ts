@@ -15,10 +15,4 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  crudCategoria(){
-    this.router.navigateByUrl("/CRUDCategoria");
-  }
-  crudSpedizioni(){
-    this.router.navigateByUrl("/CRUDSpedizioni");
-  }
 }

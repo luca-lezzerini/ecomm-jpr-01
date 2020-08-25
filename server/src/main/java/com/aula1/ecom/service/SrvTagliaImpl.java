@@ -30,12 +30,12 @@ public class SrvTagliaImpl implements SrvTaglia {
 //        return repTaglia.findAll();
 //    }
     @Override
-    public List<Taglia> tutteLeTaglie() {
+    public List<Taglia> listaTaglia() {
         return repTaglia.findAll();
     }
 
     @Override
-    public void cancellaTaglie(Long id) {
+    public void cancellaTaglia(Long id) {
        repTaglia.deleteById(id);
     }
 
