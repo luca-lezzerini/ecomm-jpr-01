@@ -36,7 +36,8 @@ public class Offerta implements Serializable {
         this.descrizione = descrizione;
         this.scontoPercentuale = scontoPercentuale;
     }
-
+    public Offerta(){
+    }
     public Long getId() {
         return id;
     }
