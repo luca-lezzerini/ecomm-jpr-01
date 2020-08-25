@@ -1,1 +1,106 @@
 <h1>In costruzione</h1>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<br><br><br>
+<h1>IMBALLO</h1>
+<br>
+<div id="ricerca" *ngIf="!isShowRicerca">
+  <input type="text" placeholder="Ricerca Spedizione x Descrizione" [(ngModel)]="criterioRicerca">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="cerca()">CERCA</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="aggiungi()">AGGIUNGI</button>
+</div>
+<br>
+<br>
+<div id="aggiungi" *ngIf="!isShowAggiungi">
+  <table border="1" class="w3-table-all w3-large">
+    <tr>
+      <td>CODICE</td>
+      <td>NOME</td>
+      <td>PREZZO AL KG</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><input type="text1" [(ngModel)]="aggiungiDescrizione" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><input type="text2" [(ngModel)]="aggiungiCosto" [ngModelOptions]="{ standalone: true }"required></td>
+      <td><button (click)="confermaAggiungi(aggiungiDescrizione, aggiungiCosto)">CONFERMA</button></td>
+      <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
+    </tr>
+  </table>
+</div>
+<br>
+{{ this.risultatoAgg }}
+<br>
+<br>
+<fieldset>
+  <legend>Spedizioni</legend>
+  <div id="inputdati" *ngIf="!isShowModifica">
+    <form name="inputdati" id="inputdati">
+      <br>
+      <table border="1" class="w3-table-all w3-large">
+        <tr>
+          <td>ID</td>
+          <td>DESCRIZIONE</td>
+          <td>COSTO</td>
+          <td>NUOVA DESCRIZIONE</td>
+          <td>NUOVO COSTO</td>
+        </tr>
+        <tr>
+          <td>{{ listaImballoMod.id }}</td>
+          <td>{{ listaImballoMod.descrizione}</td>
+          <td>{{ listaImballoMod.costo }}</td>
+          <td><input type="text" placeholder="{{listaImballoMod.descrizione }}"
+                [(ngModel)]="nuovaDescrizione"[ngModelOptions]="{ standalone: true }"required></td>
+          <td><input type="text1" placeholder="{{listaImballoMod.costo }}"
+                [(ngModel)]="nuovoCosto" [ngModelOptions]="{ standalone: true }" required></td>    
+        </tr>
+      </table>
+    </form>
+  </div>
+  <br>
+  <br>
+  <div id="pulsanti" *ngIf="!isShowModifica">
+    <button (click)="conferma(listaImballoMod.id, nuovaDescrizione, nuovoCosto)">CONFERMA</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="annulla()">ANNULLA</button>
+  </div>
+</fieldset>
+<br>
+<br>
+<br>
+<div id="tabella" *ngIf="!isShowTabella">
+  <form name="tabella" id="tabella">
+    <table border="2" class="w3-table-all w3-large">
+      <tr>
+        <td>ID</td>      
+        <td>DESCRIZIONE</td>
+        <td>COSTO</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let l of listaImballo; index as i">
+        <td>{{ l.id }}</td>
+        <td>{{ l.descrizione }}</td>
+        <td>{{ l.costo }}</td>        
+        <td><button (click)="selezionaModifica(listaImballo[i])">MODIFICA</button></td>
+        <td><button (click)="rimuovi(listaImballo[i].id)">RIMUOVI</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
