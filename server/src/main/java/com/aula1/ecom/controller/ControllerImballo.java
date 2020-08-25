@@ -32,10 +32,16 @@ public class ControllerImballo {
        return (List) srvImballo.cercaImballo(id);
    }
    
-  @RequestMapping("/ricercaPerPrezzo")
+  @RequestMapping("/ricercaPerPrezzoEDescizione")
   @ResponseBody
-   public List ricercaPerPrezzo(@RequestBody String descrizione ,Double costo){
+   public List ricercaPerPrezzoEDescrizione(@RequestBody String descrizione ,Double costo){
        return srvImballo.ricercaPerCostoEDescrizione(descrizione , costo);
+   }
+   
+   @RequestMapping("/ricercaPerPrezzo")
+  @ResponseBody
+   public List ricercaPerPrezzo(@RequestBody Double costo){
+       return srvImballo.ricercaPerCosto(costo);
    }
    
 //    public Imballo cercaImballo(@ResponseBody Long id){
