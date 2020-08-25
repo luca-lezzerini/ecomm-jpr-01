@@ -17,6 +17,6 @@ public interface SrvTaglia {
     
 
 public List<Taglia> listaTaglia();
-public void cancellaTaglie(Long id);
+public void cancellaTaglia(Long id);
 
 }
