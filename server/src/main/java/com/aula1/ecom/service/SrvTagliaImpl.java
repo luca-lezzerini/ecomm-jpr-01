@@ -39,5 +39,10 @@ public class SrvTagliaImpl implements SrvTaglia {
        repTaglia.deleteById(id);
     }
 
+    @Override
+    public void modificaTaglia(Taglia taglia) {
+       repTaglia.save(taglia); 
+    }
+
     
 }

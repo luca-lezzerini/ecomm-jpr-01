@@ -41,4 +41,10 @@ public class ControllerTaglia {
         System.out.println("provaCancella");
 
     }
+    @RequestMapping("/modificaTaglia")
+    @ResponseBody
+    public void modificaTaglia(@RequestBody Taglia taglia) {
+        srvTaglia.modificaTaglia(taglia);
+        System.out.println("provaModifica");
+    }    
 }
