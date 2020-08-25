@@ -22,31 +22,35 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class ControllerImballo {
-    
+
     @Autowired
     SrvImballo srvImballo;
+
+    @RequestMapping("/cercaImballo")
+    @ResponseBody
+    public List cercaImballo(@RequestBody Long id) {
+        return (List) srvImballo.cercaImballo(id);
+    }
+
+    @RequestMapping("/ricercaPerPrezzoEDescizione")
+    @ResponseBody
+    public List ricercaPerPrezzoEDescrizione(@RequestBody String descrizione, Double costo) {
+        return srvImballo.ricercaPerCostoEDescrizione(descrizione, costo);
+    }
+
+    @RequestMapping("/ricercaPerPrezzo")
+    @ResponseBody
+    public List ricercaPerPrezzo(@RequestBody Double costo) {
+        return srvImballo.ricercaPerCosto(costo);
+    }
     
-  @RequestMapping("/cercaImballo")
-  @ResponseBody
-   public List cercaImballo(@RequestBody Long id){
-       return (List) srvImballo.cercaImballo(id);
-   }
-   
-  @RequestMapping("/ricercaPerPrezzoEDescizione")
-  @ResponseBody
-   public List ricercaPerPrezzoEDescrizione(@RequestBody String descrizione ,Double costo){
-       return srvImballo.ricercaPerCostoEDescrizione(descrizione , costo);
-   }
-   
-   @RequestMapping("/ricercaPerPrezzo")
-  @ResponseBody
-   public List ricercaPerPrezzo(@RequestBody Double costo){
-       return srvImballo.ricercaPerCosto(costo);
-   }
-   
+    @RequestMapping("/aggiungiImballo")
+    @ResponseBody
+    public void aggiungiImballo(@RequestBody Imballo imballo) {
+        srvImballo.aggiungiImballo(imballo);
+    }
+
 //    public Imballo cercaImballo(@ResponseBody Long id){
 //        return srvImballo.cercaImballo(id);
 //    }
-    
-    
 }

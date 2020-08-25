@@ -38,6 +38,11 @@ public class SrvImballoImpl  implements SrvImballo {
         return repImballaggio.findByCostoLessThan(costo);
     }
 
+    @Override
+    public void aggiungiImballo(Imballo imballo) {
+        repImballaggio.save(imballo);
+    }
+
   
     
 }
