@@ -18,7 +18,7 @@ export class CRUDTagliaComponent implements OnInit {
   aggiungiSigla: string = "";
 
   listaTaglia: Taglia[];
-  listaTagliaMod: Taglia = new Taglia(0, "0", "0")
+  listaTagliaMod: Taglia = new Taglia(0, "", "")
 
   rigaSelezionata: string;
 
@@ -78,7 +78,7 @@ export class CRUDTagliaComponent implements OnInit {
       this.isShowRicerca =false;
       this.isShowTabella =false;
       this.aggiungiDescrizione = "";
-      this.aggiungiSigla = null;
+      this.aggiungiSigla = "";
 
   }
 
@@ -101,7 +101,7 @@ export class CRUDTagliaComponent implements OnInit {
     this.isShowRicerca = false;
     this.isShowTabella = false;
     this.nuovaDescrizione = "";
-    this.nuovaSigla = null;
+    this.nuovaSigla = "";
   }
 
   annulla() {
