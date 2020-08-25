@@ -16,7 +16,7 @@ import java.util.List;
 public interface SrvTaglia {
     
 
-public List<Taglia> tutteLeTaglie();
+public List<Taglia> listaTaglia();
 public void cancellaTaglie(Long id);
 
 }

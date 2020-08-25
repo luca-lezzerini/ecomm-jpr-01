@@ -30,7 +30,7 @@ public class SrvTagliaImpl implements SrvTaglia {
 //        return repTaglia.findAll();
 //    }
     @Override
-    public List<Taglia> tutteLeTaglie() {
+    public List<Taglia> listaTaglia() {
         return repTaglia.findAll();
     }
 

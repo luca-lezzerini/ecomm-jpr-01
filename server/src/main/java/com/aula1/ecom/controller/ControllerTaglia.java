@@ -26,12 +26,12 @@ public class ControllerTaglia {
     @Autowired
     SrvTaglia srvTaglia;
 
-    @RequestMapping("/ListaTaglia")
+    @RequestMapping("/listaTaglia")
     @ResponseBody
-    public List<Taglia> tutteLeTaglie() {
+    public List<Taglia> listaTaglia() {
 
         System.out.println("provaprova");
-        return srvTaglia.tutteLeTaglie();
+        return srvTaglia.listaTaglia();
     }
 
     @RequestMapping("/cancellaTaglie")
