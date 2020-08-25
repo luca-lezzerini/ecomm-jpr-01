@@ -26,7 +26,7 @@ public class ControllerTaglia {
     @Autowired
     SrvTaglia srvTaglia;
 
-    @RequestMapping("/tutteLeTaglie")
+    @RequestMapping("/ListaTaglia")
     @ResponseBody
     public List<Taglia> tutteLeTaglie() {
 
