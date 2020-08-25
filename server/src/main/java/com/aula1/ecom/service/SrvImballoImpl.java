@@ -24,13 +24,13 @@ public class SrvImballoImpl  implements SrvImballo {
    
 
     @Override
-    public List<Imballo> ricercaPerPrezzo(Long id, Double prezzo) {
-       return repImballaggio.FindByIdAndPrezzo(id, prezzo);
+    public Imballo cercaImballo(Long id) {
+        return repImballaggio.findById(id).get();
     }
 
     @Override
-    public Imballo cercaImballo(Long id) {
-        return repImballaggio.findById(id).get();
+    public List<Imballo> ricercaPerCosto(Double costo) {
+        return repImballaggio.FindByCosto(costo);
     }
 
   

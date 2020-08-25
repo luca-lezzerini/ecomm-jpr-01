@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepImballaggio extends JpaRepository<Imballo , Long> {
      //List<Imballo> FindByOrderByIdAsc(Long id);
-     List<Imballo> FindByIdAndPrezzo(Long id, Double prezzo); 
+     List<Imballo> FindByCosto(Double costo); 
     
 }
