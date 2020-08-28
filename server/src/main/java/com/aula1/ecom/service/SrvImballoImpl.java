@@ -25,7 +25,7 @@ public class SrvImballoImpl  implements SrvImballo {
 
     @Override
     public Imballo cercaImballo(Long id) {
-        return repImballaggio.findById(id).get();
+        return repImballaggio.getOne(id);
     }
 
     @Override
