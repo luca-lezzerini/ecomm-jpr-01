@@ -14,7 +14,7 @@ export class CRUDColoreComponent implements OnInit {
 
   searchCriteria = "";
   colore: Colore = new Colore;
-  listaColore: Colore[];
+  listaColore: Colore[] = new Array ();
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
 
