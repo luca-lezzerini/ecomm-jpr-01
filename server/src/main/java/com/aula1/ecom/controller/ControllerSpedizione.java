@@ -55,13 +55,13 @@ public class ControllerSpedizione {
      
     @RequestMapping("/listaSpedizione")
     @ResponseBody
-    public List lista() {
+    public List<Spedizione> lista() {
         return srvSped.listaSpedizione();
     }
 
     @RequestMapping("/cercaSpedizione")
     @ResponseBody
-    public List cercaSpedizione(@RequestBody String codice) {
+    public List<Spedizione> cercaSpedizione(@RequestBody String codice) {
         return srvSped.cercaSpedizione(codice);
     }
 }

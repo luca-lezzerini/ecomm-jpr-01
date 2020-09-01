@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.controller;
 
+import com.aula1.ecom.dto.CategoriaDto;
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.service.SrvCat;
 import java.util.List;
@@ -25,42 +26,47 @@ public class ControllerCategorie {
 
     @Autowired
     SrvCat srvCat;
-//elimina
-//modifica
 
     @RequestMapping("/aggiungiCategoria")
     @ResponseBody
 
-    public List aggiungiCategoria(@RequestBody String dto) {
-
-        return srvCat.aggiungiCategoria(dto);
+    public CategoriaDto aggiungiCategoria(@RequestBody CategoriaDto dto) {
+        dto.setLista(srvCat.aggiungiCategoria(dto.getStringa()));
+        return dto;
     }
 
     @RequestMapping("/cancellaCategoria")
     @ResponseBody
-    public List<Categoria> cancella(@RequestBody Long id) {
-        return srvCat.cancellaCategoria(id);
+    public CategoriaDto cancella(@RequestBody CategoriaDto dto) {
+        dto.setLista(srvCat.cancellaCategoria(dto.getLungo()));
+        return dto;
     }
+
     @RequestMapping("/preparaModificaCategoria")
     @ResponseBody
-    public Categoria preparaModifica(@RequestBody Categoria categoria) {
-        return srvCat.preparaModificaCategoria(categoria);
+    public CategoriaDto preparaModifica(@RequestBody CategoriaDto dto) {
+        dto.setCategoria(srvCat.preparaModificaCategoria(dto.getCategoria()));
+        return dto;
     }
+
     @RequestMapping("/modificaCategoria")
     @ResponseBody
-    public List<Categoria> modificaCategoria(@RequestBody Categoria categoria) {
-        return srvCat.modificaCategoria(categoria);
+    public CategoriaDto modificaCategoria(@RequestBody CategoriaDto dto) {
+        dto.setLista(srvCat.modificaCategoria(dto.getCategoria()));
+        return dto;
     }
-     
+
     @RequestMapping("/listaCategoria")
     @ResponseBody
-    public List lista() {
-        return srvCat.listaCategoria();
+    public CategoriaDto lista(@RequestBody CategoriaDto dto) {
+        dto.setLista(srvCat.listaCategoria());
+        return dto;
     }
 
     @RequestMapping("/cercaCategoria")
     @ResponseBody
-    public List cercaCategoria(@RequestBody String descrizione) {
-        return srvCat.cercaCategoria(descrizione);
+    public CategoriaDto cercaCategoria(@RequestBody CategoriaDto dto) {
+        dto.setLista(srvCat.cercaCategoria(dto.getStringa()));
+        return dto;
     }
 }
