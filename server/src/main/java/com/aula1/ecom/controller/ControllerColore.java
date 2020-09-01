@@ -75,15 +75,15 @@ public class ControllerColore {
 
     @RequestMapping("/rimuoviColore")
     @ResponseBody
-    public void rimuoviColore(@RequestBody Colore colore) {
+    public void rimuoviColore(@RequestBody ColoreDto dto) {
         System.out.println("\n\nSono arrivato in rimuovi");
-        srvColore.rimuoviColore(colore.getId());
+        srvColore.rimuoviColore(dto.colore.getId());
     }
 
     @RequestMapping("/modificaColore")
     @ResponseBody
-    public void modificaColore(@RequestBody Colore colore) {
+    public void modificaColore(@RequestBody ColoreDto dto) {
         System.out.println("\n\nSono arrivato in modifica");
-        srvColore.modificaColore(colore);
+        srvColore.modificaColore(dto.colore);
     }
 }
