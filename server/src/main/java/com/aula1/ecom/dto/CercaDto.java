@@ -5,18 +5,21 @@
  */
 package com.aula1.ecom.dto;
 
+import com.aula1.ecom.model.Token;
+
 /**
  *
  * @author Prisacar
- * 
- * La classe è composta solo dalla stringa cerca con metodi get e set,
- * il costruttore col parametro cerca e quello senza parametri
- * la classe serve solo per intercettare ricerche basate su stringa dal client
- * 
+ *
+ * La classe è composta solo dalla stringa cerca con metodi get e set, il
+ * costruttore col parametro cerca e quello senza parametri la classe serve solo
+ * per intercettare ricerche basate su stringa dal client
+ *
  */
-public class CercaDto {
+public class CercaDto implements Tokenizabile {
 
     private String cerca;
+    private Token token;
 
     public CercaDto() {
     }
@@ -32,4 +35,15 @@ public class CercaDto {
     public void setCerca(String cerca) {
         this.cerca = cerca;
     }
+
+    @Override
+    public Token getToken() {
+        return token;
+    }
+
+    @Override
+    public void setToken(Token t) {
+        token = t;
+    }
+
 }
