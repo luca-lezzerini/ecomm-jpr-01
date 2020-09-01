@@ -1,6 +1,8 @@
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.ListaColoreDto;
 import com.aula1.ecom.model.Colore;
+import com.aula1.ecom.model.Token;
 import com.aula1.ecom.repository.RepColore;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,12 @@ public class SrvColoreImpl implements SrvColore {
     @Override
     public void rimuoviColore(Long id) {
         repColore.deleteById(id);
+    }
+
+    @Override
+    public ListaColoreDto creaListaColoreDto(List<Colore> listaColori, Token t) {
+        
+    return new ListaColoreDto (listaColori, t);
     }
     
 }

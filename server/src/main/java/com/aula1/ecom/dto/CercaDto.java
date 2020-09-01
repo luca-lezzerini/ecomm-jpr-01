@@ -24,10 +24,13 @@ public class CercaDto implements Tokenizabile {
     public CercaDto() {
     }
 
-    public CercaDto(String cerca) {
+    public CercaDto(String cerca, Token token) {
         this.cerca = cerca;
+        this.token = token;
     }
 
+    
+    
     public String getCerca() {
         return cerca;
     }

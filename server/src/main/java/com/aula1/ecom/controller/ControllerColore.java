@@ -1,6 +1,8 @@
 package com.aula1.ecom.controller;
 
 import com.aula1.ecom.dto.CercaDto;
+import com.aula1.ecom.dto.ColoreDto;
+import com.aula1.ecom.dto.ListaColoreDto;
 import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.model.Token;
 import com.aula1.ecom.service.SecurityService;
@@ -31,7 +33,7 @@ public class ControllerColore {
     //che contengono tale stringa
     @RequestMapping(value = "/cercaColore")
     @ResponseBody
-    public List<Colore> cerca(@RequestBody CercaDto dto) {
+    public ListaColoreDto cerca(@RequestBody CercaDto dto) {
         System.out.println("\n\n\nSto cercando " + dto.getCerca() + "\n\n\n");      //a scopo di debugging
         // recupera il token
         Token token = dto.getToken();
@@ -40,11 +42,11 @@ public class ControllerColore {
         // memorizzare il token in una variabile locale
         Token t = securityService.retrieveToken(token);
 
-        List< Colore> listaColori = srvColore.cerca(dto.getCerca());
-
+        List<Colore> listaColori = srvColore.cerca(dto.getCerca());
+        ListaColoreDto listaColoreDto =srvColore.creaListaColoreDto(listaColori, t);
         // restituisce il token
         // TODO
-        return listaColori;
+        return listaColoreDto;
     }
 
     @RequestMapping(value = "/mostraTuttiColori")
