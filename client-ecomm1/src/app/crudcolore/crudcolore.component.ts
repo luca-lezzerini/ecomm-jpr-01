@@ -1,3 +1,4 @@
+import { ListaColoreDto } from './lista-colore-dto';
 
 import { ColoreDto } from './colore-dto';
 import { TokenDto } from './token-dto';
@@ -30,12 +31,11 @@ export class CRUDColoreComponent implements OnInit {
 
   cerca() {
     let cercaDto = new CercaDto(this.searchCriteria, this.memoriaCondivisa.token);
-    let listaColoreDto: ColoreDto [];
-    let b: Observable<ColoreDto[]> =
+    let b: Observable<ListaColoreDto> =
       this.http.
-        post<ColoreDto[]>(this.urlHost + "/cercaColore", cercaDto);
+        post<ListaColoreDto>(this.urlHost + "/cercaColore", cercaDto);
     let ss: Subscription = b.subscribe(
-      c => listaColoreDto = c
+      c => this.listaColore = c.listaColori
     );
     this.searchCriteria = "";
     this.mostraForm = false;
