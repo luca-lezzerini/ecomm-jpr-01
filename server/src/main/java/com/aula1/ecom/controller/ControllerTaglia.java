@@ -5,7 +5,9 @@
  */
 package com.aula1.ecom.controller;
 
+import com.aula1.ecom.dto.TagliaRispostaDto;
 import com.aula1.ecom.model.Taglia;
+import com.aula1.ecom.service.SecurityService;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,13 @@ public class ControllerTaglia {
 
     @Autowired
     SrvTaglia srvTaglia;
+    
+    @Autowired
+    SecurityService securityService;
 
     @RequestMapping("/listaTaglia")
     @ResponseBody
-    public List<Taglia> listaTaglia() {
+    public TagliaRispostaDto listaTaglia() {
 
         System.out.println("provaprova");
         return srvTaglia.listaTaglia();

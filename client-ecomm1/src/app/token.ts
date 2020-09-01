@@ -1,6 +1,6 @@
 export class Token {
-    id = 0;
-    token : number;
+    id: string;
+    token : string;
     creazione: Date;
     scadenza: Date;
 } 

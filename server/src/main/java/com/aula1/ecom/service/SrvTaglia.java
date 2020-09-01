@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 package com.aula1.ecom.service;
-import com.aula1.ecom.model.Colore;
+
 import com.aula1.ecom.model.Taglia;
 import java.util.List;
-
 
 /**
  *
  * @author skunex
  */
 public interface SrvTaglia {
-    
 
-public List<Taglia> listaTaglia();
- public void cancellaTaglia(Long id);
- public void modificaTaglia(Taglia taglia);
+    List<Taglia> listaTaglia();
+
+    void cancellaTaglia(Long id);
+
+    void modificaTaglia(Taglia taglia);
 }
