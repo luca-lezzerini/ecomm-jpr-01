@@ -5,7 +5,6 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.repository.RepTaglia;
 import java.util.List;
@@ -22,17 +21,7 @@ public class SrvTagliaImpl implements SrvTaglia {
     @Autowired
     RepTaglia repTaglia;
 
-//    @Override
-//    public List<TagliaDto> listaTaglie(String sigla) {
-//        return repTaglia.f    }
-//    @Override
-//    public List<TagliaDto> tutteLeTaglie() {
-//        return repTaglia.findAll();
-//    }
-    @Override
-    public List<Taglia> listaTaglia() {
-        return repTaglia.findAll();
-    }
+
 
     @Override
     public void cancellaTaglia(Long id) {
@@ -42,6 +31,11 @@ public class SrvTagliaImpl implements SrvTaglia {
     @Override
     public void modificaTaglia(Taglia taglia) {
        repTaglia.save(taglia); 
+    }
+
+    @Override
+    public List<Taglia> listaTaglia() {
+       return repTaglia.findAll();
     }
 
     

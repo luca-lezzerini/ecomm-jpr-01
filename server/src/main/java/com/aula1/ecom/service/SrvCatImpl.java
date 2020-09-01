@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.CategoriaDto;
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.repository.RepCat;
 import java.util.List;
@@ -38,7 +39,7 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> aggiungiCategoria(String dto) {
-        List<Categoria> arr = repCat.findByOrderByIdAsc();  //
+        List<Categoria> arr = repCat.trovaPerId();  //
         boolean control = false;                              //
         for (int i = 0; arr.size() > i; i++) {              //
             if (dto.equals(arr.get(i).getDescrizione())) {  //
@@ -60,7 +61,7 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> modificaCategoria(Categoria categoria) {
-        List<Categoria> arr = repCat.findByOrderByIdAsc();
+        List<Categoria> arr = repCat.trovaPerId();
         boolean control = false;
         if(categoria.getDescrizione() != null && !categoria.getDescrizione().isEmpty()) {
         for (int i = 0; arr.size() > i; i++) {
@@ -78,12 +79,12 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public List<Categoria> listaCategoria() {
-        return repCat.findByOrderByIdAsc();
+        return repCat.trovaPerId();
     }
 
     @Override
-    public List<Categoria> cercaCategoria(String descrizione) {
-        return repCat.findByDescrizioneLike("%" +descrizione+ "%");
+    public List<Categoria> cercaCategoria(String descrizione ) {
+        return repCat.findByDescrizioneLike("%"+descrizione+"%");
     }
 
     @Override
