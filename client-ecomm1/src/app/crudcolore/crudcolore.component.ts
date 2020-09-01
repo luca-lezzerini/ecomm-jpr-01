@@ -1,9 +1,11 @@
+import { TokenDto } from './token-dto';
 
 import { CercaDto } from './cerca-dto';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
+import { Token } from '../token';
 
 @Component({
   selector: 'app-crudcolore',
@@ -18,14 +20,14 @@ export class CRUDColoreComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private token: Token) { }
 
   ngOnInit(): void {
   }
 
 
   cerca() {
-    let criterioCerca = new CercaDto(this.searchCriteria);
+    let criterioCerca = new CercaDto(this.searchCriteria, this.token);
     let b: Observable<Colore[]> =
       this.http.
         post<Colore[]>(this.urlHost + "/cercaColore", criterioCerca);
@@ -37,9 +39,10 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   cercaTutto() {
+    let tokenDto = new TokenDto (this.token);
     let b: Observable<Colore[]> =
       this.http.
-        get<Colore[]>(this.urlHost + "/mostraTuttiColori");
+        post<Colore[]>(this.urlHost + "/cercaColore", tokenDto);
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
