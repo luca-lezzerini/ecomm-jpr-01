@@ -4,7 +4,6 @@ import com.aula1.ecom.dto.CercaDto;
 import com.aula1.ecom.dto.ColoreDto;
 import com.aula1.ecom.dto.ListaColoreDto;
 import com.aula1.ecom.model.Colore;
-import com.aula1.ecom.model.Token;
 import com.aula1.ecom.service.SecurityService;
 import com.aula1.ecom.service.SrvColore;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ControllerColore {
         Token t = securityService.retrieveToken(token);
 
         List<Colore> listaColori = srvColore.cerca(dto.getCerca());
-        ListaColoreDto listaColoreDto =srvColore.creaListaColoreDto(listaColori, t);
+        ListaColoreDto listaColoreDto = srvColore.creaListaColoreDto(listaColori, t);
         // restituisce il token
         // TODO
         return listaColoreDto;
@@ -51,19 +50,24 @@ public class ControllerColore {
 
     @RequestMapping(value = "/mostraTuttiColori")
     @ResponseBody
-    public List<Colore> mostraTutto() {
+    public ListaColoreDto mostraTutto(@RequestBody TokenDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
         List<Colore> listaColori = srvColore.mostraTutto();
-        return listaColori;
+        ListaColoreDto listaColoreDto =srvColore.creaListaColoreDto(listaColori, t);
+        return listaColoreDto;
     }
 
     @RequestMapping("/aggiungiColore")
     @ResponseBody
-    public Colore aggiungiColore(@RequestBody String dto) {
+    public ColoreDto aggiungiColore(@RequestBody CercaDto dto) {
         System.out.println("\n\nSono arrivato in aggiungi");
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
         Colore colore = srvColore.creaColore(0L, dto);                          //Creo il colore che aggiungerò al database
         srvColore.aggiungiColore(colore);                                       //aggiungo colore al database
         List<Colore> listaColori = srvColore.cerca(dto);                        //prendo tutti i colori
-        return listaColori.get(listaColori.size() - 1);                         //e spedisco indietro l'ultimo elemento che ho appena aggiunto
+        return srvColore.creaListaColoreDto(listaColori.get(listaColori.size() - 1), t);                         //e spedisco indietro l'ultimo elemento che ho appena aggiunto
 
     }
 

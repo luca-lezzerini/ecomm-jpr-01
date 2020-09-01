@@ -1,6 +1,7 @@
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.dto.ListaColoreDto;
+import com.aula1.ecom.dto.ColoreDto;
 import com.aula1.ecom.model.Colore;
 import com.aula1.ecom.model.Token;
 import com.aula1.ecom.repository.RepColore;
@@ -21,13 +22,13 @@ public class SrvColoreImpl implements SrvColore {
     //Prisacar
     @Override
     public List<Colore> cerca(String cerca) {
-        if (cerca.equals("")){
+        if (cerca.equals("")) {
             return repColore.findByColore(cerca);
-        }else{
+        } else {
             return repColore.findByColoreLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
         }
     }
-    
+
     @Override
     public List<Colore> mostraTutto() {
         return repColore.findAll();
@@ -36,9 +37,8 @@ public class SrvColoreImpl implements SrvColore {
     @Override
     public void aggiungiColore(Colore colore) {
         repColore.save(colore);
-        
+
     }
-        
 
     @Override
     public void modificaColore(Colore colore) {
@@ -57,12 +57,12 @@ public class SrvColoreImpl implements SrvColore {
 
     @Override
     public ListaColoreDto creaListaColoreDto(List<Colore> listaColori, Token t) {
-        
-    return new ListaColoreDto (listaColori, t);
+
+        return new ListaColoreDto(listaColori, t);
     }
-    
+
+    @Override
+    public ColoreDto creaListaColoreDto(Colore colore, Token t) {
+        return new ColoreDto(colore, t);
+    }
 }
-    
-        
-        
-    
