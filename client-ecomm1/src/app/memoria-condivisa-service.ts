@@ -7,5 +7,6 @@ import { Token } from "./token";
 export class MemoriaCondivisaService {
 
     token: Token;
+    
     constructor() { }
 }

@@ -1,9 +1,9 @@
 import { Token } from './../token';
 export class CercaDto {
     cerca: string;
-    tokenAttuale: Token;
+    token: Token;
     constructor(criterioCerca: string, token: Token){
         this.cerca = criterioCerca;
-        this.tokenAttuale = token;
+        this.token = token;
     }
 }
