@@ -38,7 +38,7 @@ public class SrvOffertaImpl implements SrvOfferta {
 
     @Override
     public List<Offerta> aggiungiOfferta(Offerta offerta) {
-        List<Offerta> arr = repOfferta.findByOrderById();  //
+        List<Offerta> arr = repOfferta.trovaPerId();  //
         boolean control = false;                              //
         for (int i = 0; arr.size() > i; i++) {              //
             if (offerta.getCodice().equals(arr.get(i).getCodice())
@@ -62,7 +62,7 @@ public class SrvOffertaImpl implements SrvOfferta {
 
     @Override
     public List<Offerta> modificaOfferta(Offerta offerta) {
-        List<Offerta> arr = repOfferta.findByOrderById();
+        List<Offerta> arr = repOfferta.trovaPerId();
         boolean control = false;
         if (offerta.getCodice() != null && !offerta.getCodice().isEmpty()
                 && offerta.getDescrizione() != null && !offerta.getDescrizione().isEmpty()) {
@@ -90,12 +90,12 @@ public class SrvOffertaImpl implements SrvOfferta {
 
     @Override
     public List<Offerta> listaOfferta() {
-        return repOfferta.findByOrderById();
+        return repOfferta.trovaPerId();
     }
 
     @Override
     public List<Offerta> cercaOfferta(String codice) {
-        return repOfferta.findByCodiceOrderByIdAsc(codice);
+        return repOfferta.trovaPerCodice(codice);
     }
 
 }

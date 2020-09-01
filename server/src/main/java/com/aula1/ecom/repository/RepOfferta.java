@@ -19,10 +19,10 @@ public interface RepOfferta extends JpaRepository<Offerta, Long> {
 
     //   List<Offerta> findByOrderByIdAsc();
     @Query("SELECT o FROM Offerta o ORDER BY Id")
-    List<Offerta> findByOrderById();
+    List<Offerta> trovaPerId();
 
-    //   List<Offerta> findByCodiceOrderByIdAsc(String codice);
+    //   List<Offerta> trovaPerCodice(String codice);
     @Query("SELECT o FROM Offerta o WHERE o.codice = :codice ORDER BY Id")
-    List<Offerta> findByCodiceOrderByIdAsc(@Param("codice") String codice);
+    List<Offerta> trovaPerCodice(@Param("codice") String codice);
     
 }

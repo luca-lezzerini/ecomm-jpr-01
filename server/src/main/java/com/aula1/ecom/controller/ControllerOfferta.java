@@ -50,13 +50,13 @@ public class ControllerOfferta {
      
     @RequestMapping("/listaOfferta")
     @ResponseBody
-    public List lista() {
+    public List<Offerta> lista() {
         return srvOfferta.listaOfferta();
     }
 
     @RequestMapping("/cercaOfferta")
     @ResponseBody
-    public List cercaOfferta(@RequestBody String codice) {
+    public List<Offerta> cercaOfferta(@RequestBody String codice) {
         return srvOfferta.cercaOfferta(codice);
     }
 }
