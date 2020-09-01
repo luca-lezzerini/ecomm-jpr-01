@@ -1,6 +1,4 @@
 import { ListaColoreDto } from './lista-colore-dto';
-
-import { ColoreDto } from './colore-dto';
 import { TokenDto } from './token-dto';
 
 import { CercaDto } from './cerca-dto';
@@ -9,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
 import { MemoriaCondivisaService } from '../memoria-condivisa-service';
+import { ColoreDto } from './colore-dto';
 
 @Component({
   selector: 'app-crudcolore',
@@ -43,11 +42,11 @@ export class CRUDColoreComponent implements OnInit {
 
   cercaTutto() {
     let tokenDto = new TokenDto (this.memoriaCondivisa.token);
-    let b: Observable<Colore[]> =
+    let b: Observable<ListaColoreDto> =
       this.http.
-        post<Colore[]>(this.urlHost + "/cercaColore", tokenDto);
+        post<ListaColoreDto>(this.urlHost + "/mostraTuttiColori", tokenDto);
     let ss: Subscription = b.subscribe(
-      c => this.listaColore = c
+      c => this.listaColore = c.listaColori
     );
     this.mostraForm = false;
   }
@@ -57,11 +56,11 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   conferma() {
-    let criterioCerca = new CercaDto(this.aggiungiColore, this.memoriaCondivisa.token);
-    let b: Observable<Colore> =
-    this.http.post<Colore>(this.urlHost + "/aggiungiColore", criterioCerca);
+    let nuovoColore = new CercaDto(this.aggiungiColore, this.memoriaCondivisa.token);
+    let b: Observable<ColoreDto> =
+    this.http.post<ColoreDto>(this.urlHost + "/aggiungiColore", nuovoColore);
     let ss: Subscription = b.subscribe(
-      c => this.listaColore.push(c)
+      c => this.listaColore.push(c.colore)
     );
     this.mostraForm = false;
     this.aggiungiColore = "";
@@ -74,12 +73,14 @@ export class CRUDColoreComponent implements OnInit {
 
   modifica(colore: Colore) {
     console.log("\n\n" + colore.colore);
-    this.http.post(this.urlHost + "/modificaColore", colore).subscribe({ error: e => console.error(e) });
+    let coloreDto = new ColoreDto (colore, this.memoriaCondivisa.token);
+    this.http.post(this.urlHost + "/modificaColore", coloreDto).subscribe({ error: e => console.error(e) });
   }
   
   rimuovi(colore: Colore) {
     console.log("\n\n" + colore.colore);
-    this.http.post(this.urlHost + "/rimuoviColore", colore).subscribe({ error: e => console.error(e) });
+    let coloreDto = new ColoreDto (colore, this.memoriaCondivisa.token);
+    this.http.post(this.urlHost + "/rimuoviColore", coloreDto).subscribe({ error: e => console.error(e) });
     for (let i = 0; i < this.listaColore.length; i++) {
       if (this.listaColore[i].id == colore.id) {
         this.listaColore.splice(i,1);
