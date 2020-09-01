@@ -1,9 +1,13 @@
 
+import { ColoreDto } from './colore-dto';
+import { TokenDto } from './token-dto';
+
 import { CercaDto } from './cerca-dto';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
+import { MemoriaCondivisaService } from '../memoria-condivisa-service';
 
 @Component({
   selector: 'app-crudcolore',
@@ -13,33 +17,34 @@ import { Observable, Subscription } from 'rxjs';
 export class CRUDColoreComponent implements OnInit {
 
   searchCriteria = "";
-  colore: Colore = new Colore;
+  aggiungiColore = "";
   listaColore: Colore[] = new Array ();
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService) { }
 
   ngOnInit(): void {
   }
 
 
   cerca() {
-    let criterioCerca = new CercaDto(this.searchCriteria);
-    let b: Observable<Colore[]> =
+    /*let cercaDto = new CercaDto(this.searchCriteria, this.memoriaCondivisa.token);
+    let b: Observable<ColoreDto[]> =
       this.http.
-        post<Colore[]>(this.urlHost + "/cercaColore", criterioCerca);
+        post<ColoreDto[]>(this.urlHost + "/cercaColore", cercaDto);
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
     this.searchCriteria = "";
-    this.mostraForm = false;
+    this.mostraForm = false;*/
   }
 
   cercaTutto() {
+    let tokenDto = new TokenDto (this.memoriaCondivisa.token);
     let b: Observable<Colore[]> =
       this.http.
-        get<Colore[]>(this.urlHost + "/mostraTuttiColori");
+        post<Colore[]>(this.urlHost + "/cercaColore", tokenDto);
     let ss: Subscription = b.subscribe(
       c => this.listaColore = c
     );
@@ -51,18 +56,19 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   conferma() {
+    let criterioCerca = new CercaDto(this.aggiungiColore, this.memoriaCondivisa.token);
     let b: Observable<Colore> =
-    this.http.post<Colore>(this.urlHost + "/aggiungiColore", this.colore.colore);
+    this.http.post<Colore>(this.urlHost + "/aggiungiColore", criterioCerca);
     let ss: Subscription = b.subscribe(
       c => this.listaColore.push(c)
     );
     this.mostraForm = false;
-    this.colore.colore = "";
+    this.aggiungiColore = "";
   }
 
   annulla() {
     this.mostraForm = false;
-    this.colore.colore = "";
+    this.aggiungiColore = "";
   }
 
   modifica(colore: Colore) {
