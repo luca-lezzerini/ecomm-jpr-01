@@ -19,4 +19,6 @@ public interface SrvTaglia {
     void cancellaTaglia(Long id);
 
     void modificaTaglia(Taglia taglia);
+
+
 }

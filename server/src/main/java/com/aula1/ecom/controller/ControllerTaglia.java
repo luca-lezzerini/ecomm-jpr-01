@@ -33,10 +33,13 @@ public class ControllerTaglia {
 
     @RequestMapping("/listaTaglia")
     @ResponseBody
-    public TagliaRispostaDto listaTaglia() {
+    public List<Taglia> listaTaglia(@RequestBody TagliaRispostaDto dto) {
 
         System.out.println("provaprova");
-        return srvTaglia.listaTaglia();
+         List<Taglia> listaTaglia = srvTaglia.listaTaglia();
+
+       
+        return listaTaglia;
     }
 
     @RequestMapping("/cancellaTaglia")
