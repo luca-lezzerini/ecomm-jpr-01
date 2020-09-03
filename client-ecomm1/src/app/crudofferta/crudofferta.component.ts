@@ -37,7 +37,9 @@ export class CrudoffertaComponent implements OnInit {
   isShowTabella: boolean = false;
   isShowAggiungi: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.cerca();
+  }
 
   ngOnInit(): void {
 
@@ -45,6 +47,7 @@ export class CrudoffertaComponent implements OnInit {
 
 
   cerca() {
+    console.log("Entrato in cerca");
     let p = this.criterioRicerca;
     if (p = this.criterioRicerca) {
       let ox: Observable<Offerta[]> =
@@ -55,7 +58,7 @@ export class CrudoffertaComponent implements OnInit {
       let ox: Observable<Offerta[]> =
         this.http.post<Offerta[]>(this.urlHost + "/listaOfferta", p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaOfferte= r);
+        r => this.listaOfferte = r);
     }
     this.criterioRicerca = "";
     this.isShowTabella = false;
@@ -64,13 +67,15 @@ export class CrudoffertaComponent implements OnInit {
   }
 
   aggiungi() {
+    console.log("Entrato in aggiungi");
     this.isShowAggiungi = false;
     this.isShowRicerca = true;
     this.isShowTabella = true;
 
   }
 
-  confermaAggiungi(codice:string, descrizione:string, sconto:number) {
+  confermaAggiungi(codice: string, descrizione: string, sconto: number) {
+    console.log("Entrato in confermaAggiungi");
 
     let p: Offerta = new Offerta(0, codice, descrizione, sconto);
     console.log(p)
@@ -78,16 +83,17 @@ export class CrudoffertaComponent implements OnInit {
       this.http.post<Offerta[]>(this.urlHost + "/aggiungiOfferta", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaOfferte = r);
-      this.isShowAggiungi = true;
-      this.isShowRicerca =false;
-      this.isShowTabella =false;
-      this.aggiungiCodice = "";
-      this.aggiungiDescrizione = "";
-      this.aggiungiSconto = null;
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
+    this.aggiungiCodice = "";
+    this.aggiungiDescrizione = "";
+    this.aggiungiSconto = null;
 
   }
 
   annullaAggiungi() {
+    console.log("Entrato in annullaAggiungi");
     this.isShowModifica = true;
     this.isShowRicerca = false;
     this.isShowTabella = true;
@@ -95,6 +101,7 @@ export class CrudoffertaComponent implements OnInit {
   }
 
   conferma(id: number, codice: string, descrizione: string, sconto: number) {
+    console.log("Entrato in conferma");
     let p: Offerta = new Offerta(id, codice, descrizione, sconto)
     console.log(p)
     let ox: Observable<Offerta[]> =
@@ -111,6 +118,7 @@ export class CrudoffertaComponent implements OnInit {
   }
 
   annulla() {
+    console.log("Entrato in annulla");
     this.isShowModifica = true;
     this.isShowRicerca = false;
     this.isShowTabella = false;
@@ -118,6 +126,7 @@ export class CrudoffertaComponent implements OnInit {
   }
 
   selezionaModifica(rigaSelezionata: Offerta) {
+    console.log("Entrato in selezionaModifica");
     let p: Offerta = rigaSelezionata
     let ox: Observable<Offerta> =
       this.http.post<Offerta>(this.urlHost + "/preparaModificaOfferta", p);
@@ -131,6 +140,7 @@ export class CrudoffertaComponent implements OnInit {
   }
 
   rimuovi(id: number) {
+    console.log("Entrato in rimuovi");
     let p = id;
     let ox: Observable<Offerta[]> =
       this.http.post<Offerta[]>(this.urlHost + "/cancellaOfferta", p);

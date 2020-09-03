@@ -95,7 +95,7 @@ public class SrvOffertaImpl implements SrvOfferta {
 
     @Override
     public List<Offerta> cercaOfferta(String codice) {
-        return repOfferta.trovaPerCodice(codice);
+        return repOfferta.trovaPerCodiceODescrizione(codice);
     }
 
 }

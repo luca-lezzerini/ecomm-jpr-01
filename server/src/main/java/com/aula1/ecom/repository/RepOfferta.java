@@ -21,8 +21,10 @@ public interface RepOfferta extends JpaRepository<Offerta, Long> {
     @Query("SELECT o FROM Offerta o ORDER BY Id")
     List<Offerta> trovaPerId();
 
-    //   List<Offerta> trovaPerCodice(String codice);
-    @Query("SELECT o FROM Offerta o WHERE o.codice = :codice ORDER BY Id")
-    List<Offerta> trovaPerCodice(@Param("codice") String codice);
+    //   List<Offerta> trovaPerCodiceODescrizione(String codice);
+    @Query("SELECT o FROM Offerta o WHERE o.codice like %:criterio% or"
+            + " o.descrizione like %:criterio%"
+            + " ORDER BY o.descrizione")
+    List<Offerta> trovaPerCodiceODescrizione(@Param("criterio") String codice);
     
 }
