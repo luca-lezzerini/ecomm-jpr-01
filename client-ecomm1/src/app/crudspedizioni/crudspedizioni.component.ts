@@ -68,7 +68,7 @@ export class CrudspedizioniComponent implements OnInit {
 
   }
 
-  confermaAggiungi(codice:string, nome:string, prezzo:number) {
+  confermaAggiungi(codice: string, nome: string, prezzo: number) {
 
     let p: Spedizioni = new Spedizioni(0, codice, nome, prezzo);
     console.log(p)
@@ -76,12 +76,12 @@ export class CrudspedizioniComponent implements OnInit {
       this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
-      this.isShowAggiungi = true;
-      this.isShowRicerca =false;
-      this.isShowTabella =false;
-      this.aggiungiCodice = "";
-      this.aggiungiNome = "";
-      this.aggiungiPrezzo = null;
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
+    this.aggiungiCodice = "";
+    this.aggiungiNome = "";
+    this.aggiungiPrezzo = null;
 
   }
 
@@ -120,9 +120,13 @@ export class CrudspedizioniComponent implements OnInit {
     let ox: Observable<Spedizioni> =
       this.http.post<Spedizioni>(this.urlHost + "/preparaModificaSpedizione", p);
     let ss: Subscription = ox.subscribe(
-      r => p = r);
-    this.listaSpedizioniMod = p
-    console.log(this.listaSpedizioniMod);
+      r => {
+        this.listaSpedizioniMod = r;
+        this.nuovoCodice = r.codice;
+        this.nuovoNome = r.nome;
+        this.nuovoPrezzo = r.prezzoKg;
+        console.log(this.listaSpedizioniMod);
+      });
     this.isShowModifica = false;
     this.isShowRicerca = true;
     this.isShowTabella = true;
