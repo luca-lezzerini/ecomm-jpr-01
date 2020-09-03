@@ -66,11 +66,11 @@
           <td>{{ listaSpedizioniMod.codice }}</td>
           <td>{{ listaSpedizioniMod.nome }}</td>
           <td>{{ listaSpedizioniMod.prezzoKg }}</td>
-          <td><input type="text" placeholder="{{listaSpedizioniMod.codice }}"
+          <td><input type="text" 
                 [(ngModel)]="nuovoCodice"[ngModelOptions]="{ standalone: true }"required></td>
-          <td><input type="text1" placeholder="{{listaSpedizioniMod.nome }}"
+          <td><input type="text1" 
                 [(ngModel)]="nuovoNome" [ngModelOptions]="{ standalone: true }" required></td>
-          <td><input type="text2" placeholder="{{listaSpedizioniMod.prezzoKg }}"
+          <td><input type="text2" 
                 [(ngModel)]="nuovoPrezzo" [ngModelOptions]="{ standalone: true }" required></td>
         </tr>
       </table>
