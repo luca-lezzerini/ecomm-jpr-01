@@ -95,7 +95,7 @@ public class SrvSpedImpl implements SrvSped {
 
     @Override
     public List<Spedizione> cercaSpedizione(String codice) {
-        return repSped.findByCodiceOrderByIdAsc(codice);
+        return repSped.searchByCodiceNome(codice);
     }
 
 }
