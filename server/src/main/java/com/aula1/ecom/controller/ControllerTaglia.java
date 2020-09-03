@@ -5,12 +5,16 @@
  */
 package com.aula1.ecom.controller;
 
-import com.aula1.ecom.dto.TagliaRispostaDto;
+import com.aula1.ecom.dto.ListaTaglieDto;
+import com.aula1.ecom.dto.TagliaDto;
+import com.aula1.ecom.dto.TokenDto;
 import com.aula1.ecom.model.Taglia;
+import com.aula1.ecom.model.Token;
 import com.aula1.ecom.service.SecurityService;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,32 +31,41 @@ public class ControllerTaglia {
 
     @Autowired
     SrvTaglia srvTaglia;
-    
+
     @Autowired
     SecurityService securityService;
 
     @RequestMapping("/listaTaglia")
     @ResponseBody
-    public List<Taglia> listaTaglia(@RequestBody TagliaRispostaDto dto) {
-
+    public ListaTaglieDto listaTaglia(@RequestBody TokenDto dto) {
         System.out.println("provaprova");
-         List<Taglia> listaTaglia = srvTaglia.listaTaglia();
-
-       
-        return listaTaglia;
+        
+        Token t = dto.getToken();
+        t = securityService.retrieveToken(t);
+        
+        List<Taglia> listaTaglia = srvTaglia.listaTaglia();
+        
+        ListaTaglieDto risposta = new ListaTaglieDto(t, listaTaglia);
+        
+        return risposta;
     }
 
     @RequestMapping("/cancellaTaglia")
     @ResponseBody
-    public void cancellaTaglia(@RequestBody Long id) {
-        srvTaglia.cancellaTaglia(id);
+    public ListaTaglieDto cancellaTaglia(@RequestBody TagliaDto dto) {
+        // TODO gestire token
+        srvTaglia.cancellaTaglia(dto.getTaglia().getId());
+        
         System.out.println("provaCancella");
+        // FIXME: gestire correttamente
+        return new ListaTaglieDto();
 
     }
+
     @RequestMapping("/modificaTaglia")
     @ResponseBody
     public void modificaTaglia(@RequestBody Taglia taglia) {
         srvTaglia.modificaTaglia(taglia);
         System.out.println("provaModifica");
-    }    
+    }
 }

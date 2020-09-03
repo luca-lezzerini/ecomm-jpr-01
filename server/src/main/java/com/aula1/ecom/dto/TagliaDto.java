@@ -13,17 +13,16 @@ import java.util.List;
  *
  * @author Niccolò Micozzi
  */
-public class TagliaRispostaDto implements Tokenizabile {
+public class TagliaDto implements Tokenizabile {
 
     private Taglia taglia;
     private Token token;
-    private List<Taglia> taglie;
 
-    public TagliaRispostaDto(Taglia taglia) {
+    public TagliaDto(Taglia taglia) {
         this.taglia = taglia;
     }
 
-    public TagliaRispostaDto() {
+    public TagliaDto() {
     }
 
     @Override
@@ -44,11 +43,4 @@ public class TagliaRispostaDto implements Tokenizabile {
         this.taglia = taglia;
     }
 
-    public List<Taglia> getTaglie() {
-        return taglie;
-    }
-
-    public void setTaglie(List<Taglia> taglie) {
-        this.taglie = taglie;
-    }
 }
