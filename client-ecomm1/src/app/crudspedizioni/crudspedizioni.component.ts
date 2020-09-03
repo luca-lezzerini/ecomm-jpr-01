@@ -44,7 +44,7 @@ export class CrudspedizioniComponent implements OnInit {
 
   cerca() {
     let p = this.criterioRicerca;
-    if (p = this.criterioRicerca) {
+    if (p) {
       let ox: Observable<Spedizioni[]> =
         this.http.post<Spedizioni[]>(this.urlHost + "/cercaSpedizione", p);
       let ss: Subscription = ox.subscribe(
@@ -55,7 +55,6 @@ export class CrudspedizioniComponent implements OnInit {
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni = r);
     }
-    this.criterioRicerca = "";
     this.isShowTabella = false;
     this.isShowAggiungi = true;
     this.isShowRicerca = false;
