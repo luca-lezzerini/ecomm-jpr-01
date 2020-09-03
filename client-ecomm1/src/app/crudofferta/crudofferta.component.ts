@@ -32,10 +32,10 @@ export class CrudoffertaComponent implements OnInit {
   risultatoAgg: string = "";
 
 
-  isShowModifica: boolean = true;
-  isShowRicerca: boolean = false;
+  isShowModifica: boolean = false;
+  isShowRicerca: boolean = true;
   isShowTabella: boolean = false;
-  isShowAggiungi: boolean = true;
+  isShowAggiungi: boolean = false;
 
   constructor(private http: HttpClient) {
     this.cerca();
@@ -61,17 +61,18 @@ export class CrudoffertaComponent implements OnInit {
         r => this.listaOfferte = r);
     }
     this.criterioRicerca = "";
-    this.isShowTabella = false;
-    this.isShowAggiungi = true;
-    this.isShowRicerca = false;
+    this.isShowTabella = true;
+    this.isShowAggiungi = false;
+    this.isShowRicerca = true;
+    this.isShowModifica = false;
   }
 
   aggiungi() {
     console.log("Entrato in aggiungi");
-    this.isShowAggiungi = false;
-    this.isShowRicerca = true;
-    this.isShowTabella = true;
-
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
+    this.isShowModifica = false;
   }
 
   confermaAggiungi(codice: string, descrizione: string, sconto: number) {
@@ -83,9 +84,10 @@ export class CrudoffertaComponent implements OnInit {
       this.http.post<Offerta[]>(this.urlHost + "/aggiungiOfferta", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaOfferte = r);
-    this.isShowAggiungi = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    this.isShowAggiungi = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
+    this.isShowModifica = false;
     this.aggiungiCodice = "";
     this.aggiungiDescrizione = "";
     this.aggiungiSconto = null;
@@ -94,10 +96,10 @@ export class CrudoffertaComponent implements OnInit {
 
   annullaAggiungi() {
     console.log("Entrato in annullaAggiungi");
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
     this.isShowTabella = true;
-    this.isShowAggiungi = true;
+    this.isShowAggiungi = false;
   }
 
   conferma(id: number, codice: string, descrizione: string, sconto: number) {
@@ -109,9 +111,10 @@ export class CrudoffertaComponent implements OnInit {
     let ss: Subscription = ox.subscribe(
       r => this.listaOfferte = r);
     this.rigaSelezionata = null
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
+    this.isShowAggiungi = false;
     this.nuovoCodice = "";
     this.nuovaDescrizione = "";
     this.nuovoSconto = null;
@@ -119,9 +122,10 @@ export class CrudoffertaComponent implements OnInit {
 
   annulla() {
     console.log("Entrato in annulla");
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
+    this.isShowAggiungi = false;
     this.criterioRicerca = "";
   }
 
@@ -134,9 +138,10 @@ export class CrudoffertaComponent implements OnInit {
       r => p = r);
     this.listaOffertaMod = p
     console.log(this.listaOffertaMod);
-    this.isShowModifica = false;
-    this.isShowRicerca = true;
-    this.isShowTabella = true;
+    this.isShowModifica = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
+    this.isShowAggiungi = false;
   }
 
   rimuovi(id: number) {
@@ -146,8 +151,11 @@ export class CrudoffertaComponent implements OnInit {
       this.http.post<Offerta[]>(this.urlHost + "/cancellaOfferta", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaOfferte = r);
-    this.isShowTabella = true;
-  }
+      this.isShowModifica = false;
+      this.isShowRicerca = true;
+      this.isShowTabella = true;
+      this.isShowAggiungi = false;
+    }
 }
 
 
