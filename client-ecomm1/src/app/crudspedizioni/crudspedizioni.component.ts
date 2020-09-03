@@ -18,7 +18,7 @@ export class CrudspedizioniComponent implements OnInit {
   aggiungiNome: string = "";
   aggiungiPrezzo: string = "";
 
-  listaSpedizioni: Spedizioni[];
+  listaSpedizioni: Spedizioni[] = [];
   listaSpedizioniMod: Spedizioni = new Spedizioni(0, "0", "0", 0)
 
   rigaSelezionata: string;
@@ -30,12 +30,14 @@ export class CrudspedizioniComponent implements OnInit {
   risultatoAgg: string = "";
 
 
-  isShowModifica: boolean = true;
-  isShowRicerca: boolean = false;
-  isShowTabella: boolean = false;
-  isShowAggiungi: boolean = true;
+  isShowModifica: boolean = false;
+  isShowRicerca: boolean = true;
+  isShowTabella: boolean = true;
+  isShowAggiungi: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.cerca();
+  }
 
   ngOnInit(): void {
 
@@ -43,31 +45,43 @@ export class CrudspedizioniComponent implements OnInit {
 
 
   cerca() {
+    console.log("Siamo in cerca");
     let p = this.criterioRicerca;
     if (p) {
+      console.log("Siamo in cerca con un criterio");
       let ox: Observable<Spedizioni[]> =
         this.http.post<Spedizioni[]>(this.urlHost + "/cercaSpedizione", p);
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni = r);
     } else {
+      console.log("Siamo in cerca per mostrare tutti");
       let ox: Observable<Spedizioni[]> =
         this.http.post<Spedizioni[]>(this.urlHost + "/listaSpedizione", p);
       let ss: Subscription = ox.subscribe(
         r => this.listaSpedizioni = r);
     }
-    this.isShowTabella = false;
-    this.isShowAggiungi = true;
-    this.isShowRicerca = false;
+    this.isShowTabella = true;
+    this.isShowAggiungi = false;
+    this.isShowRicerca = true;
   }
 
   aggiungi() {
-    this.isShowAggiungi = false;
-    this.isShowRicerca = true;
-    this.isShowTabella = true;
+    console.log("Siamo in aggiungi");
+
+    //resetto i campi del form
+    this.aggiungiCodice = "";
+    this.aggiungiNome = "";
+    this.aggiungiPrezzo = "";
+
+    // attivo e disattivo quanto necessario
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
 
   }
 
   confermaAggiungi(codice: string, nome: string, prezzo: number) {
+    console.log("Siamo in confermaAggiungi");
 
     let p: Spedizioni = new Spedizioni(0, codice, nome, prezzo);
     console.log(p)
@@ -75,9 +89,9 @@ export class CrudspedizioniComponent implements OnInit {
       this.http.post<Spedizioni[]>(this.urlHost + "/aggiungiSpedizione", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
-    this.isShowAggiungi = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    this.isShowAggiungi = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
     this.aggiungiCodice = "";
     this.aggiungiNome = "";
     this.aggiungiPrezzo = null;
@@ -85,13 +99,15 @@ export class CrudspedizioniComponent implements OnInit {
   }
 
   annullaAggiungi() {
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
+    console.log("Siamo in annullaAggiungi");
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
     this.isShowTabella = true;
-    this.isShowAggiungi = true;
+    this.isShowAggiungi = false;
   }
 
   conferma(id: number, codice: string, nome: string, prezzo: number) {
+    console.log("Siamo in conferma");
     let p: Spedizioni = new Spedizioni(id, codice, nome, prezzo)
     console.log(p)
     let ox: Observable<Spedizioni[]> =
@@ -99,22 +115,24 @@ export class CrudspedizioniComponent implements OnInit {
     let ss: Subscription = ox.subscribe(
       r => this.listaSpedizioni = r);
     this.rigaSelezionata = null
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
     this.nuovoCodice = "";
     this.nuovoNome = "";
     this.nuovoPrezzo = null;
   }
 
   annulla() {
-    this.isShowModifica = true;
-    this.isShowRicerca = false;
-    this.isShowTabella = false;
+    console.log("Siamo in annulla");
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
     this.criterioRicerca = "";
   }
 
   selezionaModifica(rigaSelezionata: Spedizioni) {
+    console.log("Siamo in selezionaModifica");
     let p: Spedizioni = rigaSelezionata
     let ox: Observable<Spedizioni> =
       this.http.post<Spedizioni>(this.urlHost + "/preparaModificaSpedizione", p);
@@ -126,17 +144,22 @@ export class CrudspedizioniComponent implements OnInit {
         this.nuovoPrezzo = r.prezzoKg;
         console.log(this.listaSpedizioniMod);
       });
-    this.isShowModifica = false;
-    this.isShowRicerca = true;
-    this.isShowTabella = true;
+    this.isShowModifica = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
   }
 
   rimuovi(id: number) {
+    console.log("Siamo in rimuovi");
     let p = id;
     let ox: Observable<Spedizioni[]> =
       this.http.post<Spedizioni[]>(this.urlHost + "/cancellaSpedizione", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaSpedizioni = r);
+      r => {
+        this.listaSpedizioni = r;
+        console.log(this.listaSpedizioni);
+        console.log(this.isShowTabella);
+      });
     this.isShowTabella = true;
   }
 }

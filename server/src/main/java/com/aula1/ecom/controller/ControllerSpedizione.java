@@ -5,7 +5,6 @@
  */
 package com.aula1.ecom.controller;
 
-
 import com.aula1.ecom.model.Spedizione;
 import com.aula1.ecom.service.SrvSped;
 import java.util.List;
@@ -26,42 +25,46 @@ public class ControllerSpedizione {
 
     @Autowired
     SrvSped srvSped;
-//elimina
-//modifica
 
     @RequestMapping("/aggiungiSpedizione")
     @ResponseBody
-
     public List aggiungiSpedizione(@RequestBody Spedizione spedizione) {
-
+        System.out.println("Entrato in aggiungiSpedizione");
         return srvSped.aggiungiSpedizione(spedizione);
     }
 
     @RequestMapping("/cancellaSpedizione")
     @ResponseBody
     public List<Spedizione> cancella(@RequestBody Long id) {
+        System.out.println("Entrato in cancella");
         return srvSped.cancellaSpedizione(id);
     }
+
     @RequestMapping("/preparaModificaSpedizione")
     @ResponseBody
     public Spedizione preparaModifica(@RequestBody Spedizione spedizione) {
+        System.out.println("Entrato in preparaModifica");
         return srvSped.preparaModificaSpedizione(spedizione);
     }
+
     @RequestMapping("/modificaSpedizione")
     @ResponseBody
     public List<Spedizione> modificaSpedizione(@RequestBody Spedizione spedizione) {
+        System.out.println("Entrato in modificaSpedizione");
         return srvSped.modificaSpedizione(spedizione);
     }
-     
+
     @RequestMapping("/listaSpedizione")
     @ResponseBody
     public List<Spedizione> lista() {
+        System.out.println("Entrato in lista");
         return srvSped.listaSpedizione();
     }
 
     @RequestMapping("/cercaSpedizione")
     @ResponseBody
     public List<Spedizione> cercaSpedizione(@RequestBody String codice) {
+        System.out.println("Entrato in cercaSpedizione");
         return srvSped.cercaSpedizione(codice);
     }
 }
