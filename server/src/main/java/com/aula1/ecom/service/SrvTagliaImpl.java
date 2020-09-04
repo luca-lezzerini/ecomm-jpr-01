@@ -5,7 +5,9 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.ListaTaglieDto;
 import com.aula1.ecom.model.Taglia;
+import com.aula1.ecom.model.Token;
 import com.aula1.ecom.repository.RepTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,11 @@ public class SrvTagliaImpl implements SrvTaglia {
     @Override
     public List<Taglia> listaTaglia() {
        return repTaglia.findAll();
+    }
+
+    @Override
+    public ListaTaglieDto creaListaTaglia(List<Taglia> listaTaglie, Token t) {
+        return new ListaTaglieDto(t, listaTaglie);
     }
 
     

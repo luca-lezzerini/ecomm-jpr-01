@@ -1,7 +1,12 @@
+import { Token } from './../token';
+import { MemoriaCondivisaService } from './../memoria-condivisa-service';
+import { TokenDto } from './../crudcolore/token-dto';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Taglia } from './taglia';
 import { Observable, Subscription } from 'rxjs';
+import { ListaColoreDto } from '../crudcolore/lista-colore-dto';
+import { ListaTaglieDto } from './ListaTaglieDto';
 
 @Component({
   selector: 'app-crudcolori',
@@ -27,19 +32,30 @@ export class CRUDTagliaComponent implements OnInit {
 
   risultatoAgg: string = "";
 
+  mostraForm = false;
 
   isShowModifica: boolean = true;
   isShowRicerca: boolean = false;
   isShowTabella: boolean = false;
   isShowAggiungi: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService) { }
 
   ngOnInit(): void {
 
   }
 
+mostraTaglie(){
+  let tokenDto = new TokenDto (this.memoriaCondivisa.token);
+  let b:Observable<ListaTaglieDto>=
+  this.http.
+  post<ListaTaglieDto>(this.urlHost + "/listaTaglia", tokenDto);
+  let ss: Subscription = b.subscribe(
+    c => this.listaTaglia = c.listaTaglie
+  );
+  this.mostraForm = false;
 
+}
   cerca() {
     let p = this.criterioRicerca;
     if (p = this.criterioRicerca) {

@@ -13,6 +13,7 @@
   <input type="text" placeholder="Ricerca Taglia x Sigla" [(ngModel)]="criterioRicerca">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="cerca()">CERCA</button>
+  <button (click) ="mostraTaglie()">mostra le taglie</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -37,7 +38,7 @@
       <td><input type="text1" [(ngModel)]="aggiungiDescrizione" [ngModelOptions]="{ standalone: true }"required></td>
       <td><input type="text2" [(ngModel)]="aggiungiSigla" [ngModelOptions]="{ standalone: true }"required></td>
       <td><button (click)="confermaAggiungi(aggiungiDescrizione, aggiungiSigla)">CONFERMA</button></td>
-      <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
+      <td><button  (click)="annullaAggiungi()">ANNULLA</button></td>
     </tr>
   </table>
 </div>
@@ -60,11 +61,11 @@
         </tr>
         <tr>
           <td>{{ listaTagliaMod.id }}</td>
-          <td>{{ listaTagliaMod.descrizione}}</td>
+          <td>{{ listaTagliaMod.descrizione}</td>
           <td>{{ listaTagliaMod.sigla }}</td>
-          <td><input type="text" placeholder="{{listaTagliaMod.descrizione }}"
+          <td><input type="text" placeholder="{{listaImballoMod.descrizione }}"
                 [(ngModel)]="nuovaDescrizione"[ngModelOptions]="{ standalone: true }"required></td>
-          <td><input type="text1" placeholder="{{listaTagliaMod.costo }}"
+          <td><input type="text1" placeholder="{{listaImballoMod.costo }}"
                 [(ngModel)]="nuovaSigla" [ngModelOptions]="{ standalone: true }" required></td>    
         </tr>
       </table>

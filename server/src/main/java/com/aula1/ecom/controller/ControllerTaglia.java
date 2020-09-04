@@ -45,20 +45,23 @@ public class ControllerTaglia {
         
         List<Taglia> listaTaglia = srvTaglia.listaTaglia();
         
-        ListaTaglieDto risposta = new ListaTaglieDto(t, listaTaglia);
+        ListaTaglieDto listaTaglie = srvTaglia.creaListaTaglia(listaTaglia, t);
         
-        return risposta;
+        return listaTaglie;
     }
 
     @RequestMapping("/cancellaTaglia")
     @ResponseBody
     public ListaTaglieDto cancellaTaglia(@RequestBody TagliaDto dto) {
         // TODO gestire token
+        Token t =dto.getToken();
+        t = securityService.retrieveToken(t);
         srvTaglia.cancellaTaglia(dto.getTaglia().getId());
-        
+        List<Taglia> listaTaglia = srvTaglia.listaTaglia();
+        ListaTaglieDto risposta = new ListaTaglieDto(t, listaTaglia);
         System.out.println("provaCancella");
         // FIXME: gestire correttamente
-        return new ListaTaglieDto();
+        return risposta;
 
     }
 

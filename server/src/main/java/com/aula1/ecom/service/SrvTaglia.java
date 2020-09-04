@@ -5,7 +5,9 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.ListaTaglieDto;
 import com.aula1.ecom.model.Taglia;
+import com.aula1.ecom.model.Token;
 import java.util.List;
 
 /**
@@ -19,6 +21,8 @@ public interface SrvTaglia {
     void cancellaTaglia(Long id);
 
     void modificaTaglia(Taglia taglia);
+    
+    ListaTaglieDto creaListaTaglia(List<Taglia> listaTaglie, Token t);
 
 
 }
