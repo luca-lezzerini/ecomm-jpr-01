@@ -7,100 +7,32 @@
 />
 
 <br><br><br>
+
 <h1>TAGLIA</h1>
 <br>
-<div id="ricerca" *ngIf="!isShowRicerca">
-  <input type="text" placeholder="Ricerca Taglia x Sigla" [(ngModel)]="criterioRicerca">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button (click)="cerca()">CERCA</button>
-  <button (click) ="mostraTaglie()">mostra le taglie</button>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button (click)="aggiungi()">AGGIUNGI</button>
+<input type="text" [(ngModel)]="criterioRicerca">
+<button (click)="cerca()">Cerca</button>
+<button (click)="mostraTaglie()">mostra tutte le taglie</button>
+<button (click)="aggiungi()">Aggiungi</button>
+<br>
+<div class = "popupForm" *ngIf="mostraForm">
+    <h3>Aggiungi taglia</h3>
+    <input type="text" [(ngModel)]="aggiungiColore">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="annulla()">Annulla</button>
 </div>
 <br>
-<br>
-<div id="aggiungi" *ngIf="!isShowAggiungi">
-  <table border="1" class="w3-table-all w3-large">
+<table border="2">
     <tr>
-      <td>DESCRIZIONE</td>
-      <td>SIGLA</td>
-      <td></td>
-      <td></td>
+        <td>id</td>
+        <td>descrizione</td>
+        <td>taglia</td>
     </tr>
-    <tr>
-      <td><input type="text1" [(ngModel)]="aggiungiDescrizione" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><input type="text2" [(ngModel)]="aggiungiSigla" [ngModelOptions]="{ standalone: true }"required></td>
-      <td><button (click)="confermaAggiungi(aggiungiDescrizione, aggiungiSigla)">CONFERMA</button></td>
-      <td><button  (click)="annullaAggiungi()">ANNULLA</button></td>
+    <tr *ngFor="let a of listaTaglie">
+        <td>{{a.id}}</td>
+        <td>{{a.descrizione}}</td>
+        <td><input type = "text" [(ngModel)]="a.sigla"></td>
+        <td><button (click)="modifica(a)">Modifica</button> </td>
+        <td><button (click)="rimuovi(a)">Rimuovi</button></td>
     </tr>
-  </table>
-</div>
-<br>
-{{ this.risultatoAgg }}
-<br>
-<br>
-<fieldset>
-  <legend>Taglia</legend>
-  <div id="inputdati" *ngIf="!isShowModifica">
-    <form name="inputdati" id="inputdati">
-      <br>
-      <table border="1" class="w3-table-all w3-large">
-        <tr>
-          <td>ID</td>
-          <td>DESCRIZIONE</td>
-          <td>SIGLA</td>
-          <td>NUOVA DESCRIZIONE</td>
-          <td>NUOVA SIGLA</td>
-        </tr>
-        <tr>
-          <td>{{ listaTagliaMod.id }}</td>
-          <td>{{ listaTagliaMod.descrizione}</td>
-          <td>{{ listaTagliaMod.sigla }}</td>
-          <td><input type="text" placeholder="{{listaImballoMod.descrizione }}"
-                [(ngModel)]="nuovaDescrizione"[ngModelOptions]="{ standalone: true }"required></td>
-          <td><input type="text1" placeholder="{{listaImballoMod.costo }}"
-                [(ngModel)]="nuovaSigla" [ngModelOptions]="{ standalone: true }" required></td>    
-        </tr>
-      </table>
-    </form>
-  </div>
-  <br>
-  <br>
-  <div id="pulsanti" *ngIf="!isShowModifica">
-    <button (click)="conferma(listaTagliaMod.id, nuovaDescrizione, nuovaSigla)">CONFERMA</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)="annulla()">ANNULLA</button>
-  </div>
-</fieldset>
-<br>
-<br>
-<br>
-<div id="tabella" *ngIf="!isShowTabella">
-  <form name="tabella" id="tabella">
-    <table border="2" class="w3-table-all w3-large">
-      <tr>
-        <td>ID</td>      
-        <td>DESCRIZIONE</td>
-        <td>SIGLA</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr *ngFor="let l of listaTaglia; index as i">
-        <td>{{ l.id }}</td>
-        <td>{{ l.descrizione }}</td>
-        <td>{{ l.sigla }}</td>        
-        <td><button (click)="selezionaModifica(listaTaglia[i])">MODIFICA</button></td>
-        <td><button (click)="rimuovi(listaTaglia[i].id)">RIMUOVI</button></td>
-      </tr>
-    </table>
-  </form>
-</div>
+</table>

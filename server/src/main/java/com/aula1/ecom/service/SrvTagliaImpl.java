@@ -37,12 +37,14 @@ public class SrvTagliaImpl implements SrvTaglia {
 
     @Override
     public List<Taglia> listaTaglia() {
+        System.out.println("sono nel metodo lista taglia find all");
        return repTaglia.findAll();
     }
 
     @Override
-    public ListaTaglieDto creaListaTaglia(List<Taglia> listaTaglie, Token t) {
-        return new ListaTaglieDto(t, listaTaglie);
+    public ListaTaglieDto creaListaTagliaDto(List<Taglia> listaTaglie, Token t) {
+        System.out.println("sono nel service di taglia");
+        return new ListaTaglieDto(listaTaglie,t );
     }
 
     

@@ -35,19 +35,23 @@ public class ControllerTaglia {
     @Autowired
     SecurityService securityService;
 
-    @RequestMapping("/listaTaglia")
+    @RequestMapping(value = "/listaTaglia")
     @ResponseBody
     public ListaTaglieDto listaTaglia(@RequestBody TokenDto dto) {
         System.out.println("provaprova");
         
-        Token t = dto.getToken();
-        t = securityService.retrieveToken(t);
+        Token token = dto.getToken();
+        System.out.println("passato token");
+       Token  t = securityService.retrieveToken(token);
+        System.out.println("passatto security service del token");
         
         List<Taglia> listaTaglia = srvTaglia.listaTaglia();
+        System.out.println("inizializzata la lista taglia");
         
-        ListaTaglieDto listaTaglie = srvTaglia.creaListaTaglia(listaTaglia, t);
+        ListaTaglieDto listaTaglieDto = srvTaglia.creaListaTagliaDto(listaTaglia, t);
+        System.out.println("fatta la lista taglie dto");
         
-        return listaTaglie;
+        return listaTaglieDto;
     }
 
     @RequestMapping("/cancellaTaglia")
@@ -58,7 +62,7 @@ public class ControllerTaglia {
         t = securityService.retrieveToken(t);
         srvTaglia.cancellaTaglia(dto.getTaglia().getId());
         List<Taglia> listaTaglia = srvTaglia.listaTaglia();
-        ListaTaglieDto risposta = new ListaTaglieDto(t, listaTaglia);
+        ListaTaglieDto risposta = new ListaTaglieDto(listaTaglia,t);
         System.out.println("provaCancella");
         // FIXME: gestire correttamente
         return risposta;

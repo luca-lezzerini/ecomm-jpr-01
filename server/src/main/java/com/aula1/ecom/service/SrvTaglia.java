@@ -22,7 +22,7 @@ public interface SrvTaglia {
 
     void modificaTaglia(Taglia taglia);
     
-    ListaTaglieDto creaListaTaglia(List<Taglia> listaTaglie, Token t);
+    ListaTaglieDto creaListaTagliaDto(List<Taglia> listaTaglie, Token t);
 
 
 }

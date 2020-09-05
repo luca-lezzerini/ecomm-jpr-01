@@ -17,9 +17,9 @@ public class ListaTaglieDto implements Tokenizabile {
     public ListaTaglieDto() {
     }
 
-    public ListaTaglieDto(Token token, List<Taglia> taglie) {
-        this.token = token;
+    public ListaTaglieDto(List<Taglia> taglie, Token token ) {
         this.taglie = taglie;
+        this.token = token;
     }
 
     @Override
