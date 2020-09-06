@@ -9,7 +9,7 @@ import com.aula1.ecom.model.Taglia;
 import com.aula1.ecom.model.Token;
 import java.util.List;
 
-public class ListaTaglieDto implements Tokenizabile {
+public class ListaTaglieDto  {
 
     private Token token;
     private List<Taglia> taglie;
@@ -22,15 +22,7 @@ public class ListaTaglieDto implements Tokenizabile {
         this.token = token;
     }
 
-    @Override
-    public Token getToken() {
-        return token;
-    }
-
-    @Override
-    public void setToken(Token t) {
-        token = t;
-    }
+  
 
     public List<Taglia> getTaglie() {
         return taglie;
@@ -38,5 +30,13 @@ public class ListaTaglieDto implements Tokenizabile {
 
     public void setTaglie(List<Taglia> taglie) {
         this.taglie = taglie;
+    }
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 }

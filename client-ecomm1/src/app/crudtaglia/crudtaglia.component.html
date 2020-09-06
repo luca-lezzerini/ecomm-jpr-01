@@ -30,7 +30,7 @@
     </tr>
     <tr *ngFor="let a of listaTaglie">
         <td>{{a.id}}</td>
-        <td>{{a.descrizione}}</td>
+        <td><input type = "text" [(ngModel)]="a.descrizione"></td>
         <td><input type = "text" [(ngModel)]="a.sigla"></td>
         <td><button (click)="modifica(a)">Modifica</button> </td>
         <td><button (click)="rimuovi(a)">Rimuovi</button></td>
