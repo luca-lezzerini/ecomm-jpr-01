@@ -1,3 +1,4 @@
+import { Token } from './../token';
 import { ListaColoreDto } from './lista-colore-dto';
 import { TokenDto } from './token-dto';
 
@@ -18,11 +19,13 @@ export class CRUDColoreComponent implements OnInit {
 
   searchCriteria = "";
   aggiungiColore = "";
-  listaColore: Colore[] = new Array ();
+  listaColore: Colore[] = new Array();
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
 
   constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService) { }
+
+  tokenDto = new TokenDto(this.memoriaCondivisa.token);
 
   ngOnInit(): void {
   }
@@ -34,20 +37,26 @@ export class CRUDColoreComponent implements OnInit {
       this.http.
         post<ListaColoreDto>(this.urlHost + "/cercaColore", cercaDto);
     let ss: Subscription = b.subscribe(
-      c => this.listaColore = c.listaColori
+      c => {
+        this.listaColore = c.listaColori;
+        this.memoriaCondivisa.token = c.token;
+      }
     );
     this.searchCriteria = "";
     this.mostraForm = false;
   }
 
   cercaTutto() {
-    let tokenDto = new TokenDto (this.memoriaCondivisa.token);
     let b: Observable<ListaColoreDto> =
       this.http.
-        post<ListaColoreDto>(this.urlHost + "/mostraTuttiColori", tokenDto);
+        post<ListaColoreDto>(this.urlHost + "/mostraTuttiColori", this.tokenDto);
     let ss: Subscription = b.subscribe(
-      c => this.listaColore = c.listaColori
+      c => {
+        this.listaColore = c.listaColori;
+        this.memoriaCondivisa.token = c.token;
+      }
     );
+    //console.log(this.memoriaCondivisa.token.token);
     this.mostraForm = false;
   }
 
@@ -58,9 +67,12 @@ export class CRUDColoreComponent implements OnInit {
   conferma() {
     let nuovoColore = new CercaDto(this.aggiungiColore, this.memoriaCondivisa.token);
     let b: Observable<ColoreDto> =
-    this.http.post<ColoreDto>(this.urlHost + "/aggiungiColore", nuovoColore);
+      this.http.post<ColoreDto>(this.urlHost + "/aggiungiColore", nuovoColore);
     let ss: Subscription = b.subscribe(
-      c => this.listaColore.push(c.colore)
+      c => {
+        this.listaColore.push(c.colore);
+        this.memoriaCondivisa.token = c.token;
+      }
     );
     this.mostraForm = false;
     this.aggiungiColore = "";
@@ -73,17 +85,17 @@ export class CRUDColoreComponent implements OnInit {
 
   modifica(colore: Colore) {
     console.log("\n\n" + colore.colore);
-    let coloreDto = new ColoreDto (colore, this.memoriaCondivisa.token);
+    let coloreDto = new ColoreDto(colore, this.memoriaCondivisa.token);
     this.http.post(this.urlHost + "/modificaColore", coloreDto).subscribe({ error: e => console.error(e) });
   }
-  
+
   rimuovi(colore: Colore) {
     console.log("\n\n" + colore.colore);
-    let coloreDto = new ColoreDto (colore, this.memoriaCondivisa.token);
+    let coloreDto = new ColoreDto(colore, this.memoriaCondivisa.token);
     this.http.post(this.urlHost + "/rimuoviColore", coloreDto).subscribe({ error: e => console.error(e) });
     for (let i = 0; i < this.listaColore.length; i++) {
       if (this.listaColore[i].id == colore.id) {
-        this.listaColore.splice(i,1);
+        this.listaColore.splice(i, 1);
       }
     }
   }

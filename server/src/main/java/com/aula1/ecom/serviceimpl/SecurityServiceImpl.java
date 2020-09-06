@@ -20,6 +20,7 @@ public class SecurityServiceImpl implements SecurityService {
             return generateNewToken();
         } else {
             Token tx = tokenRepository.findByToken(t.getToken());
+            //Token tx =  tokenRepository.findById(t.getId()).get();
             if (tx == null) {
                 return generateNewToken();
             } else {
