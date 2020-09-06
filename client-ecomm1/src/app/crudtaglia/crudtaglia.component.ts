@@ -23,8 +23,8 @@ export class CRUDTagliaComponent implements OnInit {
   aggiungiDescrizione: string = "";
   aggiungiSigla: string = "";
 
-  listaTaglia: Taglia[] = new Array();
-  
+  listaTaglie: Taglia[] = new Array();
+
 
   rigaSelezionata: string;
 
@@ -43,31 +43,34 @@ export class CRUDTagliaComponent implements OnInit {
 
   }
 
-mostraTaglie(){
-  console.log("sono dentro");
-  let tokenDto = new TokenDto (this.memoriaCondivisa.token);
-  let b:Observable<ListaTaglieDto>=
-  this.http.
-  post<ListaTaglieDto>(this.urlHost + "/listaTaglia", tokenDto);
-  console.log("ho fatto la chiamata al server");
-  let ss: Subscription = b.subscribe(
-    c => this.listaTaglia = c.listaTaglie
-  );
-  this.mostraForm = false;
-  console.log("sono uscito dal metodo e sulla parte ts e tutto apposto");
-}
+  mostraTaglie() {
+    console.log("sono dentro");
+    let tokenDto = new TokenDto(this.memoriaCondivisa.token);
+    let b: Observable<ListaTaglieDto> =
+      this.http.
+        post<ListaTaglieDto>(this.urlHost + "/listaTaglia", tokenDto);
+    console.log("ho fatto la chiamata al server");
+    let ss: Subscription = b.subscribe(
+      c => {
+        console.log("Ricevuto il DTO: ", c);
+        this.listaTaglie = c.taglie;
+      }
+    );
+    this.mostraForm = false;
+    console.log("sono uscito dal metodo e sulla parte ts e tutto apposto");
+  }
   cerca() {
     let p = this.criterioRicerca;
-     p = this.criterioRicerca ;
-      let ox: Observable<Taglia[]> =
-        this.http.post<Taglia[]>(this.urlHost + "/cercaTaglia", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaTaglia = r);
-        this.criterioRicerca = "";
-    }
-    
-    
+    p = this.criterioRicerca;
+    let ox: Observable<Taglia[]> =
+      this.http.post<Taglia[]>(this.urlHost + "/cercaTaglia", p);
+    let ss: Subscription = ox.subscribe(
+      r => this.listaTaglia = r);
+    this.criterioRicerca = "";
   }
+
+
+}
 
 
 
