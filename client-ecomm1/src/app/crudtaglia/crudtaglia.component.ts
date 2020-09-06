@@ -65,7 +65,7 @@ export class CRUDTagliaComponent implements OnInit {
     let ox: Observable<Taglia[]> =
       this.http.post<Taglia[]>(this.urlHost + "/cercaTaglia", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaTaglia = r);
+      r => this.listaTaglie = r);
     this.criterioRicerca = "";
   }
 
