@@ -38,7 +38,7 @@ public class ControllerTaglia {
     @RequestMapping(value = "/listaTaglia")
     @ResponseBody
     public ListaTaglieDto listaTaglia(@RequestBody TokenDto dto) {
-        System.out.println("provaprova");
+        System.out.println("entrato nel metodo listaTaglieDto");
         
         Token token = dto.getToken();
         System.out.println("passato token");

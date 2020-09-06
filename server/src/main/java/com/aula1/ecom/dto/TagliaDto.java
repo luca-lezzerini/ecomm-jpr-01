@@ -25,6 +25,11 @@ public class TagliaDto {
     public TagliaDto() {
     }
 
+    public TagliaDto(Taglia taglia, Token token) {
+        this.taglia = taglia;
+        this.token = token;
+    }
+
   
 
     public Taglia getTaglia() {
