@@ -5,7 +5,9 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.ListaImballiDto;
 import com.aula1.ecom.model.Imballo;
+import com.aula1.ecom.model.Token;
 import java.util.List;
 
 /**
@@ -23,4 +25,8 @@ public interface SrvImballo {
     public void aggiungiImballo(Imballo imballo);
 
     public Imballo creaImballo(Long id, String descrizione, Double costo);
+    
+    public List<Imballo> listaImballi();
+    
+    ListaImballiDto creaListaImballi(List<Imballo> listaImballi, Token t);
 }

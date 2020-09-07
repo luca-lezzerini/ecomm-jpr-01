@@ -14,7 +14,6 @@ import com.aula1.ecom.service.SecurityService;
 import com.aula1.ecom.service.SrvTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

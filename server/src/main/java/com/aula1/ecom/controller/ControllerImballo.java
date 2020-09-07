@@ -5,8 +5,12 @@
  */
 package com.aula1.ecom.controller;
 
+import com.aula1.ecom.dto.ListaImballiDto;
+import com.aula1.ecom.dto.TokenDto;
 import com.aula1.ecom.model.Imballo;
+import com.aula1.ecom.model.Token;
 import com.aula1.ecom.service.SrvImballo;
+import com.aula1.ecom.serviceimpl.SecurityServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,12 +29,31 @@ public class ControllerImballo {
 
     @Autowired
     SrvImballo srvImballo;
-
+    
+    @Autowired
+    SecurityServiceImpl securityServiceImpl;
+    
+    
     @RequestMapping("/cercaImballo")
     @ResponseBody
-    public Imballo cercaImballo(@RequestBody Long id) {
-        return  srvImballo.cercaImballo(id);
+    public ListaImballiDto listaImballi(@RequestBody TokenDto dto){
+        Token token = dto.getToken();
+        
+        Token t = securityServiceImpl.retrieveToken(token);
+        
+        List<Imballo>listaImballi = srvImballo.listaImballi();
+        
+        ListaImballiDto listaImballiDto = srvImballo.creaListaImballi(listaImballi, t);
+        return listaImballiDto;
     }
+    
+    
+
+    //@RequestMapping("/cercaImballo")
+   // @ResponseBody
+   // public Imballo cercaImballo(@RequestBody Long id) {
+   //     return  srvImballo.cercaImballo(id);
+   // }
 
     @RequestMapping("/ricercaPerPrezzoEDescizione")
     @ResponseBody

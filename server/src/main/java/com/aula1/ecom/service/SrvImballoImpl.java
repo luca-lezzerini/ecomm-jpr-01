@@ -5,7 +5,9 @@
  */
 package com.aula1.ecom.service;
 
+import com.aula1.ecom.dto.ListaImballiDto;
 import com.aula1.ecom.model.Imballo;
+import com.aula1.ecom.model.Token;
 import com.aula1.ecom.repository.RepImballaggio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,14 @@ public class SrvImballoImpl  implements SrvImballo {
        return new Imballo (id, descrizione, costo);
     }
 
-  
-    
+    @Override
+    public List<Imballo> listaImballi() {
+        return repImballaggio.findAll();
+    }
+
+    @Override
+    public ListaImballiDto creaListaImballi(List<Imballo> listaImballi, Token t) {
+        return new ListaImballiDto(listaImballi, t);
+    }
+
 }
