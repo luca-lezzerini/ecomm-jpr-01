@@ -13,8 +13,14 @@ import java.util.List;
  * @author Kevin
  */
 public interface SrvImballo {
+
     public Imballo cercaImballo(Long id);
-    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione ,Double costo);
+
+    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione, Double costo);
+
     public List<Imballo> ricercaPerCosto(Double costo);
+
     public void aggiungiImballo(Imballo imballo);
+
+    public Imballo creaImballo(Long id, String descrizione, Double costo);
 }

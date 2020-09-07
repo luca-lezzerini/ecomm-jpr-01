@@ -43,6 +43,11 @@ public class SrvImballoImpl  implements SrvImballo {
         repImballaggio.save(imballo);
     }
 
+    @Override
+    public Imballo creaImballo(Long id, String descrizione, Double costo) {
+       return new Imballo (id, descrizione, costo);
+    }
+
   
     
 }
