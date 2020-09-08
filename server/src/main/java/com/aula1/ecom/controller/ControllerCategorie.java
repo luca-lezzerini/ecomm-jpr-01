@@ -38,7 +38,7 @@ public class ControllerCategorie {
     @RequestMapping("/cancellaCategoria")
     @ResponseBody
     public CategoriaDto cancella(@RequestBody CategoriaDto dto) {
-        dto.setLista(srvCat.cancellaCategoria(dto.getLungo()));
+        dto.setLista(srvCat.cancellaCategoria(dto.getId()));
         return dto;
     }
 

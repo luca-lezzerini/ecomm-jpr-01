@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.dto.ListaImballiDto;
@@ -10,10 +5,6 @@ import com.aula1.ecom.model.Imballo;
 import com.aula1.ecom.model.Token;
 import java.util.List;
 
-/**
- *
- * @author Kevin
- */
 public interface SrvImballo {
 
     public Imballo cercaImballo(Long id);
@@ -25,8 +16,14 @@ public interface SrvImballo {
     public void aggiungiImballo(Imballo imballo);
 
     public Imballo creaImballo(Long id, String descrizione, Double costo);
-    
+
     public List<Imballo> listaImballi();
-    
+
+    /**
+     * Crea un DTO per il client data una lista di imballi ed il token di sicurezza
+     * @param listaImballi la lista di imballi da ritornare al client
+     * @param t il token di sicurezza da ritornare al client
+     * @return ritorna un nuovo DTO popolato con i parametri passati
+     */
     ListaImballiDto creaListaImballi(List<Imballo> listaImballi, Token t);
 }

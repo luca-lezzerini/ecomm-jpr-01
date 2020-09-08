@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aula1.ecom.service;
 
 import com.aula1.ecom.dto.ListaImballiDto;
@@ -13,17 +8,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Kevin
- */
 @Service
-public class SrvImballoImpl  implements SrvImballo {
+public class SrvImballoImpl implements SrvImballo {
 
     @Autowired
     RepImballaggio repImballaggio;
-    
-   
 
     @Override
     public Imballo cercaImballo(Long id) {
@@ -31,8 +20,8 @@ public class SrvImballoImpl  implements SrvImballo {
     }
 
     @Override
-    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione ,Double costo) {
-        return repImballaggio.findByDescrizioneAndCosto(descrizione , costo);
+    public List<Imballo> ricercaPerCostoEDescrizione(String descrizione, Double costo) {
+        return repImballaggio.findByDescrizioneAndCosto(descrizione, costo);
     }
 
     @Override
@@ -47,7 +36,7 @@ public class SrvImballoImpl  implements SrvImballo {
 
     @Override
     public Imballo creaImballo(Long id, String descrizione, Double costo) {
-       return new Imballo (id, descrizione, costo);
+        return new Imballo(id, descrizione, costo);
     }
 
     @Override
