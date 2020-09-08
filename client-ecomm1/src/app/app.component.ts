@@ -26,7 +26,10 @@ export class AppComponent implements OnInit{
   }
 
   crudColore(){
+    console.log("sono nel colore");
     this.router.navigateByUrl("/CRUDColore");
+    console.log("sono uscito dal colore");
+
   }
   crudTaglia(){
     this.router.navigateByUrl("/CRUDTaglia");

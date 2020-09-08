@@ -1,7 +1,10 @@
+import { TokenDto } from './../crudtaglia/token-dto';
+import { MemoriaCondivisaService } from './../memoria-condivisa-service';
 import { Imballo } from './imballo';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ListaImballiDto } from './ListaImballiDto';
 
 @Component({
   selector: 'app-crudimballo',
@@ -18,9 +21,9 @@ export class CrudimballoComponent implements OnInit {
   aggiungiCosto: string = "";
   //aggiungiPrezzo: string = "";
 
-  listaImballo: Imballo[];
+  listaImballi: Imballo[] = new Array;
   listaImballoMod: Imballo = new Imballo(0, "", 0)
-
+  mostraForm = false;
   rigaSelezionata: string;
 
   nuovaDescrizione: string;
@@ -35,25 +38,35 @@ export class CrudimballoComponent implements OnInit {
   isShowTabella: boolean = false;
   isShowAggiungi: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService) { }
 
   ngOnInit(): void {
 
   }
 
-
+mostraImballi(){
+  let tokenDto = new TokenDto(this.memoriaCondivisa.token);
+  let b : Observable<ListaImballiDto> =
+  this.http.post<ListaImballiDto>(this.urlHost + "/listaImballi", tokenDto);
+  let ss: Subscription = b.subscribe(
+    c => {
+      this.listaImballi = c.listaImballi;
+    }
+  )
+  this.mostraForm = false
+}
   cerca() {
     let p = this.criterioRicerca;
     if (p = this.criterioRicerca) {
       let ox: Observable<Imballo[]> =
         this.http.post<Imballo[]>(this.urlHost + "/cercaImballo", p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaImballo = r);
+        r => this.listaImballi = r);
     } else {
       let ox: Observable<Imballo[]> =
         this.http.post<Imballo[]>(this.urlHost + "/listaImballo", p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaImballo = r);
+        r => this.listaImballi = r);
     }
     this.criterioRicerca = "";
     this.isShowTabella = false;
@@ -75,7 +88,7 @@ export class CrudimballoComponent implements OnInit {
     let ox: Observable<Imballo[]> =
       this.http.post<Imballo[]>(this.urlHost + "/aggiungiImballo", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaImballo = r);
+      r => this.listaImballi = r);
       this.isShowAggiungi = true;
       this.isShowRicerca =false;
       this.isShowTabella =false;
@@ -97,7 +110,7 @@ export class CrudimballoComponent implements OnInit {
     let ox: Observable<Imballo[]> =
       this.http.post<Imballo[]>(this.urlHost + "/modificaImballo", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaImballo = r);
+      r => this.listaImballi = r);
     this.rigaSelezionata = null
     this.isShowModifica = true;
     this.isShowRicerca = false;
@@ -131,7 +144,7 @@ export class CrudimballoComponent implements OnInit {
     let ox: Observable<Imballo[]> =
       this.http.post<Imballo[]>(this.urlHost + "/cancellaImballo", p);
     let ss: Subscription = ox.subscribe(
-      r => this.listaImballo = r);
+      r => this.listaImballi = r);
     this.isShowTabella = true;
   }
 }

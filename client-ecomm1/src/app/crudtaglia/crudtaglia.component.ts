@@ -1,11 +1,10 @@
 import { Token } from './../token';
 import { MemoriaCondivisaService } from './../memoria-condivisa-service';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Taglia } from './taglia';
 import { Observable, Subscription } from 'rxjs';
-import { ListaColoreDto } from '../crudcolore/lista-colore-dto';
 import { ListaTaglieDto } from './ListaTaglieDto';
 import { TokenDto } from './token-dto';
 
