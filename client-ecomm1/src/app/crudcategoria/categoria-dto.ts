@@ -1,5 +1,6 @@
 import { Categoria } from './categoria';
-export class CategoriaDto{
-categoria: Categoria;
-
+import { Token } from '../token';
+export class CategoriaDto {
+    categoria: Categoria;
+    token: Token;
 }

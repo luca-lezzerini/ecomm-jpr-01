@@ -63,16 +63,16 @@ public class SrvCatImpl implements SrvCat {
     public List<Categoria> modificaCategoria(Categoria categoria) {
         List<Categoria> arr = repCat.trovaPerId();
         boolean control = false;
-        if(categoria.getDescrizione() != null && !categoria.getDescrizione().isEmpty()) {
-        for (int i = 0; arr.size() > i; i++) {
-            if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
-               control = true;
-                break;
+        if (categoria.getDescrizione() != null && !categoria.getDescrizione().isEmpty()) {
+            for (int i = 0; arr.size() > i; i++) {
+                if (categoria.getDescrizione().equals(arr.get(i).getDescrizione())) {
+                    control = true;
+                    break;
+                }
             }
-        }
-        if ( control == false ) {
-            repCat.save(categoria);
-        }
+            if (control == false) {
+                repCat.save(categoria);
+            }
         }
         return listaCategoria();
     }
@@ -83,8 +83,8 @@ public class SrvCatImpl implements SrvCat {
     }
 
     @Override
-    public List<Categoria> cercaCategoria(String descrizione ) {
-        return repCat.findByDescrizioneLike("%"+descrizione+"%");
+    public List<Categoria> cercaCategoria(String descrizione) {
+        return repCat.findByDescrizioneLike("%" + descrizione + "%");
     }
 
     @Override

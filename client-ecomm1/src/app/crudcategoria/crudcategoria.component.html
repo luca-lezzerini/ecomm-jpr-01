@@ -47,7 +47,7 @@
     <br>
     <br>
     <div id = "pulsanti" *ngIf="!isShowModifica">
-      <button (click)="conferma(rigaSelezionata)">CONFERMA</button>
+      <button (click)="conferma()">CONFERMA</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -66,11 +66,11 @@
         <td></td>
         <td></td>
       </tr>
-      <tr *ngFor="let l of listaCategoria; index as i">
+      <tr *ngFor="let l of listaCategoria">
         <td>{{l.id}}</td>
         <td>{{l.descrizione}}</td>
-        <td><button (click)="selezionaModifica(listaCategoria[i])">MODIFICA</button></td>
-        <td><button (click)="rimuovi(listaCategoria[i].id)">RIMUOVI</button></td>
+        <td><button (click)="selezionaModifica(l)">MODIFICA</button></td>
+        <td><button (click)="rimuovi(l.id)">RIMUOVI</button></td>
       </tr>
     </table>
   </form>

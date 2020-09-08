@@ -18,9 +18,9 @@ export class CrudcategoriaComponent implements OnInit {
 
   criterioRicerca: string = "";
   listaCategoria: Categoria[];
-  listaCategoriaMod:Categoria=new Categoria(0,"")
+  listaCategoriaMod: Categoria = new Categoria(0, "")
   rigaSelezionata: string
-  risultatoAgg:string="";
+  risultatoAgg: string = "";
 
   isShowModifica: boolean = true;
   isShowRicerca: boolean = false;
@@ -53,27 +53,28 @@ export class CrudcategoriaComponent implements OnInit {
   }
 
   aggiungi() {
-    let listaVecchia:Categoria[]=this.listaCategoria
+    let listaVecchia: Categoria[] = this.listaCategoria
     let p = this.criterioRicerca;
     let ox: Observable<Categoria[]> =
       this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-    this.risultatoAgg="";
+    this.risultatoAgg = "";
     this.criterioRicerca = "";
   }
 
-  conferma(riga:string) {
-      let p:Categoria =new Categoria(this.listaCategoriaMod.id,riga)
-      console.log(p)
-      let ox: Observable<Categoria[]> =
-        this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaCategoria =r);
-        this.rigaSelezionata=null
-        this.isShowModifica = true;
-        this.isShowRicerca = false;
-        this.isShowTabella = false;
+  conferma() {
+    let p: CategoriaDto = new CategoriaDto();
+    //TODO categoria
+    console.log(p)
+    let ox: Observable<Categoria[]> =
+      this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
+    let ss: Subscription = ox.subscribe(
+      r => this.listaCategoria = r);
+    this.rigaSelezionata = null
+    this.isShowModifica = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
   }
 
   annulla() {
@@ -84,16 +85,19 @@ export class CrudcategoriaComponent implements OnInit {
   }
 
   selezionaModifica(rigaSelezionata: Categoria) {
-    let p:Categoria = rigaSelezionata
-    let ox: Observable<Categoria> =
-      this.http.post<Categoria>(this.urlHost + "/preparaModificaCategoria", p);
+    let p: CategoriaDto = new CategoriaDto();
+    p.categoria = rigaSelezionata;
+    //TODO: popolare il token 
+    let ox: Observable<CategoriaDto> =
+      this.http.post<CategoriaDto>(this.urlHost + "/preparaModificaCategoria", p);
     let ss: Subscription = ox.subscribe(
-      r => p=r);
-      this.listaCategoriaMod=p
-      console.log( this.listaCategoriaMod);
-      this.isShowModifica = false;
-      this.isShowRicerca = true;
-      this.isShowTabella = true;
+      r => {
+        this.listaCategoriaMod = r.categoria;
+        console.log(this.listaCategoriaMod);
+      });
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
   }
 
   rimuovi(id: number) {
