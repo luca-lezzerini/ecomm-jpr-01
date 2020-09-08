@@ -1,3 +1,5 @@
+import { ListaCategorieDto } from './lista-categorie-dto';
+import { CategoriaDto } from './categoria-dto';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Categoria } from './categoria';
@@ -34,15 +36,15 @@ export class CrudcategoriaComponent implements OnInit {
   cerca() {
     let p = this.criterioRicerca;
     if (p = this.criterioRicerca) {
-      let ox: Observable<Categoria[]> =
-        this.http.post<Categoria[]>(this.urlHost + "/cercaCategoria", p);
+      let ox: Observable<ListaCategorieDto> =
+        this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaCategoria = r);
+        r => this.listaCategoria = r.lista);
     } else {
-      let ox: Observable<Categoria[]> =
-        this.http.post<Categoria[]>(this.urlHost + "/listaCategoria", p);
+      let ox: Observable<ListaCategorieDto> =
+        this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaCategoria = r);
+        r => this.listaCategoria = r.lista);
     }
     this.criterioRicerca = "";
     this.isShowTabella = false;

@@ -56,7 +56,7 @@ export class CRUDColoreComponent implements OnInit {
         this.memoriaCondivisa.token = c.token;
       }
     );
-    //console.log(this.memoriaCondivisa.token.token);
+    console.log(this.memoriaCondivisa.token.token);
     this.mostraForm = false;
   }
 

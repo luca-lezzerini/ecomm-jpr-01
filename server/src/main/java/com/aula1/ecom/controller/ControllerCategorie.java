@@ -58,7 +58,8 @@ public class ControllerCategorie {
 
     @RequestMapping("/listaCategoria")
     @ResponseBody
-    public CategoriaDto lista(@RequestBody CategoriaDto dto) {
+    public CategoriaDto lista () {
+        CategoriaDto dto = new CategoriaDto();
         dto.setLista(srvCat.listaCategoria());
         return dto;
     }
