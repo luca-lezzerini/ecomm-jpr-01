@@ -29,31 +29,28 @@ public class ControllerImballo {
 
     @Autowired
     SrvImballo srvImballo;
-    
+
     @Autowired
     SecurityServiceImpl securityServiceImpl;
-    
-    
-    @RequestMapping("/cercaImballo")
+
+    @RequestMapping("/listaImballi")
     @ResponseBody
-    public ListaImballiDto listaImballi(@RequestBody TokenDto dto){
+    public ListaImballiDto listaImballi(@RequestBody TokenDto dto) {
         Token token = dto.getToken();
-        
+
         Token t = securityServiceImpl.retrieveToken(token);
-        
-        List<Imballo>listaImballi = srvImballo.listaImballi();
-        
+
+        List<Imballo> listaImballi = srvImballo.listaImballi();
+
         ListaImballiDto listaImballiDto = srvImballo.creaListaImballi(listaImballi, t);
         return listaImballiDto;
     }
-    
-    
 
-    //@RequestMapping("/cercaImballo")
-   // @ResponseBody
-   // public Imballo cercaImballo(@RequestBody Long id) {
-   //     return  srvImballo.cercaImballo(id);
-   // }
+    @RequestMapping("/cercaImballo")
+    @ResponseBody
+    public Imballo cercaImballo(@RequestBody Long id) {
+        return srvImballo.cercaImballo(id);
+    }
 
     @RequestMapping("/ricercaPerPrezzoEDescizione")
     @ResponseBody
@@ -66,7 +63,7 @@ public class ControllerImballo {
     public List ricercaPerPrezzo(@RequestBody Double costo) {
         return srvImballo.ricercaPerCosto(costo);
     }
-    
+
     @RequestMapping("/aggiungiImballo")
     @ResponseBody
     public void aggiungiImballo(@RequestBody Imballo imballo) {
