@@ -53,7 +53,7 @@ export class CRUDTagliaComponent implements OnInit {
     let ss: Subscription = b.subscribe(
       c => {
         console.log("Ricevuto il DTO: ", c);
-        this.listaTaglie = c.listaTaglie;
+        this.listaTaglie = c.taglie;
       }
     );
     this.mostraForm = false;
@@ -66,7 +66,7 @@ export class CRUDTagliaComponent implements OnInit {
         post<ListaTaglieDto>(this.urlHost + "/cercaTaglia", cercaDto);
     let ss: Subscription = b.subscribe(
       c => {
-        this.listaTaglie = c.listaTaglie;
+        this.listaTaglie = c.taglie;
         this.memoriaCondivisa.token = c.token;
       }
     );
