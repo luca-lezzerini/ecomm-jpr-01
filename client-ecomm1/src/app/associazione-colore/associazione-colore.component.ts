@@ -27,7 +27,7 @@ export class AssociazioneColoreComponent implements OnInit {
       c => {
         this.listaColore = c.listaColori;
         this.memoriaCondivisa.token = c.token;
-      }
-  }*/
+      }*/
+  }
 
 }
