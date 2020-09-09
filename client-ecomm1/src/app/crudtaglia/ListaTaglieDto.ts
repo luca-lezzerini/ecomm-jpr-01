@@ -1,6 +1,6 @@
 import { Token } from './../token';
 import { Taglia } from './taglia';
 export class ListaTaglieDto{
-    taglie: Taglia[];
+    listaTaglie: Taglia[];
     token: Token
 }
