@@ -54,7 +54,7 @@ public class ControllerTaglia {
         return listaTaglieDto;
     }
 
-    @RequestMapping(value = "/cercaColore")
+    @RequestMapping(value = "/cercaTaglia")
     @ResponseBody
     public ListaTaglieDto cerca(@RequestBody CercaDto dto) {
         System.out.println("\n\n\nSto cercando " + dto.getCerca() + "\n\n\n");      //a scopo di debugging
