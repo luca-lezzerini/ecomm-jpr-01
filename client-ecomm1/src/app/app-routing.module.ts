@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'CRUDSpedizioni', component: CrudspedizioniComponent},
   { path: 'CRUDImballo', component: CrudimballoComponent},
   { path: 'CRUDOfferta', component: CrudoffertaComponent},
-  { path: 'AssociaProdotto', component:AssociazioneColoreComponent},
+  { path: 'AssociazioneColore', component:AssociazioneColoreComponent},
+  
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
 
