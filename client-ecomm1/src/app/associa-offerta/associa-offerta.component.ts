@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class AssociaOffertaComponent implements OnInit {
 
   criterioRicerca = "";
+  isShowRicerca: boolean = true;
 
   //listaProdotto: Prodotti[] = [];
 
