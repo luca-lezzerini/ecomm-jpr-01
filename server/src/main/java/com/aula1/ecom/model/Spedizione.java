@@ -6,12 +6,15 @@
 package com.aula1.ecom.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -30,6 +33,10 @@ public class Spedizione implements Serializable {
     @Column
     private double prezzoKg;
 
+    @OneToMany(mappedBy = "spedizione")
+    List<Prodotto> prodotto = new ArrayList<>();
+
+    //COSTRUTTORI
     public Spedizione() {
     }
 
