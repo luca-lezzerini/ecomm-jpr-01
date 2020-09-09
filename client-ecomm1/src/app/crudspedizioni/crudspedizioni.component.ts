@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Spedizioni } from './spedizioni';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
@@ -35,7 +36,8 @@ export class CrudspedizioniComponent implements OnInit {
   isShowTabella: boolean = true;
   isShowAggiungi: boolean = false;
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private router: Router) {
     this.cerca();
   }
 
@@ -161,6 +163,10 @@ export class CrudspedizioniComponent implements OnInit {
         console.log(this.isShowTabella);
       });
     this.isShowTabella = true;
+  }
+
+  associaProdotto(){
+    this.router.navigateByUrl("/AssociaSpedizione");
   }
 }
 

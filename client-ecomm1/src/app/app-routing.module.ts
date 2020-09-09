@@ -10,6 +10,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 import { CrudanagraficheComponent } from './crudanagrafiche/crudanagrafiche.component';
 import { CrudimballoComponent } from './crudimballo/crudimballo.component';
+import { AssociaSpedizioneComponent } from './associa-spedizione/associa-spedizione.component';
+import { AssociaOffertaComponent } from './associa-offerta/associa-offerta.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'CRUDImballo', component: CrudimballoComponent},
   { path: 'CRUDOfferta', component: CrudoffertaComponent},
   { path: 'AssociazioneColore', component:AssociazioneColoreComponent},
-  
+  { path: 'AssociaSpedizione', component:AssociaSpedizioneComponent},
+  { path: 'AssociaOfferta', component:AssociaOffertaComponent},
+
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
 
