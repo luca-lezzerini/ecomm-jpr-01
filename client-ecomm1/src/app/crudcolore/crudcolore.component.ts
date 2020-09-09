@@ -9,6 +9,7 @@ import { Colore } from './colore';
 import { Observable, Subscription } from 'rxjs';
 import { MemoriaCondivisaService } from '../memoria-condivisa-service';
 import { ColoreDto } from './colore-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crudcolore',
@@ -23,7 +24,7 @@ export class CRUDColoreComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
   mostraForm = false;
 
-  constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService) { }
+  constructor(private http: HttpClient, public memoriaCondivisa: MemoriaCondivisaService, private router: Router) { }
 
   tokenDto = new TokenDto(this.memoriaCondivisa.token);
 
@@ -98,5 +99,9 @@ export class CRUDColoreComponent implements OnInit {
         this.listaColore.splice(i, 1);
       }
     }
+  }
+  associaProdotto(){
+    this.router.navigateByUrl("/AssociazioneColore")
+    
   }
 }
