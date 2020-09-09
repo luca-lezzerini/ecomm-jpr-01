@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ListaImballiDto } from './ListaImballiDto';
+import { CercaDto } from '../crudtaglia/cerca-dto';
 
 @Component({
   selector: 'app-crudimballo',
@@ -44,34 +45,30 @@ export class CrudimballoComponent implements OnInit {
 
   }
 
-mostraImballi(){
-  let tokenDto = new TokenDto(this.memoriaCondivisa.token);
-  let b : Observable<ListaImballiDto> =
-  this.http.post<ListaImballiDto>(this.urlHost + "/listaImballi", tokenDto);
-  let ss: Subscription = b.subscribe(
-    c => {
-      this.listaImballi = c.listaImballi;
-    }
-  )
-  this.mostraForm = false
-}
+  mostraImballi() {
+    let tokenDto = new TokenDto(this.memoriaCondivisa.token);
+    let b: Observable<ListaImballiDto> =
+      this.http.post<ListaImballiDto>(this.urlHost + "/listaImballi", tokenDto);
+    let ss: Subscription = b.subscribe(
+      c => {
+        this.listaImballi = c.listaImballi;
+      }
+    )
+    this.mostraForm = false
+  }
   cerca() {
-    let p = this.criterioRicerca;
-    if (p = this.criterioRicerca) {
-      let ox: Observable<Imballo[]> =
-        this.http.post<Imballo[]>(this.urlHost + "/cercaImballo", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaImballi = r);
-    } else {
-      let ox: Observable<Imballo[]> =
-        this.http.post<Imballo[]>(this.urlHost + "/listaImballo", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaImballi = r);
-    }
+    let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
+    let b: Observable<ListaImballiDto> =
+      this.http.
+        post<ListaImballiDto>(this.urlHost + "/cercaImballo", cercaDto);
+    let ss: Subscription = b.subscribe(
+      c => {
+        this.listaImballi = c.listaImballi;
+        this.memoriaCondivisa.token = c.token;
+      }
+    );
     this.criterioRicerca = "";
-    this.isShowTabella = false;
-    this.isShowAggiungi = true;
-    this.isShowRicerca = false;
+    this.mostraForm = false;
   }
 
   aggiungi() {
@@ -81,7 +78,7 @@ mostraImballi(){
 
   }
 
-  confermaAggiungi(descrizione:string,costo:number) {
+  confermaAggiungi(descrizione: string, costo: number) {
 
     let p: Imballo = new Imballo(0, descrizione, costo);
     console.log(p)
@@ -89,11 +86,11 @@ mostraImballi(){
       this.http.post<Imballo[]>(this.urlHost + "/aggiungiImballo", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaImballi = r);
-      this.isShowAggiungi = true;
-      this.isShowRicerca =false;
-      this.isShowTabella =false;
-      this.aggiungiDescrizione = "";
-      this.aggiungiCosto = null;
+    this.isShowAggiungi = true;
+    this.isShowRicerca = false;
+    this.isShowTabella = false;
+    this.aggiungiDescrizione = "";
+    this.aggiungiCosto = null;
 
   }
 

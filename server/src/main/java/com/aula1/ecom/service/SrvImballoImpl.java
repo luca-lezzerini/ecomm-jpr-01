@@ -49,4 +49,20 @@ public class SrvImballoImpl implements SrvImballo {
         return new ListaImballiDto(listaImballi, t);
     }
 
+    @Override
+    public ListaImballiDto creaListaImballiDto(List<Imballo> listaImballi, Token t) {
+        System.out.println("sono nel service di imballo");
+        return new ListaImballiDto(listaImballi, t);
+
+    }
+
+    @Override
+    public List<Imballo> cerca(String cerca) {
+        if (cerca.equals("")) {
+            return repImballaggio.findByDescrizione(cerca);
+        } else {
+            return repImballaggio.findByDescrizioneLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
+        }
+    }
+
 }

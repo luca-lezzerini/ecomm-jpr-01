@@ -17,13 +17,18 @@ import org.springframework.stereotype.Repository;
  * @author Kevin
  */
 @Repository
-public interface RepImballaggio extends JpaRepository<Imballo , Long> {
-     //List<Imballo> FindByOrderByIdAsc(Long id);
-     List<Imballo> findByDescrizioneAndCosto(String descrizione , Double costo); 
-     List<Imballo> findByCostoLessThan(Double costo);
-     
-     @Query("select p from Imballo p where p.costo<:importo")
-     List<Imballo> trovaProdottiEconomici(@Param("importo") Double costo);
-     
-    
+public interface RepImballaggio extends JpaRepository<Imballo, Long> {
+    //List<Imballo> FindByOrderByIdAsc(Long id);
+
+    List<Imballo> findByDescrizioneAndCosto(String descrizione, Double costo);
+
+    List<Imballo> findByCostoLessThan(Double costo);
+
+    @Query("select p from Imballo p where p.costo<:importo")
+    List<Imballo> trovaProdottiEconomici(@Param("importo") Double costo);
+
+    public List<Imballo> findByDescrizioneLike(String cerca);
+
+    public List<Imballo> findByDescrizione(String cercaNullo);
+
 }
