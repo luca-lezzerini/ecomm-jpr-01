@@ -19,15 +19,50 @@ body {font-family: "Lato", sans-serif}
     <button class="w3-bar-item w3-button w3-padding-large" (click) ="HomePage()">HOME</button>
     <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudAnagrafiche()">ANAGRAFICHE</button>
     <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudCarello()">CARELLO</button>
-    <button  class="w3-bar-item w3-button w3-padding-large"(click) ="crudColore()" >CRUD COLORE</button>
-    <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudTaglia()"> CRUD TAGLIA</button>
-    <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudCategoria()">CRUD CATEGORIA</button>
-    <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudSpedizioni()">CRUD SPEDIZIONI</button>
-    <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudImballo()">CRUD IMBALLO</button>
-    <button class="w3-bar-item w3-button w3-padding-large" (click) ="crudOfferta()">CRUD OFFERTA</button>
-    
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+
+    <div class="w3-dropdown-hover w3-hide-small">   
+    <button  class="w3-padding-large w3-button" (click) ="crudColore()" >CRUD COLORE<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    <button class="w3-bar-item w3-button" (click) ="associazioneColore()"> ASSOCIAZIONE  COLORE</button>
+    </div>
+  </div>
+
     <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" (click) ="crudTaglia()"> CRUD TAGLIA<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    <button class="w3-bar-item w3-button" (click) ="associazioneTaglia()"> ASSOCIAZIONE  TAGLIA</button>
+    </div>
+  </div>
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" (click) ="crudCategoria()">CRUD CATEGORIA<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    <button class="w3-bar-item w3-button" (click) ="associazioneCategoria()"> ASSOCIAZIONE  CATEGORIA</button>      
+    </div>
+    </div>
+    
+    <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" (click) ="crudSpedizioni()">CRUD SPEDIZIONI<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    <button class="w3-bar-item w3-button" (click) ="associazioneSpedizioni()"> ASSOCIAZIONI SPEDIZIONI</button>
+      </div>
+      </div>
+
+      <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button"   (click) ="crudImballo()">CRUD IMBALLO<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <button class="w3-bar-item w3-button" (click) ="associazioneImballo()"> ASSOCIAZIONI IMBALLO</button>
+    </div>
+  </div>
+
+   <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" (click) ="crudOfferta()">CRUD OFFERTA<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <button class="w3-bar-item w3-button" (click) ="associazioneOfferta()"> ASSOCIAZIONI OFFERTA</button>
+    </div>
+  </div>
+   
+      <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="#" class="w3-bar-item w3-button">Merchandise</a>
