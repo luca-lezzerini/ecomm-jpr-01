@@ -18,8 +18,8 @@ import org.springframework.stereotype.Repository;
 public interface RepTaglia extends JpaRepository<Taglia, Long> {
 
     //List<Taglia> findByDescrizioneAndSigla(String d, String s);
-    public List<Taglia> findByTagliaLike(String cerca);
+    public List<Taglia> findBySiglaLike(String cerca);
 
-    public List<Taglia> findByTaglia(String cercaNullo);
+    public List<Taglia> findBySigla(String cercaNullo);
 
 }

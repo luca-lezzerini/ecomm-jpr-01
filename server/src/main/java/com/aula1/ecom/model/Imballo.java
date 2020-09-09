@@ -6,18 +6,22 @@
 package com.aula1.ecom.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Kevin
  */
 @Entity
-public class Imballo implements Serializable{
+public class Imballo implements Serializable {
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +29,12 @@ public class Imballo implements Serializable{
     @Column
     private String descrizione;
     @Column
-    private Double costo;  
-    
-    //COSTRUTTORI
+    private Double costo;
 
+    @OneToMany(mappedBy = "imballo")
+    List<Prodotto> prodotto = new ArrayList<>();
+
+    //COSTRUTTORI
     public Imballo(Long id, String descrizione, Double costo) {
         this.id = id;
         this.descrizione = descrizione;
@@ -37,10 +43,8 @@ public class Imballo implements Serializable{
 
     public Imballo() {
     }
-    
-    
-    //METODI GET AND SETTER
 
+    //METODI GET AND SETTER
     public Long getId() {
         return id;
     }
@@ -64,11 +68,5 @@ public class Imballo implements Serializable{
     public void setCosto(Double costo) {
         this.costo = costo;
     }
-    
-    
-
-
-
-
 
 }

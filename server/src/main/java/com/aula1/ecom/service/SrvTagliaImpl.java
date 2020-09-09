@@ -48,9 +48,9 @@ public class SrvTagliaImpl implements SrvTaglia {
     @Override
     public List<Taglia> cerca(String cerca) {
         if (cerca.equals("")) {
-            return repTaglia.findByTaglia(cerca);
+            return repTaglia.findBySigla(cerca);
         } else {
-            return repTaglia.findByTagliaLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
+            return repTaglia.findBySiglaLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
         }
     }
 

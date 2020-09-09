@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -30,6 +32,17 @@ public class Prodotto {
     private Double peso;
     @Column
     private Double prezzo;
+    
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Taglia taglia;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Imballo imballo;
+    
+    
 
     //COSTRUTTORI
     public Prodotto(Long id, String codice, String descrizione, Double peso, Double prezzo) {
