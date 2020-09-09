@@ -83,6 +83,7 @@ public class Prodotto {
     }
 
     //METODI GET AND SETTER
+    //TODO inserire metodo get&set sulle ManyToOne 
     public Long getId() {
         return id;
     }
