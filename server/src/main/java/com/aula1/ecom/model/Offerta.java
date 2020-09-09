@@ -10,12 +10,15 @@ package com.aula1.ecom.model;
  * @author gianmarco
  */
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Offerta implements Serializable {
@@ -30,14 +33,20 @@ public class Offerta implements Serializable {
     @Column
     private double scontoPercentuale;
 
+    @OneToMany(mappedBy = "offerta")
+    List<Prodotto> prodotto = new ArrayList<>();
+
+    //COSTRUTTORI
     public Offerta(Long id, String codice, String descrizione, double scontoPercentuale) {
         this.id = id;
         this.codice = codice;
         this.descrizione = descrizione;
         this.scontoPercentuale = scontoPercentuale;
     }
-    public Offerta(){
+
+    public Offerta() {
     }
+
     public Long getId() {
         return id;
     }

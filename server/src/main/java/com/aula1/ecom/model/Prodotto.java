@@ -43,6 +43,32 @@ public class Prodotto {
     Imballo imballo;
     
     
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Colore colore;
+    
+    
+        
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Offerta offerta;
+
+    
+    
+        
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Spedizione spedizione;
+
+    
+    
+    
+        
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Categoria categoria;
+
+    
 
     //COSTRUTTORI
     public Prodotto(Long id, String codice, String descrizione, Double peso, Double prezzo) {

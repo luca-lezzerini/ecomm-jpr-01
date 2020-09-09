@@ -13,6 +13,7 @@ import { CrudcarelloComponent } from './crudcarello/crudcarello.component';
 import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
 import { CrudimballoComponent } from './crudimballo/crudimballo.component';
 import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
+import { AssociazioneColoreComponent } from './associazione-colore/associazione-colore.component';
 
 
 
@@ -28,6 +29,7 @@ import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
     CrudspedizioniComponent,
     CrudimballoComponent,
     CrudoffertaComponent,
+    AssociazioneColoreComponent,
 
   ],
   imports: [
