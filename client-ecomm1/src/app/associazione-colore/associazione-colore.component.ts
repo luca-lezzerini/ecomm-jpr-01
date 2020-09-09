@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class AssociazioneColoreComponent implements OnInit {
 
   criterioRicerca = "";
-  listaProdotto
+  //listaProdotto
   constructor(private http: HttpClient, private memoriaCondivisa: MemoriaCondivisaService) { }
 
   ngOnInit(): void {
