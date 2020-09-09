@@ -1,3 +1,4 @@
+import { AssociazioneColoreComponent } from './associazione-colore/associazione-colore.component';
 import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
 import { CrudspedizioniComponent } from './crudspedizioni/crudspedizioni.component';
 import { CrudcategoriaComponent } from './crudcategoria/crudcategoria.component';
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'CRUDSpedizioni', component: CrudspedizioniComponent},
   { path: 'CRUDImballo', component: CrudimballoComponent},
   { path: 'CRUDOfferta', component: CrudoffertaComponent},
-
+  { path: 'AssociaProdotto', component:AssociazioneColoreComponent},
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];
 

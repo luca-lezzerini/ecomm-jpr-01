@@ -65,4 +65,5 @@ public class SrvColoreImpl implements SrvColore {
     public ColoreDto creaListaColoreDto(Colore colore, Token t) {
         return new ColoreDto(colore, t);
     }
+
 }
