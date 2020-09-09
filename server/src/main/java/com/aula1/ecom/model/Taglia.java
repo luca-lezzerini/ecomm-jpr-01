@@ -14,7 +14,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Taglia implements Serializable {
-        @Id
+    @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
