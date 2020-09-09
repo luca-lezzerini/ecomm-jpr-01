@@ -35,7 +35,7 @@ export class CrudcategoriaComponent implements OnInit {
 
   cerca() {
     let p = this.criterioRicerca;
-    if (p = this.criterioRicerca) {
+    if (p) {
       let ox: Observable<ListaCategorieDto> =
         this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", p);
       let ss: Subscription = ox.subscribe(
