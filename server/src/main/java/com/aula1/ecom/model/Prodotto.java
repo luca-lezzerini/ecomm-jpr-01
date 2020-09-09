@@ -5,43 +5,55 @@
  */
 package com.aula1.ecom.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Kevin
  */
 @Entity
-public class Imballo implements Serializable {
+public class Prodotto {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
+    private String codice;
+    @Column
     private String descrizione;
     @Column
-    private Double costo;
-
-    @OneToMany(mappedBy = "imballo")
-    List<Prodotto> prodotto = new ArrayList<>();
+    private Double peso;
+    @Column
+    private Double prezzo;
+    
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Taglia taglia;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    Imballo imballo;
+    
+    
 
     //COSTRUTTORI
-    public Imballo(Long id, String descrizione, Double costo) {
+    public Prodotto(Long id, String codice, String descrizione, Double peso, Double prezzo) {
         this.id = id;
+        this.codice = codice;
         this.descrizione = descrizione;
-        this.costo = costo;
+        this.peso = peso;
+        this.prezzo = prezzo;
     }
 
-    public Imballo() {
+    public Prodotto() {
     }
 
     //METODI GET AND SETTER
@@ -53,6 +65,14 @@ public class Imballo implements Serializable {
         this.id = id;
     }
 
+    public String getCodice() {
+        return codice;
+    }
+
+    public void setCodice(String codice) {
+        this.codice = codice;
+    }
+
     public String getDescrizione() {
         return descrizione;
     }
@@ -61,12 +81,20 @@ public class Imballo implements Serializable {
         this.descrizione = descrizione;
     }
 
-    public Double getCosto() {
-        return costo;
+    public Double getPeso() {
+        return peso;
     }
 
-    public void setCosto(Double costo) {
-        this.costo = costo;
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public Double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(Double prezzo) {
+        this.prezzo = prezzo;
     }
 
 }

@@ -16,13 +16,14 @@ import java.util.List;
  */
 public interface SrvTaglia {
 
-    List<Taglia> listaTaglia();
+    List<Taglia> listaTaglie();
 
     void cancellaTaglia(Long id);
 
     void modificaTaglia(Taglia taglia);
-    
-    ListaTaglieDto creaListaTagliaDto(List<Taglia> listaTaglie, Token t);
 
+    ListaTaglieDto creaListaTaglieDto(List<Taglia> listaTaglie, Token t);
+
+    public List<Taglia> cerca(String cerca);
 
 }

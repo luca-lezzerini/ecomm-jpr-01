@@ -6,15 +6,18 @@
 package com.aula1.ecom.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Taglia implements Serializable {
-        @Id
+    @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +28,12 @@ public class Taglia implements Serializable {
 
     public Taglia() {
     }
-
+    
+    
+    @OneToMany(mappedBy = "taglia")
+    List<Prodotto> prodotto = new ArrayList<>();
+    
+//COSTRUTTORI
     public Taglia(Long id, String descrizione, String sigla) {
         this.id = id;
         this.descrizione = descrizione;

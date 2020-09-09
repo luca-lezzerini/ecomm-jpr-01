@@ -23,29 +23,35 @@ public class SrvTagliaImpl implements SrvTaglia {
     @Autowired
     RepTaglia repTaglia;
 
-
-
     @Override
     public void cancellaTaglia(Long id) {
-       repTaglia.deleteById(id);
+        repTaglia.deleteById(id);
     }
 
     @Override
     public void modificaTaglia(Taglia taglia) {
-       repTaglia.save(taglia); 
+        repTaglia.save(taglia);
     }
 
     @Override
-    public List<Taglia> listaTaglia() {
+    public List<Taglia> listaTaglie() {
         System.out.println("sono nel metodo lista taglia find all");
-       return repTaglia.findAll();
+        return repTaglia.findAll();
     }
 
     @Override
-    public ListaTaglieDto creaListaTagliaDto(List<Taglia> listaTaglie, Token t) {
+    public ListaTaglieDto creaListaTaglieDto(List<Taglia> listaTaglie, Token t) {
         System.out.println("sono nel service di taglia");
-        return new ListaTaglieDto(listaTaglie,t );
+        return new ListaTaglieDto(listaTaglie, t);
     }
 
-    
+    @Override
+    public List<Taglia> cerca(String cerca) {
+        if (cerca.equals("")) {
+            return repTaglia.findBySigla(cerca);
+        } else {
+            return repTaglia.findBySiglaLike("%" + cerca + "%");               //Comando suggerito da Lezerini sempre nella issue #33 con le percentuali
+        }
+    }
+
 }

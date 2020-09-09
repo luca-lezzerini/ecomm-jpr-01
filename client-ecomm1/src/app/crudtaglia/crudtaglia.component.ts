@@ -7,6 +7,7 @@ import { Taglia } from './taglia';
 import { Observable, Subscription } from 'rxjs';
 import { ListaTaglieDto } from './ListaTaglieDto';
 import { TokenDto } from './token-dto';
+import { CercaDto } from './cerca-dto';
 
 @Component({
   selector: 'app-crudtaglia',
@@ -59,13 +60,18 @@ export class CRUDTagliaComponent implements OnInit {
     console.log("sono uscito dal metodo e sulla parte ts e tutto apposto");
   }
   cerca() {
-    let p = this.criterioRicerca;
-    p = this.criterioRicerca;
-    let ox: Observable<Taglia[]> =
-      this.http.post<Taglia[]>(this.urlHost + "/cercaTaglia", p);
-    let ss: Subscription = ox.subscribe(
-      r => this.listaTaglie = r);
+    let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
+    let b: Observable<ListaTaglieDto> =
+      this.http.
+        post<ListaTaglieDto>(this.urlHost + "/cercaTaglia", cercaDto);
+    let ss: Subscription = b.subscribe(
+      c => {
+        this.listaTaglie = c.taglie;
+        this.memoriaCondivisa.token = c.token;
+      }
+    );
     this.criterioRicerca = "";
+    this.mostraForm = false;
   }
 
 
