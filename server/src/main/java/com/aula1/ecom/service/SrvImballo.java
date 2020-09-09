@@ -19,8 +19,14 @@ public interface SrvImballo {
 
     public List<Imballo> listaImballi();
 
+    ListaImballiDto creaListaImballiDto(List<Imballo> listaImballi, Token t);
+
+    public List<Imballo> cerca(String cerca);
+
     /**
-     * Crea un DTO per il client data una lista di imballi ed il token di sicurezza
+     * Crea un DTO per il client data una lista di imballi ed il token di
+     * sicurezza
+     *
      * @param listaImballi la lista di imballi da ritornare al client
      * @param t il token di sicurezza da ritornare al client
      * @return ritorna un nuovo DTO popolato con i parametri passati

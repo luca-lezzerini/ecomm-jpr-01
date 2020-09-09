@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.controller;
 
+import com.aula1.ecom.dto.CercaDto;
 import com.aula1.ecom.dto.ListaImballiDto;
 import com.aula1.ecom.dto.TokenDto;
 import com.aula1.ecom.model.Imballo;
@@ -45,10 +46,22 @@ public class ControllerImballo {
         return listaImballiDto;
     }
 
-    @RequestMapping("/cercaImballo")
+    @RequestMapping(value = "/cercaImballo")
     @ResponseBody
-    public Imballo cercaImballo(@RequestBody Long id) {
-        return srvImballo.cercaImballo(id);
+    public ListaImballiDto cerca(@RequestBody CercaDto dto) {
+        System.out.println("\n\n\nSto cercando " + dto.getCerca() + "\n\n\n");      //a scopo di debugging
+        // recupera il token
+        Token token = dto.getToken();
+
+        // cerca se è attivo
+        // memorizzare il token in una variabile locale
+        Token t = securityServiceImpl.retrieveToken(token);
+
+        List<Imballo> listaImballi = srvImballo.cerca(dto.getCerca());
+        ListaImballiDto listaImballiDto = srvImballo.creaListaImballiDto(listaImballi, t);
+        // restituisce il token
+        // TODO
+        return listaImballiDto;
     }
 
     @RequestMapping("/ricercaPerPrezzoEDescizione")
