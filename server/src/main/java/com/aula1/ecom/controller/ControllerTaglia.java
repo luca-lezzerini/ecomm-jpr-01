@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.controller;
 
+import com.aula1.ecom.dto.CercaDto;
 import com.aula1.ecom.dto.ListaTaglieDto;
 import com.aula1.ecom.dto.TagliaDto;
 import com.aula1.ecom.dto.TokenDto;
@@ -38,18 +39,36 @@ public class ControllerTaglia {
     @ResponseBody
     public ListaTaglieDto listaTaglia(@RequestBody TokenDto dto) {
         System.out.println("entrato nel metodo listaTaglieDto");
-        
+
         Token token = dto.getToken();
         System.out.println("passato token");
-       Token  t = securityService.retrieveToken(token);
+        Token t = securityService.retrieveToken(token);
         System.out.println("passatto security service del token");
-        
-        List<Taglia> listaTaglia = srvTaglia.listaTaglia();
+
+        List<Taglia> listaTaglia = srvTaglia.listaTaglie();
         System.out.println("inizializzata la lista taglia");
-        
-        ListaTaglieDto listaTaglieDto = srvTaglia.creaListaTagliaDto(listaTaglia, t);
+
+        ListaTaglieDto listaTaglieDto = srvTaglia.creaListaTaglieDto(listaTaglia, t);
         System.out.println("fatta la lista taglie dto");
-        
+
+        return listaTaglieDto;
+    }
+
+    @RequestMapping(value = "/cercaColore")
+    @ResponseBody
+    public ListaTaglieDto cerca(@RequestBody CercaDto dto) {
+        System.out.println("\n\n\nSto cercando " + dto.getCerca() + "\n\n\n");      //a scopo di debugging
+        // recupera il token
+        Token token = dto.getToken();
+
+        // cerca se è attivo
+        // memorizzare il token in una variabile locale
+        Token t = securityService.retrieveToken(token);
+
+        List<Taglia> listaTaglie = srvTaglia.cerca(dto.getCerca());
+        ListaTaglieDto listaTaglieDto = srvTaglia.creaListaTaglieDto(listaTaglie, t);
+        // restituisce il token
+        // TODO
         return listaTaglieDto;
     }
 
@@ -57,11 +76,11 @@ public class ControllerTaglia {
     @ResponseBody
     public ListaTaglieDto cancellaTaglia(@RequestBody TagliaDto dto) {
         // TODO gestire token
-        Token t =dto.getToken();
+        Token t = dto.getToken();
         t = securityService.retrieveToken(t);
         srvTaglia.cancellaTaglia(dto.getTaglia().getId());
-        List<Taglia> listaTaglia = srvTaglia.listaTaglia();
-        ListaTaglieDto risposta = new ListaTaglieDto(listaTaglia,t);
+        List<Taglia> listaTaglia = srvTaglia.listaTaglie();
+        ListaTaglieDto risposta = new ListaTaglieDto(listaTaglia, t);
         System.out.println("provaCancella");
         // FIXME: gestire correttamente
         return risposta;
