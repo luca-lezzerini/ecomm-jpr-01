@@ -1,7 +1,7 @@
 import { TokenDto } from './../crudtaglia/token-dto';
 import { Prodotto } from './../prodotto/prodotto';
 import { ListaProdottiDto } from './../prodotto/listaProdottiDto';
-import { CercaDto } from './../crudcolore/cerca-dto';
+
 import { Observable, Subscription } from 'rxjs';
 import { MemoriaCondivisaService } from './../memoria-condivisa-service';
 import { HttpClient } from '@angular/common/http';
