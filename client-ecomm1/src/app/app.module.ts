@@ -16,6 +16,7 @@ import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
 import { AssociazioneColoreComponent } from './associazione-colore/associazione-colore.component';
 import { AssociaSpedizioneComponent } from './associa-spedizione/associa-spedizione.component';
 import { AssociaOffertaComponent } from './associa-offerta/associa-offerta.component';
+import { ProdottoComponent } from './prodotto/prodotto.component';
 
 
 
@@ -34,6 +35,7 @@ import { AssociaOffertaComponent } from './associa-offerta/associa-offerta.compo
     AssociazioneColoreComponent,
     AssociaSpedizioneComponent,
     AssociaOffertaComponent,
+    ProdottoComponent,
 
   ],
   imports: [
