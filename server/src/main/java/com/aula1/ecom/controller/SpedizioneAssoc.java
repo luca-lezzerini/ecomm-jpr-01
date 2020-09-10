@@ -27,16 +27,16 @@ public class SpedizioneAssoc {
     SrvSpedizioneAssoc srvSpedizioneAssoc;
 
   
-//    @RequestMapping("/associaSpedizione")
-//    public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto) {
-//
-//       Prodotto srvSpedizioneAssoc.associaSpedizione(spedizioneDto.getSpedizione(),prodottoDto.getProdotto())
-//        
-//        return prodottoDto.setProdotto();
-//    }
+    @RequestMapping("/associaSpedizione")
+    public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto) {
+
+       
+        
+        return srvSpedizioneAssoc.a;
+    }
 
     @RequestMapping("/deAssociaSpedizione")
-    public void /*ProdottoDto*/ deAssociaSpedizione(SpedizioneDto dto, Prodotto prodotto) {
+    public void /*ProdottoDto*/ deAssociaSpedizione(ProdottoDto prodottoDto) {
         
         //srvSpedizioneAssoc.deAssociaSpedizone(prodotto.getProdotto());
     }

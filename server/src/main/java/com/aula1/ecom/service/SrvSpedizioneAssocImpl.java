@@ -24,25 +24,21 @@ public class SrvSpedizioneAssocImpl implements SrvSpedizioneAssoc{
     RepProdotto repProdotto;
     
 
-//    @Override
-//    public ProdottoDto associaSpedizione(Spedizione spedizione, Prodotto prodotto) {
-//     //   prodotto.setSpedizione(spedizione);
+    @Override
+    public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto) {
+        
+//        prodotto.setSpedizione(spedizione);
 //        repProdotto.save(prodotto);
 //        List<Prodotto> lista = repProdotto.findAll();
-//      //  prodotto.setLista(lista);
+//        prodotto.setLista(lista);
 //      
-//        return prodotto;
-//    }
-//
-//    @Override
-//    public ProdottoDto deAssociaSpedizione(SpedizioneDto spedizione) {
-//        Prodotto prodotto=new Prodotto();
-//        //   prodotto.setSpedizione(null);
-//        repProdotto.save(prodotto);
-//        List<Prodotto> lista = repProdotto.findAll();
-//      //  prodotto.setLista(lista);
-//        return prodotto;
-//    }
+        return prodottoDto;
+    }
+
+    @Override
+    public ProdottoDto deAssociaSpedizione(ProdottoDto prodottoDto) {
+       return prodottoDto;
+    }
     
 
 }
