@@ -13,25 +13,25 @@ import java.util.List;
  *
  * @author Niccolò Micozzi
  */
-public class ListaProdottoDto {
+public class ListaProdottiDto {
 
-    private List<Prodotto> prodotto;
+    private List<Prodotto> listaProdotti;
     private Token token;
 
-    public ListaProdottoDto() {
+    public ListaProdottiDto() {
     }
 
-    public ListaProdottoDto(List<Prodotto> prodotto, Token token) {
-        this.prodotto = prodotto;
+    public ListaProdottiDto(List<Prodotto> prodotto, Token token) {
+        this.listaProdotti = prodotto;
         this.token = token;
     }
 
-    public List<Prodotto> getProdotto() {
-        return prodotto;
+    public List<Prodotto> getListaProdotti() {
+        return listaProdotti;
     }
 
-    public void setProdotto(List<Prodotto> prodotto) {
-        this.prodotto = prodotto;
+    public void setListaProdotti(List<Prodotto> listaProdotti) {
+        this.listaProdotti = listaProdotti;
     }
 
     public Token getToken() {

@@ -5,7 +5,7 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.dto.ListaProdottoDto;
+import com.aula1.ecom.dto.ListaProdottiDto;
 import com.aula1.ecom.model.Prodotto;
 import com.aula1.ecom.model.Token;
 import java.util.List;
@@ -18,6 +18,8 @@ public interface SrvProdotto {
 
     List<Prodotto> listaProdotto();
 
-    ListaProdottoDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t);
+    ListaProdottiDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t);
+
+    public List<Prodotto> cercaProdotti(String cerca);
 
 }

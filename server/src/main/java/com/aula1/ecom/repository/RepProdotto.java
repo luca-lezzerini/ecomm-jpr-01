@@ -6,6 +6,7 @@
 package com.aula1.ecom.repository;
 
 import com.aula1.ecom.model.Prodotto;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RepProdotto extends JpaRepository<Prodotto, Long>{
+
+    public List<Prodotto> findByCodiceLikeOrDescrizioneLike(String codice, String descrizione);
     
     
 }
