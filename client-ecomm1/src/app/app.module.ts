@@ -17,6 +17,7 @@ import { AssociazioneColoreComponent } from './associazione-colore/associazione-
 import { AssociaSpedizioneComponent } from './associa-spedizione/associa-spedizione.component';
 import { AssociaOffertaComponent } from './associa-offerta/associa-offerta.component';
 import { ProdottoComponent } from './prodotto/prodotto.component';
+import { AssociaCategoriaComponent } from './associa-categoria/associa-categoria.component';
 
 
 
@@ -36,6 +37,7 @@ import { ProdottoComponent } from './prodotto/prodotto.component';
     AssociaSpedizioneComponent,
     AssociaOffertaComponent,
     ProdottoComponent,
+    AssociaCategoriaComponent,
 
   ],
   imports: [

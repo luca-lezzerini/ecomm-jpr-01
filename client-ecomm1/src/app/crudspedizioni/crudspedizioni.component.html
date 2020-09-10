@@ -42,8 +42,6 @@
 </div>
 <br>
 {{ this.risultatoAgg }}
-<br>
-<br>
 <div id="inputdati" *ngIf="isShowModifica">
   <legend>Spedizioni</legend>
   <form name="inputdati" id="inputdati">
@@ -71,7 +69,6 @@
   </form>
 </div>
 <br>
-<br>
 <div id="pulsanti" *ngIf="isShowModifica">
   <button (click)="conferma(listaSpedizioniMod.id, nuovoCodice, nuovoNome, nuovoPrezzo)">CONFERMA</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -79,8 +76,6 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="annulla()">ANNULLA</button>
 </div>
-<br>
-<br>
 <br>
 <div id="tabella" *ngIf="isShowTabella">
   <form name="tabella" id="tabella">

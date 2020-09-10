@@ -26,7 +26,7 @@ export class AssociazioneColoreComponent implements OnInit {
     let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
     let b: Observable<ListaProdottiDto> =
       this.http.
-        post<ListaProdottiDto>(this.urlHost + "/cercaColore", cercaDto);
+        post<ListaProdottiDto>(this.urlHost + "/listaProdotto", cercaDto);
     let ss: Subscription = b.subscribe(
       c => {
         this.listaProdotti = c.listaProdotti;
