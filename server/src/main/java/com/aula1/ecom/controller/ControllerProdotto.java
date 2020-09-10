@@ -5,7 +5,8 @@
  */
 package com.aula1.ecom.controller;
 
-import com.aula1.ecom.dto.ListaProdottoDto;
+import com.aula1.ecom.dto.CercaDto;
+import com.aula1.ecom.dto.ListaProdottiDto;
 import com.aula1.ecom.dto.TokenDto;
 import com.aula1.ecom.model.Prodotto;
 import com.aula1.ecom.model.Token;
@@ -35,7 +36,7 @@ public class ControllerProdotto {
 
     @RequestMapping("/listaProdotto")
     @ResponseBody
-    public ListaProdottoDto listaProdotto(@RequestBody TokenDto dto) {
+    public ListaProdottiDto listaProdotto(@RequestBody TokenDto dto) {
 
         Token token = dto.getToken();
 
@@ -43,9 +44,20 @@ public class ControllerProdotto {
 
         List<Prodotto> listaProdotto = srvProdotto.listaProdotto();
 
-        ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
+        ListaProdottiDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
 
         return listaProdottoDto;
+    }
+
+    @RequestMapping("/cercaProdotti")
+    @ResponseBody
+    public ListaProdottiDto cercaProdotti(@RequestBody CercaDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        List<Prodotto> listaProdotti = srvProdotto.cercaProdotti(dto.getCerca());
+        ListaProdottiDto listaProdottiDto = srvProdotto.creaListaProdottoDto(listaProdotti, t);
+        System.out.println("Sto per uscire dal metodo cerca");
+        return listaProdottiDto;
     }
 
 }

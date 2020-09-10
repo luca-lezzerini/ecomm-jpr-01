@@ -1,8 +1,7 @@
-import { Token } from './../token';
+import { CercaDtoService } from '../cerca-dto-service';
 import { ListaColoreDto } from './lista-colore-dto';
 import { TokenDto } from './token-dto';
 
-import { CercaDto } from './cerca-dto';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
@@ -33,7 +32,7 @@ export class CRUDColoreComponent implements OnInit {
 
 
   cerca() {
-    let cercaDto = new CercaDto(this.searchCriteria, this.memoriaCondivisa.token);
+    let cercaDto = new CercaDtoService(this.searchCriteria, this.memoriaCondivisa.token);
     let b: Observable<ListaColoreDto> =
       this.http.
         post<ListaColoreDto>(this.urlHost + "/cercaColore", cercaDto);
@@ -66,7 +65,7 @@ export class CRUDColoreComponent implements OnInit {
   }
 
   conferma() {
-    let nuovoColore = new CercaDto(this.aggiungiColore, this.memoriaCondivisa.token);
+    let nuovoColore = new CercaDtoService(this.aggiungiColore, this.memoriaCondivisa.token);
     let b: Observable<ColoreDto> =
       this.http.post<ColoreDto>(this.urlHost + "/aggiungiColore", nuovoColore);
     let ss: Subscription = b.subscribe(
