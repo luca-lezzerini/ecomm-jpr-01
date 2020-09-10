@@ -78,7 +78,7 @@
 <br>
 <div id="tabella" *ngIf="isShowTabella">
   <form name="tabella" id="tabella">
-    <table border="2" class="w3-table-all w3-large">
+    <table border="2" class="w3-table-all w3-large" *ngIf="listaOfferte.length > 0">
       <tr>
         <td>ID</td>
         <td>CODICE</td>
@@ -96,5 +96,6 @@
         <td><button (click)="rimuovi(listaOfferte[i].id)">RIMUOVI</button></td>
       </tr>
     </table>
+    <h2 *ngIf="listaOfferte.length == 0">Nessun record trovato</h2>
   </form>
 </div>

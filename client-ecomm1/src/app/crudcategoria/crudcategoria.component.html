@@ -6,7 +6,7 @@
 <br><br><br>
 <h1>CATEGORIE</h1>
 <br>
-<div id="ricerca" *ngIf="!isShowRicerca">
+<div id="ricerca" *ngIf="isShowRicerca">
     <input type="text" placeholder = "Ricerca Categoria" [(ngModel)]="criterioRicerca">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="cerca()">CERCA</button>
@@ -14,19 +14,35 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button (click)="aggiungi()">AGGIUNGI</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)="aggiungi()">AGGIUNGI</button>
+    <button (click)="associaProdotto()">ASSOCIA PRODOTTO</button>
 </div>
 <br>
-{{this.risultatoAgg}}
+<br>
+<div id="aggiungi" *ngIf="isShowAggiungi">
+  <table border="1" class="w3-table-all w3-large">
+    <tr>
+      <td>DESCRIZIONE</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><input type="text" [(ngModel)]="aggiungiDescrizione" [ngModelOptions]="{ standalone: true }" required></td>
+      <td><button (click)="confermaAggiungi(aggiungiDescrizione)">CONFERMA</button></td>
+      <td><button (click)="annullaAggiungi()">ANNULLA</button></td>
+    </tr>
+  </table>
+</div>
+<br>
+{{ this.risultatoAgg }}
 <br>
 <br>
-<fieldset>
+<div id="inputdati" *ngIf="isShowModifica">
   <legend>Categorie</legend>
-    <div id="inputdati" *ngIf="!isShowModifica">
       <form name = "inputdati" id = "inputdati">
         <br>
           <table border="1" class="w3-table-all w3-large">
@@ -43,23 +59,22 @@
             </tr>
           </table>
       </form>
-    </div>
-    <br>
-    <br>
-    <div id = "pulsanti" *ngIf="!isShowModifica">
-      <button (click)="conferma()">CONFERMA</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button (click)="annulla()">ANNULLA</button>
-    </div>
-</fieldset>
+</div>
+<br>
+<br>
+<div id = "pulsanti" *ngIf="isShowModifica">
+  <button (click)="conferma()">CONFERMA</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="annulla()">ANNULLA</button>
+</div>
 <br>
 <br>
 <br>
-<div id ="tabella" *ngIf="!isShowTabella">
+<div id ="tabella" *ngIf="isShowTabella">
   <form name = "tabella" id = "tabella">
-    <table border="2" class="w3-table-all w3-large">
+    <table border="2" class="w3-table-all w3-large" *ngIf="listaCategoria.length > 0">
       <tr>
         <td>ID</td>
         <td>DESCRIZIONE</td>
@@ -73,6 +88,7 @@
         <td><button (click)="rimuovi(l.id)">RIMUOVI</button></td>
       </tr>
     </table>
+    <h2 *ngIf="listaCategoria.length == 0">Nessun record trovato</h2>
   </form>
 </div>
 
