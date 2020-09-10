@@ -32,12 +32,12 @@ public class SpedizioneAssoc {
 
        
         
-        return srvSpedizioneAssoc.a;
+        return srvSpedizioneAssoc.associaSpedizione(spedizioneDto, prodottoDto);
     }
 
     @RequestMapping("/deAssociaSpedizione")
-    public void /*ProdottoDto*/ deAssociaSpedizione(ProdottoDto prodottoDto) {
+    public ProdottoDto deAssociaSpedizione(ProdottoDto prodottoDto) {
         
-        //srvSpedizioneAssoc.deAssociaSpedizone(prodotto.getProdotto());
+        return prodottoDto;
     }
 }
