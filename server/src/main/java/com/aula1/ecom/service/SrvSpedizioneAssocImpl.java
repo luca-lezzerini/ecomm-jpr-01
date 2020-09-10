@@ -19,30 +19,29 @@ import org.springframework.stereotype.Service;
  * @author gianmarco
  */
 @Service
-public class SrvSpedizioneAssocImpl implements SrvSpedizioneAssoc{
+public class SrvSpedizioneAssocImpl implements SrvSpedizioneAssoc {
+
     @Autowired
     RepProdotto repProdotto;
-    
 
-//    @Override
-//    public ProdottoDto associaSpedizione(Spedizione spedizione, Prodotto prodotto) {
-//     //   prodotto.setSpedizione(spedizione);
-//        repProdotto.save(prodotto);
-//        List<Prodotto> lista = repProdotto.findAll();
-//      //  prodotto.setLista(lista);
-//      
-//        return prodotto;
-//    }
-//
-//    @Override
-//    public ProdottoDto deAssociaSpedizione(SpedizioneDto spedizione) {
-//        Prodotto prodotto=new Prodotto();
-//        //   prodotto.setSpedizione(null);
-//        repProdotto.save(prodotto);
-//        List<Prodotto> lista = repProdotto.findAll();
-//      //  prodotto.setLista(lista);
-//        return prodotto;
-//    }
-    
+    @Override
+    public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto) {
+
+//        prodottoDto.getProdotto().setSpedizione(spedizioneDto);
+//        repProdotto.save(prodottoDto.getProdotto());
+//        prodottoDto.setLista(repProdotto.findAll());
+      
+        return prodottoDto;
+    }
+
+    @Override
+    public ProdottoDto deAssociaSpedizione(ProdottoDto prodottoDto) {
+        
+//        prodottoDto.setSpedizione(null);
+//        repProdotto.save(prodottoDto);
+//        prodottoDto.setLista(repProdotto.findAll());
+
+        return prodottoDto;
+    }
 
 }
