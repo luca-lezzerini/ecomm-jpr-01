@@ -57,6 +57,7 @@ public class ControllerProdotto {
         List<Prodotto> listaProdotti = srvProdotto.cercaProdotti(dto.getCerca());
         ListaProdottiDto listaProdottiDto = srvProdotto.creaListaProdottoDto(listaProdotti, t);
         System.out.println("Sto per uscire dal metodo cerca");
+        System.out.println("Il token vale: " + listaProdottiDto.getToken().getToken());
         return listaProdottiDto;
     }
 

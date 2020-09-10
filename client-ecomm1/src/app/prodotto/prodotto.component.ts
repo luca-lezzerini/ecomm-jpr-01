@@ -4,7 +4,6 @@ import { CercaDtoService } from '../cerca-dto-service';
 import { MemoriaCondivisaService } from './../memoria-condivisa-service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Prodotto } from './prodotto';
 
 @Component({
   selector: 'app-prodotto',
@@ -27,12 +26,15 @@ export class ProdottoComponent implements OnInit {
         post<ListaProdottiDto>(this.urlHost + "/cercaProdotti", cerca);
     let ss: Subscription = b.subscribe(
       c => {
-        console.log(c.listaProdotti[0].codice + "  sono dentro alla lambda");
-        console.log(c.listaProdotti[1].codice + "  sono dentro alla lambda");
+        /*console.log(c.listaProdotti[0].codice + "  sono dentro alla lambda");
+        console.log(c.listaProdotti[1].codice + "  sono dentro alla lambda");*/
+        console.log("Prima dell'asssegnazione:  lista prodotti = " + c.listaProdotti);
+        console.log("Il token vale: " + c.token.token);
         listaProdotti = c;
+        console.log("Dopo l'asssegnazione:  lista prodotti = " + listaProdotti.listaProdotti);
       }
     );
-    console.log (listaProdotti.listaProdotti + "  sono dentro al prodotto component");
+    console.log (listaProdotti.listaProdotti + "  sono dentro al prodotto component fuori dalla lambda");
     return listaProdotti;
   }
   
