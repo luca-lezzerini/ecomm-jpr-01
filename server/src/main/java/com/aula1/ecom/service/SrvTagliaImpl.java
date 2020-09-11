@@ -54,4 +54,19 @@ public class SrvTagliaImpl implements SrvTaglia {
         }
     }
 
+    @Override
+    public void aggiungiTaglia(Taglia taglia) {
+        repTaglia.save(taglia);
+    }
+
+    @Override
+    public Taglia creaTaglia(long id, String descrizione, String sigla) {
+        return new Taglia(id, descrizione, sigla);
+    }
+
+    @Override
+    public void rimuoviTaglia(Long id) {
+        repTaglia.deleteById(id);
+    }
+
 }

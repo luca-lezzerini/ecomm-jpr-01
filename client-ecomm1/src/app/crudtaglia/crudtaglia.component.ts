@@ -8,6 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 import { ListaTaglieDto } from './ListaTaglieDto';
 import { TokenDto } from './token-dto';
 import { CercaDto } from './cerca-dto';
+import { TagliaDto } from './taglia-dto';
 
 @Component({
   selector: 'app-crudtaglia',
@@ -22,6 +23,7 @@ export class CRUDTagliaComponent implements OnInit {
 
   aggiungiDescrizione: string = "";
   aggiungiSigla: string = "";
+  aggiungiTaglia: string = "";
 
   listaTaglie: Taglia[] = new Array();
 
@@ -59,6 +61,7 @@ export class CRUDTagliaComponent implements OnInit {
     this.mostraForm = false;
     console.log("sono uscito dal metodo e sulla parte ts e tutto apposto");
   }
+
   cerca() {
     let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
     let b: Observable<ListaTaglieDto> =
@@ -74,7 +77,38 @@ export class CRUDTagliaComponent implements OnInit {
     this.mostraForm = false;
   }
 
+  aggiungi() {
+    this.mostraForm = true;
+  }
 
+  conferma() {
+    let nuovaTaglia = new CercaDto(this.aggiungiTaglia, this.memoriaCondivisa.token);
+    let b: Observable<TagliaDto> =
+      this.http.post<TagliaDto>(this.urlHost + "/aggiungiTaglia", nuovaTaglia);
+    let ss: Subscription = b.subscribe(
+      c => {
+        this.listaTaglie.push(c.taglia);
+        this.memoriaCondivisa.token = c.token;
+      }
+    );
+    this.mostraForm = false;
+    this.aggiungiTaglia = "";
+  }
+
+  annulla() {
+    this.mostraForm = false;
+    this.aggiungiTaglia = "";
+  }
+
+  rimuovi(taglia: Taglia) {
+    let tagliaDto = new TagliaDto(taglia, this.memoriaCondivisa.token);
+    this.http.post(this.urlHost + "/rimuoviTaglia", tagliaDto).subscribe({ error: e => console.error(e) });
+    for (let i = 0; i < this.listaTaglie.length; i++) {
+      if (this.listaTaglie[i].id == taglia.id) {
+        this.listaTaglie.splice(i, 1);
+      }
+    }
+  }
 }
 
 

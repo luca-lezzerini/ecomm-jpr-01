@@ -65,4 +65,9 @@ public class SrvImballoImpl implements SrvImballo {
         }
     }
 
+    @Override
+    public void rimuoviImballo(Long id) {
+     repImballaggio.deleteById(id);  
+    }
+
 }

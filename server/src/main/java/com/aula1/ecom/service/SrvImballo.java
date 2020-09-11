@@ -32,4 +32,6 @@ public interface SrvImballo {
      * @return ritorna un nuovo DTO popolato con i parametri passati
      */
     ListaImballiDto creaListaImballi(List<Imballo> listaImballi, Token t);
+    
+    public  void rimuoviImballo(Long id);
 }

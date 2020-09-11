@@ -93,4 +93,21 @@ public class ControllerTaglia {
         srvTaglia.modificaTaglia(taglia);
         System.out.println("provaModifica");
     }
+
+//    @RequestMapping("/aggiungiTaglia")
+//    @ResponseBody
+//    public TagliaDto aggiungiColore(@RequestBody CercaDto dto) {
+//        Token token = dto.getToken();
+//        Token t = securityService.retrieveToken(token);
+//        Taglia taglia = srvTaglia.creaTaglia(0L, dto.getCerca(), dto.getCerca());                        
+//        srvTaglia.aggiungiTaglia(taglia);                                       
+//        List<Taglia> listaTaglie = srvTaglia.cerca(dto.getCerca());                   
+//        return srvTaglia.creaListaTaglieDto(listaTaglie.get(listaTaglie.size() - 1), t);             
+//
+//    }
+    @RequestMapping("/rimuoviTaglia")
+    @ResponseBody
+    public void rimuoviColore(@RequestBody TagliaDto dto) {
+        srvTaglia.rimuoviTaglia(dto.getTaglia().getId());
+    }
 }
