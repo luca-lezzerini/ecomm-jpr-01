@@ -5,7 +5,7 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.dto.ListaProdottoDto;
+import com.aula1.ecom.dto.ListaProdottiDto;
 import com.aula1.ecom.model.Prodotto;
 import com.aula1.ecom.model.Token;
 import com.aula1.ecom.repository.RepProdotto;
@@ -29,8 +29,13 @@ public class SrvProdottoImpl implements SrvProdotto {
     }
 
     @Override
-    public ListaProdottoDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t) {
-        return new ListaProdottoDto(listaProdotto, t);
+    public ListaProdottiDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t) {
+        return new ListaProdottiDto(listaProdotto, t);
+    }
+
+    @Override
+    public List<Prodotto> cercaProdotti(String cerca) {
+        return repProdotto.findByCodiceLikeOrDescrizioneLike("%" + cerca + "%", "%" + cerca + "%" );
     }
 
 }

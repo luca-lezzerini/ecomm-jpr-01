@@ -15,6 +15,6 @@ import com.aula1.ecom.model.Spedizione;
  * @author gianmarco
  */
 public interface SrvSpedizioneAssoc {
-  //  public Prodotto associaSpedizione(Spedizione spedizione, Prodotto prodotto);
-  //  public ProdottoDto deAssociaSpedizione(SpedizioneDto spedizione);
+    public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto);
+    public ProdottoDto deAssociaSpedizione(ProdottoDto prodottoDto);
 }

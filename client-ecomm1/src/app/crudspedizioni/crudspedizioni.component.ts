@@ -79,7 +79,6 @@ export class CrudspedizioniComponent implements OnInit {
     this.isShowAggiungi = true;
     this.isShowRicerca = false;
     this.isShowTabella = false;
-
   }
 
   confermaAggiungi(codice: string, nome: string, prezzo: number) {
