@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { Offerta } from './offerta';
-
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

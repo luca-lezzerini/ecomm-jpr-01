@@ -1,3 +1,4 @@
+/*
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from './colore';
@@ -21,7 +22,7 @@ export class CRUDColoriComponent implements OnInit {
 
 
   cerca() {
-    
+
      let a = new this.cerca();
     let b: Observable<Colore> =
     this.http.post<Colore>();
@@ -60,3 +61,5 @@ export class CRUDColoriComponent implements OnInit {
 
 
 }
+*/
+//ho dovuto commnetare tutto altrimenti non compilava (Dino)

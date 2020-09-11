@@ -7,4 +7,53 @@
   <input type="text" placeholder="Ricerca Prodotto" [(ngModel)]="criterioRicerca">
   <button (click)="cerca()">CERCA</button>
 </div>
+<div id = "prodottoSelezionato" *ngIf="isShowProdotto">
+  Prodotto selezionato:{{this.listaProdotti[i]}}
+</div>
+<div id="tabella" *ngIf="isShowTabellaProdotti">
+  <form name="tabella" id="tabella">
+    <table border="2" class="w3-table-all w3-large" *ngIf="listaProdotti.length > 0">
+      <tr>
+        <td>ID</td>
+        <td>CODICE</td>
+        <td>DESCRIZIONE</td>
+        <td>PESO</td>
+        <td>PREZZO</td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let l of listaProdotti; index as i">
+        <td>{{ l.id }}</td>
+        <td>{{ l.codice }}</td>
+        <td>{{ l.descrizione }}</td>
+        <td>{{ l.peso }}</td>
+        <td>{{ l.prezzo }}</td>
+        <td><button (click)="seleziona(listaProdotti[i])">SELEZIONA</button></td>
+      </tr>
+    </table>
+    <h2 *ngIf="listaProdotti.length == 0">Nessun record trovato</h2>
+  </form>
+</div>
+<div id="tabella" *ngIf="isShowTabellaAssociativa">
+  <h3>OFFERTA DA ASSOCIARE</h3>
+  <form name="tabella2" id="tabella2">
+    <table border="2" class="w3-table-all w3-large">
+      <tr>
+      <td>CODICE</td>
+      <td>NOME</td>
+      <td>DESCRIZIONE</td>
+      <td>SCONTO PERCENTUALE</td>
+      <td></td>
+      </tr>
+      <tr *ngFor="let l of listaOfferta; index as i">
+        <td>{{ l.id }}</td>
+        <td>{{ l.codice }}</td>
+        <td>{{ l.descrizione }}</td>
+        <td>{{ l.scontoPercentuale }}</td>
+        <td><button (click)="associa(listaOfferta[i])">ASSOCIA</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
 

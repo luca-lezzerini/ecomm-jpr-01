@@ -30,7 +30,9 @@ export class CrudcategoriaComponent implements OnInit {
   isShowTabella: boolean = true;
   isShowAggiungi: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.cerca();
+   }
 
   ngOnInit(): void {
 

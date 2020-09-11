@@ -1,4 +1,8 @@
-import { Observable } from 'rxjs';
+import { Offerta } from './../crudofferta/offerta';
+import { TokenDto } from './../crudtaglia/token-dto';
+import { Prodotto } from './../prodotto/prodotto';
+import { ListaProdottiDto } from './../prodotto/listaProdottiDto';
+import { Observable, Subscription } from 'rxjs';
 import { MemoriaCondivisaService } from './../memoria-condivisa-service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +14,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociaOffertaComponent implements OnInit {
 
-  criterioRicerca = "";
-  isShowRicerca: boolean = true;
+  readonly urlHost = "http://localhost:8080";
 
-  //listaProdotto: Prodotti[] = [];
+  criterioRicerca = "";
+
+  isShowRicerca: boolean = true;
+  isShowProdotto: boolean = false;
+  isShowTabellaProdotti: boolean = false;
+  isShowTabellaAssociativa: boolean = false;
+
+  ListaProdottiDto: Prodotto[];
+  listaProdotti: Prodotto[] = new Array();
+  listaOfferta: Offerta[] = [];
 
   constructor(private http: HttpClient, private memoriaCondivisa: MemoriaCondivisaService) { }
 
@@ -21,7 +33,39 @@ export class AssociaOffertaComponent implements OnInit {
   }
 
   cerca() {
-
+    console.log("sono all'interno del metodo cerca prodotti");
+    let tokenDto = new TokenDto(this.memoriaCondivisa.token);
+    let b: Observable<ListaProdottiDto> =
+      this.http.
+        post<ListaProdottiDto>(this.urlHost + "/listaProdotto", tokenDto);
+    console.log("ho fatto la chiamata al server");
+    let ss: Subscription = b.subscribe(
+      c => {
+        console.log("Ricevuto il DTO: ", c);
+        this.listaProdotti = c.listaProdotti;
+      }
+    );
+    this.isShowTabellaProdotti = true;
+    this.isShowRicerca = false;
+    this.isShowProdotto = false;
+    this.isShowProdotto = false;
+    this.criterioRicerca= "";
   }
 
+  seleziona(){
+      //inserire metodo
+    this.isShowTabellaProdotti = false;
+    this.isShowRicerca = false;
+    this.isShowProdotto = true;
+    this.isShowTabellaAssociativa = true;
+  }
+
+  associa(){
+      //inserire metodo
+    this.isShowTabellaProdotti = false;
+    this.isShowRicerca = true;
+    this.isShowProdotto = false;
+    this.isShowTabellaAssociativa = false;
+  }
 }
+
