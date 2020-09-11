@@ -1,0 +1,10 @@
+.provaTable :nth-child(odd) {
+    background-color: #0cec4f;
+
+    width: 50%; 
+   border-collapse: collapse;
+   
+}
+
+
+

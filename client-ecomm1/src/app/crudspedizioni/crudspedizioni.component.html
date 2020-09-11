@@ -6,18 +6,19 @@
 <h1>SPEDIZIONI</h1>
 <br>
 <div id="ricerca" *ngIf="isShowRicerca">
-  <input type="text" placeholder="Ricerca Spedizione x Codice" [(ngModel)]="criterioRicerca">
+  <input type="text" placeholder="Ricerca Spedizione" [(ngModel)]="criterioRicerca">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="cerca()">CERCA</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="aggiungi()">AGGIUNGI</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button (click)="aggiungi()">AGGIUNGI</button>
+  <button (click)="associaProdotto()">ASSOCIA PRODOTTO</button>
 </div>
 <br>
 <br>
@@ -41,8 +42,6 @@
 </div>
 <br>
 {{ this.risultatoAgg }}
-<br>
-<br>
 <div id="inputdati" *ngIf="isShowModifica">
   <legend>Spedizioni</legend>
   <form name="inputdati" id="inputdati">
@@ -70,7 +69,6 @@
   </form>
 </div>
 <br>
-<br>
 <div id="pulsanti" *ngIf="isShowModifica">
   <button (click)="conferma(listaSpedizioniMod.id, nuovoCodice, nuovoNome, nuovoPrezzo)">CONFERMA</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -78,8 +76,6 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="annulla()">ANNULLA</button>
 </div>
-<br>
-<br>
 <br>
 <div id="tabella" *ngIf="isShowTabella">
   <form name="tabella" id="tabella">

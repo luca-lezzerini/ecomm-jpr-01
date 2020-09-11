@@ -5,10 +5,7 @@
 <h1>In costruzione</h1>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 <br><br><br>
 
@@ -19,9 +16,14 @@
 <button (click)="mostraTaglie()">mostra tutte le taglie</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
-<div class = "popupForm" *ngIf="mostraForm">
+<div class="popupForm" *ngIf="mostraForm">
     <h3>Aggiungi taglia</h3>
-    <input type="text" [(ngModel)]="aggiungiColore">
+    <br>
+    Aggiungi descrizione &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aggiungi taglia
+    <br>
+    <input type="text" [(ngModel)]="aggiungiDescrizione">
+    &nbsp;
+    <input type="text" [(ngModel)]="aggiungiSigla">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
@@ -34,11 +36,9 @@
     </tr>
     <tr *ngFor="let a of listaTaglie">
         <td>{{a.id}}</td>
-        <td><input type = "text" [(ngModel)]="a.descrizione"></td>
-        <td><input type = "text" [(ngModel)]="a.sigla"></td>
+        <td><input type="text" [(ngModel)]="a.descrizione"></td>
+        <td><input type="text" [(ngModel)]="a.sigla"></td>
         <td><button (click)="modifica(a)">Modifica</button> </td>
         <td><button (click)="rimuovi(a)">Rimuovi</button></td>
     </tr>
 </table>
-
-

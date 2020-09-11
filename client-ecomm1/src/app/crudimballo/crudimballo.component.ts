@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ListaImballiDto } from './ListaImballiDto';
 import { CercaDto } from '../crudtaglia/cerca-dto';
+import { ImballoDto } from './imballo-dto';
 
 @Component({
   selector: 'app-crudimballo',
@@ -136,13 +137,14 @@ export class CrudimballoComponent implements OnInit {
     this.isShowTabella = true;
   }
 
-  rimuovi(id: number) {
-    let p = id;
-    let ox: Observable<Imballo[]> =
-      this.http.post<Imballo[]>(this.urlHost + "/cancellaImballo", p);
-    let ss: Subscription = ox.subscribe(
-      r => this.listaImballi = r);
-    this.isShowTabella = true;
+  rimuovi(imballo: Imballo) {
+    let imballoDto = new ImballoDto(imballo, this.memoriaCondivisa.token);
+    this.http.post(this.urlHost + "/rimuoviImballo", imballoDto).subscribe({ error: e => console.error(e) });
+    for (let i = 0; i < this.listaImballi.length; i++) {
+      if (this.listaImballi[i].id == imballo.id) {
+        this.listaImballi.splice(i, 1);
+      }
+    }
   }
 }
 

@@ -6,6 +6,7 @@
 package com.aula1.ecom.controller;
 
 import com.aula1.ecom.dto.CercaDto;
+import com.aula1.ecom.dto.ImballoDto;
 import com.aula1.ecom.dto.ListaImballiDto;
 import com.aula1.ecom.dto.TokenDto;
 import com.aula1.ecom.model.Imballo;
@@ -82,7 +83,9 @@ public class ControllerImballo {
         srvImballo.aggiungiImballo(imballo);
     }
 
-//    public Imballo cercaImballo(@ResponseBody Long id){
-//        return srvImballo.cercaImballo(id);
-//    }
+    @RequestMapping("/rimuoviImballo")
+    @ResponseBody
+    public void rimuoviImballo(@RequestBody ImballoDto dto) {
+        srvImballo.rimuoviImballo(dto.getImballo().getId());
+    }
 }

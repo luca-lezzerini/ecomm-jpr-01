@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -15,37 +15,53 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
   }
-  HomePage(){
+  HomePage() {
     this.router.navigateByUrl("/HomePage")
   }
-  crudAnagrafiche(){
+  crudAnagrafiche() {
     this.router.navigateByUrl("/CRUDAnagrafiche");
   }
-  crudCarello(){
+  crudCarello() {
     this.router.navigateByUrl("/CRUDCarello");
   }
 
-  crudColore(){
+  crudColore() {
     console.log("sono nel colore");
     this.router.navigateByUrl("/CRUDColore");
-    console.log("sono uscito dal colore");
 
   }
-  crudTaglia(){
+  crudTaglia() {
     this.router.navigateByUrl("/CRUDTaglia");
   }
-  crudCategoria(){
+  crudCategoria() {
     this.router.navigateByUrl("/CRUDCategoria");
 
   }
-  crudSpedizioni(){
+  crudSpedizioni() {
     this.router.navigateByUrl("/CRUDSpedizioni");
   }
-  crudImballo(){
+  crudImballo() {
     this.router.navigateByUrl("/CRUDImballo");
   }
-  crudOfferta(){
+  crudOfferta() {
     this.router.navigateByUrl("/CRUDOfferta");
   }
+  associazioneColore() {
+    this.router.navigateByUrl("/AssociazioneColore");
+  }
+  associazioneTaglia() {
+    
+  }
+  associazioneCategoria() {
 
+  }
+  associazioneSpedizioni() {
+    this.router.navigateByUrl("/AssociaSpedizione");
+  }
+  associazioneImballo() {
+
+  }
+  associazioneOfferta() {
+    this.router.navigateByUrl("/AssociaOfferta");
+  }
 }

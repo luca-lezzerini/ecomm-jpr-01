@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Offerta } from './offerta';
 
 import { Component, OnInit } from '@angular/core';
@@ -37,7 +38,7 @@ export class CrudoffertaComponent implements OnInit {
   isShowTabella: boolean = false;
   isShowAggiungi: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.cerca();
   }
 
@@ -155,6 +156,10 @@ export class CrudoffertaComponent implements OnInit {
       this.isShowRicerca = true;
       this.isShowTabella = true;
       this.isShowAggiungi = false;
+    }
+
+    associaProdotto(){
+      this.router.navigateByUrl("/AssociaOfferta");
     }
 }
 

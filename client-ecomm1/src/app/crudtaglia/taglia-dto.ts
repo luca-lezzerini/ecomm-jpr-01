@@ -2,11 +2,11 @@
 import { Token } from './../token';
 import { Taglia } from './taglia';
 export class TagliaDto{
-    Taglia: Taglia;
-    Token: Token;
-    constructor(Taglia: Taglia, Token: Token){
-        this.Taglia = Taglia;
-        this.Token = Token;
+    taglia: Taglia;
+    token: Token;
+    constructor(taglia: Taglia, token: Token){
+        this.taglia = taglia;
+        this.token = token;
 
     }
 }

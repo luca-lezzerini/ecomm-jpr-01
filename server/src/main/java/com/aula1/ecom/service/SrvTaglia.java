@@ -26,4 +26,11 @@ public interface SrvTaglia {
 
     public List<Taglia> cerca(String cerca);
 
+    public void aggiungiTaglia(Taglia taglia);
+    
+     public Taglia creaTaglia(long id, String descrizione, String sigla);
+     
+      public void rimuoviTaglia(Long id);
+    
+
 }

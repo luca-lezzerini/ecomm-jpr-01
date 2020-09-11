@@ -2,14 +2,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+<br><br><br>
 <h1>OFFERTE</h1>
 <br>
 <div id="ricerca" *ngIf="isShowRicerca">
   <input type="text" placeholder="Ricerca Offerta" [(ngModel)]="criterioRicerca">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="cerca()">CERCA</button>
-  <br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="aggiungi()">AGGIUNGI</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="associaProdotto()">ASSOCIA PRODOTTO</button>
 </div>
 <br>
 <div id="aggiungi" *ngIf="isShowAggiungi">
@@ -69,7 +78,7 @@
 <br>
 <div id="tabella" *ngIf="isShowTabella">
   <form name="tabella" id="tabella">
-    <table border="2" class="w3-table-all w3-large">
+    <table border="2" class="w3-table-all w3-large" *ngIf="listaOfferte.length > 0">
       <tr>
         <td>ID</td>
         <td>CODICE</td>
@@ -87,5 +96,6 @@
         <td><button (click)="rimuovi(listaOfferte[i].id)">RIMUOVI</button></td>
       </tr>
     </table>
+    <h2 *ngIf="listaOfferte.length == 0">Nessun record trovato</h2>
   </form>
 </div>

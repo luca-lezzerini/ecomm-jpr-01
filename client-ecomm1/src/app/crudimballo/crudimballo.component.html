@@ -18,21 +18,21 @@
 <br>
 <div class = "popupForm" *ngIf="mostraForm">
     <h3>Aggiungi taglia</h3>
-    <input type="text" [(ngModel)]="aggiungiColore">
+    <input  type="text" [(ngModel)]="aggiungiColore">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
 <br>
-<table border="2">
+<table  border="2">
     <tr>
         <td>id</td>
         <td>descrizione</td>
         <td>costo</td>
     </tr>
-    <tr *ngFor="let a of listaImballi">
+    <tr  *ngFor="let a of listaImballi">
         <td>{{a.id}}</td>
-        <td><input type = "text" [(ngModel)]="a.descrizione"></td>
-        <td><input type = "text" [(ngModel)]="a.costo"></td>
+        <td><input  type = "text" [(ngModel)]="a.descrizione"></td>
+        <td><input  type = "text" [(ngModel)]="a.costo"></td>
         <td><button (click)="modifica(a)">Modifica</button> </td>
         <td><button (click)="rimuovi(a)">Rimuovi</button></td>
     </tr>

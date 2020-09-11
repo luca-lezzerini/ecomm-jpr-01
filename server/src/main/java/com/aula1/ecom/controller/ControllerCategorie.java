@@ -31,7 +31,7 @@ public class ControllerCategorie {
     @ResponseBody
 
     public CategoriaDto aggiungiCategoria(@RequestBody CategoriaDto dto) {
-        dto.setLista(srvCat.aggiungiCategoria(dto.getStringa()));
+        dto.setLista(srvCat.aggiungiCategoria(dto.getCategoria().getDescrizione()));
         return dto;
     }
 
