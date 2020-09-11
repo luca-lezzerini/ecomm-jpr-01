@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,15 +23,17 @@ import javax.persistence.Table;
 public class Colore implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
+        //(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "colore")
+    @Column
+        //(name = "colore")
     private String colore;
 
     
-    @OneToMany(mappedBy = "colore")
+    @OneToMany(mappedBy = "colore",fetch=FetchType.EAGER)
     List<Prodotto> prodotto = new ArrayList<>();
 
     public Colore() {
@@ -55,6 +58,12 @@ public class Colore implements Serializable {
 
     public void setColore(String colore) {
         this.colore = colore;
+    }
+
+    @Override
+   
+    public String toString() {
+        return "Colore{" + "id=" + id + ", colore=" + colore + "}"; //<<-- qui modifcato generatevalue !!!
     }
 
 }

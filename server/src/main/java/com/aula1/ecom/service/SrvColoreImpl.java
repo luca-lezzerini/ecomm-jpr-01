@@ -35,8 +35,8 @@ public class SrvColoreImpl implements SrvColore {
     }
 
     @Override
-    public void aggiungiColore(Colore colore) {
-        repColore.save(colore);
+    public Colore aggiungiColore(Colore colore) {
+       return repColore.save(colore);
 
     }
 

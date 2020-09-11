@@ -12,7 +12,7 @@ public interface SrvColore {
 
     public List<Colore> mostraTutto();
 
-    public void aggiungiColore(Colore colore);
+    public Colore aggiungiColore(Colore colore);
 
     public void modificaColore(Colore colore);
 
@@ -23,6 +23,7 @@ public interface SrvColore {
     public ListaColoreDto creaListaColoreDto(List<Colore> listaColori, Token t);
     
     public ColoreDto creaListaColoreDto(Colore colore, Token t);
+    
     
 
 }
