@@ -7,11 +7,12 @@
   <input type="text" placeholder="Ricerca Prodotto" [(ngModel)]="criterioRicerca">
   <button (click)="cerca()">CERCA</button>
 </div>
+<br>
 <div id = "prodottoSelezionato" *ngIf="isShowProdotto">
   Prodotto selezionato:{{this.listaProdotti[i]}}
 </div>
+<br>
 <div id="tabella" *ngIf="isShowTabellaProdotti">
-  <form name="tabella" id="tabella">
     <table border="2" class="w3-table-all w3-large" *ngIf="listaProdotti.length > 0">
       <tr>
         <td>ID</td>
@@ -31,11 +32,9 @@
       </tr>
     </table>
     <h2 *ngIf="listaProdotti.length == 0">Nessun record trovato</h2>
-  </form>
 </div>
 <div id="tabella" *ngIf="isShowTabellaAssociativa">
   <h3>OFFERTA DA ASSOCIARE</h3>
-  <form name="tabella2" id="tabella2">
     <table border="2" class="w3-table-all w3-large">
       <tr>
       <td>CODICE</td>
@@ -52,6 +51,5 @@
         <td><button (click)="associa(listaOfferta[i])">ASSOCIA</button></td>
       </tr>
     </table>
-  </form>
 </div>
 

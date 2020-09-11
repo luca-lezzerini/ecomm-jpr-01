@@ -34,50 +34,50 @@ export class AssociaSpedizioneComponent implements OnInit {
 
   cerca() {
     let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
-    if(cercaDto){
+    if (cercaDto) {
       console.log("Sono all'interno del metodo cerca prodotti con parametri di ricerca");
-    let b: Observable<ListaProdottiDto> =
-      this.http.
-        post<ListaProdottiDto>(this.urlHost + "/cercaProdotti", cercaDto);
+      let b: Observable<ListaProdottiDto> =
+        this.http.
+          post<ListaProdottiDto>(this.urlHost + "/cercaProdotti", cercaDto);
       console.log("ho fatto la chiamata al server");
       let ss: Subscription = b.subscribe(
-      c => {
-        console.log("Ricevuto il DTO: ", c);
-        this.listaProdotti = c.listaProdotti;
-        this.memoriaCondivisa.token = c.token;
-      }
-    );
-    } else{
-    console.log("sono all'interno del metodo cerca tutti i prodotti");
-    let tokenDto = new TokenDto(this.memoriaCondivisa.token);
-    let b: Observable<ListaProdottiDto> =
-      this.http.
-        post<ListaProdottiDto>(this.urlHost + "/listaProdotto", tokenDto);
-    console.log("ho fatto la chiamata al server");
-    let ss: Subscription = b.subscribe(
-      c => {
-        console.log("Ricevuto il DTO: ", c);
-        this.listaProdotti = c.listaProdotti;
-      }
-    );
+        c => {
+          console.log("Ricevuto il DTO: ", c);
+          this.listaProdotti = c.listaProdotti;
+          this.memoriaCondivisa.token = c.token;
+        }
+      );
+    } else {
+      console.log("sono all'interno del metodo cerca tutti i prodotti");
+      let tokenDto = new TokenDto(this.memoriaCondivisa.token);
+      let b: Observable<ListaProdottiDto> =
+        this.http.
+          post<ListaProdottiDto>(this.urlHost + "/listaProdotto", tokenDto);
+      console.log("ho fatto la chiamata al server");
+      let ss: Subscription = b.subscribe(
+        c => {
+          console.log("Ricevuto il DTO: ", c);
+          this.listaProdotti = c.listaProdotti;
+        }
+      );
     }
     this.isShowTabellaProdotti = true;
     this.isShowRicerca = true;
     this.isShowProdotto = false;
     this.isShowProdotto = false;
-    this.criterioRicerca= "";
+    this.criterioRicerca = "";
   }
 
-  seleziona(){
-      //inserire metodo
+  seleziona() {
+    //inserire metodo
     this.isShowTabellaProdotti = false;
     this.isShowRicerca = false;
     this.isShowProdotto = true;
     this.isShowTabellaAssociativa = true;
   }
 
-  associa(){
-      //inserire metodo
+  associa() {
+    //inserire metodo
     this.isShowTabellaProdotti = false;
     this.isShowRicerca = true;
     this.isShowProdotto = false;

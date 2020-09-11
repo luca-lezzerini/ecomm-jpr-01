@@ -7,9 +7,11 @@
   <input type="text" placeholder="Ricerca Prodotto" [(ngModel)]="criterioRicerca">
   <button (click)="cerca()">CERCA</button>
 </div>
+<br>
 <div id = "prodottoSelezionato" *ngIf="isShowProdotto">
   Prodotto selezionato:{{this.listaProdotti[i]}}
 </div>
+<br>
 <div id="tabella" *ngIf="isShowTabellaProdotti">
   <form name="tabella" id="tabella">
     <table border="2" class="w3-table-all w3-large" *ngIf="listaProdotti.length > 0">
