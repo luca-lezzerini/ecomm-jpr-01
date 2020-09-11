@@ -46,7 +46,11 @@ class EcomApplicationTest {
         //chiamo servizio per la ricerca del rosso appena inserito
         Colore g=repCol.getOne(c.getId());
         //verifico che il rosso sia stato trovato
-        assertTrue(c.getId().equals(g.getId())&& c.getColore().equals(g.getColore()));//<--problema
+        Long a = c.getId();
+        Long b = g.getId();
+        String x = c.getColore();
+        String y = c.getColore();
+        assertTrue(a.equals(b)&& x.equals(y));//<--problema
 
     }
 
