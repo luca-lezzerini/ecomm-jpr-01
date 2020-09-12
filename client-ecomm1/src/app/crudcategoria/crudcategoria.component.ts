@@ -41,14 +41,13 @@ export class CrudcategoriaComponent implements OnInit {
 
   }
 
-
   cerca() {
     console.log("Siamo in cerca");
-    let p = this.criterioRicerca;
     let dto = new CategoriaDto();
-    dto.categoria.descrizione = p;
+    dto.categoria.descrizione = this.criterioRicerca;
     dto.paginaCorrente = this.paginaCorrente;
-    if (p) {
+    dto.numeroElementiXPagina = 10;
+    if (this.criterioRicerca) {
       console.log("Siamo in cerca con un criterio");
       let ox: Observable<ListaCategorieDto> =
         this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", dto);
