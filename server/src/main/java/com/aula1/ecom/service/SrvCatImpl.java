@@ -11,6 +11,8 @@ import com.aula1.ecom.repository.RepCat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -81,6 +83,11 @@ public class SrvCatImpl implements SrvCat {
     public List<Categoria> listaCategoria() {
         return repCat.trovaPerId();
     }
+ 
+    @Override
+    public Page<Categoria> listaCategoria(Pageable p) {
+        return repCat.findAll(p);
+    }
 
     @Override
     public List<Categoria> cercaCategoria(String descrizione) {
@@ -92,6 +99,11 @@ public class SrvCatImpl implements SrvCat {
         System.out.print(categoria.getId() + " ");
         System.out.println(categoria.getDescrizione());
         return categoria;
+    }
+
+    @Override
+    public Page<Categoria> cercaCategoriaPaginato(String descrizione, Pageable p) {
+          return repCat.findByDescrizioneLike(descrizione, p);
     }
 
 }

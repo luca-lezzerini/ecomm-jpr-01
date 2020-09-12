@@ -5,9 +5,10 @@
  */
 package com.aula1.ecom.service;
 
-import com.aula1.ecom.dto.CategoriaDto;
 import com.aula1.ecom.model.Categoria;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -27,5 +28,9 @@ public interface SrvCat {
 
     public List<Categoria> listaCategoria();
 
+    public Page<Categoria> listaCategoria(Pageable p);
+
     public List<Categoria> cercaCategoria(String descrizione);
+
+    public Page<Categoria> cercaCategoriaPaginato(String descrizione, Pageable p);
 }

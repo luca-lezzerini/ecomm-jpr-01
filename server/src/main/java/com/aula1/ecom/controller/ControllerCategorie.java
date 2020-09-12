@@ -8,8 +8,10 @@ package com.aula1.ecom.controller;
 import com.aula1.ecom.dto.CategoriaDto;
 import com.aula1.ecom.model.Categoria;
 import com.aula1.ecom.service.SrvCat;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,16 +60,32 @@ public class ControllerCategorie {
 
     @RequestMapping("/listaCategoria")
     @ResponseBody
-    public CategoriaDto lista () {
+    public CategoriaDto lista(@RequestBody CategoriaDto param) {
+        System.out.println(param);
         CategoriaDto dto = new CategoriaDto();
-        dto.setLista(srvCat.listaCategoria());
+        // Creo le istruzioni per il recupero di una pagina specifica
+        Pageable p = PageRequest.of(
+                param.getPaginaCorrente() - 1,
+                param.getNumeroElementiXPagina()
+        );
+        // eseguo la query paginata
+        Page<Categoria> pg = srvCat.listaCategoria(p);
+        // recupero la lista degli elementi da Page
+        dto.setLista(pg.getContent());
+        // recupera altri dati da ritornare
+        dto.setNumeroTotaleElementi(pg.getTotalElements());
+        dto.setNumeroTotalePagine(pg.getTotalPages());
+        dto.setPaginaCorrente(p.getPageNumber() + 1);
+        // restituisco il risultato
         return dto;
     }
 
     @RequestMapping("/cercaCategoria")
     @ResponseBody
     public CategoriaDto cercaCategoria(@RequestBody CategoriaDto dto) {
-        dto.setLista(srvCat.cercaCategoria(dto.getStringa()));
+        Pageable p = PageRequest.of(1, 25);
+        Page<Categoria> pagina = srvCat.cercaCategoriaPaginato(dto.getCategoria().getDescrizione(), p);
+        dto.setLista(pagina.getContent());
         return dto;
     }
 }

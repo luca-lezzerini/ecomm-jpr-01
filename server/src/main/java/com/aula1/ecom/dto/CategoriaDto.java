@@ -13,6 +13,10 @@ public class CategoriaDto {
     private Categoria categoria;
     private List<Categoria> lista;
     private Token token;
+    private Long numeroTotaleElementi;
+    private Integer numeroTotalePagine;
+    private Integer paginaCorrente;
+    private Integer numeroElementiXPagina = 25;
 
     public CategoriaDto() {
     }
@@ -37,7 +41,7 @@ public class CategoriaDto {
         this.id = id;
     }
 
-    public com.aula1.ecom.model.Categoria getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -59,6 +63,43 @@ public class CategoriaDto {
 
     public void setToken(Token token) {
         this.token = token;
+    }
+
+    public Long getNumeroTotaleElementi() {
+        return numeroTotaleElementi;
+    }
+
+    public void setNumeroTotaleElementi(Long numeroTotaleElementi) {
+        this.numeroTotaleElementi = numeroTotaleElementi;
+    }
+
+    public Integer getNumeroTotalePagine() {
+        return numeroTotalePagine;
+    }
+
+    public void setNumeroTotalePagine(Integer numeroTotalePagine) {
+        this.numeroTotalePagine = numeroTotalePagine;
+    }
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
+    }
+
+    public Integer getNumeroElementiXPagina() {
+        return numeroElementiXPagina;
+    }
+
+    public void setNumeroElementiXPagina(Integer numeroElementiXPagina) {
+        this.numeroElementiXPagina = numeroElementiXPagina;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriaDto{" + "stringa=" + stringa + ", id=" + id + ", categoria=" + categoria + ", lista=" + lista + ", token=" + token + ", numeroTotaleElementi=" + numeroTotaleElementi + ", numeroTotalePagine=" + numeroTotalePagine + ", paginaCorrente=" + paginaCorrente + ", numeroElementiXPagina=" + numeroElementiXPagina + '}';
     }
 
 }

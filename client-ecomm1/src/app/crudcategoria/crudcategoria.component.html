@@ -7,19 +7,19 @@
 <h1>CATEGORIE</h1>
 <br>
 <div id="ricerca" *ngIf="isShowRicerca">
-    <input type="text" placeholder = "Ricerca Categoria" [(ngModel)]="criterioRicerca">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)="cerca()">CERCA</button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button (click)="aggiungi()">AGGIUNGI</button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)="associaProdotto()">ASSOCIA PRODOTTO</button>
+  <input type="text" placeholder="Ricerca Categoria" [(ngModel)]="criterioRicerca">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="cerca()">CERCA</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="aggiungi()">AGGIUNGI</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="associaProdotto()">ASSOCIA PRODOTTO</button>
 </div>
 <br>
 <br>
@@ -43,37 +43,44 @@
 <br>
 <div id="inputdati" *ngIf="isShowModifica">
   <legend>Categorie</legend>
-      <form name = "inputdati" id = "inputdati">
-        <br>
-          <table border="1" class="w3-table-all w3-large">
-            <tr>
-              <td>ID</td>
-              <td>DESCRIZIONE</td>
-              <td>NUOVA DESCRIZIONE</td>
-            </tr>
-            <tr>
-              <td>{{listaCategoriaMod.id}}</td>
-              <td>{{listaCategoriaMod.descrizione}}</td>
-              <td><input type="text"  placeholder = "{{listaCategoriaMod.descrizione}}" name = "nuovadescr" id = "nuovadescr" onclick="inputdati.nuovadescr.value='';"
-                [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}" required></td>
-            </tr>
-          </table>
-      </form>
+  <form name="inputdati" id="inputdati">
+    <br>
+    <table border="1" class="w3-table-all w3-large">
+      <tr>
+        <td>ID</td>
+        <td>DESCRIZIONE</td>
+        <td>NUOVA DESCRIZIONE</td>
+      </tr>
+      <tr>
+        <td>{{listaCategoriaMod.id}}</td>
+        <td>{{listaCategoriaMod.descrizione}}</td>
+        <td><input type="text" placeholder="{{listaCategoriaMod.descrizione}}" name="nuovadescr" id="nuovadescr"
+            onclick="inputdati.nuovadescr.value='';" [(ngModel)]="rigaSelezionata" [ngModelOptions]="{standalone: true}"
+            required></td>
+      </tr>
+    </table>
+  </form>
 </div>
 <br>
 <br>
-<div id = "pulsanti" *ngIf="isShowModifica">
+<div id="pulsanti" *ngIf="isShowModifica">
   <button (click)="conferma()">CONFERMA</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button (click)="annulla()">ANNULLA</button>
 </div>
 <br>
-<br>
-<br>
-<div id ="tabella" *ngIf="isShowTabella">
-  <form name = "tabella" id = "tabella">
+<div id="tabella" *ngIf="isShowTabella">
+  Trovati, in totale: {{numeroTotale}} elementi
+  <div *ngIf="numeroTotale > 0">
+    <button *ngIf="paginaCorrente > 1" 
+      (click)="paginaPrima()">-</button>
+    {{paginaCorrente}}
+    <button *ngIf="paginaCorrente < numeroPagine" 
+    (click)="paginaDopo()">+</button>
+  </div>
+  <form name="tabella" id="tabella">
     <table border="2" class="w3-table-all w3-large" *ngIf="listaCategoria.length > 0">
       <tr>
         <td>ID</td>
@@ -91,4 +98,3 @@
     <h2 *ngIf="listaCategoria.length == 0">Nessun record trovato</h2>
   </form>
 </div>
-

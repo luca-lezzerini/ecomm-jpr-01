@@ -7,6 +7,8 @@ package com.aula1.ecom.repository;
 
 import com.aula1.ecom.model.Categoria;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,6 +27,8 @@ public interface RepCat extends JpaRepository<Categoria, Long> {
     @Query("SELECT c FROM Categoria c ORDER BY Id")
     List<Categoria> trovaPerId();
 
-    
     List<Categoria> findByDescrizioneLike(String descrizione);
+
+    Page<Categoria> findByDescrizioneLike(String descrizione, Pageable p);
+
 }

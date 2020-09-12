@@ -18,12 +18,15 @@ export class CrudcategoriaComponent implements OnInit {
   readonly urlHost = "http://localhost:8080";
 
   criterioRicerca: string = "";
-  listaCategoria: Categoria[];
-  listaCategoriaMod: Categoria = new Categoria(0, "")
-  rigaSelezionata: string
+  listaCategoria: Categoria[] = [];
+  listaCategoriaMod: Categoria = new Categoria(0, "");
+  rigaSelezionata: string = "";
   risultatoAgg: string = "";
   aggiungiDescrizione: string = "";
   nuovaDescrizione: string;
+  numeroTotale: number = 0;
+  numeroPagine: number = 0;
+  paginaCorrente: number = 1;
 
   isShowModifica: boolean = false;
   isShowRicerca: boolean = true;
@@ -32,7 +35,7 @@ export class CrudcategoriaComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {
     this.cerca();
-   }
+  }
 
   ngOnInit(): void {
 
@@ -42,18 +45,26 @@ export class CrudcategoriaComponent implements OnInit {
   cerca() {
     console.log("Siamo in cerca");
     let p = this.criterioRicerca;
+    let dto = new CategoriaDto();
+    dto.categoria.descrizione = p;
+    dto.paginaCorrente = this.paginaCorrente;
     if (p) {
       console.log("Siamo in cerca con un criterio");
       let ox: Observable<ListaCategorieDto> =
-        this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", p);
+        this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", dto);
       let ss: Subscription = ox.subscribe(
         r => this.listaCategoria = r.lista);
     } else {
       console.log("Siamo in cerca per mostrare tutti");
       let ox: Observable<ListaCategorieDto> =
-        this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", p);
+        this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
       let ss: Subscription = ox.subscribe(
-        r => this.listaCategoria = r.lista);
+        r => {
+          this.listaCategoria = r.lista;
+          this.numeroTotale = r.numeroTotaleElementi;
+          this.numeroPagine = r.numeroTotalePagine;
+          this.paginaCorrente = r.paginaCorrente;
+        });
     }
     this.criterioRicerca = "";
     this.isShowTabella = true;
@@ -73,16 +84,16 @@ export class CrudcategoriaComponent implements OnInit {
     this.isShowAggiungi = true;
     this.isShowRicerca = false;
     this.isShowTabella = false;
-/*
-    let listaVecchia: Categoria[] = this.listaCategoria
-    let p = this.criterioRicerca;
-    let ox: Observable<Categoria[]> =
-      this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
-    let ss: Subscription = ox.subscribe(
-      r => this.listaCategoria = r);
-    this.risultatoAgg = "";
-    this.criterioRicerca = "";
-    */
+    /*
+        let listaVecchia: Categoria[] = this.listaCategoria
+        let p = this.criterioRicerca;
+        let ox: Observable<Categoria[]> =
+          this.http.post<Categoria[]>(this.urlHost + "/aggiungiCategoria", p);
+        let ss: Subscription = ox.subscribe(
+          r => this.listaCategoria = r);
+        this.risultatoAgg = "";
+        this.criterioRicerca = "";
+        */
   }
 
   confermaAggiungi(descrizione: string) {
@@ -119,11 +130,11 @@ export class CrudcategoriaComponent implements OnInit {
       this.http.post<Categoria[]>(this.urlHost + "/modificaCategoria", p);
     let ss: Subscription = ox.subscribe(
       r => this.listaCategoria = r);
-      this.rigaSelezionata = null
-      this.isShowModifica = false;
-      this.isShowRicerca = true;
-      this.isShowTabella = true;
-      this.nuovaDescrizione = "";
+    this.rigaSelezionata = null
+    this.isShowModifica = false;
+    this.isShowRicerca = true;
+    this.isShowTabella = true;
+    this.nuovaDescrizione = "";
   }
 
   annulla() {
@@ -165,8 +176,55 @@ export class CrudcategoriaComponent implements OnInit {
     this.isShowTabella = true;
   }
 
-  associaProdotto(){
+  associaProdotto() {
     this.router.navigateByUrl("/AssociaCategoria");
+  }
+
+  paginaDopo() {
+    // cambio pagina
+    this.paginaCorrente++;
+    // recupero un eventuale criterio di ricerca
+    let p = this.criterioRicerca;
+    // creo e popolo il DTO di richiesta
+    let dto = new CategoriaDto();
+    dto.categoria.descrizione = p;
+    dto.paginaCorrente = this.paginaCorrente;
+
+    console.log(dto);
+    // chiama il server
+    let ox: Observable<ListaCategorieDto> =
+      this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
+    let ss: Subscription = ox.subscribe(
+      r => {
+        this.listaCategoria = r.lista;
+        this.numeroTotale = r.numeroTotaleElementi;
+        this.numeroPagine = r.numeroTotalePagine;
+        this.paginaCorrente = r.paginaCorrente;
+      });
+  }
+
+  paginaPrima() {
+    console.log("Siamo in paginaPrima con pagina " + this.paginaCorrente);
+    // cambio pagina
+    this.paginaCorrente--;
+    // recupero un eventuale criterio di ricerca
+    let p = this.criterioRicerca;
+    // creo e popolo il DTO di richiesta
+    let dto = new CategoriaDto();
+    dto.categoria.descrizione = p;
+    dto.paginaCorrente = this.paginaCorrente;
+
+    console.log(dto);
+    // chiama il server
+    let ox: Observable<ListaCategorieDto> =
+      this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
+    let ss: Subscription = ox.subscribe(
+      r => {
+        this.listaCategoria = r.lista;
+        this.numeroTotale = r.numeroTotaleElementi;
+        this.numeroPagine = r.numeroTotalePagine;
+        this.paginaCorrente = r.paginaCorrente;
+      });
   }
 }
 
