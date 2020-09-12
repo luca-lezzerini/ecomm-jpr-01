@@ -53,7 +53,12 @@ export class CrudcategoriaComponent implements OnInit {
       let ox: Observable<ListaCategorieDto> =
         this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", dto);
       let ss: Subscription = ox.subscribe(
-        r => this.listaCategoria = r.lista);
+        r => {
+          this.listaCategoria = r.lista;
+          this.numeroTotale = r.numeroTotaleElementi;
+          this.numeroPagine = r.numeroTotalePagine;
+          this.paginaCorrente = r.paginaCorrente;
+        });
     } else {
       console.log("Siamo in cerca per mostrare tutti");
       let ox: Observable<ListaCategorieDto> =
@@ -66,7 +71,6 @@ export class CrudcategoriaComponent implements OnInit {
           this.paginaCorrente = r.paginaCorrente;
         });
     }
-    this.criterioRicerca = "";
     this.isShowTabella = true;
     this.isShowAggiungi = false;
     this.isShowRicerca = true;
@@ -183,48 +187,50 @@ export class CrudcategoriaComponent implements OnInit {
   paginaDopo() {
     // cambio pagina
     this.paginaCorrente++;
-    // recupero un eventuale criterio di ricerca
-    let p = this.criterioRicerca;
-    // creo e popolo il DTO di richiesta
-    let dto = new CategoriaDto();
-    dto.categoria.descrizione = p;
-    dto.paginaCorrente = this.paginaCorrente;
+    this.cerca();
+    // // recupero un eventuale criterio di ricerca
+    // let p = this.criterioRicerca;
+    // // creo e popolo il DTO di richiesta
+    // let dto = new CategoriaDto();
+    // dto.categoria.descrizione = p;
+    // dto.paginaCorrente = this.paginaCorrente;
 
-    console.log(dto);
-    // chiama il server
-    let ox: Observable<ListaCategorieDto> =
-      this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
-    let ss: Subscription = ox.subscribe(
-      r => {
-        this.listaCategoria = r.lista;
-        this.numeroTotale = r.numeroTotaleElementi;
-        this.numeroPagine = r.numeroTotalePagine;
-        this.paginaCorrente = r.paginaCorrente;
-      });
+    // console.log(dto);
+    // // chiama il server
+    // let ox: Observable<ListaCategorieDto> =
+    //   this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
+    // let ss: Subscription = ox.subscribe(
+    //   r => {
+    //     this.listaCategoria = r.lista;
+    //     this.numeroTotale = r.numeroTotaleElementi;
+    //     this.numeroPagine = r.numeroTotalePagine;
+    //     this.paginaCorrente = r.paginaCorrente;
+    //   });
   }
 
   paginaPrima() {
     console.log("Siamo in paginaPrima con pagina " + this.paginaCorrente);
     // cambio pagina
     this.paginaCorrente--;
-    // recupero un eventuale criterio di ricerca
-    let p = this.criterioRicerca;
-    // creo e popolo il DTO di richiesta
-    let dto = new CategoriaDto();
-    dto.categoria.descrizione = p;
-    dto.paginaCorrente = this.paginaCorrente;
+    this.cerca();
+    // // recupero un eventuale criterio di ricerca
+    // let p = this.criterioRicerca;
+    // // creo e popolo il DTO di richiesta
+    // let dto = new CategoriaDto();
+    // dto.categoria.descrizione = p;
+    // dto.paginaCorrente = this.paginaCorrente;
 
-    console.log(dto);
-    // chiama il server
-    let ox: Observable<ListaCategorieDto> =
-      this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
-    let ss: Subscription = ox.subscribe(
-      r => {
-        this.listaCategoria = r.lista;
-        this.numeroTotale = r.numeroTotaleElementi;
-        this.numeroPagine = r.numeroTotalePagine;
-        this.paginaCorrente = r.paginaCorrente;
-      });
+    // console.log(dto);
+    // // chiama il server
+    // let ox: Observable<ListaCategorieDto> =
+    //   this.http.post<ListaCategorieDto>(this.urlHost + "/listaCategoria", dto);
+    // let ss: Subscription = ox.subscribe(
+    //   r => {
+    //     this.listaCategoria = r.lista;
+    //     this.numeroTotale = r.numeroTotaleElementi;
+    //     this.numeroPagine = r.numeroTotalePagine;
+    //     this.paginaCorrente = r.paginaCorrente;
+    //   });
   }
 }
 

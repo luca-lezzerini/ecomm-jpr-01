@@ -82,10 +82,22 @@ public class ControllerCategorie {
 
     @RequestMapping("/cercaCategoria")
     @ResponseBody
-    public CategoriaDto cercaCategoria(@RequestBody CategoriaDto dto) {
-        Pageable p = PageRequest.of(1, 25);
-        Page<Categoria> pagina = srvCat.cercaCategoriaPaginato(dto.getCategoria().getDescrizione(), p);
-        dto.setLista(pagina.getContent());
-        return dto;
+    public CategoriaDto cercaCategoria(@RequestBody CategoriaDto param) {
+        System.out.println(param);
+        // Creo le istruzioni per il recupero di una pagina specifica
+        Pageable p = PageRequest.of(
+                param.getPaginaCorrente() - 1,
+                param.getNumeroElementiXPagina()
+        );
+        Page<Categoria> pg = srvCat.cercaCategoriaPaginato(param.getCategoria().getDescrizione(), p);
+        System.out.println(pg);
+        CategoriaDto ris = new CategoriaDto();
+        ris.setLista(pg.getContent());
+        // recupera altri dati da ritornare
+        ris.setNumeroTotaleElementi(pg.getTotalElements());
+        ris.setNumeroTotalePagine(pg.getTotalPages());
+        ris.setPaginaCorrente(p.getPageNumber() + 1);
+        // restituisco il risultato
+        return ris;
     }
 }

@@ -83,7 +83,7 @@ public class SrvCatImpl implements SrvCat {
     public List<Categoria> listaCategoria() {
         return repCat.trovaPerId();
     }
- 
+
     @Override
     public Page<Categoria> listaCategoria(Pageable p) {
         return repCat.findAll(p);
@@ -103,7 +103,8 @@ public class SrvCatImpl implements SrvCat {
 
     @Override
     public Page<Categoria> cercaCategoriaPaginato(String descrizione, Pageable p) {
-          return repCat.findByDescrizioneLike(descrizione, p);
+        System.out.println("Siamo in cercaCategoriaPaginato " + descrizione);
+        return repCat.findByDescrizioneLike("%" + descrizione + "%", p);
     }
 
 }
