@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class Imballo implements Serializable {
     private Double costo;
 
     @OneToMany(mappedBy = "imballo")
+    @JsonIgnoreProperties(value = "imballo", allowSetters = true)
     List<Prodotto> prodotto = new ArrayList<>();
 
     //COSTRUTTORI

@@ -9,6 +9,7 @@ package com.aula1.ecom.model;
  *
  * @author gianmarco
  */
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class Offerta implements Serializable {
     private double scontoPercentuale;
 
     @OneToMany(mappedBy = "offerta")
+    @JsonIgnoreProperties(value = "offerta", allowSetters = true)
     List<Prodotto> prodotto = new ArrayList<>();
 
     //COSTRUTTORI

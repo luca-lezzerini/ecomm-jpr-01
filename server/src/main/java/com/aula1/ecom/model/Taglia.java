@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,12 @@ public class Taglia implements Serializable {
     @Column
     private String sigla;
 
+    @OneToMany(mappedBy = "taglia")
+    @JsonIgnoreProperties(value = "taglia", allowSetters = true)
+    List<Prodotto> prodotto = new ArrayList<>();
+    
     public Taglia() {
     }
-    
-    
-    @OneToMany(mappedBy = "taglia")
-    List<Prodotto> prodotto = new ArrayList<>();
     
 //COSTRUTTORI
     public Taglia(Long id, String descrizione, String sigla) {

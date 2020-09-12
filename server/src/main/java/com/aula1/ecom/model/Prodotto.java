@@ -5,6 +5,7 @@
  */
 package com.aula1.ecom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,26 +36,32 @@ public class Prodotto {
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Taglia taglia;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Imballo imballo;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Colore colore;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Offerta offerta;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Spedizione spedizione;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotto", allowSetters = true)
     Categoria categoria;
 
     //COSTRUTTORI

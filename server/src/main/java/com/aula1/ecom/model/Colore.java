@@ -1,5 +1,6 @@
 package com.aula1.ecom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class Colore implements Serializable {
 
     
     @OneToMany(mappedBy = "colore",fetch=FetchType.EAGER)
+    @JsonIgnoreProperties(value = "colore", allowSetters = true)
     List<Prodotto> prodotto = new ArrayList<>();
 
     public Colore() {
