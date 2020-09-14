@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl("/AssociazioneColore");
   }
   associazioneTaglia() {
-    
+    this.router.navigateByUrl("/AssociaTaglia")
   }
   associazioneCategoria() {
 
