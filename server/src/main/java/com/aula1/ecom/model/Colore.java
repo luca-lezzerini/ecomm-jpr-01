@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 /**
  *
  * @author Prisacar
- * 
+ *
  */
 @Entity
 @Table(name = "colore")
@@ -25,18 +24,17 @@ public class Colore implements Serializable {
 
     @Id
     @Column
-        //(name = "id")
+    //(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-        //(name = "colore")
+    //(name = "colore")
     private String colore;
 
-    
-    @OneToMany(mappedBy = "colore",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "colore", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = "colore", allowSetters = true)
-    List<Prodotto> prodotto = new ArrayList<>();
+    private List<Prodotto> prodotto = new ArrayList<>();
 
     public Colore() {
     }
@@ -45,7 +43,7 @@ public class Colore implements Serializable {
         this.id = id;
         this.colore = colore;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -62,8 +60,15 @@ public class Colore implements Serializable {
         this.colore = colore;
     }
 
+    public List<Prodotto> getProdotto() {
+        return prodotto;
+    }
+
+    public void setProdotto(List<Prodotto> prodotto) {
+        this.prodotto = prodotto;
+    }
+
     @Override
-   
     public String toString() {
         return "Colore{" + "id=" + id + ", colore=" + colore + "}"; //<<-- qui modifcato generatevalue !!!
     }
