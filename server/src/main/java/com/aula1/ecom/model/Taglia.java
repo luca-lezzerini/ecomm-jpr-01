@@ -29,7 +29,7 @@ public class Taglia implements Serializable {
 
     @OneToMany(mappedBy = "taglia")
     @JsonIgnoreProperties(value = "taglia", allowSetters = true)
-    private List<Prodotto> prodotto = new ArrayList<>();
+    private List<Prodotto> prodotti = new ArrayList<>();
     
     public Taglia() {
     }
@@ -65,12 +65,12 @@ public class Taglia implements Serializable {
         this.sigla = sigla;
     }
 
-    public List<Prodotto> getProdotto() {
-        return prodotto;
+    public List<Prodotto> getProdotti() {
+        return prodotti;
     }
 
-    public void setProdotto(List<Prodotto> prodotto) {
-        this.prodotto = prodotto;
+    public void setProdotti(List<Prodotto> prodotti) {
+        this.prodotti = prodotti;
     }
    
 }
