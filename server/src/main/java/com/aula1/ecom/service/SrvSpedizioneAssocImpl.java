@@ -51,12 +51,13 @@ public class SrvSpedizioneAssocImpl implements SrvSpedizioneAssoc {
         Prodotto p = prodottoDto.getProdotto();
         Spedizione s = p.getSpedizione();
         p.setSpedizione(null);
-
+        Prodotto q = repProdotto.save(p);
         //Rimuovo L'associzione lato spedizione
         List<Prodotto> listaProdotti = s.getProdotti();
         listaProdotti.removeIf(
                 prod
-                -> prod.getId().equals(p.getId()));
+                -> prod.getId().equals(q.getId()));
+        s = repSped.save(s);
 
         prodottoDto.setLista(repProdotto.findAll());
         return prodottoDto;
