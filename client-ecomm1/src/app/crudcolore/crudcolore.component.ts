@@ -99,6 +99,7 @@ export class CRUDColoreComponent implements OnInit {
       }
     }
   }
+  
   associaProdotto(){
     this.router.navigateByUrl("/AssociazioneColore");
   }

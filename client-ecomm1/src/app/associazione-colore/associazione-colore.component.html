@@ -2,3 +2,20 @@
 <h1>Associa Colore</h1>
 <input type="text" placeholder="Ricerca Prodotto" [(ngModel)]="criterioRicerca">
 <button (click)="cerca()">CERCA</button>
+<table>
+    <tr>
+        <td>id</td>
+        <td>codice</td>
+        <td>descrizione</td>
+        <td>peso</td>
+        <td>prezzo</td>
+    </tr>
+    <tr *ngFor="let a of listaProdotti">
+        <td>{{a.id}}</td>
+        <td>{{a.codice}}</td>
+        <td>{{a.descrizione}}</td>
+        <td>{{a.peso}}</td>
+        <td>{{a.prezzo}}</td>
+        <td><button (click)="seleziona(a.id)">Seleziona</button></td>
+    </tr>
+</table> 
