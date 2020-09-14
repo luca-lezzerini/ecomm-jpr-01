@@ -36,7 +36,7 @@ public class Offerta implements Serializable {
 
     @OneToMany(mappedBy = "offerta")
     @JsonIgnoreProperties(value = "offerta", allowSetters = true)
-    List<Prodotto> prodotto = new ArrayList<>();
+    private List<Prodotto> prodotto = new ArrayList<>();
 
     //COSTRUTTORI
     public Offerta(Long id, String codice, String descrizione, double scontoPercentuale) {
@@ -79,6 +79,14 @@ public class Offerta implements Serializable {
 
     public void setScontoPercentuale(double scontoPercentuale) {
         this.scontoPercentuale = scontoPercentuale;
+    }
+
+    public List<Prodotto> getProdotto() {
+        return prodotto;
+    }
+
+    public void setProdotto(List<Prodotto> prodotto) {
+        this.prodotto = prodotto;
     }
 
     @Override

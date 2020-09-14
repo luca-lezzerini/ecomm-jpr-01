@@ -23,7 +23,7 @@ public class Categoria implements Serializable {
 
     @OneToMany(mappedBy = "categoria")
     @JsonIgnoreProperties(value = "categoria", allowSetters = true)
-    List<Prodotto> prodotto = new ArrayList<>();
+    private List<Prodotto> prodotto = new ArrayList<>();
 
     //COSTRUTTORI
     public Categoria(Long id, String descrizione) {
@@ -48,6 +48,14 @@ public class Categoria implements Serializable {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public List<Prodotto> getProdotto() {
+        return prodotto;
+    }
+
+    public void setProdotto(List<Prodotto> prodotto) {
+        this.prodotto = prodotto;
     }
 
     @Override

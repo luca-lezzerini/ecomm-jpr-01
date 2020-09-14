@@ -89,7 +89,10 @@ public class ControllerCategorie {
                 param.getPaginaCorrente() - 1,
                 param.getNumeroElementiXPagina()
         );
-        Page<Categoria> pg = srvCat.cercaCategoriaPaginato(param.getCategoria().getDescrizione(), p);
+        Page<Categoria> pg = srvCat.cercaCategoriaPaginato(
+                param.getCategoria().getDescrizione(),
+                p
+        );
         System.out.println(pg);
         CategoriaDto ris = new CategoriaDto();
         ris.setLista(pg.getContent());

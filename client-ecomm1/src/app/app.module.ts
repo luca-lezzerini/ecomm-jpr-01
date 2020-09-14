@@ -18,6 +18,7 @@ import { AssociaSpedizioneComponent } from './associa-spedizione/associa-spedizi
 import { AssociaOffertaComponent } from './associa-offerta/associa-offerta.component';
 import { ProdottoComponent } from './prodotto/prodotto.component';
 import { AssociaCategoriaComponent } from './associa-categoria/associa-categoria.component';
+import { AssociaTagliaComponent } from './associa-taglia/associa-taglia.component';
 
 
 
@@ -38,6 +39,7 @@ import { AssociaCategoriaComponent } from './associa-categoria/associa-categoria
     AssociaOffertaComponent,
     ProdottoComponent,
     AssociaCategoriaComponent,
+    AssociaTagliaComponent,
 
   ],
   imports: [

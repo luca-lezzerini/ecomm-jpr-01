@@ -118,4 +118,52 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
+    public Taglia getTaglia() {
+        return taglia;
+    }
+
+    public void setTaglia(Taglia taglia) {
+        this.taglia = taglia;
+    }
+
+    public Imballo getImballo() {
+        return imballo;
+    }
+
+    public void setImballo(Imballo imballo) {
+        this.imballo = imballo;
+    }
+
+    public Colore getColore() {
+        return colore;
+    }
+
+    public void setColore(Colore colore) {
+        this.colore = colore;
+    }
+
+    public Offerta getOfferta() {
+        return offerta;
+    }
+
+    public void setOfferta(Offerta offerta) {
+        this.offerta = offerta;
+    }
+
+    public Spedizione getSpedizione() {
+        return spedizione;
+    }
+
+    public void setSpedizione(Spedizione spedizione) {
+        this.spedizione = spedizione;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
 }

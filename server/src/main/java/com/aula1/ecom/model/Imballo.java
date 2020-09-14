@@ -71,4 +71,12 @@ public class Imballo implements Serializable {
         this.costo = costo;
     }
 
+    public List<Prodotto> getProdotto() {
+        return prodotto;
+    }
+
+    public void setProdotto(List<Prodotto> prodotto) {
+        this.prodotto = prodotto;
+    }
+
 }

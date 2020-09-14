@@ -1,3 +1,4 @@
+import { AssociaTagliaComponent } from './associa-taglia/associa-taglia.component';
 import { AssociaCategoriaComponent } from './associa-categoria/associa-categoria.component';
 import { AssociazioneColoreComponent } from './associazione-colore/associazione-colore.component';
 import { CrudoffertaComponent } from './crudofferta/crudofferta.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'AssociaSpedizione', component:AssociaSpedizioneComponent},
   { path: 'AssociaOfferta', component:AssociaOffertaComponent},
   { path: 'AssociaCategoria', component:AssociaCategoriaComponent},
+  { path: 'AssociaTaglia', component:AssociaTagliaComponent},
 
   { path: '', redirectTo: '/HomePage', pathMatch: 'full' }
 ];

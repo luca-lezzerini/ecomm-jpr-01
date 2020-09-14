@@ -26,18 +26,14 @@ public class SpedizioneAssoc {
     @Autowired
     SrvSpedizioneAssoc srvSpedizioneAssoc;
 
-  
     @RequestMapping("/associaSpedizione")
     public ProdottoDto associaSpedizione(SpedizioneDto spedizioneDto, ProdottoDto prodottoDto) {
-
-       
-        
         return srvSpedizioneAssoc.associaSpedizione(spedizioneDto, prodottoDto);
     }
 
     @RequestMapping("/deAssociaSpedizione")
     public ProdottoDto deAssociaSpedizione(ProdottoDto prodottoDto) {
-        
+
         return prodottoDto;
     }
 }
