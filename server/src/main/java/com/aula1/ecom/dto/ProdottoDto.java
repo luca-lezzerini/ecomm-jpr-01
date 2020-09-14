@@ -7,6 +7,8 @@ package com.aula1.ecom.dto;
 
 import com.aula1.ecom.model.Prodotto;
 import com.aula1.ecom.model.Token;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,7 +17,7 @@ import com.aula1.ecom.model.Token;
 public class ProdottoDto {
     private Prodotto prodotto;
     private Token token;
-    
+    private List<Prodotto> lista = new ArrayList<Prodotto>();
     //COSTRUTTORI
 
     public ProdottoDto() {
@@ -42,6 +44,14 @@ public class ProdottoDto {
 
     public void setToken(Token token) {
         this.token = token;
+    }
+
+    public List<Prodotto> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Prodotto> lista) {
+        this.lista = lista;
     }
     
 }

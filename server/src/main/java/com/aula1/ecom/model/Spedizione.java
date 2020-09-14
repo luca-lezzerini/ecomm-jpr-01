@@ -36,7 +36,7 @@ public class Spedizione implements Serializable {
 
     @OneToMany(mappedBy = "spedizione")
     @JsonIgnoreProperties(value = "spedizione", allowSetters = true)
-    private List<Prodotto> prodotto = new ArrayList<>();
+    private List<Prodotto> prodotti = new ArrayList<>();
 
     //COSTRUTTORI
     public Spedizione() {
@@ -81,12 +81,12 @@ public class Spedizione implements Serializable {
         this.prezzoKg = prezzoKg;
     }
 
-    public List<Prodotto> getProdotto() {
-        return prodotto;
+    public List<Prodotto> getProdotti() {
+        return prodotti;
     }
 
-    public void setProdotto(List<Prodotto> prodotto) {
-        this.prodotto = prodotto;
+    public void setProdotti(List<Prodotto> prodotti) {
+        this.prodotti = prodotti;
     }
 
     @Override
