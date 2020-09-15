@@ -1,4 +1,3 @@
-import { ColoreDto } from './../crudcolore/colore-dto';
 import { ProdottoComponent } from './../prodotto/prodotto.component';
 import { ListaProdottiDto } from './../prodotto/listaProdottiDto';
 import { MemoriaCondivisaService } from './../memoria-condivisa-service';
@@ -25,16 +24,17 @@ export class AssociazioneColoreComponent implements OnInit {
 
   cerca() {
     console.log("sono in cerca");
-    ProdottoComponent.cerca (new CercaDtoService (this.criterioRicerca, this.memoriaCondivisa.token), this.http, this.memoriaCondivisa);
+    let listaProdottiDto: ListaProdottiDto;
+    listaProdottiDto = ProdottoComponent.cerca (new CercaDtoService (this.criterioRicerca, this.memoriaCondivisa.token), this.http);
     console.log("ho fatto la ricerca");
-    /*console.log(listaProdottiDto.listaProdotti[0].codice);
+    console.log(listaProdottiDto.listaProdotti[0].codice);
     this.listaProdotti = listaProdottiDto.listaProdotti;
-    this.memoriaCondivisa.token = listaProdottiDto.token;*/
+    this.memoriaCondivisa.token = listaProdottiDto.token;
     console.log("ho assegnato i valori");
     /*let cercaDto = new CercaDto(this.criterioRicerca, this.memoriaCondivisa.token);
     let b: Observable<ListaProdottiDto> =
       this.http.
-        post<ListaProdottiDto>(this.urlHost + "/cercaColore", cercaDto);
+        post<ListaProdottiDto>(this.urlHost + "/listaProdotto", cercaDto);
     let ss: Subscription = b.subscribe(
       c => {
         this.listaProdotti = c.listaProdotti;
@@ -43,11 +43,4 @@ export class AssociazioneColoreComponent implements OnInit {
     );*/
   }
 
-  associa (id: string){
-    //this.http.post(this.urlHost + "/cercaColore", asociaColoreDto).subscribe({ error: e => console.error(e) });
-  }
-
-  selezione (id: string) {
-
-  }
 }
